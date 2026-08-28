@@ -1,0 +1,2033 @@
+/* ============================================================
+   PREMIUM SAAS AUTHENTICATION
+   FULLY RESPONSIVE / FLUID LAYOUT
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   Theme
+   ------------------------------------------------------------ */
+
+$bg-main: #090b10;
+$panel-left: #0f131d;
+$card-bg: #131824;
+$input-bg: #0b0e16;
+
+$border-color: #1f2736;
+$border-focus: #6366f1;
+
+$accent-primary: #6366f1;
+$accent-secondary: #a855f7;
+
+$accent-gradient: linear-gradient(135deg,
+    #6366f1 0%,
+    #a855f7 100%);
+
+$text-main: #f8fafc;
+$text-muted: #94a3b8;
+
+$error-color: #ef4444;
+$success-color: #34d399;
+
+
+/* ============================================================
+   GLOBAL HOST
+   ============================================================ */
+
+:host {
+  display: block;
+
+  width: 100%;
+  min-width: 0;
+
+  min-height: 100vh;
+  min-height: 100dvh;
+
+  background-color: $bg-main;
+
+  font-family:
+    'Inter',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    sans-serif;
+
+  color: $text-main;
+
+  box-sizing: border-box;
+
+  overflow: hidden;
+}
+
+
+/* ============================================================
+   BOX SIZING
+   ============================================================ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+
+/* ============================================================
+   MAIN SPLIT CONTAINER
+   ============================================================ */
+
+.auth-split-container {
+  position: relative;
+
+  display: flex;
+
+  width: 100%;
+  min-width: 0;
+
+  min-height: 100vh;
+  min-height: 100dvh;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(circle at 75% 20%,
+      rgba(99, 102, 241, 0.04),
+      transparent 30%),
+    $bg-main;
+}
+
+
+/* ============================================================
+   LEFT BRANDING PANEL
+   ============================================================ */
+
+.auth-brand-side {
+  position: relative;
+
+  flex: 1 1 52%;
+  min-width: 0;
+
+  min-height: 100vh;
+  min-height: 100dvh;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: space-between;
+
+  padding:
+    clamp(32px, 5vw, 72px);
+
+  background-color: $panel-left;
+
+  background-image:
+    radial-gradient(circle at 10% 20%,
+      rgba(99, 102, 241, 0.14) 0%,
+      transparent 40%),
+    radial-gradient(circle at 90% 80%,
+      rgba(168, 85, 247, 0.10) 0%,
+      transparent 40%),
+    linear-gradient(135deg,
+      rgba(255, 255, 255, 0.015),
+      transparent 60%);
+
+  border-right: 1px solid $border-color;
+
+  overflow: hidden;
+
+  isolation: isolate;
+}
+
+
+/* ============================================================
+   DECORATIVE GLOW ORBS
+   ============================================================ */
+
+.brand-glow-orb {
+  position: absolute;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+
+  filter: blur(1px);
+
+  opacity: 0.55;
+
+  z-index: -1;
+
+  animation:
+    floatingOrb 10s ease-in-out infinite;
+}
+
+
+.orb-1 {
+  width: clamp(180px, 20vw, 340px);
+  height: clamp(180px, 20vw, 340px);
+
+  top: -12%;
+  left: -8%;
+
+  background:
+    radial-gradient(circle,
+      rgba(99, 102, 241, 0.18),
+      transparent 68%);
+}
+
+
+.orb-2 {
+  width: clamp(220px, 24vw, 400px);
+  height: clamp(220px, 24vw, 400px);
+
+  right: -15%;
+  bottom: -18%;
+
+  background:
+    radial-gradient(circle,
+      rgba(168, 85, 247, 0.15),
+      transparent 68%);
+
+  animation-delay: -4s;
+}
+
+
+.orb-3 {
+  width: clamp(120px, 14vw, 220px);
+  height: clamp(120px, 14vw, 220px);
+
+  top: 42%;
+  right: 15%;
+
+  background:
+    radial-gradient(circle,
+      rgba(99, 102, 241, 0.07),
+      transparent 70%);
+
+  animation-delay: -7s;
+}
+
+
+/* ============================================================
+   BRAND CONTENT
+   ============================================================ */
+
+.brand-content-wrapper {
+  position: relative;
+
+  width: 100%;
+  max-width: 600px;
+
+  margin:
+    auto 0;
+
+  z-index: 2;
+}
+
+
+/* ============================================================
+   LOGO BADGE
+   ============================================================ */
+
+.logo-badge-pill {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  max-width: 100%;
+
+  padding:
+    7px 14px;
+
+  border-radius: 50px;
+
+  background:
+    rgba(99, 102, 241, 0.09);
+
+  border:
+    1px solid rgba(99, 102, 241, 0.28);
+
+  color: #818cf8;
+
+  font-size:
+    clamp(0.72rem, 0.8vw, 0.84rem);
+
+  font-weight: 600;
+
+  letter-spacing: 0.02em;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+  margin-bottom:
+    clamp(18px, 2.2vw, 28px);
+
+  box-shadow:
+    0 8px 25px rgba(0, 0, 0, 0.12);
+
+  backdrop-filter: blur(8px);
+
+  -webkit-backdrop-filter: blur(8px);
+
+
+  i {
+    flex-shrink: 0;
+  }
+}
+
+
+/* ============================================================
+   BRAND HEADING
+   ============================================================ */
+
+.brand-content-wrapper h1 {
+  margin: 0 0 clamp(14px, 1.6vw, 20px);
+
+  max-width: 620px;
+
+  color: #ffffff;
+
+  font-size:
+    clamp(2rem,
+      3.2vw,
+      3.45rem);
+
+  line-height: 1.08;
+
+  font-weight: 800;
+
+  letter-spacing: -0.04em;
+
+  text-wrap: balance;
+}
+
+
+/* ============================================================
+   BRAND DESCRIPTION
+   ============================================================ */
+
+.brand-content-wrapper>p {
+  max-width: 580px;
+
+  margin: 0 0 clamp(24px, 3vw, 38px);
+
+  color: $text-muted;
+
+  font-size:
+    clamp(0.9rem,
+      1vw,
+      1.06rem);
+
+  line-height: 1.7;
+
+  text-wrap: pretty;
+}
+
+
+/* ============================================================
+   GLASS PREVIEW CARD
+   ============================================================ */
+
+.glass-preview-card {
+  width: min(100%, 390px);
+
+  min-height: 80px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  padding:
+    15px 18px;
+
+  border-radius: 16px;
+
+  background:
+    linear-gradient(135deg,
+      rgba(255, 255, 255, 0.055),
+      rgba(255, 255, 255, 0.018));
+
+  border:
+    1px solid rgba(255, 255, 255, 0.08);
+
+  backdrop-filter: blur(18px);
+
+  -webkit-backdrop-filter: blur(18px);
+
+  box-shadow:
+    0 25px 50px rgba(0, 0, 0, 0.38),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease;
+
+  &:hover {
+    transform: translateY(-3px);
+
+    border-color:
+      rgba(129, 140, 248, 0.25);
+  }
+}
+
+
+/* ============================================================
+   PREVIEW ICON
+   ============================================================ */
+
+.preview-icon {
+  width: 44px;
+  height: 44px;
+
+  flex: 0 0 44px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 12px;
+
+  background: $accent-gradient;
+
+  color: #fff;
+
+  font-size: 1.05rem;
+
+  box-shadow:
+    0 8px 18px rgba(99, 102, 241, 0.30);
+}
+
+
+/* ============================================================
+   PREVIEW TEXT
+   ============================================================ */
+
+.preview-text {
+  min-width: 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 2px;
+
+
+  .title {
+    color: $text-muted;
+
+    font-size: 0.82rem;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+  }
+
+
+  .metric {
+    color: $success-color;
+
+    font-size: 0.98rem;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+  }
+}
+
+
+/* ============================================================
+   PREVIEW TREND
+   ============================================================ */
+
+.preview-trend {
+  margin-left: auto;
+
+  flex: 0 0 auto;
+
+  color: $success-color;
+
+  font-size: 1.15rem;
+}
+
+
+/* ============================================================
+   BRAND FOOTER
+   ============================================================ */
+
+.brand-footer-text {
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+
+  flex-wrap: wrap;
+
+  gap: 10px;
+
+  color: #64748b;
+
+  font-size:
+    clamp(0.7rem, 0.8vw, 0.84rem);
+
+  line-height: 1.5;
+
+  z-index: 2;
+}
+
+
+/* ============================================================
+   RIGHT FORM PANEL
+   ============================================================ */
+
+.auth-form-side {
+  flex:
+    1 1 48%;
+
+  min-width: 0;
+
+  min-height: 100vh;
+  min-height: 100dvh;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding:
+    clamp(24px, 4vw, 64px);
+
+  background-color: $bg-main;
+
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  scrollbar-width: thin;
+
+  scrollbar-color:
+    #293244 transparent;
+}
+
+
+/* ============================================================
+   FORM CARD
+   ============================================================ */
+
+.auth-card-modern {
+  position: relative;
+
+  width: 100%;
+
+  max-width:
+    clamp(390px,
+      32vw,
+      480px);
+
+  margin:
+    auto;
+
+  padding:
+    clamp(26px,
+      3vw,
+      42px);
+
+  background:
+    linear-gradient(145deg,
+      rgba(19, 24, 36, 0.98),
+      rgba(15, 19, 29, 0.98));
+
+  border:
+    1px solid $border-color;
+
+  border-radius:
+    clamp(16px, 1.5vw, 22px);
+
+  box-shadow:
+    0 30px 70px rgba(0, 0, 0, 0.55),
+    0 10px 30px rgba(0, 0, 0, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.025);
+
+  overflow: hidden;
+}
+
+
+/* ============================================================
+   SUBTLE CARD TOP GLOW
+   ============================================================ */
+
+.auth-card-modern::before {
+  content: '';
+
+  position: absolute;
+
+  top: 0;
+  left: 15%;
+
+  width: 70%;
+  height: 1px;
+
+  background:
+    linear-gradient(90deg,
+      transparent,
+      rgba(129, 140, 248, 0.5),
+      transparent);
+
+  pointer-events: none;
+}
+
+
+/* ============================================================
+   AUTH HEADER
+   ============================================================ */
+
+.auth-header-modern {
+  position: relative;
+
+  margin-bottom:
+    clamp(22px, 2.5vw, 30px);
+}
+
+
+/* ============================================================
+   HEADER ACCENT
+   ============================================================ */
+
+.auth-header-accent {
+  width: 34px;
+  height: 4px;
+
+  margin-bottom: 16px;
+
+  border-radius: 20px;
+
+  background: $accent-gradient;
+
+  box-shadow:
+    0 5px 15px rgba(99, 102, 241, 0.28);
+}
+
+
+/* ============================================================
+   HEADER TITLE
+   ============================================================ */
+
+.auth-header-modern h2 {
+  margin: 0 0 8px;
+
+  color: #fff;
+
+  font-size:
+    clamp(1.45rem,
+      1.7vw,
+      1.75rem);
+
+  line-height: 1.2;
+
+  font-weight: 700;
+
+  letter-spacing: -0.025em;
+}
+
+
+/* ============================================================
+   HEADER DESCRIPTION
+   ============================================================ */
+
+.auth-header-modern p {
+  margin: 0;
+
+  max-width: 460px;
+
+  color: $text-muted;
+
+  font-size:
+    clamp(0.82rem,
+      0.9vw,
+      0.92rem);
+
+  line-height: 1.55;
+}
+
+
+/* ============================================================
+   FORM
+   ============================================================ */
+
+.auth-form {
+  width: 100%;
+}
+
+
+/* ============================================================
+   FORM GROUP
+   ============================================================ */
+
+.form-control-group {
+  width: 100%;
+
+  margin-bottom:
+    clamp(16px, 1.7vw, 21px);
+}
+
+
+/* ============================================================
+   FORM LABEL
+   ============================================================ */
+
+.form-control-group label {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: #cbd5e1;
+
+  font-size: 0.84rem;
+
+  font-weight: 500;
+
+  line-height: 1.4;
+}
+
+
+/* ============================================================
+   INPUT BOX
+   ============================================================ */
+
+.input-box {
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+
+  width: 100%;
+
+  min-width: 0;
+
+  border-radius: 11px;
+
+  transition:
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+
+/* ============================================================
+   INPUT LEADING ICON
+   ============================================================ */
+
+.input-box>.input-leading-icon {
+  position: absolute;
+
+  left: 15px;
+
+  z-index: 2;
+
+  color: #64748b;
+
+  font-size: 0.95rem;
+
+  pointer-events: none;
+
+  transition:
+    color 0.25s ease;
+}
+
+
+/* ============================================================
+   INPUT
+   ============================================================ */
+
+.input-box input {
+  display: block;
+
+  width: 100%;
+
+  min-width: 0;
+
+  height:
+    clamp(45px, 3.2vw, 50px);
+
+  padding:
+    0 46px;
+
+  background: $input-bg;
+
+  border:
+    1px solid $border-color;
+
+  border-radius: 11px;
+
+  color: #fff;
+
+  font-family: inherit;
+
+  font-size:
+    clamp(0.86rem,
+      0.95vw,
+      0.93rem);
+
+  line-height: normal;
+
+  outline: none;
+
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+
+.input-box input::placeholder {
+  color: #475569;
+
+  opacity: 1;
+}
+
+
+.input-box input:hover {
+  border-color: #2d3748;
+}
+
+
+.input-box input:focus {
+  background: #0f131f;
+
+  border-color: $border-focus;
+
+  box-shadow:
+    0 0 0 3px rgba(99, 102, 241, 0.14);
+}
+
+
+.input-box:focus-within>.input-leading-icon {
+  color: $accent-primary;
+}
+
+
+/* ============================================================
+   PASSWORD TOGGLE BUTTON
+   ============================================================ */
+
+.toggle-pass-button {
+  position: absolute;
+
+  top: 50%;
+  right: 7px;
+
+  width: 38px;
+  height: 38px;
+
+  transform: translateY(-50%);
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border: none;
+
+  border-radius: 8px;
+
+  background: transparent;
+
+  color: #64748b;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+
+.toggle-pass-button:hover {
+  background:
+    rgba(255, 255, 255, 0.05);
+
+  color: #fff;
+}
+
+
+.toggle-pass-button:focus-visible {
+  outline: 2px solid rgba(129, 140, 248, 0.7);
+
+  outline-offset: 1px;
+}
+
+
+/* ============================================================
+   FORM OPTIONS
+   ============================================================ */
+
+.form-options-row {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 16px;
+
+  margin-top: -2px;
+
+  margin-bottom:
+    clamp(18px, 2vw, 24px);
+
+  font-size: 0.83rem;
+}
+
+
+/* ============================================================
+   REMEMBER CHECKBOX
+   ============================================================ */
+
+.remember-checkbox {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  min-width: 0;
+
+  color: $text-muted;
+
+  cursor: pointer;
+
+  user-select: none;
+}
+
+
+.remember-checkbox input {
+  width: 15px;
+  height: 15px;
+
+  margin: 0;
+
+  flex: 0 0 auto;
+
+  accent-color: $accent-primary;
+
+  cursor: pointer;
+}
+
+
+.remember-checkbox span {
+  white-space: nowrap;
+}
+
+
+/* ============================================================
+   FORGOT LINK
+   ============================================================ */
+
+.forgot-link {
+  flex: 0 0 auto;
+
+  color: #818cf8;
+
+  font-weight: 500;
+
+  text-decoration: none;
+
+  white-space: nowrap;
+
+  transition: color 0.2s ease;
+}
+
+
+.forgot-link:hover {
+  color: #a5b4fc;
+
+  text-decoration: underline;
+}
+
+
+/* ============================================================
+   SUBMIT BUTTON
+   ============================================================ */
+
+.btn-submit-action {
+  width: 100%;
+
+  min-height:
+    clamp(46px, 3.3vw, 51px);
+
+  padding:
+    10px 18px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  border: none;
+
+  border-radius: 11px;
+
+  background: $accent-gradient;
+
+  color: #fff;
+
+  font-family: inherit;
+
+  font-size:
+    clamp(0.86rem,
+      0.95vw,
+      0.95rem);
+
+  font-weight: 600;
+
+  line-height: 1.2;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 10px 22px rgba(99, 102, 241, 0.27);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    filter 0.25s ease;
+}
+
+
+.btn-submit-action:hover {
+  transform: translateY(-1px);
+
+  filter: brightness(1.04);
+
+  box-shadow:
+    0 14px 28px rgba(99, 102, 241, 0.38);
+}
+
+
+.btn-submit-action:active {
+  transform: translateY(0);
+
+  box-shadow:
+    0 8px 16px rgba(99, 102, 241, 0.25);
+}
+
+
+.btn-submit-action:focus-visible {
+  outline: 2px solid rgba(165, 180, 252, 0.85);
+
+  outline-offset: 3px;
+}
+
+
+.btn-submit-action i {
+  transition:
+    transform 0.25s ease;
+}
+
+
+.btn-submit-action:hover i {
+  transform: translateX(4px);
+}
+
+
+/* ============================================================
+   FOOTER SWITCHER
+   ============================================================ */
+
+.auth-switcher-footer {
+  width: 100%;
+
+  margin-top:
+    clamp(20px, 2.3vw, 27px);
+
+  padding-top:
+    clamp(18px, 2vw, 22px);
+
+  border-top:
+    1px solid rgba(31, 39, 54, 0.75);
+
+  text-align: center;
+}
+
+
+.auth-switcher-footer p {
+  margin: 0;
+
+  color: $text-muted;
+
+  font-size:
+    clamp(0.78rem,
+      0.85vw,
+      0.88rem);
+
+  line-height: 1.5;
+}
+
+
+.switch-action-link {
+  margin-left: 4px;
+
+  color: #818cf8;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    color 0.2s ease;
+}
+
+
+.switch-action-link:hover {
+  color: #a5b4fc;
+
+  text-decoration: underline;
+}
+
+
+/* ============================================================
+   ERROR STATES
+   ============================================================ */
+
+.input-box.error {
+  border-radius: 11px;
+
+  box-shadow:
+    0 0 0 3px rgba(239, 68, 68, 0.10);
+}
+
+
+.input-box.error input {
+  border-color: $error-color !important;
+}
+
+
+.input-box.error>.input-leading-icon {
+  color: $error-color !important;
+}
+
+
+/* ============================================================
+   ERROR MESSAGE
+   ============================================================ */
+
+.error-msg {
+  display: flex;
+
+  align-items: flex-start;
+
+  width: 100%;
+
+  margin-top: 6px;
+
+  color: #f87171;
+
+  font-size: 0.76rem;
+
+  line-height: 1.4;
+
+  animation:
+    fadeIn 0.2s ease-out;
+}
+
+
+.error-msg small {
+  display: block;
+
+  font-size: inherit;
+}
+
+
+/* ============================================================
+   FADE ANIMATION
+   ============================================================ */
+
+.animate-fade {
+  animation:
+    fadeIn 0.3s cubic-bezier(0.16,
+      1,
+      0.3,
+      1) forwards;
+}
+
+
+@keyframes fadeIn {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(-8px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0);
+  }
+
+}
+
+
+/* ============================================================
+   ORB ANIMATION
+   ============================================================ */
+
+@keyframes floatingOrb {
+
+  0%,
+  100% {
+    transform:
+      translate3d(0, 0, 0) scale(1);
+  }
+
+  50% {
+    transform:
+      translate3d(10px, -12px, 0) scale(1.04);
+  }
+
+}
+
+
+/* ============================================================
+   LARGE DESKTOP
+   1440px+
+   ============================================================ */
+
+@media (min-width: 1440px) {
+
+  .auth-brand-side {
+    flex-basis: 54%;
+  }
+
+  .auth-form-side {
+    flex-basis: 46%;
+  }
+
+  .brand-content-wrapper {
+    max-width: 680px;
+  }
+
+  .auth-card-modern {
+    max-width: 480px;
+  }
+
+}
+
+
+/* ============================================================
+   EXTRA LARGE DESKTOP
+   1800px+
+   ============================================================ */
+
+@media (min-width: 1800px) {
+
+  .auth-brand-side {
+    padding-left: clamp(70px, 6vw, 120px);
+    padding-right: clamp(70px, 6vw, 120px);
+  }
+
+  .auth-form-side {
+    padding-left: clamp(50px, 5vw, 100px);
+    padding-right: clamp(50px, 5vw, 100px);
+  }
+
+  .brand-content-wrapper h1 {
+    font-size: 3.7rem;
+  }
+
+}
+
+
+/* ============================================================
+   LAPTOP / SMALL DESKTOP
+   1200px - 1439px
+   ============================================================ */
+
+@media (max-width: 1439px) and (min-width: 1101px) {
+
+  .auth-brand-side {
+    padding:
+      clamp(34px, 4vw, 56px);
+  }
+
+  .auth-form-side {
+    padding:
+      clamp(24px, 3vw, 48px);
+  }
+
+  .brand-content-wrapper h1 {
+    font-size:
+      clamp(2.25rem,
+        3.2vw,
+        3rem);
+  }
+
+  .auth-card-modern {
+    max-width: 440px;
+  }
+
+}
+
+
+/* ============================================================
+   TABLET / FOLDABLE
+   901px - 1100px
+   ============================================================ */
+
+@media (max-width: 1100px) and (min-width: 901px) {
+
+  .auth-brand-side {
+    flex-basis: 47%;
+
+    padding:
+      clamp(28px, 4vw, 44px);
+  }
+
+  .auth-form-side {
+    flex-basis: 53%;
+
+    padding:
+      clamp(22px, 3vw, 36px);
+  }
+
+  .brand-content-wrapper h1 {
+    font-size:
+      clamp(2rem,
+        3.5vw,
+        2.7rem);
+  }
+
+  .brand-content-wrapper>p {
+    font-size: 0.92rem;
+  }
+
+  .glass-preview-card {
+    max-width: 340px;
+  }
+
+  .auth-card-modern {
+    max-width: 420px;
+
+    padding:
+      clamp(24px, 3vw, 34px);
+  }
+
+}
+
+
+/* ============================================================
+   TABLET
+   768px - 900px
+   SINGLE PANEL MODE
+   ============================================================ */
+
+@media (max-width: 900px) {
+
+  :host {
+    overflow: auto;
+  }
+
+  .auth-split-container {
+    min-height: 100vh;
+    min-height: 100dvh;
+
+    overflow: visible;
+
+    display: block;
+
+    background:
+      radial-gradient(circle at 15% 0%,
+        rgba(99, 102, 241, 0.08),
+        transparent 32%),
+      $bg-main;
+  }
+
+
+  /* Hide desktop branding panel */
+  .auth-brand-side {
+    display: none;
+  }
+
+
+  /* Full authentication panel */
+  .auth-form-side {
+    width: 100%;
+
+    min-height: 100vh;
+    min-height: 100dvh;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding:
+      clamp(24px, 5vw, 48px);
+
+    overflow:
+      visible;
+
+    background:
+      transparent;
+  }
+
+
+  .auth-card-modern {
+    width: 100%;
+
+    max-width:
+      min(520px,
+        100%);
+
+    margin: auto;
+
+    padding:
+      clamp(28px,
+        5vw,
+        42px);
+  }
+
+}
+
+
+/* ============================================================
+   SMALL TABLET
+   601px - 767px
+   ============================================================ */
+
+@media (max-width: 767px) {
+
+  .auth-form-side {
+    align-items: flex-start;
+
+    padding:
+      clamp(24px, 5vw, 36px);
+
+    overflow-y: auto;
+  }
+
+  .auth-card-modern {
+    margin:
+      auto 0;
+  }
+
+}
+
+
+/* ============================================================
+   MOBILE
+   481px - 600px
+   ============================================================ */
+
+@media (max-width: 600px) {
+
+  :host {
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+
+  .auth-split-container {
+    min-height: 100vh;
+    min-height: 100dvh;
+
+    display: block;
+
+    overflow: visible;
+  }
+
+
+  .auth-form-side {
+    min-height: 100vh;
+    min-height: 100dvh;
+
+    align-items: flex-start;
+
+    padding:
+      24px clamp(16px, 5vw, 24px);
+
+    overflow-y: auto;
+  }
+
+
+  .auth-card-modern {
+    width: 100%;
+
+    max-width: 520px;
+
+    margin:
+      auto;
+
+    padding:
+      clamp(24px, 6vw, 32px);
+
+    border-radius: 17px;
+  }
+
+
+  .auth-header-modern {
+    margin-bottom: 24px;
+  }
+
+
+  .auth-header-modern h2 {
+    font-size: 1.5rem;
+  }
+
+
+  .auth-header-modern p {
+    font-size: 0.84rem;
+
+    line-height: 1.55;
+  }
+
+
+  .form-control-group {
+    margin-bottom: 17px;
+  }
+
+
+  .input-box input {
+    height: 47px;
+
+    font-size: 16px;
+  }
+
+
+  .btn-submit-action {
+    min-height: 48px;
+
+    font-size: 0.9rem;
+  }
+
+}
+
+
+/* ============================================================
+   SMALL MOBILE
+   360px - 480px
+   ============================================================ */
+
+@media (max-width: 480px) {
+
+  .auth-form-side {
+    padding:
+      16px;
+  }
+
+
+  .auth-card-modern {
+    max-width: none;
+
+    margin:
+      auto 0;
+
+    padding:
+      22px 18px;
+
+    border:
+      1px solid rgba(31, 39, 54, 0.85);
+
+    border-radius: 15px;
+
+    box-shadow:
+      0 20px 45px rgba(0, 0, 0, 0.42);
+  }
+
+
+  .auth-header-accent {
+    width: 30px;
+
+    height: 3px;
+
+    margin-bottom: 13px;
+  }
+
+
+  .auth-header-modern h2 {
+    font-size: 1.4rem;
+
+    margin-bottom: 7px;
+  }
+
+
+  .auth-header-modern p {
+    font-size: 0.81rem;
+
+    line-height: 1.5;
+  }
+
+
+  .form-control-group {
+    margin-bottom: 16px;
+  }
+
+
+  .form-control-group label {
+    font-size: 0.81rem;
+
+    margin-bottom: 7px;
+  }
+
+
+  .input-box input {
+    height: 46px;
+
+    padding-left: 43px;
+    padding-right: 44px;
+
+    border-radius: 10px;
+
+    font-size: 16px;
+  }
+
+
+  .input-box>.input-leading-icon {
+    left: 14px;
+
+    font-size: 0.9rem;
+  }
+
+
+  .toggle-pass-button {
+    right: 5px;
+
+    width: 36px;
+    height: 36px;
+  }
+
+
+  .form-options-row {
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin-bottom: 20px;
+
+    font-size: 0.79rem;
+  }
+
+
+  .remember-checkbox {
+    flex: 1 1 auto;
+  }
+
+
+  .forgot-link {
+    flex: 0 0 auto;
+  }
+
+
+  .btn-submit-action {
+    min-height: 47px;
+
+    border-radius: 10px;
+
+    font-size: 0.87rem;
+
+    padding:
+      9px 14px;
+  }
+
+
+  .auth-switcher-footer {
+    margin-top: 19px;
+
+    padding-top: 18px;
+  }
+
+
+  .auth-switcher-footer p {
+    font-size: 0.78rem;
+
+    line-height: 1.6;
+  }
+
+
+  .error-msg {
+    font-size: 0.73rem;
+  }
+
+}
+
+
+/* ============================================================
+   VERY SMALL PHONES
+   320px - 359px
+   ============================================================ */
+
+@media (max-width: 359px) {
+
+  .auth-form-side {
+    padding:
+      10px;
+  }
+
+
+  .auth-card-modern {
+    padding:
+      20px 14px;
+
+    border-radius: 13px;
+  }
+
+
+  .auth-header-modern h2 {
+    font-size: 1.3rem;
+  }
+
+
+  .auth-header-modern p {
+    font-size: 0.78rem;
+  }
+
+
+  .form-control-group {
+    margin-bottom: 14px;
+  }
+
+
+  .form-control-group label {
+    font-size: 0.78rem;
+  }
+
+
+  .input-box input {
+    height: 44px;
+
+    padding-left: 40px;
+    padding-right: 42px;
+  }
+
+
+  .btn-submit-action {
+    min-height: 45px;
+
+    font-size: 0.82rem;
+  }
+
+
+  .auth-switcher-footer p {
+    font-size: 0.74rem;
+  }
+
+}
+
+
+/* ============================================================
+   LANDSCAPE PHONES
+   IMPORTANT:
+   Prevents vertical clipping when phone height is small.
+   ============================================================ */
+
+@media (max-width: 900px) and (orientation: landscape) {
+
+  .auth-form-side {
+    align-items: flex-start;
+
+    padding:
+      18px clamp(20px, 5vw, 48px);
+  }
+
+
+  .auth-card-modern {
+    max-width: 620px;
+
+    margin:
+      0 auto;
+  }
+
+
+  .auth-header-modern {
+    margin-bottom: 18px;
+  }
+
+
+  .form-control-group {
+    margin-bottom: 14px;
+  }
+
+
+  .input-box input {
+    height: 44px;
+  }
+
+
+  .btn-submit-action {
+    min-height: 45px;
+  }
+
+}
+
+
+/* ============================================================
+   SHORT DESKTOP / SHORT TABLET
+   Handles low-height laptops and tablets.
+   ============================================================ */
+
+@media (min-width: 901px) and (max-height: 760px) {
+
+  .auth-brand-side {
+    padding-top:
+      clamp(24px, 3vw, 40px);
+
+    padding-bottom:
+      clamp(24px, 3vw, 40px);
+  }
+
+
+  .brand-content-wrapper h1 {
+    font-size:
+      clamp(2rem,
+        3vw,
+        2.65rem);
+  }
+
+
+  .brand-content-wrapper>p {
+    margin-bottom: 24px;
+
+    line-height: 1.5;
+  }
+
+
+  .glass-preview-card {
+    min-height: 70px;
+
+    padding: 12px 16px;
+  }
+
+
+  .auth-card-modern {
+    padding:
+      26px 30px;
+  }
+
+
+  .auth-header-modern {
+    margin-bottom: 20px;
+  }
+
+
+  .form-control-group {
+    margin-bottom: 14px;
+  }
+
+
+  .input-box input {
+    height: 44px;
+  }
+
+
+  .btn-submit-action {
+    min-height: 45px;
+  }
+
+}
+
+
+/* ============================================================
+   VERY SHORT MOBILE
+   ============================================================ */
+
+@media (max-width: 600px) and (max-height: 650px) {
+
+  .auth-form-side {
+    align-items: flex-start;
+
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+
+
+  .auth-card-modern {
+    margin-top: 0;
+    margin-bottom: 0;
+
+    padding-top: 18px;
+    padding-bottom: 18px;
+  }
+
+
+  .auth-header-modern {
+    margin-bottom: 16px;
+  }
+
+
+  .auth-header-accent {
+    margin-bottom: 10px;
+  }
+
+
+  .form-control-group {
+    margin-bottom: 12px;
+  }
+
+
+  .form-control-group label {
+    margin-bottom: 5px;
+  }
+
+
+  .input-box input {
+    height: 43px;
+  }
+
+
+  .btn-submit-action {
+    margin-top: 2px;
+
+    min-height: 44px;
+  }
+
+
+  .auth-switcher-footer {
+    margin-top: 15px;
+
+    padding-top: 14px;
+  }
+
+}
+
+
+/* ============================================================
+   TOUCH DEVICES
+   Improve interaction targets.
+   ============================================================ */
+
+@media (hover: none) and (pointer: coarse) {
+
+  .toggle-pass-button {
+    width: 40px;
+    height: 40px;
+  }
+
+
+  .forgot-link,
+  .switch-action-link {
+    min-height: 32px;
+
+    display: inline-flex;
+
+    align-items: center;
+  }
+
+
+  .btn-submit-action {
+    min-height: 48px;
+  }
+
+}
+
+
+/* ============================================================
+   REDUCED MOTION
+   Accessibility
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+
+    transition-duration: 0.01ms !important;
+  }
+
+}
+
+
+/* ============================================================
+   HIGH CONTRAST / FOCUS ACCESSIBILITY
+   ============================================================ */
+
+input:focus-visible,
+button:focus-visible,
+a:focus-visible {
+  outline-offset: 2px;
+}
+
+
+/* ============================================================
+   DARK MOBILE SAFE AREA
+   Useful for iPhone / modern edge-to-edge devices.
+   ============================================================ */
+
+@supports (padding: env(safe-area-inset-bottom)) {
+
+  .auth-form-side {
+    padding-bottom:
+      max(clamp(24px, 4vw, 48px),
+        env(safe-area-inset-bottom));
+  }
+
+}
+
+
+/* ============================================================
+   PRINT
+   ============================================================ */
+
+@media print {
+
+  :host {
+    overflow: visible;
+
+    min-height: auto;
+  }
+
+
+  .auth-split-container {
+    min-height: auto;
+
+    overflow: visible;
+  }
+
+
+  .auth-brand-side {
+    display: none;
+  }
+
+
+  .auth-form-side {
+    min-height: auto;
+
+    padding: 0;
+
+    background: #fff;
+  }
+
+
+  .auth-card-modern {
+    max-width: 100%;
+
+    color: #000;
+
+    background: #fff;
+
+    border: none;
+
+    box-shadow: none;
+  }
+
+}

@@ -1,0 +1,1646 @@
+/* =========================================================
+   RESPONSIVE USER DIALOG
+   Premium Dark / Violet Theme
+   ========================================================= */
+
+
+/* ---------------------------------------------------------
+   Global sizing
+   --------------------------------------------------------- */
+
+:host {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    font-family:
+        'Inter',
+        -apple-system,
+        BlinkMacSystemFont,
+        'Segoe UI',
+        sans-serif;
+}
+
+:host *,
+:host *::before,
+:host *::after {
+    box-sizing: border-box;
+}
+
+
+/* ---------------------------------------------------------
+   Angular Material Dialog Container
+   --------------------------------------------------------- */
+
+::ng-deep .mat-dialog-container {
+
+    background: #0b0f19 !important;
+
+    color: #e2e8f0 !important;
+
+    border: 1px solid #1e293b !important;
+
+    border-radius: 18px !important;
+
+    padding: 0 !important;
+
+    margin: 0 !important;
+
+    width: 100% !important;
+
+    max-width: 100% !important;
+
+    max-height: 90vh !important;
+
+    min-height: 0 !important;
+
+    overflow: hidden !important;
+
+    display: flex !important;
+
+    flex-direction: column !important;
+
+    box-shadow:
+        0 25px 50px -12px rgba(0, 0, 0, 0.65),
+        0 12px 24px -8px rgba(0, 0, 0, 0.4) !important;
+
+    animation: dialogFadeIn 0.22s ease-out;
+
+}
+
+
+/* ---------------------------------------------------------
+   Dialog Header
+   --------------------------------------------------------- */
+
+.dialog-header {
+
+    flex: 0 0 auto;
+
+    min-height: 68px;
+
+    width: 100%;
+
+    padding: 12px 24px;
+
+    margin: 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            #111827 0%,
+            #0f172a 100%
+        );
+
+    border-bottom: 1px solid #1e293b;
+
+    color: #f8fafc;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 16px;
+
+    position: relative;
+
+    z-index: 2;
+
+}
+
+
+/* Header left side */
+
+.header-title-wrapper {
+
+    min-width: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+}
+
+
+/* Header icon */
+
+.header-icon {
+
+    width: 40px;
+
+    height: 40px;
+
+    flex: 0 0 40px;
+
+    border-radius: 11px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(99, 102, 241, 0.18),
+            rgba(129, 140, 248, 0.08)
+        );
+
+    border: 1px solid rgba(129, 140, 248, 0.18);
+
+    color: #818cf8;
+
+    font-size: 0.95rem;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.04),
+        0 4px 12px rgba(0, 0, 0, 0.15);
+
+}
+
+
+/* Header text */
+
+.header-text {
+
+    min-width: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    gap: 2px;
+
+}
+
+
+.header-title {
+
+    display: block;
+
+    color: #f8fafc;
+
+    font-size: 1rem;
+
+    line-height: 1.35;
+
+    font-weight: 650;
+
+    letter-spacing: -0.01em;
+
+}
+
+
+.header-subtitle {
+
+    display: block;
+
+    color: #64748b;
+
+    font-size: 0.72rem;
+
+    line-height: 1.35;
+
+    font-weight: 400;
+
+}
+
+
+/* ---------------------------------------------------------
+   Close Button
+   --------------------------------------------------------- */
+
+.close-btn {
+
+    width: 38px !important;
+
+    height: 38px !important;
+
+    min-width: 38px !important;
+
+    flex: 0 0 38px;
+
+    padding: 0 !important;
+
+    border-radius: 10px !important;
+
+    color: #64748b !important;
+
+    background: transparent !important;
+
+    border: 1px solid transparent !important;
+
+    display: flex !important;
+
+    align-items: center !important;
+
+    justify-content: center !important;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+
+}
+
+
+.close-btn:hover {
+
+    color: #f8fafc !important;
+
+    background: rgba(255, 255, 255, 0.06) !important;
+
+    border-color: #334155 !important;
+
+    transform: rotate(2deg);
+
+}
+
+
+.close-btn:focus-visible {
+
+    outline: none;
+
+    border-color: #6366f1 !important;
+
+    box-shadow:
+        0 0 0 3px rgba(99, 102, 241, 0.15);
+
+}
+
+
+.close-btn mat-icon {
+
+    width: 20px;
+
+    height: 20px;
+
+    font-size: 20px;
+
+    line-height: 20px;
+
+}
+
+
+/* ---------------------------------------------------------
+   Dialog Content
+   --------------------------------------------------------- */
+
+.dialog-content {
+
+    flex: 1 1 auto !important;
+
+    min-height: 0 !important;
+
+    width: 100%;
+
+    margin: 0 !important;
+
+    padding: 24px !important;
+
+    background:
+        radial-gradient(
+            circle at top right,
+            rgba(99, 102, 241, 0.025),
+            transparent 35%
+        ),
+        #0b0f19;
+
+    overflow-x: hidden !important;
+
+    overflow-y: auto !important;
+
+    overscroll-behavior: contain;
+
+    -webkit-overflow-scrolling: touch;
+
+}
+
+
+/* ---------------------------------------------------------
+   Scrollbar
+   --------------------------------------------------------- */
+
+.dialog-content::-webkit-scrollbar {
+
+    width: 7px;
+
+}
+
+
+.dialog-content::-webkit-scrollbar-track {
+
+    background: transparent;
+
+}
+
+
+.dialog-content::-webkit-scrollbar-thumb {
+
+    background: #1e293b;
+
+    border-radius: 10px;
+
+    border: 2px solid #0b0f19;
+
+}
+
+
+.dialog-content::-webkit-scrollbar-thumb:hover {
+
+    background: #475569;
+
+}
+
+
+/* Firefox */
+
+.dialog-content {
+
+    scrollbar-width: thin;
+
+    scrollbar-color:
+        #1e293b
+        transparent;
+
+}
+
+
+/* ---------------------------------------------------------
+   Form Container
+   --------------------------------------------------------- */
+
+.form-container {
+
+    width: 100%;
+
+    max-width: 760px;
+
+    margin: 0 auto;
+
+}
+
+
+/* ---------------------------------------------------------
+   Bootstrap Row Compatibility
+   --------------------------------------------------------- */
+
+.gold-form {
+
+    width: 100%;
+
+}
+
+
+.gold-form .row {
+
+    --bs-gutter-x: 16px;
+
+    --bs-gutter-y: 18px;
+
+}
+
+
+/* ---------------------------------------------------------
+   Form Field
+   --------------------------------------------------------- */
+
+.form-field {
+
+    width: 100%;
+
+}
+
+
+/* ---------------------------------------------------------
+   Labels
+   --------------------------------------------------------- */
+
+.gold-form .form-label {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 3px;
+
+    margin: 0 0 7px 0 !important;
+
+    color: #94a3b8 !important;
+
+    font-size: 0.78rem;
+
+    line-height: 1.4;
+
+    font-weight: 600;
+
+    letter-spacing: 0.01em;
+
+}
+
+
+.required {
+
+    color: #f87171;
+
+    font-weight: 700;
+
+}
+
+
+/* ---------------------------------------------------------
+   Input Groups
+   --------------------------------------------------------- */
+
+.gold-form .input-group {
+
+    width: 100%;
+
+    min-width: 0;
+
+    display: flex !important;
+
+    align-items: stretch !important;
+
+    flex-wrap: nowrap !important;
+
+}
+
+
+/* ---------------------------------------------------------
+   Input Icon
+   --------------------------------------------------------- */
+
+.gold-form .input-group-text {
+
+    width: 42px;
+
+    min-width: 42px;
+
+    height: 40px;
+
+    padding: 0 !important;
+
+    margin: 0 !important;
+
+    display: flex !important;
+
+    align-items: center !important;
+
+    justify-content: center !important;
+
+    background:
+        linear-gradient(
+            180deg,
+            #111827,
+            #0f172a
+        ) !important;
+
+    border: 1px solid #1e293b !important;
+
+    border-right: 0 !important;
+
+    color: #818cf8 !important;
+
+    font-size: 0.78rem;
+
+    border-radius: 9px 0 0 9px !important;
+
+    flex: 0 0 42px;
+
+}
+
+
+/* ---------------------------------------------------------
+   Inputs / Select
+   --------------------------------------------------------- */
+
+.gold-form .gold-input {
+
+    min-width: 0;
+
+    width: 100%;
+
+    height: 40px;
+
+    flex: 1 1 auto !important;
+
+    padding:
+        0 12px !important;
+
+    background: #0f172a !important;
+
+    border: 1px solid #1e293b !important;
+
+    color: #f8fafc !important;
+
+    border-radius: 0 9px 9px 0 !important;
+
+    font-family: inherit;
+
+    font-size: 0.84rem;
+
+    line-height: 1.4;
+
+    outline: none;
+
+    box-shadow: none !important;
+
+    transition:
+        border-color 0.2s ease,
+        background-color 0.2s ease,
+        box-shadow 0.2s ease;
+
+}
+
+
+/* Placeholder */
+
+.gold-form .gold-input::placeholder {
+
+    color: #475569 !important;
+
+    opacity: 1;
+
+}
+
+
+/* Select */
+
+.gold-form select.gold-input {
+
+    cursor: pointer;
+
+    padding-right: 34px !important;
+
+}
+
+
+/* Focus */
+
+.gold-form .gold-input:focus {
+
+    background: #111827 !important;
+
+    border-color: #6366f1 !important;
+
+    box-shadow:
+        0 0 0 3px rgba(99, 102, 241, 0.13) !important;
+
+}
+
+
+/* Invalid */
+
+.gold-form .gold-input.is-invalid {
+
+    border-color: #ef4444 !important;
+
+}
+
+
+.gold-form .gold-input.is-invalid:focus {
+
+    border-color: #ef4444 !important;
+
+    box-shadow:
+        0 0 0 3px rgba(239, 68, 68, 0.12) !important;
+
+}
+
+
+/* ---------------------------------------------------------
+   Validation Messages
+   --------------------------------------------------------- */
+
+.invalid-feedback {
+
+    margin-top: 6px !important;
+
+    color: #f87171 !important;
+
+    font-size: 0.72rem;
+
+    line-height: 1.4;
+
+}
+
+
+.invalid-feedback small {
+
+    display: block;
+
+}
+
+
+/* ---------------------------------------------------------
+   Invite Card
+   --------------------------------------------------------- */
+
+.invite-card {
+
+    width: 100%;
+
+    padding: 13px 15px;
+
+    margin-top: 2px;
+
+    border-radius: 11px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(99, 102, 241, 0.07),
+            rgba(15, 23, 42, 0.85)
+        );
+
+    border: 1px solid rgba(99, 102, 241, 0.16);
+
+    transition:
+        border-color 0.2s ease,
+        background-color 0.2s ease;
+
+}
+
+
+.invite-card:hover {
+
+    border-color: rgba(99, 102, 241, 0.28);
+
+}
+
+
+.invite-toggle {
+
+    width: 100%;
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 11px;
+
+    margin: 0;
+
+    cursor: pointer;
+
+}
+
+
+/* Hide native checkbox */
+
+.invite-toggle .form-check-input {
+
+    position: absolute;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+}
+
+
+/* Custom checkbox */
+
+.custom-checkmark {
+
+    width: 19px;
+
+    height: 19px;
+
+    min-width: 19px;
+
+    flex: 0 0 19px;
+
+    margin-top: 1px;
+
+    border-radius: 5px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #0b0f19;
+
+    border: 1px solid #334155;
+
+    color: transparent;
+
+    font-size: 0.62rem;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease,
+        box-shadow 0.2s ease;
+
+}
+
+
+.invite-toggle
+.form-check-input:checked
++ .custom-checkmark {
+
+    background: #6366f1;
+
+    border-color: #6366f1;
+
+    color: #ffffff;
+
+    box-shadow:
+        0 3px 8px rgba(99, 102, 241, 0.25);
+
+}
+
+
+/* Invite text */
+
+.invite-content {
+
+    min-width: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 3px;
+
+}
+
+
+.invite-title {
+
+    color: #cbd5e1;
+
+    font-size: 0.8rem;
+
+    font-weight: 600;
+
+    line-height: 1.35;
+
+}
+
+
+.invite-description {
+
+    color: #64748b;
+
+    font-size: 0.72rem;
+
+    line-height: 1.45;
+
+}
+
+
+/* ---------------------------------------------------------
+   Dialog Footer
+   --------------------------------------------------------- */
+
+.dialog-actions {
+
+    flex: 0 0 auto;
+
+    width: 100%;
+
+    min-height: 68px;
+
+    margin: 0 !important;
+
+    padding: 12px 24px !important;
+
+    background:
+        linear-gradient(
+            180deg,
+            #0f172a,
+            #111827
+        );
+
+    border-top: 1px solid #1e293b;
+
+    display: flex !important;
+
+    align-items: center !important;
+
+    justify-content: flex-end !important;
+
+    gap: 10px;
+
+    position: relative;
+
+    z-index: 2;
+
+}
+
+
+/* ---------------------------------------------------------
+   Cancel Button
+   --------------------------------------------------------- */
+
+.btn-cancel {
+
+    min-height: 38px;
+
+    padding: 0 16px;
+
+    border-radius: 9px;
+
+    border: 1px solid #334155;
+
+    background: #1e293b;
+
+    color: #cbd5e1;
+
+    font-size: 0.8rem;
+
+    font-weight: 600;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 7px;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+
+}
+
+
+.btn-cancel:hover {
+
+    background: #273449;
+
+    border-color: #475569;
+
+    color: #ffffff;
+
+}
+
+
+.btn-cancel:focus-visible {
+
+    outline: none;
+
+    border-color: #6366f1;
+
+    box-shadow:
+        0 0 0 3px rgba(99, 102, 241, 0.13);
+
+}
+
+
+/* ---------------------------------------------------------
+   Primary Submit Button
+   --------------------------------------------------------- */
+
+.gold-submit-btn {
+
+    min-height: 38px;
+
+    padding: 0 18px;
+
+    border: 0 !important;
+
+    border-radius: 9px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #6366f1 0%,
+            #4f46e5 100%
+        ) !important;
+
+    color: #ffffff !important;
+
+    font-size: 0.8rem;
+
+    font-weight: 650;
+
+    letter-spacing: 0.01em;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 7px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 5px 14px rgba(99, 102, 241, 0.28);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        filter 0.2s ease;
+
+}
+
+
+.gold-submit-btn:hover {
+
+    filter: brightness(1.06);
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 7px 18px rgba(99, 102, 241, 0.38);
+
+}
+
+
+.gold-submit-btn:active {
+
+    transform: translateY(0);
+
+}
+
+
+.gold-submit-btn:focus-visible {
+
+    outline: none;
+
+    box-shadow:
+        0 0 0 3px rgba(99, 102, 241, 0.18),
+        0 7px 18px rgba(99, 102, 241, 0.3);
+
+}
+
+
+/* ---------------------------------------------------------
+   Material Dialog Backdrop
+   --------------------------------------------------------- */
+
+::ng-deep .cdk-overlay-backdrop {
+
+    background: rgba(2, 6, 23, 0.78) !important;
+
+    backdrop-filter: blur(4px);
+
+    -webkit-backdrop-filter: blur(4px);
+
+}
+
+
+/* ---------------------------------------------------------
+   Animation
+   --------------------------------------------------------- */
+
+@keyframes dialogFadeIn {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(8px)
+            scale(0.985);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+
+}
+
+
+/* =========================================================
+   LARGE DESKTOP — 1400px+
+   ========================================================= */
+
+@media (min-width: 1400px) {
+
+    ::ng-deep .mat-dialog-container {
+
+        max-height: 86vh !important;
+
+        border-radius: 20px !important;
+
+    }
+
+    .dialog-header {
+
+        min-height: 72px;
+
+        padding-left: 28px;
+
+        padding-right: 28px;
+
+    }
+
+    .dialog-content {
+
+        padding: 28px !important;
+
+    }
+
+    .dialog-actions {
+
+        min-height: 72px;
+
+        padding-left: 28px !important;
+
+        padding-right: 28px !important;
+
+    }
+
+    .form-container {
+
+        max-width: 800px;
+
+    }
+
+}
+
+
+/* =========================================================
+   LAPTOP / DESKTOP — 992px to 1399px
+   ========================================================= */
+
+@media (min-width: 992px) and (max-width: 1399px) {
+
+    ::ng-deep .mat-dialog-container {
+
+        max-height: 88vh !important;
+
+    }
+
+    .dialog-content {
+
+        padding: 24px !important;
+
+    }
+
+}
+
+
+/* =========================================================
+   TABLET — 768px to 991px
+   ========================================================= */
+
+@media (min-width: 768px) and (max-width: 991px) {
+
+    ::ng-deep .mat-dialog-container {
+
+        max-height: 90vh !important;
+
+        border-radius: 16px !important;
+
+    }
+
+    .dialog-header {
+
+        padding: 11px 20px;
+
+    }
+
+    .dialog-content {
+
+        padding: 20px !important;
+
+    }
+
+    .dialog-actions {
+
+        padding: 11px 20px !important;
+
+    }
+
+    .form-container {
+
+        max-width: 100%;
+
+    }
+
+}
+
+
+/* =========================================================
+   SMALL TABLET / LARGE MOBILE — 576px to 767px
+   ========================================================= */
+
+@media (min-width: 576px) and (max-width: 767px) {
+
+    ::ng-deep .mat-dialog-container {
+
+        width: 100% !important;
+
+        max-width: 100% !important;
+
+        max-height: 92vh !important;
+
+        border-radius: 15px !important;
+
+    }
+
+    .dialog-header {
+
+        min-height: 64px;
+
+        padding: 10px 18px;
+
+        gap: 12px;
+
+    }
+
+    .header-icon {
+
+        width: 38px;
+
+        height: 38px;
+
+        flex-basis: 38px;
+
+    }
+
+    .header-title {
+
+        font-size: 0.95rem;
+
+    }
+
+    .header-subtitle {
+
+        font-size: 0.68rem;
+
+    }
+
+    .dialog-content {
+
+        padding: 18px !important;
+
+    }
+
+    .gold-form .row {
+
+        --bs-gutter-x: 12px;
+
+        --bs-gutter-y: 16px;
+
+    }
+
+    .dialog-actions {
+
+        min-height: 64px;
+
+        padding: 10px 18px !important;
+
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE — 375px to 575px
+   ========================================================= */
+
+@media (min-width: 375px) and (max-width: 575px) {
+
+    ::ng-deep .mat-dialog-container {
+
+        width: 100% !important;
+
+        max-width: 100% !important;
+
+        max-height: 94vh !important;
+
+        border-radius: 14px !important;
+
+    }
+
+    .dialog-header {
+
+        min-height: 60px;
+
+        padding: 9px 14px;
+
+        gap: 10px;
+
+    }
+
+    .header-title-wrapper {
+
+        gap: 9px;
+
+    }
+
+    .header-icon {
+
+        width: 36px;
+
+        height: 36px;
+
+        flex-basis: 36px;
+
+        border-radius: 9px;
+
+        font-size: 0.85rem;
+
+    }
+
+    .header-title {
+
+        font-size: 0.88rem;
+
+    }
+
+    .header-subtitle {
+
+        display: none;
+
+    }
+
+    .close-btn {
+
+        width: 36px !important;
+
+        height: 36px !important;
+
+        min-width: 36px !important;
+
+        flex-basis: 36px;
+
+    }
+
+    .dialog-content {
+
+        padding: 16px !important;
+
+    }
+
+    .gold-form .row {
+
+        --bs-gutter-x: 0;
+
+        --bs-gutter-y: 15px;
+
+    }
+
+    .gold-form .form-label {
+
+        font-size: 0.76rem;
+
+        margin-bottom: 6px !important;
+
+    }
+
+    .gold-form .input-group-text {
+
+        width: 40px;
+
+        min-width: 40px;
+
+        flex-basis: 40px;
+
+        height: 42px;
+
+    }
+
+    .gold-form .gold-input {
+
+        height: 42px;
+
+        font-size: 0.83rem;
+
+    }
+
+    .invite-card {
+
+        padding: 12px;
+
+    }
+
+    .invite-title {
+
+        font-size: 0.78rem;
+
+    }
+
+    .invite-description {
+
+        font-size: 0.69rem;
+
+    }
+
+    .dialog-actions {
+
+        min-height: auto;
+
+        padding: 10px 14px !important;
+
+        gap: 8px;
+
+    }
+
+    .btn-cancel,
+
+    .gold-submit-btn {
+
+        min-height: 40px;
+
+        padding: 0 13px;
+
+        font-size: 0.76rem;
+
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE — 320px to 374px
+   ========================================================= */
+
+@media (max-width: 374px) {
+
+    ::ng-deep .mat-dialog-container {
+
+        width: 100% !important;
+
+        max-width: 100% !important;
+
+        max-height: 95vh !important;
+
+        border-radius: 12px !important;
+
+    }
+
+    .dialog-header {
+
+        min-height: 56px;
+
+        padding: 8px 10px;
+
+        gap: 8px;
+
+    }
+
+    .header-title-wrapper {
+
+        gap: 8px;
+
+    }
+
+    .header-icon {
+
+        width: 32px;
+
+        height: 32px;
+
+        flex-basis: 32px;
+
+        border-radius: 8px;
+
+        font-size: 0.76rem;
+
+    }
+
+    .header-title {
+
+        font-size: 0.82rem;
+
+    }
+
+    .header-subtitle {
+
+        display: none;
+
+    }
+
+    .close-btn {
+
+        width: 32px !important;
+
+        height: 32px !important;
+
+        min-width: 32px !important;
+
+        flex-basis: 32px;
+
+    }
+
+    .dialog-content {
+
+        padding: 13px !important;
+
+    }
+
+    .gold-form .row {
+
+        --bs-gutter-x: 0;
+
+        --bs-gutter-y: 13px;
+
+    }
+
+    .gold-form .form-label {
+
+        font-size: 0.73rem;
+
+        margin-bottom: 5px !important;
+
+    }
+
+    .gold-form .input-group-text {
+
+        width: 37px;
+
+        min-width: 37px;
+
+        flex-basis: 37px;
+
+        height: 40px;
+
+        font-size: 0.7rem;
+
+    }
+
+    .gold-form .gold-input {
+
+        height: 40px;
+
+        padding-left: 9px !important;
+
+        padding-right: 9px !important;
+
+        font-size: 0.78rem;
+
+    }
+
+    .gold-form .gold-input::placeholder {
+
+        font-size: 0.74rem;
+
+    }
+
+    .invite-card {
+
+        padding: 10px;
+
+    }
+
+    .invite-toggle {
+
+        gap: 8px;
+
+    }
+
+    .invite-title {
+
+        font-size: 0.74rem;
+
+    }
+
+    .invite-description {
+
+        font-size: 0.66rem;
+
+    }
+
+    .dialog-actions {
+
+        padding: 9px 10px !important;
+
+        gap: 6px;
+
+    }
+
+    .btn-cancel,
+
+    .gold-submit-btn {
+
+        min-height: 39px;
+
+        padding: 0 10px;
+
+        font-size: 0.71rem;
+
+        gap: 5px;
+
+    }
+
+}
+
+
+/* =========================================================
+   ULTRA SMALL WIDTH SAFETY
+   ========================================================= */
+
+@media (max-width: 330px) {
+
+    .btn-cancel span {
+
+        display: none;
+
+    }
+
+    .btn-cancel {
+
+        width: 40px;
+
+        padding: 0;
+
+    }
+
+    .gold-submit-btn {
+
+        flex: 1;
+
+    }
+
+}
+
+
+/* =========================================================
+   TOUCH DEVICES
+   ========================================================= */
+
+@media (hover: none) and (pointer: coarse) {
+
+    .close-btn,
+    .btn-cancel,
+    .gold-submit-btn {
+
+        min-height: 42px;
+
+    }
+
+    .gold-form .gold-input {
+
+        min-height: 42px;
+
+    }
+
+    .gold-form .input-group-text {
+
+        min-height: 42px;
+
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+
+        animation-duration: 0.01ms !important;
+
+        animation-iteration-count: 1 !important;
+
+        transition-duration: 0.01ms !important;
+
+    }
+
+}
+
+
+/* =========================================================
+   SAFE AREA — iPhone / Notched Devices
+   ========================================================= */
+
+@supports (padding: env(safe-area-inset-bottom)) {
+
+    .dialog-actions {
+
+        padding-bottom:
+            max(
+                12px,
+                env(safe-area-inset-bottom)
+            ) !important;
+
+    }
+
+}

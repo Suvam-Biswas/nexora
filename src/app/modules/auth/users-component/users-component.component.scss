@@ -1,0 +1,2143 @@
+/* =========================================================
+   USER MANAGEMENT PAGE
+   Premium Responsive Dashboard Styling
+   ========================================================= */
+
+
+/* =========================================================
+   THEME VARIABLES
+   ========================================================= */
+
+$bg-main: #090b10;
+$card-bg: #131824;
+$card-bg-hover: #161c2a;
+
+$border-color: #1f2736;
+$border-light: rgba(148, 163, 184, 0.12);
+
+$border-focus: #6366f1;
+
+$accent-primary: #6366f1;
+$accent-secondary: #a855f7;
+
+$accent-gradient:
+  linear-gradient(
+    135deg,
+    #6366f1 0%,
+    #a855f7 100%
+  );
+
+$text-main: #f8fafc;
+$text-primary: #ffffff;
+$text-secondary: #cbd5e1;
+$text-muted: #94a3b8;
+$text-subtle: #64748b;
+
+$danger: #ef4444;
+
+$desktop-max-width: 1440px;
+
+
+/* =========================================================
+   HOST
+   ========================================================= */
+
+:host {
+  display: block;
+  width: 100%;
+  min-height: 100vh;
+
+  background-color: $bg-main;
+
+  color: $text-main;
+
+  font-family:
+    'Inter',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    sans-serif;
+
+  box-sizing: border-box;
+
+  overflow-x: hidden;
+}
+
+
+/* =========================================================
+   GLOBAL BOX SIZING
+   ========================================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   MAIN DASHBOARD CONTAINER
+   ========================================================= */
+
+.dashboard-container {
+  width: 100%;
+  max-width: $desktop-max-width;
+
+  margin: 0 auto;
+
+  padding:
+    40px
+    clamp(24px, 3vw, 40px)
+    56px;
+
+  min-height: 100vh;
+
+  overflow-x: hidden;
+}
+
+
+/* =========================================================
+   PAGE HEADER
+   ========================================================= */
+
+.dashboard-header {
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 24px;
+
+  margin-bottom: 28px;
+
+  flex-wrap: wrap;
+}
+
+
+/* =========================================================
+   HEADER TITLE
+   ========================================================= */
+
+.header-title-group {
+  min-width: 0;
+
+  flex: 1 1 auto;
+
+  h1 {
+    margin: 0 0 7px 0;
+
+    color: $text-primary;
+
+    font-size:
+      clamp(
+        1.45rem,
+        2vw,
+        1.85rem
+      );
+
+    line-height: 1.2;
+
+    font-weight: 800;
+
+    letter-spacing: -0.025em;
+
+    overflow-wrap: anywhere;
+  }
+
+  p {
+    margin: 0;
+
+    color: $text-muted;
+
+    font-size:
+      clamp(
+        0.82rem,
+        1vw,
+        0.95rem
+      );
+
+    line-height: 1.6;
+
+    max-width: 720px;
+  }
+}
+
+
+/* =========================================================
+   HEADER ACTIONS
+   ========================================================= */
+
+.header-actions {
+  flex: 0 0 auto;
+
+  display: flex;
+
+  align-items: center;
+}
+
+
+/* =========================================================
+   PRIMARY BUTTON
+   ========================================================= */
+
+.btn-action-primary {
+  min-height: 40px;
+
+  padding:
+    0 18px;
+
+  border: 1px solid transparent;
+
+  border-radius: 10px;
+
+  background: $accent-gradient;
+
+  color: #ffffff;
+
+  font-size: 0.88rem;
+
+  font-weight: 600;
+
+  line-height: 1;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 8px;
+
+  white-space: nowrap;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 8px 16px rgba(99, 102, 241, 0.25);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.96;
+
+    transform: translateY(-1px);
+
+    box-shadow:
+      0 10px 22px rgba(99, 102, 241, 0.34);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  &:focus-visible {
+    outline: none;
+
+    box-shadow:
+      0 0 0 3px rgba(99, 102, 241, 0.22),
+      0 8px 16px rgba(99, 102, 241, 0.25);
+  }
+
+  i {
+    font-size: 0.85rem;
+  }
+}
+
+
+/* =========================================================
+   TOOLBAR SECTION
+   ========================================================= */
+
+.toolbar-section {
+  width: 100%;
+
+  margin-bottom: 24px;
+}
+
+
+/* =========================================================
+   TOOLBAR CARD
+   ========================================================= */
+
+.toolbar-card {
+  width: 100%;
+
+  background: $card-bg;
+
+  border:
+    1px solid $border-color;
+
+  border-radius: 16px;
+
+  padding:
+    clamp(16px, 2vw, 20px);
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 16px;
+
+  flex-wrap: wrap;
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+
+/* =========================================================
+   SEARCH BOX
+   ========================================================= */
+
+.search-box {
+  position: relative;
+
+  flex:
+    1 1 360px;
+
+  min-width: 0;
+
+  i {
+    position: absolute;
+
+    left: 14px;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    color: $text-muted;
+
+    font-size: 0.9rem;
+
+    pointer-events: none;
+
+    z-index: 2;
+  }
+
+  input {
+    display: block;
+
+    width: 100%;
+
+    min-width: 0;
+
+    height: 42px;
+
+    padding:
+      0 16px
+      0 40px;
+
+    background: $bg-main;
+
+    border:
+      1px solid $border-color;
+
+    border-radius: 10px;
+
+    color: #ffffff;
+
+    font-family: inherit;
+
+    font-size: 0.9rem;
+
+    outline: none;
+
+    transition:
+      border-color 0.2s ease,
+      box-shadow 0.2s ease,
+      background-color 0.2s ease;
+
+    &::placeholder {
+      color: #64748b;
+
+      opacity: 1;
+    }
+
+    &:hover {
+      border-color: #2b3548;
+    }
+
+    &:focus {
+      border-color: $border-focus;
+
+      background: #0b0e15;
+
+      box-shadow:
+        0 0 0 3px rgba(99, 102, 241, 0.12);
+    }
+  }
+}
+
+
+/* =========================================================
+   FILTER GROUP
+   ========================================================= */
+
+.filters-group {
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  flex:
+    0 1 auto;
+
+  flex-wrap: wrap;
+}
+
+
+/* =========================================================
+   FILTER DROPDOWN
+   ========================================================= */
+
+.filter-dropdown-wrapper {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  min-width: 0;
+
+  label {
+    color: $text-muted;
+
+    font-size: 0.82rem;
+
+    font-weight: 500;
+
+    white-space: nowrap;
+  }
+
+  select {
+    height: 42px;
+
+    min-width: 125px;
+
+    padding:
+      0 34px
+      0 12px;
+
+    background-color: $bg-main;
+
+    border:
+      1px solid $border-color;
+
+    border-radius: 10px;
+
+    color: #ffffff;
+
+    font-family: inherit;
+
+    font-size: 0.86rem;
+
+    outline: none;
+
+    cursor: pointer;
+
+    transition:
+      border-color 0.2s ease,
+      box-shadow 0.2s ease;
+
+    &:hover {
+      border-color: #2b3548;
+    }
+
+    &:focus {
+      border-color: $border-focus;
+
+      box-shadow:
+        0 0 0 3px rgba(99, 102, 241, 0.12);
+    }
+
+    option {
+      background: #131824;
+
+      color: #ffffff;
+    }
+  }
+}
+
+
+/* =========================================================
+   TABLE SECTION
+   ========================================================= */
+
+.table-section {
+  width: 100%;
+
+  min-width: 0;
+}
+
+
+/* =========================================================
+   TABLE CARD
+   ========================================================= */
+
+.table-card-modern {
+  width: 100%;
+
+  min-width: 0;
+
+  background: $card-bg;
+
+  border:
+    1px solid $border-color;
+
+  border-radius: 16px;
+
+  padding:
+    clamp(14px, 2vw, 24px);
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+
+/* =========================================================
+   TABLE RESPONSIVE WRAPPER
+
+   IMPORTANT:
+   Only this area horizontally scrolls.
+
+   The entire page will NOT horizontally scroll.
+
+   The table maintains its desktop-friendly minimum width.
+   ========================================================= */
+
+.table-responsive {
+  width: 100%;
+
+  min-width: 0;
+
+  overflow-x: auto;
+
+  overflow-y: visible;
+
+  -webkit-overflow-scrolling: touch;
+
+  scrollbar-width: thin;
+
+  scrollbar-color:
+    #334155
+    transparent;
+
+  /*
+    Creates comfortable horizontal scrolling space.
+  */
+  overscroll-behavior-x: contain;
+
+  /*
+    Smooth scrolling on touch devices.
+  */
+  scroll-behavior: smooth;
+
+  /*
+    Prevents the table from forcing the parent page wider.
+  */
+  contain: inline-size;
+
+
+  /* Chrome / Edge / Safari scrollbar */
+  &::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+
+    border-radius: 20px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #334155;
+
+    border-radius: 20px;
+
+    border:
+      2px solid $card-bg;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: #475569;
+  }
+}
+
+
+/* =========================================================
+   DATA TABLE
+   ========================================================= */
+
+.modern-data-table {
+  width: 100%;
+
+  /*
+    Critical for mobile:
+    table never squeezes columns into unreadable widths.
+  */
+  min-width: 820px;
+
+  border-collapse: separate;
+
+  border-spacing: 0;
+
+  text-align: left;
+
+  table-layout: auto;
+
+
+  /* =====================================================
+     TABLE HEADER
+     ===================================================== */
+
+  thead {
+    tr {
+      th {
+        position: sticky;
+
+        top: 0;
+
+        z-index: 3;
+
+        background: $card-bg;
+
+        color: $text-muted;
+
+        font-size: 0.76rem;
+
+        text-transform: uppercase;
+
+        letter-spacing: 0.055em;
+
+        font-weight: 600;
+
+        white-space: nowrap;
+
+        padding:
+          13px 16px;
+
+        border-bottom:
+          1px solid $border-color;
+
+        vertical-align: middle;
+
+        box-shadow:
+          0 1px 0 $border-color;
+      }
+    }
+  }
+
+
+  /* =====================================================
+     TABLE BODY
+     ===================================================== */
+
+  tbody {
+    tr {
+      transition:
+        background-color 0.2s ease;
+
+      &:last-child {
+        td {
+          border-bottom: none;
+        }
+      }
+
+      &:hover {
+        td {
+          background:
+            rgba(255, 255, 255, 0.018);
+        }
+      }
+
+      td {
+        padding:
+          16px;
+
+        font-size: 0.9rem;
+
+        border-bottom:
+          1px solid rgba(31, 39, 54, 0.5);
+
+        color: $text-secondary;
+
+        vertical-align: middle;
+
+        white-space: nowrap;
+      }
+    }
+  }
+
+
+  /* =====================================================
+     COLUMN WIDTHS
+     ===================================================== */
+
+  .user-column {
+    min-width: 300px;
+    width: 38%;
+  }
+
+  .role-column {
+    min-width: 135px;
+    width: 17%;
+  }
+
+  .status-column {
+    min-width: 135px;
+    width: 17%;
+  }
+
+  .date-column {
+    min-width: 150px;
+    width: 16%;
+  }
+
+  .actions-column {
+    min-width: 110px;
+    width: 12%;
+  }
+
+
+  /* =====================================================
+     USER ACCOUNT CELL
+     ===================================================== */
+
+  .customer-cell {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    min-width: 0;
+
+    max-width: 100%;
+  }
+
+
+  /* =====================================================
+     AVATAR
+     ===================================================== */
+
+  .customer-avatar-css {
+    width: 40px;
+
+    height: 40px;
+
+    min-width: 40px;
+
+    border-radius: 10px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-weight: 700;
+
+    font-size: 0.84rem;
+
+    color: #ffffff;
+
+    letter-spacing: 0.02em;
+
+    box-shadow:
+      0 4px 12px rgba(0, 0, 0, 0.25);
+
+    border:
+      1px solid rgba(255, 255, 255, 0.1);
+
+    flex-shrink: 0;
+  }
+
+
+  /* =====================================================
+     CUSTOMER INFORMATION
+     ===================================================== */
+
+  .customer-info {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    min-width: 0;
+
+    max-width: calc(100% - 52px);
+  }
+
+
+  .customer-name {
+    display: block;
+
+    max-width: 100%;
+
+    color: #ffffff;
+
+    font-size: 0.92rem;
+
+    font-weight: 600;
+
+    line-height: 1.4;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+  }
+
+
+  .customer-email {
+    display: block;
+
+    max-width: 100%;
+
+    margin-top: 2px;
+
+    color: $text-muted;
+
+    font-size: 0.78rem;
+
+    line-height: 1.4;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+  }
+
+
+  /* =====================================================
+     ROLE BADGES
+     ===================================================== */
+
+  .role-badge {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding:
+      5px 10px;
+
+    border-radius: 50px;
+
+    font-size: 0.76rem;
+
+    line-height: 1.2;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+
+
+    &.admin {
+      background:
+        rgba(168, 85, 247, 0.15);
+
+      border:
+        1px solid rgba(168, 85, 247, 0.3);
+
+      color: #c084fc;
+    }
+
+
+    &.editor {
+      background:
+        rgba(59, 130, 246, 0.15);
+
+      border:
+        1px solid rgba(59, 130, 246, 0.3);
+
+      color: #60a5fa;
+    }
+
+
+    &.member {
+      background:
+        rgba(99, 102, 241, 0.15);
+
+      border:
+        1px solid rgba(99, 102, 241, 0.3);
+
+      color: #818cf8;
+    }
+
+
+    &.billing {
+      background:
+        rgba(234, 179, 8, 0.15);
+
+      border:
+        1px solid rgba(234, 179, 8, 0.3);
+
+      color: #facc15;
+    }
+  }
+
+
+  /* =====================================================
+     STATUS BADGES
+     ===================================================== */
+
+  .status-badge {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    padding:
+      5px 10px;
+
+    border-radius: 50px;
+
+    font-size: 0.76rem;
+
+    line-height: 1.2;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+
+
+    .status-dot {
+      width: 6px;
+
+      height: 6px;
+
+      min-width: 6px;
+
+      border-radius: 50%;
+    }
+
+
+    &.active {
+      background:
+        rgba(52, 211, 153, 0.1);
+
+      color: #34d399;
+
+      .status-dot {
+        background: #34d399;
+
+        box-shadow:
+          0 0 0 3px rgba(52, 211, 153, 0.08);
+      }
+    }
+
+
+    &.pending {
+      background:
+        rgba(234, 179, 8, 0.1);
+
+      color: #facc15;
+
+      .status-dot {
+        background: #facc15;
+
+        box-shadow:
+          0 0 0 3px rgba(234, 179, 8, 0.08);
+      }
+    }
+
+
+    &.suspended {
+      background:
+        rgba(239, 68, 68, 0.1);
+
+      color: #f87171;
+
+      .status-dot {
+        background: #f87171;
+
+        box-shadow:
+          0 0 0 3px rgba(239, 68, 68, 0.08);
+      }
+    }
+  }
+
+
+  /* =====================================================
+     MUTED TEXT
+     ===================================================== */
+
+  .text-muted {
+    color: $text-muted !important;
+  }
+
+
+  /* =====================================================
+     RIGHT ALIGNMENT
+     ===================================================== */
+
+  .text-right {
+    text-align: right;
+  }
+
+
+  /* =====================================================
+     ACTION BUTTONS
+     ===================================================== */
+
+  .action-buttons-group {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: flex-end;
+
+    gap: 6px;
+  }
+
+
+  .action-icon-btn {
+    width: 34px;
+
+    height: 34px;
+
+    padding: 0;
+
+    background: transparent;
+
+    border:
+      1px solid $border-color;
+
+    color: $text-muted;
+
+    border-radius: 8px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 0.82rem;
+
+    cursor: pointer;
+
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease,
+      border-color 0.2s ease,
+      transform 0.2s ease;
+
+    &:hover {
+      transform: translateY(-1px);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+
+    &:focus-visible {
+      outline: none;
+
+      box-shadow:
+        0 0 0 3px rgba(99, 102, 241, 0.15);
+    }
+
+
+    &.edit-btn:hover {
+      background:
+        rgba(99, 102, 241, 0.15);
+
+      color: #818cf8;
+
+      border-color:
+        rgba(99, 102, 241, 0.4);
+    }
+
+
+    &.delete-btn:hover {
+      background:
+        rgba(239, 68, 68, 0.15);
+
+      color: #f87171;
+
+      border-color:
+        rgba(239, 68, 68, 0.4);
+    }
+  }
+
+
+  /* =====================================================
+     EMPTY STATE
+     ===================================================== */
+
+  .empty-state {
+    text-align: center;
+
+    padding:
+      56px 24px !important;
+
+    color: $text-muted;
+
+    white-space: normal !important;
+  }
+
+
+  .empty-state-content {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 12px;
+  }
+
+
+  .empty-state-icon {
+    width: 54px;
+
+    height: 54px;
+
+    border-radius: 14px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+      rgba(71, 85, 105, 0.1);
+
+    border:
+      1px solid rgba(71, 85, 105, 0.15);
+
+    color: #475569;
+
+    font-size: 1.4rem;
+  }
+
+
+  .empty-state p {
+    margin: 0;
+
+    color: $text-muted;
+
+    font-size: 0.9rem;
+
+    line-height: 1.5;
+  }
+}
+
+
+/* =========================================================
+   PAGINATION FOOTER
+   ========================================================= */
+
+.pagination-footer {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 20px;
+
+  margin-top: 24px;
+
+  padding-top: 18px;
+
+  border-top:
+    1px solid $border-color;
+
+  flex-wrap: wrap;
+}
+
+
+/* =========================================================
+   PAGINATION INFO
+   ========================================================= */
+
+.pagination-info {
+  color: $text-muted;
+
+  font-size: 0.83rem;
+
+  line-height: 1.5;
+
+  white-space: nowrap;
+
+  span {
+    color: #ffffff;
+
+    font-weight: 600;
+  }
+}
+
+
+/* =========================================================
+   PAGINATION CONTROLS
+   ========================================================= */
+
+.pagination-controls {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: flex-end;
+
+  gap: 8px;
+
+  min-width: 0;
+}
+
+
+/* =========================================================
+   PREVIOUS / NEXT BUTTON
+   ========================================================= */
+
+.page-btn {
+  min-height: 34px;
+
+  padding:
+    6px 12px;
+
+  background: $bg-main;
+
+  border:
+    1px solid $border-color;
+
+  color: $text-main;
+
+  border-radius: 8px;
+
+  font-size: 0.82rem;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 6px;
+
+  white-space: nowrap;
+
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+
+  &:hover:not(:disabled) {
+    border-color: #475569;
+
+    background: #181f2f;
+  }
+
+  &:focus-visible {
+    outline: none;
+
+    box-shadow:
+      0 0 0 3px rgba(99, 102, 241, 0.12);
+  }
+
+  &:disabled {
+    opacity: 0.4;
+
+    cursor: not-allowed;
+  }
+
+  i {
+    font-size: 0.7rem;
+  }
+}
+
+
+/* =========================================================
+   PAGE NUMBERS
+   ========================================================= */
+
+.page-numbers {
+  display: flex;
+
+  align-items: center;
+
+  gap: 4px;
+
+  flex-wrap: nowrap;
+}
+
+
+/* =========================================================
+   PAGE NUMBER BUTTON
+   ========================================================= */
+
+.page-num-btn {
+  width: 34px;
+
+  height: 34px;
+
+  min-width: 34px;
+
+  padding: 0;
+
+  background: $bg-main;
+
+  border:
+    1px solid $border-color;
+
+  color: $text-muted;
+
+  border-radius: 8px;
+
+  font-size: 0.82rem;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+
+  &:hover {
+    background: #181f2f;
+
+    border-color: #475569;
+
+    color: #ffffff;
+  }
+
+  &:focus-visible {
+    outline: none;
+
+    box-shadow:
+      0 0 0 3px rgba(99, 102, 241, 0.12);
+  }
+
+  &.active {
+    background: $accent-primary;
+
+    border-color: $accent-primary;
+
+    color: #ffffff;
+
+    box-shadow:
+      0 4px 10px rgba(99, 102, 241, 0.2);
+  }
+}
+
+
+/* =========================================================
+   LARGE DESKTOP
+   1200px - 1440px+
+   ========================================================= */
+
+@media (min-width: 1200px) {
+
+  .dashboard-container {
+    padding-top: 44px;
+  }
+
+  .toolbar-card {
+    padding: 20px 22px;
+  }
+
+  .table-card-modern {
+    padding: 24px;
+  }
+
+}
+
+
+/* =========================================================
+   MEDIUM DESKTOP / LAPTOP
+   993px - 1199px
+   ========================================================= */
+
+@media (max-width: 1199px) {
+
+  .dashboard-container {
+    padding:
+      32px
+      28px
+      48px;
+  }
+
+
+  .dashboard-header {
+    margin-bottom: 24px;
+  }
+
+
+  .toolbar-card {
+    align-items: stretch;
+  }
+
+
+  .search-box {
+    flex:
+      1 1 100%;
+  }
+
+
+  .filters-group {
+    width: 100%;
+
+    justify-content: flex-end;
+  }
+
+
+  .filter-dropdown-wrapper {
+    select {
+      min-width: 150px;
+    }
+  }
+
+}
+
+
+/* =========================================================
+   TABLET
+   769px - 992px
+   ========================================================= */
+
+@media (max-width: 992px) {
+
+  .dashboard-container {
+    padding:
+      28px
+      24px
+      44px;
+  }
+
+
+  .dashboard-header {
+    align-items: flex-start;
+  }
+
+
+  .header-title-group {
+    flex:
+      1 1 100%;
+  }
+
+
+  .header-actions {
+    flex:
+      0 0 auto;
+  }
+
+
+  .toolbar-card {
+    flex-direction: column;
+
+    align-items: stretch;
+  }
+
+
+  .search-box {
+    flex:
+      1 1 auto;
+
+    width: 100%;
+  }
+
+
+  .filters-group {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 12px;
+  }
+
+
+  .filter-dropdown-wrapper {
+    width: 100%;
+
+    label {
+      flex:
+        0 0 auto;
+    }
+
+    select {
+      flex: 1;
+
+      width: 100%;
+
+      min-width: 0;
+    }
+  }
+
+
+  .pagination-footer {
+    align-items: flex-start;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL TABLET / LARGE MOBILE
+   577px - 768px
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+  .dashboard-container {
+    padding:
+      24px
+      20px
+      36px;
+  }
+
+
+  .dashboard-header {
+    gap: 18px;
+
+    margin-bottom: 22px;
+  }
+
+
+  .header-title-group {
+
+    h1 {
+      font-size: 1.5rem;
+    }
+
+    p {
+      font-size: 0.84rem;
+
+      line-height: 1.55;
+    }
+  }
+
+
+  .header-actions {
+    width: 100%;
+  }
+
+
+  .header-actions .btn-action-primary {
+    width: 100%;
+
+    min-height: 42px;
+  }
+
+
+  .toolbar-section {
+    margin-bottom: 18px;
+  }
+
+
+  .toolbar-card {
+    padding: 16px;
+
+    border-radius: 14px;
+  }
+
+
+  .filters-group {
+    grid-template-columns: 1fr;
+  }
+
+
+  .filter-dropdown-wrapper {
+    select {
+      height: 42px;
+    }
+  }
+
+
+  .table-card-modern {
+    padding: 14px;
+
+    border-radius: 14px;
+  }
+
+
+  /*
+    Table remains horizontally scrollable.
+    It does NOT collapse into cards.
+  */
+
+  .modern-data-table {
+    min-width: 800px;
+  }
+
+
+  .modern-data-table {
+
+    thead th {
+      padding:
+        12px 14px;
+
+      font-size: 0.72rem;
+    }
+
+    tbody td {
+      padding:
+        14px;
+
+      font-size: 0.86rem;
+    }
+
+
+    .customer-avatar-css {
+      width: 38px;
+
+      height: 38px;
+
+      min-width: 38px;
+    }
+
+
+    .customer-name {
+      font-size: 0.88rem;
+    }
+
+
+    .customer-email {
+      font-size: 0.75rem;
+    }
+  }
+
+
+  .pagination-footer {
+    flex-direction: column;
+
+    align-items: stretch;
+
+    gap: 14px;
+
+    margin-top: 18px;
+
+    padding-top: 16px;
+  }
+
+
+  .pagination-info {
+    text-align: center;
+
+    white-space: normal;
+  }
+
+
+  .pagination-controls {
+    width: 100%;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   401px - 576px
+   ========================================================= */
+
+@media (max-width: 576px) {
+
+  .dashboard-container {
+    padding:
+      20px
+      14px
+      30px;
+  }
+
+
+  .dashboard-header {
+    gap: 16px;
+
+    margin-bottom: 20px;
+  }
+
+
+  .header-title-group {
+
+    h1 {
+      font-size: 1.35rem;
+
+      letter-spacing: -0.02em;
+    }
+
+    p {
+      font-size: 0.8rem;
+
+      line-height: 1.55;
+    }
+  }
+
+
+  .header-actions .btn-action-primary {
+    min-height: 44px;
+
+    font-size: 0.86rem;
+  }
+
+
+  .toolbar-card {
+    padding: 14px;
+
+    gap: 12px;
+  }
+
+
+  .search-box {
+
+    input {
+      height: 44px;
+
+      font-size: 0.84rem;
+
+      padding-left: 38px;
+    }
+
+    i {
+      left: 13px;
+    }
+  }
+
+
+  .filters-group {
+    gap: 10px;
+  }
+
+
+  .filter-dropdown-wrapper {
+
+    gap: 7px;
+
+    label {
+      font-size: 0.78rem;
+    }
+
+    select {
+      height: 44px;
+
+      font-size: 0.82rem;
+    }
+  }
+
+
+  .table-card-modern {
+    padding: 10px;
+  }
+
+
+  /*
+    Extra breathing room for touch scrolling.
+  */
+
+  .table-responsive {
+    margin:
+      0 -2px;
+
+    padding-bottom: 4px;
+  }
+
+
+  .modern-data-table {
+    min-width: 780px;
+  }
+
+
+  .modern-data-table {
+
+    thead th {
+      padding:
+        12px;
+
+      font-size: 0.69rem;
+    }
+
+
+    tbody td {
+      padding:
+        13px 12px;
+    }
+
+
+    .customer-cell {
+      gap: 10px;
+    }
+
+
+    .customer-avatar-css {
+      width: 36px;
+
+      height: 36px;
+
+      min-width: 36px;
+
+      border-radius: 9px;
+
+      font-size: 0.78rem;
+    }
+
+
+    .customer-info {
+      max-width:
+        calc(100% - 46px);
+    }
+
+
+    .customer-name {
+      font-size: 0.84rem;
+    }
+
+
+    .customer-email {
+      font-size: 0.72rem;
+    }
+
+
+    .role-badge,
+    .status-badge {
+      font-size: 0.72rem;
+
+      padding:
+        5px 9px;
+    }
+
+
+    .action-icon-btn {
+      width: 34px;
+
+      height: 34px;
+    }
+  }
+
+
+  .pagination-controls {
+    gap: 6px;
+  }
+
+
+  .page-btn {
+    padding:
+      7px 10px;
+
+    font-size: 0.76rem;
+  }
+
+
+  .page-num-btn {
+    width: 32px;
+
+    height: 32px;
+
+    min-width: 32px;
+
+    font-size: 0.76rem;
+  }
+
+
+  .pagination-info {
+    font-size: 0.78rem;
+  }
+
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+   320px - 400px
+   ========================================================= */
+
+@media (max-width: 400px) {
+
+  .dashboard-container {
+    padding:
+      16px
+      10px
+      26px;
+  }
+
+
+  .dashboard-header {
+    margin-bottom: 18px;
+  }
+
+
+  .header-title-group {
+
+    h1 {
+      font-size: 1.22rem;
+    }
+
+    p {
+      font-size: 0.76rem;
+    }
+  }
+
+
+  .header-actions .btn-action-primary {
+    min-height: 42px;
+
+    padding:
+      0 14px;
+
+    font-size: 0.82rem;
+  }
+
+
+  .toolbar-card {
+    padding: 12px;
+
+    border-radius: 12px;
+  }
+
+
+  .search-box {
+
+    input {
+      height: 42px;
+
+      font-size: 0.79rem;
+
+      padding-left: 36px;
+    }
+
+    i {
+      left: 12px;
+
+      font-size: 0.82rem;
+    }
+  }
+
+
+  .filter-dropdown-wrapper {
+
+    label {
+      font-size: 0.74rem;
+    }
+
+    select {
+      height: 42px;
+
+      font-size: 0.78rem;
+
+      padding-left: 10px;
+    }
+  }
+
+
+  .table-card-modern {
+    padding: 8px;
+
+    border-radius: 12px;
+  }
+
+
+  /*
+    Keep table wide enough to remain readable.
+    User can swipe horizontally.
+  */
+
+  .modern-data-table {
+    min-width: 760px;
+  }
+
+
+  .modern-data-table {
+
+    thead th {
+      padding:
+        11px 10px;
+
+      font-size: 0.66rem;
+    }
+
+
+    tbody td {
+      padding:
+        12px 10px;
+    }
+
+
+    .customer-avatar-css {
+      width: 34px;
+
+      height: 34px;
+
+      min-width: 34px;
+
+      font-size: 0.74rem;
+    }
+
+
+    .customer-info {
+      max-width:
+        calc(100% - 44px);
+    }
+
+
+    .customer-name {
+      font-size: 0.81rem;
+    }
+
+
+    .customer-email {
+      font-size: 0.69rem;
+    }
+
+
+    .role-badge,
+    .status-badge {
+      font-size: 0.69rem;
+
+      padding:
+        4px 8px;
+    }
+
+
+    .status-badge {
+      gap: 5px;
+    }
+
+
+    .status-dot {
+      width: 5px !important;
+
+      height: 5px !important;
+
+      min-width: 5px !important;
+    }
+  }
+
+
+  .pagination-controls {
+    justify-content: center;
+
+    gap: 4px;
+  }
+
+
+  .page-btn {
+    padding:
+      6px 8px;
+
+    gap: 5px;
+
+    font-size: 0.7rem;
+  }
+
+
+  .page-num-btn {
+    width: 30px;
+
+    height: 30px;
+
+    min-width: 30px;
+
+    font-size: 0.72rem;
+  }
+
+}
+
+
+/* =========================================================
+   ULTRA SMALL DEVICES
+   319px AND BELOW
+   ========================================================= */
+
+@media (max-width: 319px) {
+
+  .dashboard-container {
+    padding-left: 8px;
+
+    padding-right: 8px;
+  }
+
+
+  .header-title-group h1 {
+    font-size: 1.1rem;
+  }
+
+
+  .header-title-group p {
+    font-size: 0.72rem;
+  }
+
+
+  .table-card-modern {
+    padding: 6px;
+  }
+
+
+  .modern-data-table {
+    min-width: 740px;
+  }
+
+
+  .pagination-info {
+    font-size: 0.72rem;
+  }
+
+
+  .pagination-controls {
+    justify-content: flex-start;
+
+    overflow-x: auto;
+
+    width: 100%;
+
+    padding-bottom: 4px;
+
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION ACCESSIBILITY
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+
+    transition-duration: 0.01ms !important;
+
+    animation-duration: 0.01ms !important;
+
+    animation-iteration-count: 1 !important;
+  }
+
+}

@@ -1,0 +1,1662 @@
+/* ============================================================
+   PREMIUM RESPONSIVE PRICING DASHBOARD
+   ============================================================ */
+
+.dashboard-container {
+  --page-bg: #0b0f19;
+  --card-bg: #0f172a;
+  --card-bg-hover: #111c31;
+
+  --border-color: #1e293b;
+  --border-light: #334155;
+
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+
+  --primary: #6366f1;
+  --primary-dark: #4f46e5;
+  --primary-soft: rgba(99, 102, 241, 0.15);
+
+  --success: #34d399;
+  --success-soft: rgba(16, 185, 129, 0.1);
+
+  width: 100%;
+  min-height: 100vh;
+
+  background-color: var(--page-bg);
+  color: var(--text-primary);
+
+  padding: 32px;
+
+  font-family: inherit;
+
+  overflow-x: hidden;
+
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+
+  /* ==========================================================
+     LIGHT MODE
+     ========================================================== */
+
+  &.light-mode {
+    --page-bg: #f8fafc;
+    --card-bg: #ffffff;
+    --card-bg-hover: #ffffff;
+
+    --border-color: #e2e8f0;
+    --border-light: #cbd5e1;
+
+    --text-primary: #0f172a;
+    --text-secondary: #64748b;
+    --text-muted: #64748b;
+
+    background-color: #f8fafc;
+    color: #0f172a;
+
+
+    /* --------------------------------------------------------
+       HEADER
+       -------------------------------------------------------- */
+
+    .dashboard-header {
+
+      .back-icon-btn {
+        background-color: #ffffff;
+        border-color: #cbd5e1;
+        color: #334155;
+
+        &:hover {
+          background-color: #6366f1;
+          border-color: #6366f1;
+          color: #ffffff;
+        }
+      }
+
+      h1 {
+        color: #0f172a;
+      }
+
+      p {
+        color: #64748b;
+      }
+    }
+
+
+    /* --------------------------------------------------------
+       PRICING CARDS
+       -------------------------------------------------------- */
+
+    .settings-card.pricing-card {
+      background-color: #ffffff;
+      border-color: #e2e8f0;
+
+      box-shadow:
+        0 10px 25px -5px rgba(0, 0, 0, 0.05),
+        0 4px 10px -6px rgba(0, 0, 0, 0.05);
+
+      &:hover {
+        border-color: rgba(99, 102, 241, 0.35);
+
+        box-shadow:
+          0 18px 35px -10px rgba(15, 23, 42, 0.1);
+      }
+
+      &.featured-card {
+        border: 2px solid #6366f1;
+
+        background:
+          linear-gradient(180deg,
+            #ffffff 0%,
+            #f8fafc 100%);
+
+        box-shadow:
+          0 20px 30px -10px rgba(99, 102, 241, 0.14);
+      }
+
+      .plan-title {
+        color: #0f172a;
+      }
+
+      .plan-desc {
+        color: #64748b;
+      }
+
+      .price-amount {
+        color: #0f172a;
+      }
+
+      .currency-symbol {
+        color: #6366f1;
+      }
+
+      .pricing-divider {
+        border-color: #e2e8f0;
+      }
+
+      .features-header-label {
+        color: #64748b;
+      }
+    }
+
+
+    /* --------------------------------------------------------
+       OUTLINE BUTTON
+       -------------------------------------------------------- */
+
+    .btn-outline-custom {
+      background: #ffffff;
+      border-color: #cbd5e1;
+      color: #1e293b;
+
+      &:hover {
+        background-color: #f1f5f9;
+        border-color: #94a3b8;
+        color: #0f172a;
+      }
+    }
+
+
+    /* --------------------------------------------------------
+       ENTERPRISE
+       -------------------------------------------------------- */
+
+    .enterprise-banner {
+      background-color: #ffffff;
+      border-color: #e2e8f0;
+
+      box-shadow:
+        0 10px 25px -5px rgba(0, 0, 0, 0.05);
+
+      .text-white-custom {
+        color: #0f172a !important;
+      }
+    }
+
+
+    .text-white-custom {
+      color: #0f172a !important;
+    }
+
+    .text-muted-custom {
+      color: #64748b !important;
+    }
+
+    .text-muted-disabled {
+      color: #cbd5e1 !important;
+    }
+  }
+
+
+  /* ==========================================================
+     TABLET
+     ========================================================== */
+
+  @media (max-width: 991.98px) {
+    padding: 28px 24px;
+
+    .pricing-column {
+      margin-bottom: 24px;
+    }
+
+    .settings-card.pricing-card {
+      padding: 28px;
+    }
+
+    .enterprise-banner {
+      padding: 32px 28px;
+    }
+  }
+
+
+  /* ==========================================================
+     MOBILE
+     ========================================================== */
+
+  @media (max-width: 767.98px) {
+    padding: 22px 16px;
+
+    .dashboard-header {
+      margin-bottom: 36px;
+    }
+
+    .pricing-section {
+      margin-bottom: 32px;
+    }
+
+    .pricing-column {
+      margin-bottom: 20px;
+    }
+
+    .settings-card.pricing-card {
+      padding: 24px;
+      border-radius: 18px;
+    }
+  }
+
+
+  /* ==========================================================
+     SMALL MOBILE
+     ========================================================== */
+
+  @media (max-width: 575.98px) {
+    padding: 16px 12px;
+
+    .settings-card.pricing-card {
+      padding: 22px 18px;
+      border-radius: 16px;
+    }
+  }
+
+
+  /* ==========================================================
+     EXTRA SMALL DEVICES
+     ========================================================== */
+
+  @media (max-width: 359.98px) {
+    padding: 12px 10px;
+
+    .settings-card.pricing-card {
+      padding: 20px 16px;
+    }
+  }
+}
+
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+
+.dashboard-header {
+  width: 100%;
+  max-width: 1440px;
+
+  margin: 0 auto 48px;
+
+  /* ----------------------------------------------------------
+     HEADER TOP BAR
+     ---------------------------------------------------------- */
+
+  .header-topbar {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-bottom: 42px;
+  }
+
+
+  /* ----------------------------------------------------------
+     BACK BUTTON
+     ---------------------------------------------------------- */
+
+  .back-icon-btn {
+    flex: 0 0 auto;
+
+    width: 42px;
+    height: 42px;
+
+    border-radius: 11px;
+
+    background-color: #1e293b;
+
+    border: 1px solid #334155;
+
+    color: #cbd5e1;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    transition:
+      background-color 0.2s ease,
+      border-color 0.2s ease,
+      color 0.2s ease,
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
+
+    &:hover {
+      background-color: #6366f1;
+      border-color: #6366f1;
+      color: #ffffff;
+
+      transform: translateX(-2px);
+
+      box-shadow:
+        0 6px 16px rgba(99, 102, 241, 0.25);
+    }
+
+    &:active {
+      transform: translateX(-1px) scale(0.97);
+    }
+
+    &:focus-visible {
+      outline: 3px solid rgba(99, 102, 241, 0.25);
+      outline-offset: 3px;
+    }
+  }
+
+
+  /* ----------------------------------------------------------
+     THEME SWITCH
+     ---------------------------------------------------------- */
+
+  .header-theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    min-width: 0;
+  }
+
+  .theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+
+  /* ----------------------------------------------------------
+     HEADER CONTENT
+     ---------------------------------------------------------- */
+
+  .header-content {
+    text-align: center;
+    width: 100%;
+  }
+
+
+  h1 {
+    font-size: clamp(1.85rem,
+        4vw,
+        2.65rem);
+
+    line-height: 1.15;
+
+    font-weight: 800;
+
+    letter-spacing: -0.035em;
+
+    color: #f8fafc;
+
+    margin: 14px 0 12px;
+  }
+
+
+  p {
+    color: #94a3b8;
+
+    font-size: clamp(0.9rem,
+        1.5vw,
+        1rem);
+
+    line-height: 1.65;
+
+    margin: 0 auto;
+  }
+
+
+  /* ----------------------------------------------------------
+     TABLET
+     ---------------------------------------------------------- */
+
+  @media (max-width: 767.98px) {
+    margin-bottom: 36px;
+
+    .header-topbar {
+      margin-bottom: 32px;
+    }
+
+    h1 {
+      margin-top: 12px;
+    }
+  }
+
+
+  /* ----------------------------------------------------------
+     MOBILE
+     ---------------------------------------------------------- */
+
+  @media (max-width: 575.98px) {
+    margin-bottom: 32px;
+
+    .header-topbar {
+      margin-bottom: 28px;
+      gap: 12px;
+    }
+
+    .back-icon-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+    }
+
+    .theme-switch-wrapper {
+      gap: 6px;
+    }
+
+    .theme-switch-wrapper .form-check-label {
+      font-size: 0.78rem;
+    }
+
+    h1 {
+      font-size: clamp(1.7rem,
+          8vw,
+          2.15rem);
+
+      line-height: 1.18;
+
+      letter-spacing: -0.025em;
+
+      margin-bottom: 12px;
+    }
+
+    p {
+      font-size: 0.88rem;
+      line-height: 1.6;
+    }
+  }
+
+
+  /* ----------------------------------------------------------
+     EXTRA SMALL
+     ---------------------------------------------------------- */
+
+  @media (max-width: 359.98px) {
+    .header-topbar {
+      align-items: flex-start;
+    }
+
+    .theme-switch-wrapper {
+      align-items: flex-start;
+    }
+
+    .theme-switch-wrapper .form-check-label {
+      max-width: 110px;
+      line-height: 1.25;
+    }
+
+    h1 {
+      font-size: 1.6rem;
+    }
+  }
+}
+
+
+/* ============================================================
+   HEADER BADGE
+   ============================================================ */
+
+.badge-active {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: rgba(16, 185, 129, 0.15);
+
+  color: #34d399;
+
+  font-size: 0.72rem;
+
+  font-weight: 700;
+
+  padding: 6px 13px;
+
+  border-radius: 999px;
+
+  letter-spacing: 0.55px;
+
+  text-transform: uppercase;
+
+  white-space: nowrap;
+
+  border: 1px solid rgba(52, 211, 153, 0.08);
+}
+
+
+/* ============================================================
+   SUBTITLE
+   ============================================================ */
+
+.max-width-subtitle {
+  width: 100%;
+  max-width: 570px;
+}
+
+
+/* ============================================================
+   BILLING TOGGLE
+   ============================================================ */
+
+.billing-toggle-wrapper {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 14px;
+
+  margin-top: 28px;
+}
+
+
+.billing-label {
+  font-size: 0.9rem;
+
+  line-height: 1.4;
+
+  transition:
+    color 0.2s ease,
+    font-weight 0.2s ease;
+}
+
+
+.yearly-label {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+
+.badge-discount {
+  display: inline-flex;
+  align-items: center;
+
+  background-color: rgba(99, 102, 241, 0.15);
+
+  color: #818cf8;
+
+  font-size: 0.68rem;
+
+  font-weight: 700;
+
+  padding: 3px 8px;
+
+  border-radius: 999px;
+
+  white-space: nowrap;
+}
+
+
+/* ============================================================
+   LARGE TOGGLE
+   ============================================================ */
+
+.toggle-lg {
+  .form-check-input {
+    width: 48px;
+    height: 25px;
+
+    margin-top: 0;
+
+    cursor: pointer;
+
+    background-color: #d1e4ff;
+
+    border-color: #475569;
+
+    box-shadow: none;
+
+    transition:
+      background-color 0.2s ease,
+      border-color 0.2s ease,
+      box-shadow 0.2s ease;
+
+    &:checked {
+      background-color: #6366f1;
+      border-color: #6366f1;
+    }
+
+    &:focus {
+      box-shadow:
+        0 0 0 4px rgba(99, 102, 241, 0.15);
+    }
+  }
+}
+
+
+/* ============================================================
+   PRICING SECTION
+   ============================================================ */
+
+.pricing-section {
+  width: 100%;
+  max-width: 1440px;
+
+  margin: 0 auto 44px;
+}
+
+
+.pricing-grid {
+  width: 100%;
+
+  margin-left: 0;
+  margin-right: 0;
+
+  row-gap: 24px;
+}
+
+
+.pricing-column {
+  display: flex;
+}
+
+
+/* ============================================================
+   PRICING CARD
+   ============================================================ */
+
+.settings-card.pricing-card {
+  width: 100%;
+
+  background-color: #0f172a;
+
+  border: 1px solid #1e293b;
+
+  border-radius: 20px;
+
+  padding: 32px;
+
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+  min-width: 0;
+
+  overflow: hidden;
+
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    background-color 0.25s ease;
+
+
+  /* ----------------------------------------------------------
+     HOVER
+     ---------------------------------------------------------- */
+
+  &:hover {
+    transform: translateY(-5px);
+
+    border-color: rgba(99, 102, 241, 0.4);
+
+    box-shadow:
+      0 18px 35px -12px rgba(0, 0, 0, 0.35);
+  }
+
+
+  /* ----------------------------------------------------------
+     FEATURED
+     ---------------------------------------------------------- */
+
+  &.featured-card {
+    border: 2px solid #6366f1;
+
+    background:
+      linear-gradient(180deg,
+        #0f172a 0%,
+        #131b2e 100%);
+
+    box-shadow:
+      0 20px 30px -10px rgba(99, 102, 241, 0.15);
+
+    &:hover {
+      box-shadow:
+        0 25px 40px -12px rgba(99, 102, 241, 0.25);
+    }
+  }
+
+
+  /* ----------------------------------------------------------
+     PLAN TITLE
+     ---------------------------------------------------------- */
+
+  .plan-title {
+    color: #f8fafc;
+
+    font-size: clamp(1.2rem,
+        1.6vw,
+        1.35rem);
+
+    line-height: 1.25;
+
+    font-weight: 700;
+
+    margin: 0 0 7px;
+
+    overflow-wrap: anywhere;
+  }
+
+
+  /* ----------------------------------------------------------
+     DESCRIPTION
+     ---------------------------------------------------------- */
+
+  .plan-desc {
+    color: #94a3b8;
+
+    font-size: 0.875rem;
+
+    line-height: 1.55;
+
+    margin: 0;
+
+    overflow-wrap: anywhere;
+  }
+
+
+  /* ----------------------------------------------------------
+     RESPONSIVE CARD
+     ---------------------------------------------------------- */
+
+  @media (max-width: 1199.98px) {
+    padding: 28px;
+  }
+
+
+  @media (max-width: 991.98px) {
+    padding: 28px;
+
+    .plan-title {
+      font-size: 1.25rem;
+    }
+  }
+
+
+  @media (max-width: 767.98px) {
+    padding: 26px;
+
+    &:hover {
+      transform: translateY(-3px);
+    }
+  }
+
+
+  @media (max-width: 575.98px) {
+    padding: 22px 20px;
+
+    border-radius: 17px;
+
+    .plan-title {
+      font-size: 1.2rem;
+    }
+
+    .plan-desc {
+      font-size: 0.84rem;
+    }
+  }
+}
+
+
+/* ============================================================
+   CARD HEADER
+   ============================================================ */
+
+.card-header-flex {
+  width: 100%;
+
+  min-height: 76px;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 16px;
+
+  margin-bottom: 20px;
+}
+
+
+.plan-heading {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+
+.plan-badge {
+  flex: 0 0 auto;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  background:
+    linear-gradient(135deg,
+      #6366f1 0%,
+      #4f46e5 100%);
+
+  color: #ffffff;
+
+  font-size: 0.68rem;
+
+  font-weight: 700;
+
+  padding: 5px 10px;
+
+  border-radius: 999px;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.45px;
+
+  white-space: nowrap;
+
+  box-shadow:
+    0 4px 12px rgba(99, 102, 241, 0.2);
+}
+
+
+@media (max-width: 575.98px) {
+  .card-header-flex {
+    min-height: auto;
+
+    gap: 10px;
+
+    margin-bottom: 18px;
+  }
+
+  .plan-badge {
+    font-size: 0.62rem;
+    padding: 4px 8px;
+  }
+}
+
+
+@media (max-width: 359.98px) {
+  .card-header-flex {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .plan-badge {
+    order: -1;
+  }
+}
+
+
+/* ============================================================
+   PRICING FIGURE
+   ============================================================ */
+
+.pricing-figure-block {
+  width: 100%;
+
+  margin: 0 0 28px;
+
+  display: block;
+}
+
+
+.price-main {
+  display: flex;
+
+  align-items: baseline;
+
+  min-width: 0;
+
+  white-space: nowrap;
+}
+
+
+.currency-symbol {
+  color: #818cf8;
+
+  font-size: 1.25rem;
+
+  font-weight: 600;
+
+  line-height: 1;
+
+  margin-right: 2px;
+}
+
+
+.price-amount {
+  color: #f8fafc;
+
+  font-size: clamp(2.45rem,
+      4vw,
+      2.85rem);
+
+  font-weight: 800;
+
+  line-height: 1;
+
+  letter-spacing: -0.04em;
+}
+
+
+.billing-period {
+  font-size: 0.88rem;
+
+  margin-left: 5px;
+
+  white-space: nowrap;
+}
+
+
+.billed-annually-note {
+  display: block;
+
+  margin-top: 9px;
+
+  color: #34d399;
+
+  font-size: 0.74rem;
+
+  font-weight: 500;
+
+  line-height: 1.4;
+}
+
+
+/* ============================================================
+   CTA
+   ============================================================ */
+
+.pricing-cta {
+  min-height: 44px;
+
+  padding: 10px 16px;
+
+  border-radius: 10px;
+
+  font-size: 0.9rem;
+
+  line-height: 1.2;
+
+  white-space: normal;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
+
+  &:hover {
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  &:focus-visible {
+    outline: 3px solid rgba(99, 102, 241, 0.25);
+    outline-offset: 2px;
+  }
+}
+
+
+/* ============================================================
+   DIVIDER
+   ============================================================ */
+
+.pricing-divider {
+  width: 100%;
+
+  margin: 4px 0 24px;
+
+  border: 0;
+
+  border-top: 1px solid #1e293b;
+
+  opacity: 1;
+}
+
+
+/* ============================================================
+   FEATURES
+   ============================================================ */
+
+.features-list-block {
+  flex: 1 1 auto;
+
+  min-width: 0;
+}
+
+
+.features-header-label {
+  display: block;
+
+  color: #94a3b8;
+
+  font-size: 0.76rem;
+
+  font-weight: 700;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.55px;
+
+  margin-bottom: 18px;
+}
+
+
+.feature-list {
+  list-style: none;
+
+  padding: 0;
+  margin: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 13px;
+}
+
+
+.feature-item {
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 10px;
+
+  min-width: 0;
+
+  font-size: 0.875rem;
+
+  line-height: 1.45;
+}
+
+
+.feature-icon {
+  flex: 0 0 17px;
+
+  width: 17px;
+
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding-top: 2px;
+
+  font-size: 0.75rem;
+}
+
+
+.feature-text {
+  min-width: 0;
+
+  overflow-wrap: anywhere;
+}
+
+
+@media (max-width: 575.98px) {
+  .features-header-label {
+    font-size: 0.72rem;
+
+    margin-bottom: 15px;
+  }
+
+  .feature-list {
+    gap: 12px;
+  }
+
+  .feature-item {
+    font-size: 0.84rem;
+
+    gap: 9px;
+  }
+}
+
+
+/* ============================================================
+   COLORS
+   ============================================================ */
+
+.text-success-custom {
+  color: #34d399 !important;
+}
+
+
+.text-muted-disabled {
+  color: #475569 !important;
+
+  text-decoration: line-through;
+
+  text-decoration-thickness: 1px;
+
+  opacity: 0.9;
+}
+
+
+.text-white-custom {
+  color: #f8fafc !important;
+}
+
+
+.text-muted-custom {
+  color: #94a3b8 !important;
+}
+
+
+/* ============================================================
+   OUTLINE BUTTON
+   ============================================================ */
+
+.btn-outline-custom {
+  background: transparent;
+
+  border: 1px solid #334155;
+
+  color: #f8fafc;
+
+  border-radius: 10px;
+
+  font-size: 0.9rem;
+
+  min-height: 44px;
+
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+
+  &:hover {
+    background-color: #1e293b;
+
+    border-color: #475569;
+
+    color: #ffffff;
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+
+  &:focus-visible {
+    outline: 3px solid rgba(99, 102, 241, 0.25);
+
+    outline-offset: 2px;
+  }
+}
+
+
+/* ============================================================
+   PRIMARY BUTTON
+   ============================================================ */
+
+.btn-primary-custom {
+  background:
+    linear-gradient(135deg,
+      #6366f1 0%,
+      #4f46e5 100%);
+
+  border: none;
+
+  color: #ffffff;
+
+  border-radius: 10px;
+
+  font-size: 0.9rem;
+
+  min-height: 44px;
+
+  box-shadow:
+    0 4px 12px rgba(99, 102, 241, 0.3);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+
+  &:hover {
+    background:
+      linear-gradient(135deg,
+        #4f46e5 0%,
+        #4338ca 100%);
+
+    transform: translateY(-1px);
+
+    box-shadow:
+      0 7px 16px rgba(99, 102, 241, 0.35);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  &.active-tier {
+    background: #1e293b;
+
+    color: #34d399;
+
+    border: 1px solid rgba(52, 211, 153, 0.3);
+
+    cursor: default;
+
+    box-shadow: none;
+  }
+}
+
+
+/* ============================================================
+   ACTION PRIMARY
+   ============================================================ */
+
+.btn-action-primary {
+  min-height: 44px;
+
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  background:
+    linear-gradient(135deg,
+      #6366f1 0%,
+      #4f46e5 100%);
+
+  color: #ffffff;
+
+  border: none;
+
+  border-radius: 10px;
+
+  padding: 10px 18px;
+
+  font-size: 0.9rem;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 4px 12px rgba(99, 102, 241, 0.25);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+
+  &:hover {
+    background:
+      linear-gradient(135deg,
+        #4f46e5 0%,
+        #4338ca 100%);
+
+    transform: translateY(-1px);
+
+    box-shadow:
+      0 8px 18px rgba(99, 102, 241, 0.3);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  &:focus-visible {
+    outline: 3px solid rgba(99, 102, 241, 0.25);
+
+    outline-offset: 3px;
+  }
+}
+
+
+/* ============================================================
+   ENTERPRISE BANNER
+   ============================================================ */
+
+.enterprise-banner {
+  width: 100%;
+
+  max-width: 1440px;
+
+  margin: 0 auto;
+
+  padding: 40px 32px;
+
+  border-radius: 20px;
+
+  background-color: #0f172a;
+
+  border: 1px solid #1e293b;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  text-align: center;
+
+  box-shadow:
+    0 10px 25px -12px rgba(0, 0, 0, 0.25);
+}
+
+
+/* ============================================================
+   ENTERPRISE ICON
+   ============================================================ */
+
+.enterprise-icon-wrapper {
+  width: 54px;
+  height: 54px;
+
+  flex: 0 0 54px;
+
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 18px;
+
+  border-radius: 15px;
+
+  background: rgba(99, 102, 241, 0.15);
+
+  color: #818cf8;
+
+  font-size: 1.25rem;
+
+  border: 1px solid rgba(99, 102, 241, 0.08);
+}
+
+
+/* ============================================================
+   ENTERPRISE CONTENT
+   ============================================================ */
+
+.enterprise-content {
+  width: 100%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+}
+
+
+.enterprise-content h3 {
+  margin: 0 0 10px;
+
+  font-size: clamp(1.15rem,
+      2vw,
+      1.4rem);
+
+  line-height: 1.3;
+
+  font-weight: 700;
+}
+
+
+.enterprise-content p {
+  margin: 0 auto 20px;
+
+  font-size: 0.9rem;
+
+  line-height: 1.65;
+}
+
+
+.enterprise-cta {
+  min-width: 170px;
+}
+
+
+/* ============================================================
+   ENTERPRISE TABLET
+   ============================================================ */
+
+@media (max-width: 767.98px) {
+  .enterprise-banner {
+    padding: 32px 24px;
+
+    border-radius: 18px;
+  }
+
+  .enterprise-icon-wrapper {
+    width: 50px;
+    height: 50px;
+    flex-basis: 50px;
+
+    margin-bottom: 16px;
+  }
+
+  .enterprise-content h3 {
+    font-size: 1.15rem;
+  }
+
+  .enterprise-content p {
+    font-size: 0.86rem;
+  }
+}
+
+
+/* ============================================================
+   ENTERPRISE MOBILE
+   ============================================================ */
+
+@media (max-width: 575.98px) {
+  .enterprise-banner {
+    padding: 28px 18px;
+
+    border-radius: 16px;
+  }
+
+  .enterprise-content h3 {
+    font-size: 1.08rem;
+
+    max-width: 300px;
+  }
+
+  .enterprise-content p {
+    max-width: 340px;
+
+    font-size: 0.82rem;
+
+    line-height: 1.6;
+
+    margin-bottom: 18px;
+  }
+
+  .enterprise-cta {
+    width: 100%;
+
+    max-width: 280px;
+  }
+}
+
+
+/* ============================================================
+   SUCCESS ALERT
+   ============================================================ */
+
+.alert-success-custom {
+  width: 100%;
+
+  max-width: 1440px;
+
+  margin: 0 auto 28px;
+
+  background-color: rgba(16, 185, 129, 0.1);
+
+  border: 1px solid rgba(16, 185, 129, 0.3);
+
+  color: #34d399;
+
+  padding: 13px 18px;
+
+  border-radius: 11px;
+
+  font-size: 0.9rem;
+
+  line-height: 1.45;
+
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 10px;
+
+  box-sizing: border-box;
+
+  animation: alertSlideIn 0.25s ease-out;
+
+  i {
+    flex: 0 0 auto;
+
+    margin-top: 2px;
+  }
+
+  span {
+    min-width: 0;
+
+    overflow-wrap: anywhere;
+  }
+}
+
+
+@keyframes alertSlideIn {
+  from {
+    opacity: 0;
+
+    transform: translateY(-5px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+}
+
+
+/* ============================================================
+   RESPONSIVE ALERT
+   ============================================================ */
+
+@media (max-width: 575.98px) {
+  .alert-success-custom {
+    margin-bottom: 22px;
+
+    padding: 12px 14px;
+
+    font-size: 0.82rem;
+
+    border-radius: 9px;
+  }
+}
+
+
+/* ============================================================
+   BOOTSTRAP ROW NORMALIZATION
+   ============================================================ */
+
+.pricing-grid {
+  --bs-gutter-x: 24px;
+  --bs-gutter-y: 24px;
+}
+
+
+@media (max-width: 767.98px) {
+  .pricing-grid {
+    --bs-gutter-x: 16px;
+    --bs-gutter-y: 20px;
+  }
+}
+
+
+@media (max-width: 575.98px) {
+  .pricing-grid {
+    --bs-gutter-x: 0px;
+    --bs-gutter-y: 18px;
+  }
+}
+
+
+/* ============================================================
+   ACCESSIBILITY
+   ============================================================ */
+
+button,
+input {
+  -webkit-tap-highlight-color: transparent;
+}
+
+
+button:focus-visible,
+input:focus-visible {
+  outline-color: #6366f1;
+}
+
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .dashboard-container,
+  .settings-card.pricing-card,
+  .back-icon-btn,
+  .btn-primary-custom,
+  .btn-outline-custom,
+  .btn-action-primary,
+  .pricing-cta,
+  .alert-success-custom {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  .settings-card.pricing-card:hover,
+  .back-icon-btn:hover,
+  .btn-primary-custom:hover,
+  .btn-action-primary:hover,
+  .pricing-cta:hover {
+    transform: none !important;
+  }
+}
+
+
+/* ============================================================
+   PRINT
+   ============================================================ */
+
+@media print {
+  .dashboard-container {
+    background: #ffffff !important;
+    color: #000000 !important;
+
+    padding: 20px;
+  }
+
+  .back-icon-btn,
+  .header-theme-toggle,
+  .billing-toggle-wrapper,
+  .pricing-cta {
+    display: none !important;
+  }
+
+  .settings-card.pricing-card,
+  .enterprise-banner {
+    break-inside: avoid;
+
+    box-shadow: none !important;
+
+    background: #ffffff !important;
+
+    border: 1px solid #cccccc !important;
+  }
+}

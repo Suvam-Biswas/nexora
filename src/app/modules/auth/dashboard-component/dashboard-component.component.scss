@@ -1,0 +1,1812 @@
+/* ================================================================
+   DASHBOARD THEME
+   ================================================================ */
+
+$bg-main: #090b10;
+$card-bg: #131824;
+$border-color: #1f2736;
+$border-focus: #6366f1;
+$accent-primary: #6366f1;
+$accent-gradient: linear-gradient(135deg,
+    #6366f1 0%,
+    #a855f7 100%);
+
+$text-main: #f8fafc;
+$text-muted: #94a3b8;
+
+
+/* ================================================================
+   HOST
+   ================================================================ */
+
+:host {
+  display: block;
+  width: 100%;
+  min-height: 100vh;
+  background-color: $bg-main;
+
+  font-family:
+    'Inter',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    sans-serif;
+
+  color: $text-main;
+
+  box-sizing: border-box;
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+}
+
+
+/* ================================================================
+   MAIN DASHBOARD CONTAINER
+   ================================================================ */
+
+.dashboard-container {
+  width: 100%;
+  max-width: 1600px;
+
+  margin: 0 auto;
+
+  padding: 40px;
+
+  overflow-x: hidden;
+
+  @media (min-width: 1800px) {
+    max-width: 1680px;
+    padding-left: 48px;
+    padding-right: 48px;
+  }
+
+  @media (max-width: 1200px) {
+    padding: 32px;
+  }
+
+  @media (max-width: 992px) {
+    padding: 28px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 22px 20px;
+  }
+
+  @media (max-width: 576px) {
+    padding: 18px 14px;
+  }
+
+  @media (max-width: 400px) {
+    padding: 14px 10px;
+  }
+}
+
+
+/* ================================================================
+   DASHBOARD HEADER
+   ================================================================ */
+
+.dashboard-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  width: 100%;
+
+  margin-bottom: 32px;
+
+  gap: 24px;
+
+  flex-wrap: wrap;
+
+
+  /* --------------------------------------------------------------
+     TITLE
+     -------------------------------------------------------------- */
+
+  .header-title-group {
+    min-width: 0;
+    flex: 1 1 400px;
+
+    h1 {
+      margin: 0 0 6px;
+
+      color: #ffffff;
+
+      font-size: clamp(1.45rem,
+          2vw,
+          1.85rem);
+
+      line-height: 1.2;
+
+      font-weight: 800;
+
+      letter-spacing: -0.025em;
+    }
+
+    p {
+      max-width: 720px;
+
+      margin: 0;
+
+      color: $text-muted;
+
+      font-size: clamp(0.82rem,
+          1vw,
+          0.95rem);
+
+      line-height: 1.6;
+    }
+  }
+
+
+  /* --------------------------------------------------------------
+     HEADER ACTIONS
+     -------------------------------------------------------------- */
+
+  .header-actions {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    flex: 0 0 auto;
+
+    flex-wrap: wrap;
+
+
+    .dropdown-wrapper {
+      position: relative;
+
+      flex: 0 0 auto;
+
+
+      .dropdown-caret {
+        margin-left: 2px;
+
+        color: $text-muted;
+
+        font-size: 0.7rem;
+
+        transition: transform 0.2s ease;
+      }
+
+
+      .dropdown-menu-custom {
+        position: absolute;
+
+        top: calc(100% + 8px);
+
+        right: 0;
+
+        width: 180px;
+
+        max-width: calc(100vw - 28px);
+
+        padding: 5px;
+
+        background: #181f2f;
+
+        border: 1px solid $border-color;
+
+        border-radius: 12px;
+
+        box-shadow:
+          0 20px 40px rgba(0, 0, 0, 0.45),
+          0 4px 12px rgba(0, 0, 0, 0.25);
+
+        z-index: 100;
+
+        overflow: hidden;
+
+        animation: dashboardDropdownIn 0.16s ease-out;
+
+
+        .dropdown-item {
+          width: 100%;
+
+          min-height: 38px;
+
+          padding: 9px 12px;
+
+          background: transparent;
+
+          border: none;
+
+          border-radius: 8px;
+
+          color: $text-muted;
+
+          text-align: left;
+
+          font-size: 0.84rem;
+
+          cursor: pointer;
+
+          transition:
+            background-color 0.2s ease,
+            color 0.2s ease;
+
+          &:hover,
+          &.active {
+            background: rgba(99, 102, 241, 0.15);
+
+            color: #ffffff;
+          }
+
+          &:active {
+            transform: scale(0.99);
+          }
+        }
+      }
+    }
+
+
+    /* ------------------------------------------------------------
+       ALL HEADER BUTTONS
+       ------------------------------------------------------------ */
+
+    button {
+      min-height: 42px;
+
+      padding: 0 16px;
+
+      border-radius: 10px;
+
+      font-family: inherit;
+
+      font-size: 0.88rem;
+
+      font-weight: 600;
+
+      line-height: 1;
+
+      cursor: pointer;
+
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      gap: 8px;
+
+      white-space: nowrap;
+
+      transition:
+        transform 0.25s ease,
+        background-color 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        opacity 0.25s ease;
+
+      -webkit-tap-highlight-color: transparent;
+    }
+
+
+    /* ------------------------------------------------------------
+       OUTLINE BUTTON
+       ------------------------------------------------------------ */
+
+    .btn-action-outline {
+      background: $card-bg;
+
+      border: 1px solid $border-color;
+
+      color: $text-main;
+
+      &:hover {
+        background: #181f2f;
+
+        border-color: #475569;
+
+        transform: translateY(-1px);
+      }
+
+      &:active {
+        transform: translateY(0);
+      }
+
+      i {
+        flex-shrink: 0;
+      }
+
+      .date-range-label {
+        overflow: hidden;
+
+        max-width: 130px;
+
+        text-overflow: ellipsis;
+      }
+    }
+
+
+    /* ------------------------------------------------------------
+       PRIMARY BUTTON
+       ------------------------------------------------------------ */
+
+    .btn-action-primary {
+      background: $accent-gradient;
+
+      border: none;
+
+      color: #ffffff;
+
+      box-shadow:
+        0 8px 16px rgba(99, 102, 241, 0.25);
+
+      &:hover {
+        opacity: 0.96;
+
+        transform: translateY(-1px);
+
+        box-shadow:
+          0 10px 20px rgba(99, 102, 241, 0.32);
+      }
+
+      &:active {
+        transform: translateY(0);
+      }
+    }
+  }
+}
+
+
+/* ================================================================
+   STATS GRID
+   ================================================================ */
+
+.stats-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 20px;
+
+  width: 100%;
+
+  margin-bottom: 32px;
+
+
+  @media (max-width: 1200px) {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 18px;
+  }
+
+
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+
+    gap: 14px;
+
+    margin-bottom: 24px;
+  }
+}
+
+
+/* ================================================================
+   STAT CARD
+   ================================================================ */
+
+.stat-card {
+  min-width: 0;
+
+  background: $card-bg;
+
+  border: 1px solid $border-color;
+
+  border-radius: 16px;
+
+  padding: 24px;
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.3);
+
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+
+
+  &:hover {
+    border-color:
+      rgba(99, 102, 241, 0.4);
+
+    transform: translateY(-2px);
+
+    box-shadow:
+      0 16px 35px rgba(0, 0, 0, 0.35);
+  }
+
+
+  .stat-card-header {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 12px;
+
+    margin-bottom: 16px;
+
+
+    .stat-title {
+      min-width: 0;
+
+      color: $text-muted;
+
+      font-size: 0.88rem;
+
+      line-height: 1.4;
+
+      font-weight: 500;
+    }
+
+
+    .stat-icon-wrapper {
+      width: 40px;
+
+      height: 40px;
+
+      min-width: 40px;
+
+      border-radius: 10px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      color: #ffffff;
+
+      font-size: 1rem;
+
+      flex-shrink: 0;
+    }
+  }
+
+
+  .stat-card-body {
+
+    .stat-value {
+      margin: 0 0 6px;
+
+      color: #ffffff;
+
+      font-size: clamp(1.45rem,
+          2.4vw,
+          1.75rem);
+
+      line-height: 1.2;
+
+      font-weight: 700;
+
+      letter-spacing: -0.025em;
+
+      overflow-wrap: anywhere;
+    }
+
+
+    .stat-trend {
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 4px;
+
+      color: #34d399;
+
+      font-size: 0.82rem;
+
+      line-height: 1.4;
+
+      font-weight: 600;
+
+      &.positive {
+        color: #34d399;
+      }
+
+      i {
+        font-size: 0.72rem;
+      }
+    }
+  }
+
+
+  @media (max-width: 600px) {
+    padding: 20px;
+
+    border-radius: 14px;
+
+
+    .stat-card-header {
+      margin-bottom: 13px;
+    }
+
+
+    .stat-icon-wrapper {
+      width: 38px !important;
+
+      height: 38px !important;
+
+      min-width: 38px !important;
+    }
+  }
+
+
+  @media (max-width: 400px) {
+    padding: 17px;
+  }
+}
+
+
+/* ================================================================
+   ANALYTICS SECTION
+   ================================================================ */
+
+.analytics-section {
+  width: 100%;
+
+  margin-bottom: 32px;
+
+
+  @media (max-width: 600px) {
+    margin-bottom: 24px;
+  }
+}
+
+
+/* ================================================================
+   CHART CARD
+   ================================================================ */
+
+.chart-card-modern {
+  width: 100%;
+
+  min-width: 0;
+
+  background: $card-bg;
+
+  border: 1px solid $border-color;
+
+  border-radius: 16px;
+
+  padding: 28px;
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.3);
+
+
+  /* --------------------------------------------------------------
+     CHART HEADER
+     -------------------------------------------------------------- */
+
+  .chart-header {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 18px;
+
+    margin-bottom: 24px;
+
+    flex-wrap: wrap;
+
+
+    .chart-title-group {
+      min-width: 0;
+
+      flex: 1 1 320px;
+
+
+      h3 {
+        margin: 0 0 5px;
+
+        color: #ffffff;
+
+        font-size: clamp(1rem,
+            1.4vw,
+            1.15rem);
+
+        line-height: 1.35;
+
+        font-weight: 700;
+      }
+
+
+      p {
+        margin: 0;
+
+        color: $text-muted;
+
+        font-size: 0.85rem;
+
+        line-height: 1.5;
+      }
+    }
+
+
+    /* ------------------------------------------------------------
+       CHART TABS
+       ------------------------------------------------------------ */
+
+    .chart-tabs {
+      display: flex;
+
+      align-items: center;
+
+      flex: 0 0 auto;
+
+      max-width: 100%;
+
+      padding: 4px;
+
+      background: #0b0e16;
+
+      border: 1px solid $border-color;
+
+      border-radius: 9px;
+
+      overflow-x: auto;
+
+      scrollbar-width: none;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
+
+      .tab-btn {
+        min-height: 32px;
+
+        padding: 6px 14px;
+
+        background: transparent;
+
+        border: none;
+
+        border-radius: 6px;
+
+        color: $text-muted;
+
+        font-family: inherit;
+
+        font-size: 0.82rem;
+
+        font-weight: 600;
+
+        white-space: nowrap;
+
+        cursor: pointer;
+
+        transition:
+          background-color 0.2s ease,
+          color 0.2s ease;
+
+        -webkit-tap-highlight-color: transparent;
+
+
+        &.active,
+        &:hover {
+          background: $accent-primary;
+
+          color: #ffffff;
+        }
+
+
+        &:active {
+          transform: scale(0.98);
+        }
+      }
+    }
+  }
+
+
+  /* --------------------------------------------------------------
+     CHART SCROLL WRAPPER
+
+     On small screens, the chart keeps enough width for all
+     12 months instead of compressing them.
+     -------------------------------------------------------------- */
+
+  .chart-scroll-wrapper {
+    width: 100%;
+
+    overflow-x: auto;
+
+    overflow-y: hidden;
+
+    scrollbar-width: thin;
+
+    scrollbar-color:
+      #334155 transparent;
+
+    -webkit-overflow-scrolling: touch;
+
+
+    &::-webkit-scrollbar {
+      height: 5px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #334155;
+
+      border-radius: 10px;
+    }
+  }
+
+
+  /* --------------------------------------------------------------
+     CHART CANVAS
+     -------------------------------------------------------------- */
+
+  .chart-canvas-placeholder {
+    position: relative;
+
+    display: flex;
+
+    width: 100%;
+
+    min-width: 620px;
+
+    height: 260px;
+
+    padding-top: 10px;
+  }
+
+
+  /* --------------------------------------------------------------
+     CHART GRID
+     -------------------------------------------------------------- */
+
+  .chart-grid-lines {
+    position: absolute;
+
+    top: 0;
+
+    right: 0;
+
+    bottom: 30px;
+
+    left: 0;
+
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: space-between;
+
+    pointer-events: none;
+
+    border-bottom:
+      1px solid $border-color;
+
+
+    span {
+      position: relative;
+
+      padding-top: 2px;
+
+      color: #475569;
+
+      font-size: 0.72rem;
+
+      line-height: 1;
+
+      border-top:
+        1px dashed rgba(255, 255, 255, 0.04);
+    }
+  }
+
+
+  /* --------------------------------------------------------------
+     BAR VISUAL
+     -------------------------------------------------------------- */
+
+  .mock-chart-visual {
+    position: relative;
+
+    z-index: 2;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: space-between;
+
+    width: 100%;
+
+    height: 100%;
+
+    padding-left: 48px;
+
+    gap: 4px;
+
+
+    .chart-bar-group {
+      display: flex;
+
+      flex: 1 1 0;
+
+      flex-direction: column;
+
+      align-items: center;
+
+      justify-content: flex-end;
+
+      min-width: 36px;
+
+      height: 100%;
+
+      gap: 12px;
+
+
+      .bar-fill {
+        width: min(75%, 32px);
+
+        min-height: 6px;
+
+        background:
+          linear-gradient(180deg,
+            rgba(99, 102, 241, 0.85) 0%,
+            rgba(168, 85, 247, 0.4) 100%);
+
+        border-radius:
+          6px 6px 0 0;
+
+        transition:
+          height 0.5s ease,
+          filter 0.2s ease;
+
+        &:hover {
+          background: $accent-gradient;
+
+          filter:
+            drop-shadow(0 5px 10px rgba(99, 102, 241, 0.25));
+        }
+      }
+
+
+      .month-label {
+        color: $text-muted;
+
+        font-size: 0.78rem;
+
+        line-height: 1;
+
+        white-space: nowrap;
+      }
+    }
+  }
+
+
+  @media (max-width: 768px) {
+    padding: 22px;
+
+    border-radius: 14px;
+
+    .chart-header {
+      align-items: flex-start;
+
+      margin-bottom: 20px;
+    }
+
+    .chart-tabs {
+      width: 100%;
+    }
+
+    .chart-canvas-placeholder {
+      height: 230px;
+
+      min-width: 600px;
+    }
+  }
+
+
+  @media (max-width: 576px) {
+    padding: 18px;
+
+    .chart-header {
+      gap: 14px;
+    }
+
+    .chart-title-group {
+      flex-basis: 100% !important;
+    }
+
+    .chart-tabs {
+      width: 100%;
+
+      .tab-btn {
+        flex: 1 0 auto;
+      }
+    }
+
+    .chart-canvas-placeholder {
+      height: 215px;
+
+      min-width: 570px;
+    }
+  }
+
+
+  @media (max-width: 400px) {
+    padding: 15px;
+
+    .chart-canvas-placeholder {
+      min-width: 550px;
+
+      height: 205px;
+    }
+  }
+}
+
+
+/* ================================================================
+   TABLE SECTION
+   ================================================================ */
+
+.table-section {
+  width: 100%;
+}
+
+
+/* ================================================================
+   TABLE CARD
+   ================================================================ */
+
+.table-card-modern {
+  width: 100%;
+
+  min-width: 0;
+
+  background: $card-bg;
+
+  border: 1px solid $border-color;
+
+  border-radius: 16px;
+
+  padding: 28px;
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.3);
+
+
+  /* --------------------------------------------------------------
+     TABLE HEADER
+     -------------------------------------------------------------- */
+
+  .table-header {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 18px;
+
+    margin-bottom: 24px;
+
+    flex-wrap: wrap;
+
+
+    .table-title-group {
+      min-width: 0;
+
+      flex: 1 1 350px;
+
+
+      h3 {
+        margin: 0 0 5px;
+
+        color: #ffffff;
+
+        font-size: clamp(1rem,
+            1.4vw,
+            1.15rem);
+
+        line-height: 1.35;
+
+        font-weight: 700;
+      }
+
+
+      p {
+        margin: 0;
+
+        color: $text-muted;
+
+        font-size: 0.85rem;
+
+        line-height: 1.5;
+      }
+    }
+
+
+    .btn-text-link {
+      flex: 0 0 auto;
+
+      min-height: 38px;
+
+      padding: 6px 0;
+
+      background: none;
+
+      border: none;
+
+      color: #818cf8;
+
+      font-family: inherit;
+
+      font-size: 0.88rem;
+
+      font-weight: 600;
+
+      line-height: 1.4;
+
+      white-space: nowrap;
+
+      cursor: pointer;
+
+      transition:
+        color 0.2s ease,
+        opacity 0.2s ease;
+
+      &:hover {
+        color: #a5b4fc;
+
+        text-decoration: underline;
+      }
+
+      &:active {
+        opacity: 0.8;
+      }
+    }
+  }
+
+
+  /* ============================================================
+     TABLE RESPONSIVE WRAPPER
+
+     IMPORTANT:
+     The table itself intentionally stays wide.
+
+     On small/medium screens this wrapper becomes horizontally
+     scrollable, so every column and every row remains readable.
+     ============================================================ */
+
+  .table-responsive {
+    width: 100%;
+
+    max-width: 100%;
+
+    overflow-x: auto;
+
+    overflow-y: hidden;
+
+    -webkit-overflow-scrolling: touch;
+
+    scrollbar-width: thin;
+
+    scrollbar-color:
+      #334155 transparent;
+
+
+    &::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #334155;
+
+      border-radius: 10px;
+
+      &:hover {
+        background: #475569;
+      }
+    }
+  }
+
+
+  /* ============================================================
+     DATA TABLE
+     ============================================================ */
+
+  .modern-data-table {
+    width: 100%;
+
+    min-width: 900px;
+
+    border-collapse: separate;
+
+    border-spacing: 0;
+
+    text-align: left;
+
+
+    th {
+      padding: 12px 16px;
+
+      color: $text-muted;
+
+      font-size: 0.76rem;
+
+      line-height: 1.3;
+
+      font-weight: 600;
+
+      text-transform: uppercase;
+
+      letter-spacing: 0.05em;
+
+      white-space: nowrap;
+
+      border-bottom:
+        1px solid $border-color;
+
+      background: $card-bg;
+    }
+
+
+    td {
+      padding: 16px;
+
+      color: #cbd5e1;
+
+      font-size: 0.9rem;
+
+      line-height: 1.4;
+
+      vertical-align: middle;
+
+      white-space: nowrap;
+
+      border-bottom:
+        1px solid rgba(31, 39, 54, 0.5);
+    }
+
+
+    tbody tr {
+      transition:
+        background-color 0.2s ease;
+
+
+      &:last-child {
+        td {
+          border-bottom: none;
+        }
+      }
+
+
+      &:hover {
+        td {
+          background:
+            rgba(255, 255, 255, 0.018);
+        }
+      }
+    }
+
+
+    /* ----------------------------------------------------------
+       CUSTOMER CELL
+       ---------------------------------------------------------- */
+
+    .customer-cell {
+      display: flex;
+
+      align-items: center;
+
+      gap: 12px;
+
+      min-width: 230px;
+
+
+      .customer-avatar-css {
+        width: 38px;
+
+        height: 38px;
+
+        min-width: 38px;
+
+        border-radius: 10px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        color: #ffffff;
+
+        font-size: 0.85rem;
+
+        line-height: 1;
+
+        font-weight: 700;
+
+        letter-spacing: 0.02em;
+
+        border:
+          1px solid rgba(255, 255, 255, 0.1);
+
+        box-shadow:
+          0 4px 12px rgba(0, 0, 0, 0.25);
+
+        flex-shrink: 0;
+      }
+
+
+      .customer-info {
+        display: flex;
+
+        flex-direction: column;
+
+        min-width: 0;
+
+
+        .customer-name {
+          display: block;
+
+          max-width: 220px;
+
+          overflow: hidden;
+
+          color: #ffffff;
+
+          font-size: 0.92rem;
+
+          line-height: 1.4;
+
+          font-weight: 600;
+
+          text-overflow: ellipsis;
+        }
+
+
+        .customer-email {
+          display: block;
+
+          max-width: 220px;
+
+          overflow: hidden;
+
+          color: $text-muted;
+
+          font-size: 0.78rem;
+
+          line-height: 1.4;
+
+          text-overflow: ellipsis;
+        }
+      }
+    }
+
+
+    /* ----------------------------------------------------------
+       PLAN BADGE
+       ---------------------------------------------------------- */
+
+    .plan-badge {
+      display: inline-flex;
+
+      align-items: center;
+
+      min-height: 26px;
+
+      padding: 4px 10px;
+
+      background:
+        rgba(99, 102, 241, 0.1);
+
+      border:
+        1px solid rgba(99, 102, 241, 0.25);
+
+      border-radius: 50px;
+
+      color: #818cf8;
+
+      font-size: 0.78rem;
+
+      line-height: 1.2;
+
+      font-weight: 600;
+
+      white-space: nowrap;
+    }
+
+
+    /* ----------------------------------------------------------
+       STATUS BADGE
+       ---------------------------------------------------------- */
+
+    .status-badge {
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 6px;
+
+      min-height: 26px;
+
+      padding: 4px 10px;
+
+      border-radius: 50px;
+
+      font-size: 0.78rem;
+
+      line-height: 1.2;
+
+      font-weight: 600;
+
+      white-space: nowrap;
+
+
+      .status-dot {
+        width: 6px;
+
+        height: 6px;
+
+        min-width: 6px;
+
+        border-radius: 50%;
+
+        display: inline-block;
+      }
+
+
+      &.active {
+        background:
+          rgba(52, 211, 153, 0.1);
+
+        color: #34d399;
+
+        .status-dot {
+          background: #34d399;
+        }
+      }
+
+
+      &.pending {
+        background:
+          rgba(234, 179, 8, 0.1);
+
+        color: #facc15;
+
+        .status-dot {
+          background: #facc15;
+        }
+      }
+
+
+      &.failed {
+        background:
+          rgba(239, 68, 68, 0.1);
+
+        color: #f87171;
+
+        .status-dot {
+          background: #f87171;
+        }
+      }
+    }
+
+
+    /* ----------------------------------------------------------
+       AMOUNT
+       ---------------------------------------------------------- */
+
+    .font-weight-bold {
+      color: #ffffff;
+
+      font-weight: 700;
+    }
+
+
+    /* ----------------------------------------------------------
+       MUTED
+       ---------------------------------------------------------- */
+
+    .text-muted {
+      color: $text-muted !important;
+    }
+
+
+    /* ----------------------------------------------------------
+       RIGHT ALIGNMENT
+       ---------------------------------------------------------- */
+
+    .text-right {
+      text-align: right;
+    }
+
+
+    /* ----------------------------------------------------------
+       ACTION BUTTON
+       ---------------------------------------------------------- */
+
+    .action-icon-btn {
+      width: 36px;
+
+      height: 36px;
+
+      padding: 6px;
+
+      background: transparent;
+
+      border: 1px solid transparent;
+
+      border-radius: 8px;
+
+      color: $text-muted;
+
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      cursor: pointer;
+
+      transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+
+      -webkit-tap-highlight-color: transparent;
+
+
+      i {
+        display: none;
+      }
+
+
+      .fallback-dots-svg {
+        width: 16px;
+
+        height: 16px;
+
+        stroke: $text-muted;
+
+        fill: $text-muted;
+
+        transition:
+          stroke 0.2s ease,
+          fill 0.2s ease;
+      }
+
+
+      &:hover {
+        background:
+          rgba(255, 255, 255, 0.05);
+
+        border-color:
+          rgba(255, 255, 255, 0.06);
+
+        color: #ffffff;
+
+        transform: translateY(-1px);
+
+
+        .fallback-dots-svg {
+          stroke: #ffffff;
+
+          fill: #ffffff;
+        }
+      }
+
+
+      &:active {
+        transform: translateY(0);
+
+        background:
+          rgba(99, 102, 241, 0.12);
+      }
+    }
+  }
+
+
+  /* ============================================================
+     TABLET
+     ============================================================ */
+
+  @media (max-width: 768px) {
+    padding: 22px;
+
+    border-radius: 14px;
+
+
+    .table-header {
+      margin-bottom: 20px;
+
+      gap: 12px;
+    }
+
+
+    .modern-data-table {
+      min-width: 880px;
+
+
+      th,
+      td {
+        padding-left: 14px;
+
+        padding-right: 14px;
+      }
+    }
+  }
+
+
+  /* ============================================================
+     MOBILE
+     ============================================================ */
+
+  @media (max-width: 576px) {
+    padding: 18px;
+
+    border-radius: 14px;
+
+
+    .table-header {
+      align-items: flex-start;
+
+      flex-direction: column;
+
+      gap: 10px;
+
+      margin-bottom: 18px;
+
+
+      .table-title-group {
+        flex-basis: auto;
+
+        width: 100%;
+      }
+
+
+      .btn-text-link {
+        align-self: flex-start;
+
+        min-height: 34px;
+      }
+    }
+
+
+    .modern-data-table {
+      min-width: 840px;
+
+
+      th {
+        padding-top: 11px;
+
+        padding-bottom: 11px;
+
+        font-size: 0.72rem;
+      }
+
+
+      td {
+        padding-top: 14px;
+
+        padding-bottom: 14px;
+
+        font-size: 0.86rem;
+      }
+    }
+  }
+
+
+  /* ============================================================
+     VERY SMALL MOBILE
+     ============================================================ */
+
+  @media (max-width: 400px) {
+    padding: 15px;
+
+    .modern-data-table {
+      min-width: 820px;
+    }
+  }
+}
+
+
+/* ================================================================
+   RESPONSIVE HEADER
+   ================================================================ */
+
+/* Tablet */
+@media (max-width: 900px) {
+
+  .dashboard-header {
+    .header-title-group {
+      flex-basis: 100%;
+    }
+
+    .header-actions {
+      width: 100%;
+
+      justify-content: flex-end;
+    }
+  }
+}
+
+
+/* Mobile */
+@media (max-width: 600px) {
+
+  .dashboard-header {
+    gap: 16px;
+
+    margin-bottom: 24px;
+
+
+    .header-title-group {
+      flex: 1 1 100%;
+
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      p {
+        font-size: 0.84rem;
+
+        line-height: 1.55;
+      }
+    }
+
+
+    .header-actions {
+      width: 100%;
+
+      display: grid;
+
+      grid-template-columns:
+        minmax(0, 1fr) minmax(0, 1fr);
+
+      gap: 10px;
+
+
+      .dropdown-wrapper {
+        width: 100%;
+
+
+        .btn-action-outline {
+          width: 100%;
+        }
+
+
+        .dropdown-menu-custom {
+          left: 0;
+
+          right: auto;
+
+          width: 100%;
+
+          max-width: none;
+        }
+      }
+
+
+      .btn-action-primary {
+        width: 100%;
+      }
+
+
+      button {
+        min-height: 44px;
+
+        padding-left: 12px;
+
+        padding-right: 12px;
+
+        font-size: 0.82rem;
+      }
+    }
+  }
+}
+
+
+/* Very small mobile */
+@media (max-width: 400px) {
+
+  .dashboard-header {
+
+    .header-actions {
+      grid-template-columns: 1fr;
+
+      .dropdown-wrapper,
+      .btn-action-primary {
+        width: 100%;
+      }
+    }
+  }
+}
+
+
+/* ================================================================
+   TOUCH DEVICES
+   ================================================================ */
+
+@media (hover: none) and (pointer: coarse) {
+
+  .stat-card:hover {
+    transform: none;
+  }
+
+  .dashboard-header {
+
+    .btn-action-outline:hover,
+    .btn-action-primary:hover {
+      transform: none;
+    }
+  }
+
+  .action-icon-btn:hover {
+    transform: none !important;
+  }
+}
+
+
+/* ================================================================
+   REDUCED MOTION
+   ================================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+
+    animation-duration: 0.01ms !important;
+
+    animation-iteration-count: 1 !important;
+
+    transition-duration: 0.01ms !important;
+  }
+}
+
+
+/* ================================================================
+   DROPDOWN ANIMATION
+   ================================================================ */
+
+@keyframes dashboardDropdownIn {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(-5px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0) scale(1);
+  }
+}

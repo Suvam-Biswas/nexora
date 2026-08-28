@@ -1,0 +1,436 @@
+<div class="dashboard-container" [class.light-mode]="!billingForm.get('autoRenew')?.value">
+  <!-- =========================
+       PAGE HEADER
+  ========================== -->
+  <header class="dashboard-header">
+    <div class="header-title-group">
+      <button type="button" class="back-icon-btn" (click)="goBack()" title="Go Back" aria-label="Go Back">
+        <i class="fa-solid fa-arrow-left"></i>
+      </button>
+
+      <div class="header-content">
+        <h1>Billing &amp; Subscription</h1>
+        <p>
+          Manage your active plan, payment methods, and download billing
+          invoices.
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================
+       MAIN CONTENT
+  ========================== -->
+  <main class="settings-grid-layout">
+
+    <!-- =========================================================
+         LEFT COLUMN
+    ========================================================== -->
+    <section class="settings-main-column">
+
+      <!-- =========================
+           CURRENT SUBSCRIPTION
+      ========================== -->
+      <div class="settings-card">
+
+        <div class="card-header-block">
+          <div class="card-icon-wrapper">
+            <i class="fa-solid fa-id-card-clip"></i>
+          </div>
+
+          <div class="card-header-content">
+            <h3>Current Plan</h3>
+            <p>
+              You are currently subscribed to the Enterprise Tier.
+            </p>
+          </div>
+        </div>
+
+        <!-- Success Message -->
+        <div *ngIf="successMessage" class="alert-success-custom" role="alert">
+          <i class="fa-solid fa-circle-check"></i>
+          <span>{{ successMessage }}</span>
+        </div>
+
+        <!-- Subscription Status -->
+        <div class="subscription-status-box">
+
+          <div class="plan-info-badge">
+            <span class="badge-active">Active</span>
+
+            <span class="renewal-text">
+              Renews on September 15, 2026
+            </span>
+          </div>
+
+          <div class="plan-details-row">
+
+            <div class="plan-main-info">
+              <h4 class="plan-name">
+                Enterprise Developer Pro
+              </h4>
+
+              <p class="plan-price">
+                $49.00 / month, billed monthly
+              </p>
+            </div>
+
+            <button type="button" class="btn-sub-outline plan-change-btn" (click)="onOpenChangePlanModal()">
+              <i class="fa-solid fa-arrow-up-right-dots me-1"></i>
+              <span>Upgrade / Change</span>
+            </button>
+
+          </div>
+        </div>
+
+        <!-- Plan Features -->
+        <div class="plan-features-list">
+          <span class="features-title">
+            Plan Includes:
+          </span>
+
+          <div class="features-grid">
+
+            <div class="features-column">
+
+              <div class="feature-item">
+                <i class="fa-solid fa-check text-success"></i>
+                <span>Unlimited API Endpoints</span>
+              </div>
+
+              <div class="feature-item">
+                <i class="fa-solid fa-check text-success"></i>
+                <span>Priority 24/7 Support</span>
+              </div>
+
+            </div>
+
+            <div class="features-column">
+
+              <div class="feature-item">
+                <i class="fa-solid fa-check text-success"></i>
+                <span>Advanced Analytics &amp; Logs</span>
+              </div>
+
+              <div class="feature-item">
+                <i class="fa-solid fa-check text-success"></i>
+                <span>Custom Domain Integration</span>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- =========================
+           PAYMENT METHOD
+      ========================== -->
+      <div class="settings-card payment-method-card">
+
+        <div class="card-header-block">
+          <div class="card-icon-wrapper security-icon">
+            <i class="fa-solid fa-credit-card"></i>
+          </div>
+
+          <div class="card-header-content">
+            <h3>Payment Method</h3>
+            <p>
+              Manage your saved credit cards and default billing source.
+            </p>
+          </div>
+        </div>
+
+        <!-- Saved Card -->
+        <div class="saved-card-item">
+
+          <div class="saved-card-details">
+
+            <div class="card-brand-icon">
+              <i class="fa-brands fa-cc-visa"></i>
+            </div>
+
+            <div class="saved-card-content">
+              <h4 class="card-number-display">
+                Visa ending in •••• 4242
+              </h4>
+
+              <p class="card-expiry-display">
+                Expires 12/28
+                <span class="card-divider">•</span>
+                Default
+              </p>
+            </div>
+
+          </div>
+
+          <button type="button" class="btn-sub-outline remove-card-btn" (click)="onRemoveCard()">
+            <i class="fa-solid fa-trash-can me-1"></i>
+            <span>Remove</span>
+          </button>
+
+        </div>
+
+        <!-- Payment Form -->
+        <form [formGroup]="paymentForm" (ngSubmit)="onSavePaymentMethod()" class="gold-form">
+
+          <div class="payment-form-grid">
+
+            <!-- Cardholder Name -->
+            <div class="form-field full-width">
+
+              <label class="form-label">
+                Cardholder Name
+                <span class="text-danger">*</span>
+              </label>
+
+              <input type="text" class="form-control gold-input" formControlName="cardholderName"
+                placeholder="Suvam Biswas" autocomplete="cc-name" [class.is-invalid]="
+                  paymentSubmitted && cp['cardholderName'].errors
+                " />
+
+              <div class="invalid-feedback d-block text-danger" *ngIf="
+                  paymentSubmitted &&
+                  cp['cardholderName'].errors
+                ">
+                <small *ngIf="cp['cardholderName'].errors['required']">
+                  Cardholder name is required.
+                </small>
+              </div>
+
+            </div>
+
+            <!-- Card Number -->
+            <div class="form-field card-number-field">
+
+              <label class="form-label">
+                Card Number
+                <span class="text-danger">*</span>
+              </label>
+
+              <input type="text" class="form-control gold-input" formControlName="cardNumber"
+                placeholder="4242 •••• •••• 4242" autocomplete="cc-number" inputmode="numeric" [class.is-invalid]="
+                  paymentSubmitted && cp['cardNumber'].errors
+                " />
+
+              <div class="invalid-feedback d-block text-danger" *ngIf="
+                  paymentSubmitted &&
+                  cp['cardNumber'].errors
+                ">
+                <small *ngIf="cp['cardNumber'].errors['required']">
+                  Card number is required.
+                </small>
+
+                <small *ngIf="cp['cardNumber'].errors['minlength']">
+                  Card number must be at least 15 digits.
+                </small>
+              </div>
+
+            </div>
+
+            <!-- CVV -->
+            <div class="form-field cvv-field">
+
+              <label class="form-label">
+                CVV
+                <span class="text-danger">*</span>
+              </label>
+
+              <input type="password" class="form-control gold-input" formControlName="cvv" placeholder="123"
+                autocomplete="cc-csc" inputmode="numeric" [class.is-invalid]="
+                  paymentSubmitted && cp['cvv'].errors
+                " />
+
+              <div class="invalid-feedback d-block text-danger" *ngIf="
+                  paymentSubmitted &&
+                  cp['cvv'].errors
+                ">
+                <small *ngIf="cp['cvv'].errors['required']">
+                  CVV is required.
+                </small>
+
+                <small *ngIf="cp['cvv'].errors['minlength']">
+                  CVV must be at least 3 digits.
+                </small>
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- Form Footer -->
+          <div class="form-action-footer">
+
+            <button type="submit" class="btn-action-primary">
+              <i class="fa-solid fa-plus me-1"></i>
+              <span>Add Payment Method</span>
+            </button>
+
+          </div>
+
+        </form>
+
+      </div>
+
+    </section>
+
+    <!-- =========================================================
+         RIGHT COLUMN / SIDEBAR
+    ========================================================== -->
+    <aside class="settings-sidebar-column">
+
+      <!-- =========================
+           BILLING SUMMARY
+      ========================== -->
+      <div class="settings-card billing-summary-card">
+
+        <div class="billing-summary-header">
+
+          <div class="card-icon-wrapper preferences-icon">
+            <i class="fa-solid fa-file-invoice-dollar"></i>
+          </div>
+
+          <h4 class="profile-display-name">
+            Billing Overview
+          </h4>
+
+          <p class="profile-display-role">
+            Next Invoice: Sep 15, 2026
+          </p>
+
+        </div>
+
+        <div class="billing-stats-stack">
+
+          <div class="billing-stat-row">
+            <span class="text-muted-custom">
+              Subtotal
+            </span>
+
+            <span class="fw-semibold">
+              $49.00
+            </span>
+          </div>
+
+          <div class="billing-stat-row">
+            <span class="text-muted-custom">
+              Estimated Tax
+            </span>
+
+            <span class="fw-semibold">
+              $0.00
+            </span>
+          </div>
+
+          <div class="billing-stat-row billing-total-row">
+            <span class="fw-bold">
+              Total Due
+            </span>
+
+            <span class="fw-bold text-indigo">
+              $49.00
+            </span>
+          </div>
+
+        </div>
+
+        <button class="btn-action-primary billing-pay-btn" type="button" (click)="onPayNow()">
+          <i class="fa-solid fa-bolt me-1"></i>
+          <span>Pay Balance Early</span>
+        </button>
+
+      </div>
+
+      <!-- =========================
+           INVOICE HISTORY
+      ========================== -->
+      <div class="settings-card invoices-card">
+
+        <div class="card-header-block">
+
+          <div class="card-icon-wrapper invoice-icon">
+            <i class="fa-solid fa-receipt"></i>
+          </div>
+
+          <div class="card-header-content">
+            <h3>Invoices</h3>
+
+            <p>
+              Download past transaction history.
+            </p>
+          </div>
+
+        </div>
+
+        <div class="invoice-list">
+
+          <!-- Invoice 1 -->
+          <div class="invoice-item">
+
+            <div class="invoice-details">
+              <span class="invoice-id">
+                INV-2026-08
+              </span>
+
+              <span class="invoice-date text-muted-custom">
+                Aug 15, 2026
+              </span>
+            </div>
+
+            <button class="btn-icon-sub" type="button" title="Download PDF" aria-label="Download invoice INV-2026-08"
+              (click)="downloadInvoice('INV-2026-08')">
+              <i class="fa-solid fa-download"></i>
+            </button>
+
+          </div>
+
+          <!-- Invoice 2 -->
+          <div class="invoice-item">
+
+            <div class="invoice-details">
+              <span class="invoice-id">
+                INV-2026-07
+              </span>
+
+              <span class="invoice-date text-muted-custom">
+                Jul 15, 2026
+              </span>
+            </div>
+
+            <button class="btn-icon-sub" type="button" title="Download PDF" aria-label="Download invoice INV-2026-07"
+              (click)="downloadInvoice('INV-2026-07')">
+              <i class="fa-solid fa-download"></i>
+            </button>
+
+          </div>
+
+          <!-- Invoice 3 -->
+          <div class="invoice-item">
+
+            <div class="invoice-details">
+              <span class="invoice-id">
+                INV-2026-06
+              </span>
+
+              <span class="invoice-date text-muted-custom">
+                Jun 15, 2026
+              </span>
+            </div>
+
+            <button class="btn-icon-sub" type="button" title="Download PDF" aria-label="Download invoice INV-2026-06"
+              (click)="downloadInvoice('INV-2026-06')">
+              <i class="fa-solid fa-download"></i>
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </aside>
+
+  </main>
+
+</div>

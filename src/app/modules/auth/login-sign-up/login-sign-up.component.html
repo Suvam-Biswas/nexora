@@ -1,0 +1,413 @@
+<div class="auth-split-container">
+
+  <!-- =========================================================
+       LEFT PANEL: BRANDING / PRODUCT SHOWCASE
+       ========================================================= -->
+  <div class="auth-brand-side">
+
+    <!-- Decorative Background Orbs -->
+    <div class="brand-glow-orb orb-1"></div>
+    <div class="brand-glow-orb orb-2"></div>
+    <div class="brand-glow-orb orb-3"></div>
+
+    <div class="brand-content-wrapper">
+
+      <!-- Brand Badge -->
+      <div class="logo-badge-pill">
+        <i class="fa-solid fa-layer-group"></i>
+        <span>SaaS Admin Framework</span>
+      </div>
+
+      <!-- Main Branding Heading -->
+      <h1>
+        Elevate your workflow with next-gen intelligence.
+      </h1>
+
+      <!-- Description -->
+      <p>
+        Manage analytics, track real-time revenue conversions, and scale
+        your operations effortlessly through our elite dashboard framework.
+      </p>
+
+      <!-- Floating Glass Feature Card -->
+      <div class="glass-preview-card">
+
+        <div class="preview-icon">
+          <i class="fa-solid fa-chart-line"></i>
+        </div>
+
+        <div class="preview-text">
+          <span class="title">
+            Live Revenue Growth
+          </span>
+
+          <span class="metric">
+            +38.4% this month
+          </span>
+        </div>
+
+        <div class="preview-trend">
+          <i class="fa-solid fa-arrow-trend-up"></i>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Branding Footer -->
+    <div class="brand-footer-text">
+      <span>Secure Authentication Portal</span>
+      <span>•</span>
+      <span>Designed for Developers &amp; SaaS</span>
+    </div>
+
+  </div>
+
+
+  <!-- =========================================================
+       RIGHT PANEL: AUTHENTICATION FORM
+       ========================================================= -->
+  <div class="auth-form-side">
+
+    <div class="auth-card-modern">
+
+      <!-- =====================================================
+           HEADER
+           ===================================================== -->
+      <div class="auth-header-modern">
+
+        <div class="auth-header-accent"></div>
+
+        <h2>
+          {{
+          isForgotPassword
+          ? 'Reset Password'
+          : (isLogin ? 'Welcome Back' : 'Create Account')
+          }}
+        </h2>
+
+        <p>
+          {{
+          isForgotPassword
+          ? 'Enter your email address and we will send you recovery instructions'
+          : (
+          isLogin
+          ? 'Please enter your credentials to access your dashboard'
+          : 'Fill in the details below to set up your admin profile'
+          )
+          }}
+        </p>
+
+      </div>
+
+
+      <!-- =====================================================
+           REACTIVE FORM
+           ===================================================== -->
+      <form [formGroup]="authForm" (ngSubmit)="onSubmit()" class="auth-form">
+
+        <!-- ===================================================
+             FULL NAME
+             REGISTER ONLY
+             =================================================== -->
+        <div class="form-control-group animate-fade" *ngIf="!isLogin && !isForgotPassword">
+
+          <label for="fullName">
+            Full Name
+          </label>
+
+          <div class="input-box" [class.error]="
+              authForm.get('fullName')?.invalid &&
+              authForm.get('fullName')?.touched
+            ">
+
+            <i class="fa-regular fa-user input-leading-icon"></i>
+
+            <input id="fullName" type="text" formControlName="fullName" placeholder="John Doe" autocomplete="name" />
+
+          </div>
+
+          <div class="error-msg" *ngIf="
+              authForm.get('fullName')?.invalid &&
+              authForm.get('fullName')?.touched
+            ">
+
+            <small *ngIf="
+                authForm.get('fullName')?.errors?.['required']
+              ">
+              Full name is required.
+            </small>
+
+          </div>
+
+        </div>
+
+
+        <!-- ===================================================
+             EMAIL
+             =================================================== -->
+        <div class="form-control-group">
+
+          <label for="email">
+            Email Address
+          </label>
+
+          <div class="input-box" [class.error]="
+              authForm.get('email')?.invalid &&
+              authForm.get('email')?.touched
+            ">
+
+            <i class="fa-regular fa-envelope input-leading-icon"></i>
+
+            <input id="email" type="email" formControlName="email" placeholder="name@company.com" autocomplete="email"
+              inputmode="email" />
+
+          </div>
+
+          <div class="error-msg" *ngIf="
+              authForm.get('email')?.invalid &&
+              authForm.get('email')?.touched
+            ">
+
+            <small *ngIf="
+                authForm.get('email')?.errors?.['required']
+              ">
+              Email address is required.
+            </small>
+
+            <small *ngIf="
+                authForm.get('email')?.errors?.['email']
+              ">
+              Please enter a valid email address.
+            </small>
+
+          </div>
+
+        </div>
+
+
+        <!-- ===================================================
+             PHONE
+             REGISTER ONLY
+             =================================================== -->
+        <div class="form-control-group animate-fade" *ngIf="!isLogin && !isForgotPassword">
+
+          <label for="phone">
+            Phone Number
+          </label>
+
+          <div class="input-box" [class.error]="
+              authForm.get('phone')?.invalid &&
+              authForm.get('phone')?.touched
+            ">
+
+            <i class="fa-regular fa-phone input-leading-icon"></i>
+
+            <input id="phone" type="tel" formControlName="phone" placeholder="9876543210" autocomplete="tel"
+              inputmode="numeric" />
+
+          </div>
+
+          <div class="error-msg" *ngIf="
+              authForm.get('phone')?.invalid &&
+              authForm.get('phone')?.touched
+            ">
+
+            <small *ngIf="
+                authForm.get('phone')?.errors?.['required']
+              ">
+              Phone number is required.
+            </small>
+
+            <small *ngIf="
+                authForm.get('phone')?.errors?.['pattern']
+              ">
+              Enter a valid 10-digit phone number.
+            </small>
+
+          </div>
+
+        </div>
+
+
+        <!-- ===================================================
+             PASSWORD
+             LOGIN + REGISTER
+             =================================================== -->
+        <div class="form-control-group" *ngIf="!isForgotPassword">
+
+          <label for="password">
+            Password
+          </label>
+
+          <div class="input-box" [class.error]="
+              authForm.get('password')?.invalid &&
+              authForm.get('password')?.touched
+            ">
+
+            <i class="fa-regular fa-lock input-leading-icon"></i>
+
+            <input id="password" [type]="showPassword ? 'text' : 'password'" formControlName="password"
+              placeholder="••••••••" autocomplete="current-password" />
+
+            <button type="button" class="toggle-pass-button" (click)="togglePasswordVisibility()" [attr.aria-label]="
+                showPassword
+                  ? 'Hide password'
+                  : 'Show password'
+              ">
+
+              <i class="fa-regular" [ngClass]="
+                  showPassword
+                    ? 'fa-eye-slash'
+                    : 'fa-eye'
+                "></i>
+
+            </button>
+
+          </div>
+
+          <div class="error-msg" *ngIf="
+              authForm.get('password')?.invalid &&
+              authForm.get('password')?.touched
+            ">
+
+            <small *ngIf="
+                authForm.get('password')?.errors?.['required']
+              ">
+              Password is required.
+            </small>
+
+            <small *ngIf="
+                authForm.get('password')?.errors?.['minlength']
+              ">
+              Password must be at least 6 characters.
+            </small>
+
+          </div>
+
+        </div>
+
+
+        <!-- ===================================================
+             REMEMBER ME + FORGOT PASSWORD
+             LOGIN ONLY
+             =================================================== -->
+        <div class="form-options-row" *ngIf="isLogin && !isForgotPassword">
+
+          <label class="remember-checkbox">
+
+            <input type="checkbox" formControlName="rememberMe" />
+
+            <span>
+              Remember me
+            </span>
+
+          </label>
+
+          <a href="#" (click)="
+              $event.preventDefault();
+              toggleForgotPassword()
+            " class="forgot-link">
+            Forgot password?
+          </a>
+
+        </div>
+
+
+        <!-- ===================================================
+             CONFIRM PASSWORD
+             REGISTER ONLY
+             =================================================== -->
+        <div class="form-control-group animate-fade" *ngIf="!isLogin && !isForgotPassword">
+
+          <label for="confirmPassword">
+            Confirm Password
+          </label>
+
+          <div class="input-box" [class.error]="
+              authForm.get('confirmPassword')?.invalid &&
+              authForm.get('confirmPassword')?.touched
+            ">
+
+            <i class="fa-regular fa-lock-keyhole input-leading-icon"></i>
+
+            <input id="confirmPassword" [type]="showPassword ? 'text' : 'password'" formControlName="confirmPassword"
+              placeholder="••••••••" autocomplete="new-password" />
+
+          </div>
+
+          <div class="error-msg" *ngIf="
+              authForm.get('confirmPassword')?.invalid &&
+              authForm.get('confirmPassword')?.touched
+            ">
+
+            <small *ngIf="
+                authForm.get('confirmPassword')?.errors?.['required']
+              ">
+              Please confirm your password.
+            </small>
+
+          </div>
+
+        </div>
+
+
+        <!-- ===================================================
+             SUBMIT BUTTON
+             =================================================== -->
+        <button type="submit" class="btn-submit-action">
+
+          <span>
+            {{
+            isForgotPassword
+            ? 'Send Reset Instructions'
+            : (
+            isLogin
+            ? 'Sign In to Dashboard'
+            : 'Complete Registration'
+            )
+            }}
+          </span>
+
+          <i class="fa-solid fa-arrow-right-long"></i>
+
+        </button>
+
+      </form>
+
+
+      <!-- =====================================================
+           FOOTER SWITCHER
+           ===================================================== -->
+      <div class="auth-switcher-footer">
+
+        <p *ngIf="!isForgotPassword">
+
+          {{ isLogin
+          ? "Don't have an account?"
+          : "Already have an account?"
+          }}
+
+          <span class="switch-action-link" (click)="toggleView()">
+            {{ isLogin ? 'Sign up for free' : 'Log in here' }}
+          </span>
+
+        </p>
+
+        <p *ngIf="isForgotPassword">
+
+          Remember your password?
+
+          <span class="switch-action-link" (click)="toggleForgotPassword()">
+            Back to login
+          </span>
+
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

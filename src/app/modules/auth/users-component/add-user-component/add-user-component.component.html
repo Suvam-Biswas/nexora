@@ -1,0 +1,264 @@
+<div mat-dialog-title class="dialog-header">
+
+    <div class="header-title-wrapper">
+        <div class="header-icon">
+            <i [ngClass]="isEditMode ? 'fa-solid fa-user-pen' : 'fa-solid fa-user-plus'">
+            </i>
+        </div>
+
+        <div class="header-text">
+            <span class="header-title">
+                {{ isEditMode ? 'Edit User Account' : 'Add New User' }}
+            </span>
+
+            <span class="header-subtitle">
+                {{ isEditMode
+                ? 'Update account details and permissions'
+                : 'Create a new platform user account'
+                }}
+            </span>
+        </div>
+    </div>
+
+    <button mat-icon-button mat-dialog-close class="close-btn" type="button" aria-label="Close dialog" title="Close">
+
+        <mat-icon>close</mat-icon>
+    </button>
+
+</div>
+
+
+<div mat-dialog-content class="dialog-content scrollable-form">
+
+    <form [formGroup]="userForm" class="gold-form">
+
+        <div class="form-container">
+
+            <div class="row g-3">
+
+                <!-- Full Name -->
+                <div class="col-12">
+
+                    <div class="form-field">
+
+                        <label class="form-label">
+                            Full Name
+                            <span class="required">*</span>
+                        </label>
+
+                        <div class="input-group">
+
+                            <span class="input-group-text">
+                                <i class="fa-solid fa-user"></i>
+                            </span>
+
+                            <input type="text" class="form-control gold-input" formControlName="fullName"
+                                placeholder="e.g. John Doe" autocomplete="name" [class.is-invalid]="
+                                    isSubmitted &&
+                                    f['fullName'].errors
+                                " />
+
+                        </div>
+
+                        <div class="invalid-feedback d-block" *ngIf="
+                                isSubmitted &&
+                                f['fullName'].errors
+                            ">
+
+                            <small *ngIf="
+                                    f['fullName'].errors['required']
+                                ">
+                                Full name is required.
+                            </small>
+
+                            <small *ngIf="
+                                    f['fullName'].errors['minlength']
+                                ">
+                                Name must be at least 2 characters long.
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Email -->
+                <div class="col-12">
+
+                    <div class="form-field">
+
+                        <label class="form-label">
+                            Email Address
+                            <span class="required">*</span>
+                        </label>
+
+                        <div class="input-group">
+
+                            <span class="input-group-text">
+                                <i class="fa-solid fa-envelope"></i>
+                            </span>
+
+                            <input type="email" class="form-control gold-input" formControlName="email"
+                                placeholder="e.g. john.doe@company.com" autocomplete="email" [class.is-invalid]="
+                                    isSubmitted &&
+                                    f['email'].errors
+                                " />
+
+                        </div>
+
+                        <div class="invalid-feedback d-block" *ngIf="
+                                isSubmitted &&
+                                f['email'].errors
+                            ">
+
+                            <small *ngIf="
+                                    f['email'].errors['required']
+                                ">
+                                Email address is required.
+                            </small>
+
+                            <small *ngIf="
+                                    f['email'].errors['email']
+                                ">
+                                Please enter a valid email address.
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Access Role -->
+                <div class="col-md-6 col-12">
+
+                    <div class="form-field">
+
+                        <label class="form-label">
+                            Access Role
+                            <span class="required">*</span>
+                        </label>
+
+                        <div class="input-group">
+
+                            <span class="input-group-text">
+                                <i class="fa-solid fa-shield-halved"></i>
+                            </span>
+
+                            <select class="form-select gold-input" formControlName="role">
+
+                                <option *ngFor="let r of rolesList" [value]="r">
+                                    {{ r }}
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Account Status -->
+                <div class="col-md-6 col-12">
+
+                    <div class="form-field">
+
+                        <label class="form-label">
+                            Account Status
+                            <span class="required">*</span>
+                        </label>
+
+                        <div class="input-group">
+
+                            <span class="input-group-text">
+                                <i class="fa-solid fa-circle-check"></i>
+                            </span>
+
+                            <select class="form-select gold-input" formControlName="status">
+
+                                <option *ngFor="let s of statusesList" [value]="s">
+                                    {{ s }}
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Send Invite -->
+                <div class="col-12" *ngIf="!isEditMode">
+
+                    <div class="invite-card">
+
+                        <label class="invite-toggle" for="sendInviteEmail">
+
+                            <input class="form-check-input" type="checkbox" id="sendInviteEmail"
+                                formControlName="sendInviteEmail" />
+
+                            <span class="custom-checkmark">
+                                <i class="fa-solid fa-check"></i>
+                            </span>
+
+                            <span class="invite-content">
+
+                                <span class="invite-title">
+                                    Send welcome email
+                                </span>
+
+                                <span class="invite-description">
+                                    Automatically send login credentials and
+                                    account information to this user.
+                                </span>
+
+                            </span>
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </form>
+
+</div>
+
+
+<div mat-dialog-actions class="dialog-actions">
+
+    <button class="btn-cancel" type="button" mat-dialog-close>
+
+        <i class="fa-solid fa-xmark"></i>
+
+        <span>Cancel</span>
+
+    </button>
+
+    <button class="gold-submit-btn" type="button" (click)="onSubmit()">
+
+        <i [ngClass]="
+                isEditMode
+                    ? 'fa-solid fa-floppy-disk'
+                    : 'fa-solid fa-user-plus'
+            ">
+        </i>
+
+        <span>
+            {{ isEditMode ? 'Save Changes' : 'Create User' }}
+        </span>
+
+    </button>
+
+</div>

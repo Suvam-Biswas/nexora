@@ -1,0 +1,145 @@
+<main>
+    <section class="products-section">
+        <div class="section-header">
+            <h3><i class="fa-regular fa-heart"></i> FEATURED GIFTS</h3>
+            <p>Handpicked gifts that are loved by our customers</p>
+        </div>
+        <div class="product-grid">
+            <div class="product-card" *ngFor="let p of products | slice:0:5">
+                <div class="product-img-wrapper">
+                    <img [src]="p.image" [alt]="p.name" class="product-image">
+                </div>
+                <div class="product-info">
+                    <h4>{{p.name}}</h4>
+                    <p class="price">₹{{p.price}}</p>
+                    <button class="add-to-cart">ADD TO CART</button>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+
+<section class="products-section second-featured">
+    <div class="section-header">
+        <h3><i class="fa-solid fa-star"></i> EXPLORE MORE PRODUCTS</h3>
+        <p>Discover our beautiful collection of daily custom utilities</p>
+    </div>
+
+    <div class="product-grid">
+        <!-- Added [routerLink] to the product card -->
+        <div class="product-card" *ngFor="let p of products | slice:5">
+            <a [routerLink]="['/auth/product-detail', p.id]"
+                style="text-decoration: none; color: inherit; display: block;">
+                <div class="product-img-wrapper">
+                    <div class="img-placeholder" *ngIf="p.isPlaceholder">{{p.placeholderIcon}}</div>
+                    <img *ngIf="!p.isPlaceholder" [src]="p.image" [alt]="p.name" class="product-image">
+                </div>
+
+                <div class="product-info">
+                    <h4>{{p.name}}</h4>
+                    <p class="price">₹{{p.price}}</p>
+                    <!-- Add stopPropagation to prevent the card click triggering if button has its own click event -->
+                    <button class="add-to-cart" (click)="$event.stopPropagation()">
+                        ADD TO CART
+                    </button>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+
+
+<section class="features-section">
+    <div class="section-header">
+        <h3><i class="fa-solid fa-box-open"></i> WHY CHOOSE US?</h3>
+    </div>
+
+    <div class="features-grid">
+        <div class="feature-card">
+            <div class="feature-icon"><i class="fa-solid fa-truck-fast"></i></div>
+            <h5>Free Shipping</h5>
+            <p>On orders above ₹999</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
+            <h5>Secure Payment</h5>
+            <p>100% secure payments</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon"><i class="fa-solid fa-award"></i></div>
+            <h5>Premium Quality</h5>
+            <p>Best quality products</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon"><i class="fa-solid fa-rotate-left"></i></div>
+            <h5>Easy Returns</h5>
+            <p>Hassle free returns</p>
+        </div>
+    </div>
+</section>
+
+<section class="reviews-section">
+    <div class="section-header">
+        <h3>WHAT OUR CUSTOMERS SAY</h3>
+    </div>
+
+    <div class="reviews-teaser-grid">
+        <div class="dummy-review-card">
+            <div class="reviewer-meta">
+                <div class="reviewer-avatar"></div>
+                <div class="reviewer-info">
+                    <h5>Aarav Sharma</h5>
+                    <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i></div>
+                </div>
+            </div>
+            <p>Absolutely loved the custom crystal ball lamp. The engraving quality was precise and the delivery was
+                incredibly swift!</p>
+        </div>
+        <div class="dummy-review-card">
+            <div class="reviewer-meta">
+                <div class="reviewer-avatar"></div>
+                <div class="reviewer-info">
+                    <h5>Priya Patel</h5>
+                    <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i></div>
+                </div>
+            </div>
+            <p>The premium hamper was a hit for our anniversary celebration. Wonderfully curated options and safe
+                packaging.</p>
+        </div>
+        <div class="dummy-review-card">
+            <div class="reviewer-meta">
+                <div class="reviewer-avatar"></div>
+                <div class="reviewer-info">
+                    <h5>Rohan Das</h5>
+                    <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i></div>
+                </div>
+            </div>
+            <p>Great build on the customized copper bottle collection. Keeps water cool and looks exceptionally sleek on
+                my desk.</p>
+        </div>
+    </div>
+
+    <div class="lock-overlay-container">
+        <div class="lock-box">
+            <div class="lock-icon-wrapper">
+                <i class="fa-solid fa-lock"></i>
+            </div>
+            <h3>Login to see reviews</h3>
+            <p>Join our community to explore authentic testimonials and access premium collection insights.</p>
+            <button class="lock-login-btn" (click)="openLoginDialog()">
+                SIGN IN TO ACCESS <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </div>
+    </div>
+</section>

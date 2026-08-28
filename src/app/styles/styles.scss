@@ -1,0 +1,88 @@
+/* Global styles.scss */
+
+
+@import "ag-grid-community/dist/styles/ag-grid.css";
+@import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+@import '~ngx-toastr/toastr';
+
+
+
+// This selector targets the wrapper created by CDK, not the Material container inside it
+.cdk-overlay-pane.auth-dialog-modal {
+  background: transparent !important;
+  box-shadow: none !important;
+
+  // This removes the visual layers injected by Angular Material
+  &>* {
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+}
+
+/* Global styles.scss */
+
+// This styles the background area behind the dialog
+.cdk-overlay-backdrop.custom-blur-backdrop {
+  background: rgba(0, 0, 0, 0.3) !important; // A dark tint to make the blur look better
+  backdrop-filter: blur(8px); // This creates the blur effect
+  transition: backdrop-filter 0.3s ease; // Smoothly animate the blur
+}
+
+// Ensure the backdrop container is transparent so the blur shows through
+.cdk-overlay-container {
+  overflow: hidden;
+}
+
+/* =========================================
+   FORCE TOAST VISIBILITY OVERRIDES
+   ========================================= */
+
+#toast-container {
+  z-index: 999999 !important;
+  pointer-events: auto !important;
+
+  .toast {
+    opacity: 1 !important;
+    visibility: visible !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35) !important;
+    border-radius: 4px !important;
+    display: flex !important;
+    padding: 15px 15px 15px 50px !important;
+    background-position: 15px center !important;
+    background-repeat: no-repeat !important;
+    color: #ffffff !important; // Force text to crisp white
+  }
+
+  /* Specific background overrides per state */
+  .toast-success {
+    background-color: #2e7d32 !important; // Deep Green
+  }
+
+  .toast-error {
+    background-color: #c62828 !important; // Deep Red
+  }
+
+  .toast-warning {
+    background-color: #ef6c00 !important; // Deep Orange
+  }
+
+  .toast-info {
+    background-color: #0277bd !important; // Deep Blue
+  }
+
+  /* Ensure text elements inside the toast are visible */
+  .toast-title {
+    font-weight: bold !important;
+    color: #ffffff !important;
+    display: block !important;
+  }
+
+  .toast-message {
+    -ms-word-wrap: break-word;
+    word-wrap: break-word;
+    color: #ffffff !important;
+    display: block !important;
+  }
+}

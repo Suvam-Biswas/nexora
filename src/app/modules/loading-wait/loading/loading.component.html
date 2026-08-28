@@ -1,0 +1,29 @@
+<!-- <ng-container *ngIf="(loadingService.loading$ | async)">
+  <div class="backdrop">
+    <div class="loader">
+      Loading...
+    </div>
+  </div>
+</ng-container> -->
+
+<ng-container *ngIf="(loadingService.loading$ | async)">
+  <div class="erp-loader-backdrop">
+    <div class="loader-wrapper">
+      <div class="orbit-ring ring-1"></div>
+      <div class="orbit-ring ring-2"></div>
+      <div class="orbit-ring ring-3"></div>
+      
+      <div class="loader-core">
+        <div class="icon-box">
+          <i class="bi bi-grid-1x2-fill"></i> </div>
+        <div class="shimmer-text">
+          <span>ERP</span><span class="accent">CORE</span>
+          <div class="loading-dots">
+            <small>Processing</small>
+            <span class="dot">.</span><span class="dot">.</span><span class="dot">.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

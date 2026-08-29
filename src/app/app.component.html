@@ -1,1 +1,96 @@
-<router-outlet></router-outlet>
+<div class="dashboard-container">
+
+  <!-- =========================================================
+       RESPONSIVE TOP NAVBAR
+       ========================================================= -->
+  <nav *ngIf="showNavbar" class="dashboard-top-navbar" aria-label="Primary navigation">
+
+    <!-- Brand -->
+    <div class="nav-brand">
+      <span class="brand-indicator"></span>
+
+      <span class="brand-name">
+        Nexora
+      </span>
+    </div>
+
+    <!-- Navigation Links -->
+    <div class="nav-links">
+
+      <!-- Dashboard -->
+      <a routerLink="/auth/dashboard" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }"
+        title="Dashboard Overview" class="nav-link">
+
+        <i class="fa-solid fa-house nav-icon"></i>
+
+        <span class="nav-label">
+          Dashboard
+        </span>
+      </a>
+
+      <!-- Users -->
+      <a routerLink="/auth/users" routerLinkActive="active-link" title="Manage Users" class="nav-link">
+
+        <i class="fa-solid fa-users nav-icon"></i>
+
+        <span class="nav-label">
+          Users
+        </span>
+      </a>
+
+      <!-- Billing -->
+      <a routerLink="/auth/billing-subscription" routerLinkActive="active-link" title="Billing & Subscriptions"
+        class="nav-link">
+
+        <i class="fa-solid fa-credit-card nav-icon"></i>
+
+        <span class="nav-label">
+          Billing
+        </span>
+      </a>
+
+      <!-- Analytics -->
+      <a routerLink="/auth/analytics" routerLinkActive="active-link" title="Platform Analytics" class="nav-link">
+
+        <i class="fa-solid fa-chart-pie nav-icon"></i>
+
+        <span class="nav-label">
+          Analytics
+        </span>
+      </a>
+
+      <!-- Pricing -->
+      <a routerLink="/auth/pricing" routerLinkActive="active-link" title="Subscription Plans" class="nav-link">
+
+        <i class="fa-solid fa-tag nav-icon"></i>
+
+        <span class="nav-label">
+          Pricing
+        </span>
+      </a>
+
+      <!-- Settings -->
+      <a routerLink="/auth/account-settings" routerLinkActive="active-link" title="Account Settings" class="nav-link">
+
+        <i class="fa-solid fa-gear nav-icon"></i>
+
+        <span class="nav-label">
+          Settings
+        </span>
+      </a>
+
+    </div>
+
+  </nav>
+
+
+  <!-- =========================================================
+       PAGE CONTENT
+       ========================================================= -->
+  <main class="dashboard-content">
+
+    <router-outlet></router-outlet>
+
+  </main>
+
+</div>

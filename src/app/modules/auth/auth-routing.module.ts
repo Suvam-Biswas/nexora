@@ -33,7 +33,7 @@ const authModuleRoutes: Routes = [
     { path: 'pricing', component: PricingComponent },
 
 
-    { path: '**', redirectTo: 'login' }
+  { path: '', redirectTo: 'auth/dashboard', pathMatch: 'full' }
 
 ];
 

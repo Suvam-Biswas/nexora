@@ -1,0 +1,126 @@
+<div class="notification-dropdown-container">
+
+  <!-- Header -->
+  <div class="notification-header">
+
+    <div class="header-title-group">
+
+      <h4>Notifications</h4>
+
+      <span
+        class="unread-badge-count"
+        *ngIf="unreadCount > 0">
+        {{ unreadCount }} new
+      </span>
+
+    </div>
+
+    <button
+      type="button"
+      class="mark-read-btn"
+      *ngIf="unreadCount > 0"
+      (click)="markAllAsRead()">
+
+      <i class="fa-solid fa-check-double"></i>
+
+      <span>Mark all read</span>
+
+    </button>
+
+  </div>
+
+
+  <!-- Notification List -->
+  <div class="notification-list">
+
+    <div
+      *ngFor="let item of notifications"
+      class="notification-item"
+      [class.unread]="!item.read">
+
+      <!-- Icon -->
+      <div
+        class="notification-icon-wrapper"
+        [ngClass]="item.type">
+
+        <i
+          class="fa-solid"
+          [ngClass]="item.icon">
+        </i>
+
+      </div>
+
+
+      <!-- Content -->
+      <div class="notification-content">
+
+        <div class="notification-title-row">
+
+          <strong [title]="item.title">
+            {{ item.title }}
+          </strong>
+
+          <span class="notification-time">
+            {{ item.time }}
+          </span>
+
+        </div>
+
+        <p>
+          {{ item.description }}
+        </p>
+
+      </div>
+
+
+      <!-- Mark As Read -->
+      <button
+        *ngIf="!item.read"
+        type="button"
+        class="single-read-btn"
+        (click)="markAsRead(item, $event)"
+        title="Mark as read"
+        aria-label="Mark notification as read">
+
+        <span class="dot-indicator"></span>
+
+      </button>
+
+    </div>
+
+
+    <!-- Empty State -->
+    <div
+      *ngIf="notifications.length === 0"
+      class="notification-empty">
+
+      <div class="empty-icon">
+        <i class="fa-regular fa-bell-slash"></i>
+      </div>
+
+      <p>No notifications right now</p>
+
+      <span>You're all caught up.</span>
+
+    </div>
+
+  </div>
+
+
+  <!-- Footer -->
+  <div class="notification-footer">
+
+    <a
+      routerLink="/auth/audit-logs"
+      (click)="onClose()"
+      class="view-all-link">
+
+      <span>View all activity logs</span>
+
+      <i class="fa-solid fa-arrow-right"></i>
+
+    </a>
+
+  </div>
+
+</div>

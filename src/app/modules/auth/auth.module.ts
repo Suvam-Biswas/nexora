@@ -28,6 +28,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { BillingSubscriptionComponent } from './billing-subscription/billing-subscription.component';
 import { AnalyticsComponent } from './analytics/analytics.component';
 import { PricingComponent } from './pricing/pricing.component';
+import { NotificationsComponent } from './notifications/notifications.component';
+import { AuditLogsComponent } from './audit-logs/audit-logs.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,7 @@ import { PricingComponent } from './pricing/pricing.component';
     BillingSubscriptionComponent,
     AnalyticsComponent,
     PricingComponent,
+    AuditLogsComponent,
 
   ],
   exports: [

@@ -1,12 +1,13 @@
 <div mat-dialog-title class="dialog-header">
 
     <div class="header-title-wrapper">
+
         <div class="header-icon">
-            <i [ngClass]="isEditMode ? 'fa-solid fa-user-pen' : 'fa-solid fa-user-plus'">
-            </i>
+            <i [ngClass]="isEditMode ? 'fa-solid fa-user-pen' : 'fa-solid fa-user-plus'"></i>
         </div>
 
         <div class="header-text">
+
             <span class="header-title">
                 {{ isEditMode ? 'Edit User Account' : 'Add New User' }}
             </span>
@@ -17,12 +18,15 @@
                 : 'Create a new platform user account'
                 }}
             </span>
+
         </div>
+
     </div>
 
     <button mat-icon-button mat-dialog-close class="close-btn" type="button" aria-label="Close dialog" title="Close">
 
         <mat-icon>close</mat-icon>
+
     </button>
 
 </div>
@@ -30,7 +34,7 @@
 
 <div mat-dialog-content class="dialog-content scrollable-form">
 
-    <form [formGroup]="userForm" class="gold-form">
+    <form [formGroup]="userForm" class="gold-form" (ngSubmit)="onSubmit()">
 
         <div class="form-container">
 
@@ -53,27 +57,18 @@
                             </span>
 
                             <input type="text" class="form-control gold-input" formControlName="fullName"
-                                placeholder="e.g. John Doe" autocomplete="name" [class.is-invalid]="
-                                    isSubmitted &&
-                                    f['fullName'].errors
-                                " />
+                                placeholder="e.g. John Doe" autocomplete="name"
+                                [class.is-invalid]="isSubmitted && f['fullName'].errors" />
 
                         </div>
 
-                        <div class="invalid-feedback d-block" *ngIf="
-                                isSubmitted &&
-                                f['fullName'].errors
-                            ">
+                        <div class="invalid-feedback d-block" *ngIf="isSubmitted && f['fullName'].errors">
 
-                            <small *ngIf="
-                                    f['fullName'].errors['required']
-                                ">
+                            <small *ngIf="f['fullName'].errors['required']">
                                 Full name is required.
                             </small>
 
-                            <small *ngIf="
-                                    f['fullName'].errors['minlength']
-                                ">
+                            <small *ngIf="f['fullName'].errors['minlength']">
                                 Name must be at least 2 characters long.
                             </small>
 
@@ -101,27 +96,18 @@
                             </span>
 
                             <input type="email" class="form-control gold-input" formControlName="email"
-                                placeholder="e.g. john.doe@company.com" autocomplete="email" [class.is-invalid]="
-                                    isSubmitted &&
-                                    f['email'].errors
-                                " />
+                                placeholder="e.g. john.doe@company.com" autocomplete="email"
+                                [class.is-invalid]="isSubmitted && f['email'].errors" />
 
                         </div>
 
-                        <div class="invalid-feedback d-block" *ngIf="
-                                isSubmitted &&
-                                f['email'].errors
-                            ">
+                        <div class="invalid-feedback d-block" *ngIf="isSubmitted && f['email'].errors">
 
-                            <small *ngIf="
-                                    f['email'].errors['required']
-                                ">
+                            <small *ngIf="f['email'].errors['required']">
                                 Email address is required.
                             </small>
 
-                            <small *ngIf="
-                                    f['email'].errors['email']
-                                ">
+                            <small *ngIf="f['email'].errors['email']">
                                 Please enter a valid email address.
                             </small>
 
@@ -246,13 +232,12 @@
 
     </button>
 
+
     <button class="gold-submit-btn" type="button" (click)="onSubmit()">
 
-        <i [ngClass]="
-                isEditMode
-                    ? 'fa-solid fa-floppy-disk'
-                    : 'fa-solid fa-user-plus'
-            ">
+        <i [ngClass]="isEditMode
+                ? 'fa-solid fa-floppy-disk'
+                : 'fa-solid fa-user-plus'">
         </i>
 
         <span>

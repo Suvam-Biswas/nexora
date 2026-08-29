@@ -1,35 +1,21 @@
-<div class="dashboard-container" [class.light-mode]="!pricingForm.get('autoRenew')?.value">
-  <!-- =========================================================
-       PAGE HEADER
-       ========================================================= -->
+<div class="dashboard-container">
+
+  <!-- Page header -->
   <header class="dashboard-header">
 
-    <!-- Header Top Bar -->
     <div class="header-topbar">
 
-      <!-- Back Button -->
-      <button type="button" class="back-icon-btn" (click)="goBack()" title="Go Back" aria-label="Go Back">
+      <button
+        type="button"
+        class="back-icon-btn"
+        (click)="goBack()"
+        title="Go Back"
+        aria-label="Go Back">
         <i class="fa-solid fa-arrow-left"></i>
       </button>
 
-      <!-- Theme Toggle -->
-      <div class="header-theme-toggle">
-        <form [formGroup]="pricingForm">
-          <div class="form-check form-switch theme-switch-wrapper m-0">
-            <input class="form-check-input" type="checkbox" role="switch" id="themeSwitch"
-              formControlName="autoRenew" />
-
-            <label class="form-check-label text-muted-custom" for="themeSwitch">
-              Dark/Light Mode
-            </label>
-          </div>
-        </form>
-      </div>
-
     </div>
 
-
-    <!-- Header Content -->
     <div class="header-content">
 
       <span class="badge-active">
@@ -45,27 +31,38 @@
         Upgrade or downgrade anytime with zero hidden fees.
       </p>
 
+      <!-- Billing cycle -->
+      <form
+        [formGroup]="pricingForm"
+        class="billing-toggle-wrapper">
 
-      <!-- =====================================================
-           MONTHLY / YEARLY TOGGLE
-           ===================================================== -->
-      <form [formGroup]="pricingForm" class="billing-toggle-wrapper">
-
-        <span [class.fw-bold]="!isYearly" class="billing-label text-muted-custom">
+        <span
+          [class.fw-bold]="!isYearly"
+          class="billing-label text-muted-custom">
           Monthly Billing
         </span>
 
         <div class="form-check form-switch toggle-lg m-0">
-          <input class="form-check-input" type="checkbox" role="switch" id="billingCycleSwitch"
+
+          <input
+            class="form-check-input"
+            type="checkbox"
+            role="switch"
+            id="billingCycleSwitch"
             formControlName="billingCycle" />
+
         </div>
 
-        <span [class.fw-bold]="isYearly" class="billing-label yearly-label text-muted-custom">
+        <span
+          [class.fw-bold]="isYearly"
+          class="billing-label yearly-label text-muted-custom">
+
           Yearly Billing
 
           <span class="badge-discount">
             Save 20%
           </span>
+
         </span>
 
       </form>
@@ -75,32 +72,35 @@
   </header>
 
 
-  <!-- =========================================================
-       SUCCESS ALERT
-       ========================================================= -->
-  <div *ngIf="successMessage" class="alert-success-custom" role="alert">
+  <!-- Success message -->
+  <div
+    *ngIf="successMessage"
+    class="alert-success-custom"
+    role="alert">
+
     <i class="fa-solid fa-circle-check"></i>
 
     <span>
       {{ successMessage }}
     </span>
+
   </div>
 
 
-  <!-- =========================================================
-       PRICING CARDS
-       ========================================================= -->
+  <!-- Pricing plans -->
   <section class="pricing-section">
 
     <div class="row pricing-grid">
 
-      <div *ngFor="let plan of pricingPlans" class="col-12 col-md-6 col-xl-4 pricing-column">
+      <div
+        *ngFor="let plan of pricingPlans"
+        class="col-12 col-md-6 col-xl-4 pricing-column">
 
-        <article class="settings-card pricing-card h-100" [class.featured-card]="plan.badge">
+        <article
+          class="settings-card pricing-card h-100"
+          [class.featured-card]="plan.badge">
 
-          <!-- ================================================
-               CARD HEADER
-               ================================================ -->
+          <!-- Plan header -->
           <div class="card-header-flex">
 
             <div class="plan-heading">
@@ -115,16 +115,18 @@
 
             </div>
 
-            <span *ngIf="plan.badge" class="plan-badge">
+            <span
+              *ngIf="plan.badge"
+              class="plan-badge">
+
               {{ plan.badge }}
+
             </span>
 
           </div>
 
 
-          <!-- ================================================
-               PRICING
-               ================================================ -->
+          <!-- Price -->
           <div class="pricing-figure-block">
 
             <div class="price-main">
@@ -143,54 +145,69 @@
 
             </div>
 
-            <div *ngIf="isYearly" class="billed-annually-note">
+            <div
+              *ngIf="isYearly"
+              class="billed-annually-note">
+
               Billed
-              ${{ (isYearly ? plan.yearlyPrice : plan.monthlyPrice) * 12 }}
+              ${{ plan.yearlyPrice * 12 }}
               annually
+
             </div>
 
           </div>
 
 
-          <!-- ================================================
-               CTA BUTTON
-               ================================================ -->
-          <button type="button" [class]="plan.ctaClass" class="pricing-cta w-100 fw-semibold"
+          <!-- Action -->
+          <button
+            type="button"
+            [class]="plan.ctaClass"
+            class="pricing-cta w-100 fw-semibold"
+            [disabled]="plan.isCurrent"
             (click)="onSelectPlan(plan.name)">
+
             {{ plan.ctaText }}
+
           </button>
 
 
-          <!-- ================================================
-               DIVIDER
-               ================================================ -->
           <hr class="pricing-divider" />
 
 
-          <!-- ================================================
-               FEATURES
-               ================================================ -->
+          <!-- Features -->
           <div class="features-list-block">
 
             <span class="features-header-label">
-              What's included:
+              What's included
             </span>
 
             <ul class="feature-list">
 
-              <li *ngFor="let feat of plan.features" class="feature-item">
+              <li
+                *ngFor="let feat of plan.features"
+                class="feature-item">
 
                 <span class="feature-icon">
 
-                  <i *ngIf="feat.included" class="fa-solid fa-check text-success-custom"></i>
+                  <i
+                    *ngIf="feat.included"
+                    class="fa-solid fa-check text-success-custom">
+                  </i>
 
-                  <i *ngIf="!feat.included" class="fa-solid fa-xmark text-muted-disabled"></i>
+                  <i
+                    *ngIf="!feat.included"
+                    class="fa-solid fa-xmark text-muted-disabled">
+                  </i>
 
                 </span>
 
-                <span class="feature-text" [class.text-muted-disabled]="!feat.included"
+                <span
+                  class="feature-text"
+                  [class.text-muted-disabled]="!feat.included"
                   [class.fw-medium]="feat.included">
+
                   {{ feat.text }}
+
                 </span>
 
               </li>
@@ -208,13 +225,13 @@
   </section>
 
 
-  <!-- =========================================================
-       ENTERPRISE BANNER
-       ========================================================= -->
+  <!-- Enterprise -->
   <section class="enterprise-banner">
 
     <div class="enterprise-icon-wrapper">
+
       <i class="fa-solid fa-building-shield"></i>
+
     </div>
 
     <div class="enterprise-content">
@@ -224,15 +241,24 @@
       </h3>
 
       <p class="text-muted-custom max-width-subtitle">
+
         We offer bespoke on-premise setups, single-sign-on (SSO)
         compliance protocols, and custom uptime SLAs for large
         organizations.
+
       </p>
 
-      <button type="button" class="btn-action-primary enterprise-cta"
+      <button
+        type="button"
+        class="btn-action-primary enterprise-cta"
         (click)="onSelectPlan('Custom Enterprise Solutions')">
-        <span>Contact Sales Team</span>
+
+        <span>
+          Contact Sales Team
+        </span>
+
         <i class="fa-solid fa-arrow-right"></i>
+
       </button>
 
     </div>

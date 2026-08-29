@@ -1,0 +1,312 @@
+<div class="audit-container">
+
+  <header class="audit-header">
+
+    <div class="header-title-group">
+
+      <div class="header-title-row">
+
+        <div class="header-icon">
+          <i class="fa-solid fa-shield-halved"></i>
+        </div>
+
+        <div class="header-title-content">
+          <h2>Security Audit Logs</h2>
+
+          <p>
+            Track enterprise compliance, user activities, and system
+            security events.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="header-actions">
+
+      <button
+        type="button"
+        class="btn-export"
+        (click)="exportLogs()"
+        aria-label="Export audit logs as CSV">
+
+        <i class="fa-solid fa-download"></i>
+
+        <span>Export CSV</span>
+
+      </button>
+
+    </div>
+
+  </header>
+
+
+  <section
+    class="audit-toolbar"
+    aria-label="Audit log filters">
+
+    <div class="search-box">
+
+      <i class="fa-solid fa-magnifying-glass search-icon"></i>
+
+      <input
+        type="text"
+        [(ngModel)]="searchQuery"
+        placeholder="Search logs by user, action, or ID..."
+        aria-label="Search audit logs">
+
+      <button
+        *ngIf="searchQuery"
+        type="button"
+        class="clear-search"
+        (click)="searchQuery = ''"
+        aria-label="Clear search">
+
+        <i class="fa-solid fa-xmark"></i>
+
+      </button>
+
+    </div>
+
+
+    <div class="filter-wrapper">
+
+      <div class="filter-group">
+
+        <button
+          type="button"
+          [class.active]="selectedCategory === 'all'"
+          (click)="selectedCategory = 'all'">
+
+          <i class="fa-solid fa-layer-group"></i>
+
+          <span>All</span>
+
+        </button>
+
+
+        <button
+          type="button"
+          [class.active]="selectedCategory === 'security'"
+          (click)="selectedCategory = 'security'">
+
+          <i class="fa-solid fa-shield-halved"></i>
+
+          <span>Security</span>
+
+        </button>
+
+
+        <button
+          type="button"
+          [class.active]="selectedCategory === 'billing'"
+          (click)="selectedCategory = 'billing'">
+
+          <i class="fa-solid fa-credit-card"></i>
+
+          <span>Billing</span>
+
+        </button>
+
+
+        <button
+          type="button"
+          [class.active]="selectedCategory === 'user'"
+          (click)="selectedCategory = 'user'">
+
+          <i class="fa-solid fa-user"></i>
+
+          <span>User Actions</span>
+
+        </button>
+
+
+        <button
+          type="button"
+          [class.active]="selectedCategory === 'system'"
+          (click)="selectedCategory = 'system'">
+
+          <i class="fa-solid fa-server"></i>
+
+          <span>System</span>
+
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <section class="audit-table-card">
+
+    <div class="table-responsive">
+
+      <table class="audit-table">
+
+        <thead>
+
+          <tr>
+
+            <th>Event ID</th>
+
+            <th>Timestamp</th>
+
+            <th>User</th>
+
+            <th>Action Description</th>
+
+            <th>Category</th>
+
+            <th>IP Address</th>
+
+            <th>Status</th>
+
+          </tr>
+
+        </thead>
+
+
+        <tbody>
+
+          <tr *ngFor="let log of filteredLogs">
+
+            <td data-label="Event ID">
+
+              <span class="log-id">
+                {{ log.id }}
+              </span>
+
+            </td>
+
+
+            <td data-label="Timestamp">
+
+              <span class="log-time">
+                {{ log.timestamp }}
+              </span>
+
+            </td>
+
+
+            <td data-label="User">
+
+              <div class="user-cell">
+
+                <div class="user-avatar-placeholder">
+                  <i class="fa-solid fa-user"></i>
+                </div>
+
+                <div class="user-details">
+
+                  <strong>
+                    {{ log.user }}
+                  </strong>
+
+                  <small>
+                    {{ log.email }}
+                  </small>
+
+                </div>
+
+              </div>
+
+            </td>
+
+
+            <td data-label="Action">
+
+              <span class="log-action">
+                {{ log.action }}
+              </span>
+
+            </td>
+
+
+            <td data-label="Category">
+
+              <span
+                class="category-tag"
+                [ngClass]="log.category">
+
+                <span class="category-dot"></span>
+
+                {{ log.category }}
+
+              </span>
+
+            </td>
+
+
+            <td data-label="IP Address">
+
+              <span class="ip-address">
+                {{ log.ipAddress }}
+              </span>
+
+            </td>
+
+
+            <td data-label="Status">
+
+              <span
+                class="status-badge"
+                [ngClass]="log.status.toLowerCase()">
+
+                <span class="status-dot"></span>
+
+                {{ log.status }}
+
+              </span>
+
+            </td>
+
+          </tr>
+
+
+          <tr *ngIf="filteredLogs.length === 0">
+
+            <td
+              colspan="7"
+              class="empty-state">
+
+              <div class="empty-state-icon">
+
+                <i class="fa-solid fa-folder-open"></i>
+
+              </div>
+
+              <h3>
+                No audit logs found
+              </h3>
+
+              <p>
+                No audit logs match your current search or filter.
+              </p>
+
+            </td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </section>
+
+
+  <div class="mobile-scroll-hint">
+
+    <i class="fa-solid fa-circle-info"></i>
+
+    <span>
+      Tap or scroll through the audit records to review activity.
+    </span>
+
+  </div>
+
+</div>

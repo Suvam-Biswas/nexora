@@ -1,18 +1,28 @@
 /* ================================================================
-   DASHBOARD THEME
+   DASHBOARD
    ================================================================ */
 
-$bg-main: #090b10;
-$card-bg: #131824;
-$border-color: #1f2736;
-$border-focus: #6366f1;
-$accent-primary: #6366f1;
-$accent-gradient: linear-gradient(135deg,
-    #6366f1 0%,
-    #a855f7 100%);
+$dark-bg: #080b1200;
+$dark-card: #131824;
+$dark-card-soft: #171d2a;
+$dark-border: #222b3b;
+$dark-text: #f8fafc;
+$dark-muted: #94a3b8;
 
-$text-main: #f8fafc;
-$text-muted: #94a3b8;
+$light-bg: #f5f7fb;
+$light-card: #f5f7fb00;
+$light-card-soft: #f8fafc;
+$light-border: #e5e7eb;
+$light-text: #172033;
+$light-muted: #64748b;
+
+$primary: #6366f1;
+$primary-dark: #4f46e5;
+$primary-light: #818cf8;
+
+$success: #10b981;
+$warning: #f59e0b;
+$danger: #ef4444;
 
 
 /* ================================================================
@@ -23,7 +33,26 @@ $text-muted: #94a3b8;
   display: block;
   width: 100%;
   min-height: 100vh;
-  background-color: $bg-main;
+
+  --dashboard-bg: #{$dark-bg};
+  --dashboard-card: #{$dark-card};
+  --dashboard-card-soft: #{$dark-card-soft};
+  --dashboard-border: #{$dark-border};
+
+  --dashboard-text: #{$dark-text};
+  --dashboard-muted: #{$dark-muted};
+
+  --dashboard-primary: #{$primary};
+  --dashboard-primary-dark: #{$primary-dark};
+
+  --dashboard-grid: rgba(255, 255, 255, 0.055);
+  --dashboard-shadow: 0 12px 35px rgba(0, 0, 0, 0.28);
+
+  width: 100%;
+
+  background: var(--dashboard-bg);
+
+  color: var(--dashboard-text);
 
   font-family:
     'Inter',
@@ -32,9 +61,11 @@ $text-muted: #94a3b8;
     'Segoe UI',
     sans-serif;
 
-  color: $text-main;
-
   box-sizing: border-box;
+
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 
   *,
   *::before,
@@ -44,9 +75,33 @@ $text-muted: #94a3b8;
 }
 
 
+/* ================================================================
+   LIGHT THEME
+   ================================================================ */
+
+:host-context(body.light-mode),
+:host-context(.light-mode) {
+
+  --dashboard-bg: #ffffff00;
+  --dashboard-card: #ffffff;
+  --dashboard-card-soft: #f8fafc;
+  --dashboard-border: #e5e7eb;
+
+  --dashboard-text: #172033;
+  --dashboard-muted: #64748b;
+
+  --dashboard-primary: #5b5ce2;
+  --dashboard-primary-dark: #4f46e5;
+
+  --dashboard-grid: rgba(15, 23, 42, 0.07);
+
+  --dashboard-shadow:
+    0 10px 30px rgba(15, 23, 42, 0.06);
+}
+
 
 /* ================================================================
-   DASHBOARD HEADER
+   HEADER
    ================================================================ */
 
 .dashboard-header {
@@ -63,22 +118,16 @@ $text-muted: #94a3b8;
   flex-wrap: wrap;
 
 
-  /* --------------------------------------------------------------
-     TITLE
-     -------------------------------------------------------------- */
-
   .header-title-group {
     min-width: 0;
     flex: 1 1 400px;
 
     h1 {
-      margin: 0 0 6px;
+      margin: 0 0 7px;
 
-      color: #ffffff;
+      color: var(--dashboard-text);
 
-      font-size: clamp(1.45rem,
-          2vw,
-          1.85rem);
+      font-size: clamp(1.45rem, 2vw, 1.85rem);
 
       line-height: 1.2;
 
@@ -92,20 +141,14 @@ $text-muted: #94a3b8;
 
       margin: 0;
 
-      color: $text-muted;
+      color: var(--dashboard-muted);
 
-      font-size: clamp(0.82rem,
-          1vw,
-          0.95rem);
+      font-size: clamp(0.82rem, 1vw, 0.95rem);
 
       line-height: 1.6;
     }
   }
 
-
-  /* --------------------------------------------------------------
-     HEADER ACTIONS
-     -------------------------------------------------------------- */
 
   .header-actions {
     position: relative;
@@ -129,11 +172,12 @@ $text-muted: #94a3b8;
       .dropdown-caret {
         margin-left: 2px;
 
-        color: $text-muted;
+        color: var(--dashboard-muted);
 
         font-size: 0.7rem;
 
-        transition: transform 0.2s ease;
+        transition:
+          transform 0.2s ease;
       }
 
 
@@ -144,27 +188,27 @@ $text-muted: #94a3b8;
 
         right: 0;
 
-        width: 180px;
+        width: 190px;
 
         max-width: calc(100vw - 28px);
 
-        padding: 5px;
+        padding: 6px;
 
-        background: #181f2f;
+        background: var(--dashboard-card);
 
-        border: 1px solid $border-color;
+        border: 1px solid var(--dashboard-border);
 
         border-radius: 12px;
 
         box-shadow:
-          0 20px 40px rgba(0, 0, 0, 0.45),
-          0 4px 12px rgba(0, 0, 0, 0.25);
+          0 20px 45px rgba(15, 23, 42, 0.14);
 
         z-index: 100;
 
         overflow: hidden;
 
-        animation: dashboardDropdownIn 0.16s ease-out;
+        animation:
+          dashboardDropdownIn 0.16s ease-out;
 
 
         .dropdown-item {
@@ -180,9 +224,11 @@ $text-muted: #94a3b8;
 
           border-radius: 8px;
 
-          color: $text-muted;
+          color: var(--dashboard-muted);
 
           text-align: left;
+
+          font-family: inherit;
 
           font-size: 0.84rem;
 
@@ -194,9 +240,11 @@ $text-muted: #94a3b8;
 
           &:hover,
           &.active {
-            background: rgba(99, 102, 241, 0.15);
+            background:
+              rgba(99, 102, 241, 0.10);
 
-            color: #ffffff;
+            color:
+              var(--dashboard-primary);
           }
 
           &:active {
@@ -206,10 +254,6 @@ $text-muted: #94a3b8;
       }
     }
 
-
-    /* ------------------------------------------------------------
-       ALL HEADER BUTTONS
-       ------------------------------------------------------------ */
 
     button {
       min-height: 42px;
@@ -249,21 +293,26 @@ $text-muted: #94a3b8;
     }
 
 
-    /* ------------------------------------------------------------
-       OUTLINE BUTTON
-       ------------------------------------------------------------ */
-
     .btn-action-outline {
-      background: $card-bg;
+      background: var(--dashboard-card);
 
-      border: 1px solid $border-color;
+      border: 1px solid var(--dashboard-border);
 
-      color: $text-main;
+      color: var(--dashboard-text);
+
+      box-shadow:
+        0 2px 5px rgba(15, 23, 42, 0.03);
+
 
       &:hover {
-        background: #181f2f;
+        background:
+          var(--dashboard-card-soft);
 
-        border-color: #475569;
+        border-color:
+          rgba(99, 102, 241, 0.35);
+
+        color:
+          var(--dashboard-primary);
 
         transform: translateY(-1px);
       }
@@ -286,27 +335,29 @@ $text-muted: #94a3b8;
     }
 
 
-    /* ------------------------------------------------------------
-       PRIMARY BUTTON
-       ------------------------------------------------------------ */
-
     .btn-action-primary {
-      background: $accent-gradient;
+      background:
+        linear-gradient(
+          135deg,
+          #6366f1 0%,
+          #7c3aed 100%
+        );
 
       border: none;
 
       color: #ffffff;
 
       box-shadow:
-        0 8px 16px rgba(99, 102, 241, 0.25);
+        0 8px 18px rgba(99, 102, 241, 0.22);
+
 
       &:hover {
-        opacity: 0.96;
+        opacity: 0.97;
 
         transform: translateY(-1px);
 
         box-shadow:
-          0 10px 20px rgba(99, 102, 241, 0.32);
+          0 11px 24px rgba(99, 102, 241, 0.28);
       }
 
       &:active {
@@ -318,7 +369,27 @@ $text-muted: #94a3b8;
 
 
 /* ================================================================
-   STATS GRID
+   SECTION LABEL
+   ================================================================ */
+
+.section-eyebrow {
+  margin-bottom: 7px;
+
+  color:
+    var(--dashboard-primary);
+
+  font-size: 0.68rem;
+
+  font-weight: 800;
+
+  line-height: 1;
+
+  letter-spacing: 0.12em;
+}
+
+
+/* ================================================================
+   STATS
    ================================================================ */
 
 .stats-grid {
@@ -352,23 +423,18 @@ $text-muted: #94a3b8;
 }
 
 
-/* ================================================================
-   STAT CARD
-   ================================================================ */
-
 .stat-card {
   min-width: 0;
 
-  background: $card-bg;
+  background: var(--dashboard-card);
 
-  border: 1px solid $border-color;
+  border: 1px solid var(--dashboard-border);
 
   border-radius: 16px;
 
   padding: 24px;
 
-  box-shadow:
-    0 10px 30px rgba(0, 0, 0, 0.3);
+  box-shadow: var(--dashboard-shadow);
 
   transition:
     transform 0.25s ease,
@@ -378,12 +444,13 @@ $text-muted: #94a3b8;
 
   &:hover {
     border-color:
-      rgba(99, 102, 241, 0.4);
+      rgba(99, 102, 241, 0.32);
 
-    transform: translateY(-2px);
+    transform:
+      translateY(-2px);
 
     box-shadow:
-      0 16px 35px rgba(0, 0, 0, 0.35);
+      0 16px 38px rgba(15, 23, 42, 0.10);
   }
 
 
@@ -396,13 +463,13 @@ $text-muted: #94a3b8;
 
     gap: 12px;
 
-    margin-bottom: 16px;
+    margin-bottom: 17px;
 
 
     .stat-title {
       min-width: 0;
 
-      color: $text-muted;
+      color: var(--dashboard-muted);
 
       font-size: 0.88rem;
 
@@ -419,7 +486,7 @@ $text-muted: #94a3b8;
 
       min-width: 40px;
 
-      border-radius: 10px;
+      border-radius: 11px;
 
       display: flex;
 
@@ -427,11 +494,15 @@ $text-muted: #94a3b8;
 
       justify-content: center;
 
-      color: #ffffff;
+      color:
+        var(--dashboard-primary);
 
       font-size: 1rem;
 
       flex-shrink: 0;
+
+      border:
+        1px solid rgba(99, 102, 241, 0.08);
     }
   }
 
@@ -439,17 +510,15 @@ $text-muted: #94a3b8;
   .stat-card-body {
 
     .stat-value {
-      margin: 0 0 6px;
+      margin: 0 0 7px;
 
-      color: #ffffff;
+      color: var(--dashboard-text);
 
-      font-size: clamp(1.45rem,
-          2.4vw,
-          1.75rem);
+      font-size: clamp(1.45rem, 2.4vw, 1.75rem);
 
       line-height: 1.2;
 
-      font-weight: 700;
+      font-weight: 750;
 
       letter-spacing: -0.025em;
 
@@ -462,22 +531,27 @@ $text-muted: #94a3b8;
 
       align-items: center;
 
-      gap: 4px;
+      gap: 5px;
 
-      color: #34d399;
-
-      font-size: 0.82rem;
+      font-size: 0.81rem;
 
       line-height: 1.4;
 
       font-weight: 600;
 
+
       &.positive {
-        color: #34d399;
+        color: #10b981;
       }
 
+
+      &.negative {
+        color: #ef4444;
+      }
+
+
       i {
-        font-size: 0.72rem;
+        font-size: 0.7rem;
       }
     }
   }
@@ -487,20 +561,6 @@ $text-muted: #94a3b8;
     padding: 20px;
 
     border-radius: 14px;
-
-
-    .stat-card-header {
-      margin-bottom: 13px;
-    }
-
-
-    .stat-icon-wrapper {
-      width: 38px !important;
-
-      height: 38px !important;
-
-      min-width: 38px !important;
-    }
   }
 
 
@@ -511,7 +571,7 @@ $text-muted: #94a3b8;
 
 
 /* ================================================================
-   ANALYTICS SECTION
+   ANALYTICS
    ================================================================ */
 
 .analytics-section {
@@ -526,30 +586,21 @@ $text-muted: #94a3b8;
 }
 
 
-/* ================================================================
-   CHART CARD
-   ================================================================ */
-
 .chart-card-modern {
   width: 100%;
 
   min-width: 0;
 
-  background: $card-bg;
+  background: var(--dashboard-card);
 
-  border: 1px solid $border-color;
+  border: 1px solid var(--dashboard-border);
 
   border-radius: 16px;
 
   padding: 28px;
 
-  box-shadow:
-    0 10px 30px rgba(0, 0, 0, 0.3);
+  box-shadow: var(--dashboard-shadow);
 
-
-  /* --------------------------------------------------------------
-     CHART HEADER
-     -------------------------------------------------------------- */
 
   .chart-header {
     display: flex;
@@ -574,11 +625,9 @@ $text-muted: #94a3b8;
       h3 {
         margin: 0 0 5px;
 
-        color: #ffffff;
+        color: var(--dashboard-text);
 
-        font-size: clamp(1rem,
-            1.4vw,
-            1.15rem);
+        font-size: clamp(1rem, 1.4vw, 1.15rem);
 
         line-height: 1.35;
 
@@ -589,7 +638,7 @@ $text-muted: #94a3b8;
       p {
         margin: 0;
 
-        color: $text-muted;
+        color: var(--dashboard-muted);
 
         font-size: 0.85rem;
 
@@ -597,10 +646,6 @@ $text-muted: #94a3b8;
       }
     }
 
-
-    /* ------------------------------------------------------------
-       CHART TABS
-       ------------------------------------------------------------ */
 
     .chart-tabs {
       display: flex;
@@ -613,9 +658,10 @@ $text-muted: #94a3b8;
 
       padding: 4px;
 
-      background: #0b0e16;
+      background:
+        var(--dashboard-card-soft);
 
-      border: 1px solid $border-color;
+      border: 1px solid var(--dashboard-border);
 
       border-radius: 9px;
 
@@ -639,7 +685,7 @@ $text-muted: #94a3b8;
 
         border-radius: 6px;
 
-        color: $text-muted;
+        color: var(--dashboard-muted);
 
         font-family: inherit;
 
@@ -653,16 +699,24 @@ $text-muted: #94a3b8;
 
         transition:
           background-color 0.2s ease,
-          color 0.2s ease;
+          color 0.2s ease,
+          box-shadow 0.2s ease;
 
-        -webkit-tap-highlight-color: transparent;
+
+        &.active {
+          background: var(--dashboard-card);
+
+          color:
+            var(--dashboard-primary);
+
+          box-shadow:
+            0 2px 7px rgba(15, 23, 42, 0.08);
+        }
 
 
-        &.active,
         &:hover {
-          background: $accent-primary;
-
-          color: #ffffff;
+          color:
+            var(--dashboard-primary);
         }
 
 
@@ -674,13 +728,6 @@ $text-muted: #94a3b8;
   }
 
 
-  /* --------------------------------------------------------------
-     CHART SCROLL WRAPPER
-
-     On small screens, the chart keeps enough width for all
-     12 months instead of compressing them.
-     -------------------------------------------------------------- */
-
   .chart-scroll-wrapper {
     width: 100%;
 
@@ -691,7 +738,7 @@ $text-muted: #94a3b8;
     scrollbar-width: thin;
 
     scrollbar-color:
-      #334155 transparent;
+      #94a3b8 transparent;
 
     -webkit-overflow-scrolling: touch;
 
@@ -705,16 +752,12 @@ $text-muted: #94a3b8;
     }
 
     &::-webkit-scrollbar-thumb {
-      background: #334155;
+      background: #94a3b8;
 
       border-radius: 10px;
     }
   }
 
-
-  /* --------------------------------------------------------------
-     CHART CANVAS
-     -------------------------------------------------------------- */
 
   .chart-canvas-placeholder {
     position: relative;
@@ -730,10 +773,6 @@ $text-muted: #94a3b8;
     padding-top: 10px;
   }
 
-
-  /* --------------------------------------------------------------
-     CHART GRID
-     -------------------------------------------------------------- */
 
   .chart-grid-lines {
     position: absolute;
@@ -757,7 +796,7 @@ $text-muted: #94a3b8;
     pointer-events: none;
 
     border-bottom:
-      1px solid $border-color;
+      1px solid var(--dashboard-border);
 
 
     span {
@@ -765,21 +804,20 @@ $text-muted: #94a3b8;
 
       padding-top: 2px;
 
-      color: #475569;
+      color:
+        var(--dashboard-muted);
 
       font-size: 0.72rem;
 
       line-height: 1;
 
+      opacity: 0.65;
+
       border-top:
-        1px dashed rgba(255, 255, 255, 0.04);
+        1px dashed var(--dashboard-grid);
     }
   }
 
-
-  /* --------------------------------------------------------------
-     BAR VISUAL
-     -------------------------------------------------------------- */
 
   .mock-chart-visual {
     position: relative;
@@ -825,28 +863,43 @@ $text-muted: #94a3b8;
         min-height: 6px;
 
         background:
-          linear-gradient(180deg,
-            rgba(99, 102, 241, 0.85) 0%,
-            rgba(168, 85, 247, 0.4) 100%);
+          linear-gradient(
+            180deg,
+            #6366f1 0%,
+            #8b5cf6 100%
+          );
 
         border-radius:
           6px 6px 0 0;
 
+        box-shadow:
+          0 6px 16px rgba(99, 102, 241, 0.13);
+
         transition:
           height 0.5s ease,
-          filter 0.2s ease;
+          filter 0.2s ease,
+          opacity 0.2s ease;
+
 
         &:hover {
-          background: $accent-gradient;
+          background:
+            linear-gradient(
+              180deg,
+              #4f46e5 0%,
+              #7c3aed 100%
+            );
 
           filter:
-            drop-shadow(0 5px 10px rgba(99, 102, 241, 0.25));
+            drop-shadow(
+              0 5px 10px
+              rgba(99, 102, 241, 0.25)
+            );
         }
       }
 
 
       .month-label {
-        color: $text-muted;
+        color: var(--dashboard-muted);
 
         font-size: 0.78rem;
 
@@ -921,7 +974,7 @@ $text-muted: #94a3b8;
 
 
 /* ================================================================
-   TABLE SECTION
+   TABLE
    ================================================================ */
 
 .table-section {
@@ -929,30 +982,21 @@ $text-muted: #94a3b8;
 }
 
 
-/* ================================================================
-   TABLE CARD
-   ================================================================ */
-
 .table-card-modern {
   width: 100%;
 
   min-width: 0;
 
-  background: $card-bg;
+  background: var(--dashboard-card);
 
-  border: 1px solid $border-color;
+  border: 1px solid var(--dashboard-border);
 
   border-radius: 16px;
 
   padding: 28px;
 
-  box-shadow:
-    0 10px 30px rgba(0, 0, 0, 0.3);
+  box-shadow: var(--dashboard-shadow);
 
-
-  /* --------------------------------------------------------------
-     TABLE HEADER
-     -------------------------------------------------------------- */
 
   .table-header {
     display: flex;
@@ -977,11 +1021,9 @@ $text-muted: #94a3b8;
       h3 {
         margin: 0 0 5px;
 
-        color: #ffffff;
+        color: var(--dashboard-text);
 
-        font-size: clamp(1rem,
-            1.4vw,
-            1.15rem);
+        font-size: clamp(1rem, 1.4vw, 1.15rem);
 
         line-height: 1.35;
 
@@ -992,7 +1034,7 @@ $text-muted: #94a3b8;
       p {
         margin: 0;
 
-        color: $text-muted;
+        color: var(--dashboard-muted);
 
         font-size: 0.85rem;
 
@@ -1012,13 +1054,14 @@ $text-muted: #94a3b8;
 
       border: none;
 
-      color: #818cf8;
+      color:
+        var(--dashboard-primary);
 
       font-family: inherit;
 
       font-size: 0.88rem;
 
-      font-weight: 600;
+      font-weight: 650;
 
       line-height: 1.4;
 
@@ -1026,32 +1069,36 @@ $text-muted: #94a3b8;
 
       cursor: pointer;
 
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 7px;
+
       transition:
         color 0.2s ease,
         opacity 0.2s ease;
 
+
       &:hover {
-        color: #a5b4fc;
+        color:
+          var(--dashboard-primary-dark);
 
         text-decoration: underline;
       }
 
+
       &:active {
         opacity: 0.8;
+      }
+
+
+      i {
+        font-size: 0.72rem;
       }
     }
   }
 
-
-  /* ============================================================
-     TABLE RESPONSIVE WRAPPER
-
-     IMPORTANT:
-     The table itself intentionally stays wide.
-
-     On small/medium screens this wrapper becomes horizontally
-     scrollable, so every column and every row remains readable.
-     ============================================================ */
 
   .table-responsive {
     width: 100%;
@@ -1067,7 +1114,7 @@ $text-muted: #94a3b8;
     scrollbar-width: thin;
 
     scrollbar-color:
-      #334155 transparent;
+      #94a3b8 transparent;
 
 
     &::-webkit-scrollbar {
@@ -1079,20 +1126,12 @@ $text-muted: #94a3b8;
     }
 
     &::-webkit-scrollbar-thumb {
-      background: #334155;
+      background: #94a3b8;
 
       border-radius: 10px;
-
-      &:hover {
-        background: #475569;
-      }
     }
   }
 
-
-  /* ============================================================
-     DATA TABLE
-     ============================================================ */
 
   .modern-data-table {
     width: 100%;
@@ -1109,13 +1148,14 @@ $text-muted: #94a3b8;
     th {
       padding: 12px 16px;
 
-      color: $text-muted;
+      color:
+        var(--dashboard-muted);
 
       font-size: 0.76rem;
 
       line-height: 1.3;
 
-      font-weight: 600;
+      font-weight: 700;
 
       text-transform: uppercase;
 
@@ -1124,16 +1164,18 @@ $text-muted: #94a3b8;
       white-space: nowrap;
 
       border-bottom:
-        1px solid $border-color;
+        1px solid var(--dashboard-border);
 
-      background: $card-bg;
+      background:
+        var(--dashboard-card);
     }
 
 
     td {
       padding: 16px;
 
-      color: #cbd5e1;
+      color:
+        var(--dashboard-text);
 
       font-size: 0.9rem;
 
@@ -1144,7 +1186,7 @@ $text-muted: #94a3b8;
       white-space: nowrap;
 
       border-bottom:
-        1px solid rgba(31, 39, 54, 0.5);
+        1px solid var(--dashboard-border);
     }
 
 
@@ -1163,15 +1205,11 @@ $text-muted: #94a3b8;
       &:hover {
         td {
           background:
-            rgba(255, 255, 255, 0.018);
+            rgba(99, 102, 241, 0.035);
         }
       }
     }
 
-
-    /* ----------------------------------------------------------
-       CUSTOMER CELL
-       ---------------------------------------------------------- */
 
     .customer-cell {
       display: flex;
@@ -1209,10 +1247,10 @@ $text-muted: #94a3b8;
         letter-spacing: 0.02em;
 
         border:
-          1px solid rgba(255, 255, 255, 0.1);
+          1px solid rgba(255, 255, 255, 0.12);
 
         box-shadow:
-          0 4px 12px rgba(0, 0, 0, 0.25);
+          0 4px 12px rgba(15, 23, 42, 0.14);
 
         flex-shrink: 0;
       }
@@ -1233,13 +1271,14 @@ $text-muted: #94a3b8;
 
           overflow: hidden;
 
-          color: #ffffff;
+          color:
+            var(--dashboard-text);
 
           font-size: 0.92rem;
 
           line-height: 1.4;
 
-          font-weight: 600;
+          font-weight: 650;
 
           text-overflow: ellipsis;
         }
@@ -1252,7 +1291,8 @@ $text-muted: #94a3b8;
 
           overflow: hidden;
 
-          color: $text-muted;
+          color:
+            var(--dashboard-muted);
 
           font-size: 0.78rem;
 
@@ -1264,10 +1304,6 @@ $text-muted: #94a3b8;
     }
 
 
-    /* ----------------------------------------------------------
-       PLAN BADGE
-       ---------------------------------------------------------- */
-
     .plan-badge {
       display: inline-flex;
 
@@ -1278,28 +1314,25 @@ $text-muted: #94a3b8;
       padding: 4px 10px;
 
       background:
-        rgba(99, 102, 241, 0.1);
+        rgba(99, 102, 241, 0.08);
 
       border:
-        1px solid rgba(99, 102, 241, 0.25);
+        1px solid rgba(99, 102, 241, 0.18);
 
       border-radius: 50px;
 
-      color: #818cf8;
+      color:
+        var(--dashboard-primary);
 
       font-size: 0.78rem;
 
       line-height: 1.2;
 
-      font-weight: 600;
+      font-weight: 650;
 
       white-space: nowrap;
     }
 
-
-    /* ----------------------------------------------------------
-       STATUS BADGE
-       ---------------------------------------------------------- */
 
     .status-badge {
       display: inline-flex;
@@ -1318,7 +1351,7 @@ $text-muted: #94a3b8;
 
       line-height: 1.2;
 
-      font-weight: 600;
+      font-weight: 650;
 
       white-space: nowrap;
 
@@ -1338,73 +1371,68 @@ $text-muted: #94a3b8;
 
       &.active {
         background:
-          rgba(52, 211, 153, 0.1);
+          rgba(16, 185, 129, 0.09);
 
-        color: #34d399;
+        color:
+          #059669;
+
 
         .status-dot {
-          background: #34d399;
+          background:
+            #10b981;
         }
       }
 
 
       &.pending {
         background:
-          rgba(234, 179, 8, 0.1);
+          rgba(245, 158, 11, 0.10);
 
-        color: #facc15;
+        color:
+          #d97706;
+
 
         .status-dot {
-          background: #facc15;
+          background:
+            #f59e0b;
         }
       }
 
 
       &.failed {
         background:
-          rgba(239, 68, 68, 0.1);
+          rgba(239, 68, 68, 0.09);
 
-        color: #f87171;
+        color:
+          #dc2626;
+
 
         .status-dot {
-          background: #f87171;
+          background:
+            #ef4444;
         }
       }
     }
 
 
-    /* ----------------------------------------------------------
-       AMOUNT
-       ---------------------------------------------------------- */
-
     .font-weight-bold {
-      color: #ffffff;
+      color:
+        var(--dashboard-text);
 
       font-weight: 700;
     }
 
 
-    /* ----------------------------------------------------------
-       MUTED
-       ---------------------------------------------------------- */
-
     .text-muted {
-      color: $text-muted !important;
+      color:
+        var(--dashboard-muted) !important;
     }
 
-
-    /* ----------------------------------------------------------
-       RIGHT ALIGNMENT
-       ---------------------------------------------------------- */
 
     .text-right {
       text-align: right;
     }
 
-
-    /* ----------------------------------------------------------
-       ACTION BUTTON
-       ---------------------------------------------------------- */
 
     .action-icon-btn {
       width: 36px;
@@ -1419,7 +1447,8 @@ $text-muted: #94a3b8;
 
       border-radius: 8px;
 
-      color: $text-muted;
+      color:
+        var(--dashboard-muted);
 
       display: inline-flex;
 
@@ -1435,8 +1464,6 @@ $text-muted: #94a3b8;
         color 0.2s ease,
         transform 0.2s ease;
 
-      -webkit-tap-highlight-color: transparent;
-
 
       i {
         display: none;
@@ -1448,9 +1475,11 @@ $text-muted: #94a3b8;
 
         height: 16px;
 
-        stroke: $text-muted;
+        stroke:
+          var(--dashboard-muted);
 
-        fill: $text-muted;
+        fill:
+          var(--dashboard-muted);
 
         transition:
           stroke 0.2s ease,
@@ -1460,26 +1489,31 @@ $text-muted: #94a3b8;
 
       &:hover {
         background:
-          rgba(255, 255, 255, 0.05);
+          rgba(99, 102, 241, 0.07);
 
         border-color:
-          rgba(255, 255, 255, 0.06);
+          rgba(99, 102, 241, 0.12);
 
-        color: #ffffff;
+        color:
+          var(--dashboard-primary);
 
-        transform: translateY(-1px);
+        transform:
+          translateY(-1px);
 
 
         .fallback-dots-svg {
-          stroke: #ffffff;
+          stroke:
+            var(--dashboard-primary);
 
-          fill: #ffffff;
+          fill:
+            var(--dashboard-primary);
         }
       }
 
 
       &:active {
-        transform: translateY(0);
+        transform:
+          translateY(0);
 
         background:
           rgba(99, 102, 241, 0.12);
@@ -1487,10 +1521,6 @@ $text-muted: #94a3b8;
     }
   }
 
-
-  /* ============================================================
-     TABLET
-     ============================================================ */
 
   @media (max-width: 768px) {
     padding: 22px;
@@ -1518,10 +1548,6 @@ $text-muted: #94a3b8;
     }
   }
 
-
-  /* ============================================================
-     MOBILE
-     ============================================================ */
 
   @media (max-width: 576px) {
     padding: 18px;
@@ -1578,10 +1604,6 @@ $text-muted: #94a3b8;
   }
 
 
-  /* ============================================================
-     VERY SMALL MOBILE
-     ============================================================ */
-
   @media (max-width: 400px) {
     padding: 15px;
 
@@ -1596,10 +1618,10 @@ $text-muted: #94a3b8;
    RESPONSIVE HEADER
    ================================================================ */
 
-/* Tablet */
 @media (max-width: 900px) {
 
   .dashboard-header {
+
     .header-title-group {
       flex-basis: 100%;
     }
@@ -1613,7 +1635,6 @@ $text-muted: #94a3b8;
 }
 
 
-/* Mobile */
 @media (max-width: 600px) {
 
   .dashboard-header {
@@ -1625,9 +1646,11 @@ $text-muted: #94a3b8;
     .header-title-group {
       flex: 1 1 100%;
 
+
       h1 {
         font-size: 1.5rem;
       }
+
 
       p {
         font-size: 0.84rem;
@@ -1643,7 +1666,8 @@ $text-muted: #94a3b8;
       display: grid;
 
       grid-template-columns:
-        minmax(0, 1fr) minmax(0, 1fr);
+        minmax(0, 1fr)
+        minmax(0, 1fr);
 
       gap: 10px;
 
@@ -1688,13 +1712,13 @@ $text-muted: #94a3b8;
 }
 
 
-/* Very small mobile */
 @media (max-width: 400px) {
 
   .dashboard-header {
 
     .header-actions {
       grid-template-columns: 1fr;
+
 
       .dropdown-wrapper,
       .btn-action-primary {
@@ -1706,7 +1730,7 @@ $text-muted: #94a3b8;
 
 
 /* ================================================================
-   TOUCH DEVICES
+   TOUCH
    ================================================================ */
 
 @media (hover: none) and (pointer: coarse) {
@@ -1730,7 +1754,7 @@ $text-muted: #94a3b8;
 
 
 /* ================================================================
-   REDUCED MOTION
+   MOTION
    ================================================================ */
 
 @media (prefers-reduced-motion: reduce) {
@@ -1750,7 +1774,7 @@ $text-muted: #94a3b8;
 
 
 /* ================================================================
-   DROPDOWN ANIMATION
+   DROPDOWN
    ================================================================ */
 
 @keyframes dashboardDropdownIn {
@@ -1759,13 +1783,146 @@ $text-muted: #94a3b8;
     opacity: 0;
 
     transform:
-      translateY(-5px) scale(0.98);
+      translateY(-5px)
+      scale(0.98);
   }
 
   to {
     opacity: 1;
 
     transform:
-      translateY(0) scale(1);
+      translateY(0)
+      scale(1);
+  }
+}
+
+
+/* ================================================================
+   GLOBAL LIGHT NAVBAR SUPPORT
+   ================================================================ */
+
+/*
+   These selectors are intentionally broad enough to work with
+   common navbar class names. Your navbar's own styles should use
+   the same body.light-mode approach for exact control.
+*/
+
+body.light-mode {
+
+  .navbar,
+  .dashboard-navbar,
+  .main-navbar,
+  .top-navbar,
+  .sidebar,
+  .dashboard-sidebar {
+
+    background:
+      #ffffff !important;
+
+    border-color:
+      #e5e7eb !important;
+
+    color:
+      #172033 !important;
+
+    box-shadow:
+      0 1px 0 rgba(15, 23, 42, 0.04),
+      0 8px 24px rgba(15, 23, 42, 0.035);
+  }
+
+
+  .navbar a,
+  .dashboard-navbar a,
+  .main-navbar a,
+  .top-navbar a,
+  .sidebar a,
+  .dashboard-sidebar a {
+
+    color:
+      #64748b !important;
+  }
+
+
+  .navbar a:hover,
+  .dashboard-navbar a:hover,
+  .main-navbar a:hover,
+  .top-navbar a:hover,
+  .sidebar a:hover,
+  .dashboard-sidebar a:hover {
+
+    color:
+      #4f46e5 !important;
+
+    background:
+      rgba(99, 102, 241, 0.06);
+  }
+
+
+  .navbar .active,
+  .dashboard-navbar .active,
+  .main-navbar .active,
+  .top-navbar .active,
+  .sidebar .active,
+  .dashboard-sidebar .active {
+
+    color:
+      #4f46e5 !important;
+
+    background:
+      rgba(99, 102, 241, 0.08);
+  }
+
+
+  .navbar button,
+  .dashboard-navbar button,
+  .main-navbar button,
+  .top-navbar button {
+
+    color:
+      #475569 !important;
+
+    border-color:
+      #e5e7eb !important;
+
+    background:
+      #ffffff !important;
+  }
+
+
+  .navbar button:hover,
+  .dashboard-navbar button:hover,
+  .main-navbar button:hover,
+  .top-navbar button:hover {
+
+    color:
+      #4f46e5 !important;
+
+    background:
+      #f8fafc !important;
+  }
+}
+
+
+/* ================================================================
+   GLOBAL DARK NAVBAR SUPPORT
+   ================================================================ */
+
+body.dark-mode {
+
+  .navbar,
+  .dashboard-navbar,
+  .main-navbar,
+  .top-navbar,
+  .sidebar,
+  .dashboard-sidebar {
+
+    background:
+      #0f131d !important;
+
+    border-color:
+      #222b3b !important;
+
+    color:
+      #f8fafc !important;
   }
 }

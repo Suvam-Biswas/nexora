@@ -5,70 +5,92 @@
 
     <div class="header-title-group">
       <h1>User Management</h1>
-      <p>Manage platform accounts, permissions, user status, and access roles.</p>
+
+      <p>
+        Manage platform accounts, permissions, user status, and access roles.
+      </p>
     </div>
 
     <div class="header-actions">
       <button type="button" class="btn-action-primary" (click)="openAddUserView()">
+
         <i class="fa-solid fa-user-plus"></i>
+
         <span>Add New User</span>
+
       </button>
     </div>
 
   </header>
 
 
-  <!-- Filter & Search Toolbar Card -->
+  <!-- Search and Filters -->
   <section class="toolbar-section">
 
     <div class="toolbar-card">
 
-      <!-- Search Input Box -->
+      <!-- Search -->
       <div class="search-box">
 
         <i class="fa-solid fa-magnifying-glass"></i>
 
         <input type="text" placeholder="Search users by name or email..." [(ngModel)]="searchQuery"
-          (ngModelChange)="currentPage = 1" />
+          (ngModelChange)="onSearchChange()" />
 
       </div>
 
 
-      <!-- Filters Group -->
+      <!-- Filters -->
       <div class="filters-group">
 
-        <!-- Role Filter Dropdown -->
+        <!-- Role -->
         <div class="filter-dropdown-wrapper">
 
           <label for="roleFilter">
-            Role:
+            Role
           </label>
 
-          <select id="roleFilter" [(ngModel)]="selectedRole" (ngModelChange)="currentPage = 1">
+          <div class="select-wrapper">
 
-            <option *ngFor="let role of roles" [value]="role">
-              {{ role }}
-            </option>
+            <select id="roleFilter" [(ngModel)]="selectedRole" (ngModelChange)="onFilterChange()">
 
-          </select>
+              <option *ngFor="let role of roles" [value]="role">
+
+                {{ role }}
+
+              </option>
+
+            </select>
+
+            <i class="fa-solid fa-chevron-down"></i>
+
+          </div>
 
         </div>
 
 
-        <!-- Status Filter Dropdown -->
+        <!-- Status -->
         <div class="filter-dropdown-wrapper">
 
           <label for="statusFilter">
-            Status:
+            Status
           </label>
 
-          <select id="statusFilter" [(ngModel)]="selectedStatus" (ngModelChange)="currentPage = 1">
+          <div class="select-wrapper">
 
-            <option *ngFor="let status of statuses" [value]="status">
-              {{ status }}
-            </option>
+            <select id="statusFilter" [(ngModel)]="selectedStatus" (ngModelChange)="onFilterChange()">
 
-          </select>
+              <option *ngFor="let status of statuses" [value]="status">
+
+                {{ status }}
+
+              </option>
+
+            </select>
+
+            <i class="fa-solid fa-chevron-down"></i>
+
+          </div>
 
         </div>
 
@@ -79,24 +101,17 @@
   </section>
 
 
-  <!-- Data Table Grid Section -->
+  <!-- User Table -->
   <section class="table-section">
 
     <div class="table-card-modern">
 
-      <!--
-        IMPORTANT:
-        This wrapper handles horizontal scrolling on tablets
-        and mobile devices.
-
-        The table itself keeps a minimum width so that
-        every column remains readable.
-      -->
       <div class="table-responsive">
 
         <table class="modern-data-table">
 
           <thead>
+
             <tr>
 
               <th class="user-column">
@@ -120,6 +135,7 @@
               </th>
 
             </tr>
+
           </thead>
 
 
@@ -128,14 +144,17 @@
             <!-- User Rows -->
             <tr *ngFor="let user of paginatedUsers">
 
-              <!-- User Account -->
+              <!-- User -->
               <td class="user-column">
 
                 <div class="customer-cell">
 
                   <div class="customer-avatar-css" [style.background]="user.badgeBg">
+
                     {{ user.initials }}
+
                   </div>
+
 
                   <div class="customer-info">
 
@@ -154,7 +173,7 @@
               </td>
 
 
-              <!-- Access Role -->
+              <!-- Role -->
               <td class="role-column">
 
                 <span class="role-badge" [ngClass]="{
@@ -189,9 +208,11 @@
               </td>
 
 
-              <!-- Joined Date -->
+              <!-- Date -->
               <td class="date-column text-muted">
+
                 {{ user.dateAdded }}
+
               </td>
 
 
@@ -230,11 +251,15 @@
                 <div class="empty-state-content">
 
                   <div class="empty-state-icon">
+
                     <i class="fa-regular fa-folder-open"></i>
+
                   </div>
 
+                  <h3>No users found</h3>
+
                   <p>
-                    No user accounts found matching your filters.
+                    No user accounts match your current search or filters.
                   </p>
 
                 </div>
@@ -250,10 +275,10 @@
       </div>
 
 
-      <!-- Pagination Footer -->
+      <!-- Pagination -->
       <div class="pagination-footer" *ngIf="filteredUsers.length > 0">
 
-        <!-- Pagination Information -->
+        <!-- Information -->
         <div class="pagination-info">
 
           Showing
@@ -280,7 +305,7 @@
         </div>
 
 
-        <!-- Pagination Controls -->
+        <!-- Controls -->
         <div class="pagination-controls">
 
           <!-- Previous -->
@@ -293,13 +318,13 @@
           </button>
 
 
-          <!-- Page Numbers -->
+          <!-- Pages -->
           <div class="page-numbers">
 
-            <button type="button" *ngFor="let p of [].constructor(totalPages); let i = index" class="page-num-btn"
-              [class.active]="currentPage === (i + 1)" (click)="goToPage(i + 1)">
+            <button type="button" *ngFor="let p of pageNumbers" class="page-num-btn" [class.active]="currentPage === p"
+              (click)="goToPage(p)">
 
-              {{ i + 1 }}
+              {{ p }}
 
             </button>
 

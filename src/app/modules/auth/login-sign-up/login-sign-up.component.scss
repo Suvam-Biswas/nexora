@@ -1,11 +1,12 @@
 /* ============================================================
    PREMIUM SAAS AUTHENTICATION
-   FULLY RESPONSIVE / FLUID LAYOUT
+   FULLY RESPONSIVE / FLUID / NO VERTICAL SCROLL
    ============================================================ */
 
-/* ------------------------------------------------------------
-   Theme
-   ------------------------------------------------------------ */
+
+/* ============================================================
+   THEME
+   ============================================================ */
 
 $bg-main: #090b10;
 $panel-left: #0f131d;
@@ -18,9 +19,11 @@ $border-focus: #6366f1;
 $accent-primary: #6366f1;
 $accent-secondary: #a855f7;
 
-$accent-gradient: linear-gradient(135deg,
-    #6366f1 0%,
-    #a855f7 100%);
+$accent-gradient: linear-gradient(
+  135deg,
+  #6366f1 0%,
+  #a855f7 100%
+);
 
 $text-main: #f8fafc;
 $text-muted: #94a3b8;
@@ -30,17 +33,33 @@ $success-color: #34d399;
 
 
 /* ============================================================
-   GLOBAL HOST
+   GLOBAL VIEWPORT RESET
+   IMPORTANT:
+   Prevent browser/page-level vertical scrolling.
    ============================================================ */
 
 :host {
   display: block;
 
-  width: 100%;
-  min-width: 0;
+  position: fixed;
 
-  min-height: 100vh;
-  min-height: 100dvh;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  width: 100%;
+  width: 100vw;
+
+  height: 100%;
+  height: 100vh;
+  height: 100dvh;
+
+  min-width: 0;
+  min-height: 0;
+
+  margin: 0;
+  padding: 0;
 
   background-color: $bg-main;
 
@@ -56,6 +75,10 @@ $success-color: #34d399;
   box-sizing: border-box;
 
   overflow: hidden;
+
+  isolation: isolate;
+
+  z-index: 1;
 }
 
 
@@ -80,17 +103,26 @@ $success-color: #34d399;
   display: flex;
 
   width: 100%;
-  min-width: 0;
+  width: 100vw;
 
-  min-height: 100vh;
-  min-height: 100dvh;
+  height: 100%;
+  height: 100vh;
+  height: 100dvh;
+
+  min-width: 0;
+  min-height: 0;
+
+  margin: 0;
+  padding: 0;
 
   overflow: hidden;
 
   background:
-    radial-gradient(circle at 75% 20%,
+    radial-gradient(
+      circle at 75% 20%,
       rgba(99, 102, 241, 0.04),
-      transparent 30%),
+      transparent 30%
+    ),
     $bg-main;
 }
 
@@ -103,10 +135,12 @@ $success-color: #34d399;
   position: relative;
 
   flex: 1 1 52%;
-  min-width: 0;
 
-  min-height: 100vh;
-  min-height: 100dvh;
+  min-width: 0;
+  min-height: 0;
+
+  width: 52%;
+  height: 100%;
 
   display: flex;
   flex-direction: column;
@@ -119,17 +153,24 @@ $success-color: #34d399;
   background-color: $panel-left;
 
   background-image:
-    radial-gradient(circle at 10% 20%,
+    radial-gradient(
+      circle at 10% 20%,
       rgba(99, 102, 241, 0.14) 0%,
-      transparent 40%),
-    radial-gradient(circle at 90% 80%,
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 90% 80%,
       rgba(168, 85, 247, 0.10) 0%,
-      transparent 40%),
-    linear-gradient(135deg,
+      transparent 40%
+    ),
+    linear-gradient(
+      135deg,
       rgba(255, 255, 255, 0.015),
-      transparent 60%);
+      transparent 60%
+    );
 
-  border-right: 1px solid $border-color;
+  border-right:
+    1px solid $border-color;
 
   overflow: hidden;
 
@@ -160,46 +201,61 @@ $success-color: #34d399;
 
 
 .orb-1 {
-  width: clamp(180px, 20vw, 340px);
-  height: clamp(180px, 20vw, 340px);
+  width:
+    clamp(180px, 20vw, 340px);
+
+  height:
+    clamp(180px, 20vw, 340px);
 
   top: -12%;
   left: -8%;
 
   background:
-    radial-gradient(circle,
+    radial-gradient(
+      circle,
       rgba(99, 102, 241, 0.18),
-      transparent 68%);
+      transparent 68%
+    );
 }
 
 
 .orb-2 {
-  width: clamp(220px, 24vw, 400px);
-  height: clamp(220px, 24vw, 400px);
+  width:
+    clamp(220px, 24vw, 400px);
+
+  height:
+    clamp(220px, 24vw, 400px);
 
   right: -15%;
   bottom: -18%;
 
   background:
-    radial-gradient(circle,
+    radial-gradient(
+      circle,
       rgba(168, 85, 247, 0.15),
-      transparent 68%);
+      transparent 68%
+    );
 
   animation-delay: -4s;
 }
 
 
 .orb-3 {
-  width: clamp(120px, 14vw, 220px);
-  height: clamp(120px, 14vw, 220px);
+  width:
+    clamp(120px, 14vw, 220px);
+
+  height:
+    clamp(120px, 14vw, 220px);
 
   top: 42%;
   right: 15%;
 
   background:
-    radial-gradient(circle,
+    radial-gradient(
+      circle,
       rgba(99, 102, 241, 0.07),
-      transparent 70%);
+      transparent 70%
+    );
 
   animation-delay: -7s;
 }
@@ -213,12 +269,15 @@ $success-color: #34d399;
   position: relative;
 
   width: 100%;
+
   max-width: 600px;
 
   margin:
     auto 0;
 
   z-index: 2;
+
+  min-width: 0;
 }
 
 
@@ -284,16 +343,19 @@ $success-color: #34d399;
    ============================================================ */
 
 .brand-content-wrapper h1 {
-  margin: 0 0 clamp(14px, 1.6vw, 20px);
+  margin:
+    0 0 clamp(14px, 1.6vw, 20px);
 
   max-width: 620px;
 
   color: #ffffff;
 
   font-size:
-    clamp(2rem,
+    clamp(
+      2rem,
       3.2vw,
-      3.45rem);
+      3.45rem
+    );
 
   line-height: 1.08;
 
@@ -309,17 +371,20 @@ $success-color: #34d399;
    BRAND DESCRIPTION
    ============================================================ */
 
-.brand-content-wrapper>p {
+.brand-content-wrapper > p {
   max-width: 580px;
 
-  margin: 0 0 clamp(24px, 3vw, 38px);
+  margin:
+    0 0 clamp(24px, 3vw, 38px);
 
   color: $text-muted;
 
   font-size:
-    clamp(0.9rem,
+    clamp(
+      0.9rem,
       1vw,
-      1.06rem);
+      1.06rem
+    );
 
   line-height: 1.7;
 
@@ -332,7 +397,8 @@ $success-color: #34d399;
    ============================================================ */
 
 .glass-preview-card {
-  width: min(100%, 390px);
+  width:
+    min(100%, 390px);
 
   min-height: 80px;
 
@@ -348,9 +414,11 @@ $success-color: #34d399;
   border-radius: 16px;
 
   background:
-    linear-gradient(135deg,
+    linear-gradient(
+      135deg,
       rgba(255, 255, 255, 0.055),
-      rgba(255, 255, 255, 0.018));
+      rgba(255, 255, 255, 0.018)
+    );
 
   border:
     1px solid rgba(255, 255, 255, 0.08);
@@ -366,13 +434,14 @@ $success-color: #34d399;
   transition:
     transform 0.3s ease,
     border-color 0.3s ease;
+}
 
-  &:hover {
-    transform: translateY(-3px);
 
-    border-color:
-      rgba(129, 140, 248, 0.25);
-  }
+.glass-preview-card:hover {
+  transform: translateY(-3px);
+
+  border-color:
+    rgba(129, 140, 248, 0.25);
 }
 
 
@@ -384,7 +453,8 @@ $success-color: #34d399;
   width: 44px;
   height: 44px;
 
-  flex: 0 0 44px;
+  flex:
+    0 0 44px;
 
   display: flex;
 
@@ -450,7 +520,8 @@ $success-color: #34d399;
 .preview-trend {
   margin-left: auto;
 
-  flex: 0 0 auto;
+  flex:
+    0 0 auto;
 
   color: $success-color;
 
@@ -476,7 +547,11 @@ $success-color: #34d399;
   color: #64748b;
 
   font-size:
-    clamp(0.7rem, 0.8vw, 0.84rem);
+    clamp(
+      0.7rem,
+      0.8vw,
+      0.84rem
+    );
 
   line-height: 1.5;
 
@@ -489,13 +564,16 @@ $success-color: #34d399;
    ============================================================ */
 
 .auth-form-side {
+  position: relative;
+
   flex:
     1 1 48%;
 
   min-width: 0;
+  min-height: 0;
 
-  min-height: 100vh;
-  min-height: 100dvh;
+  width: 48%;
+  height: 100%;
 
   display: flex;
 
@@ -507,13 +585,17 @@ $success-color: #34d399;
 
   background-color: $bg-main;
 
-  overflow-x: hidden;
-  overflow-y: auto;
+  overflow: hidden;
 
-  scrollbar-width: thin;
+  scrollbar-width: none;
 
-  scrollbar-color:
-    #293244 transparent;
+  -ms-overflow-style: none;
+}
+
+
+/* Remove scrollbar in WebKit browsers */
+.auth-form-side::-webkit-scrollbar {
+  display: none;
 }
 
 
@@ -527,28 +609,39 @@ $success-color: #34d399;
   width: 100%;
 
   max-width:
-    clamp(390px,
+    clamp(
+      390px,
       32vw,
-      480px);
+      480px
+    );
 
-  margin:
-    auto;
+  max-height: calc(100% - 20px);
+
+  margin: auto;
 
   padding:
-    clamp(26px,
+    clamp(
+      26px,
       3vw,
-      42px);
+      42px
+    );
 
   background:
-    linear-gradient(145deg,
+    linear-gradient(
+      145deg,
       rgba(19, 24, 36, 0.98),
-      rgba(15, 19, 29, 0.98));
+      rgba(15, 19, 29, 0.98)
+    );
 
   border:
     1px solid $border-color;
 
   border-radius:
-    clamp(16px, 1.5vw, 22px);
+    clamp(
+      16px,
+      1.5vw,
+      22px
+    );
 
   box-shadow:
     0 30px 70px rgba(0, 0, 0, 0.55),
@@ -575,10 +668,12 @@ $success-color: #34d399;
   height: 1px;
 
   background:
-    linear-gradient(90deg,
+    linear-gradient(
+      90deg,
       transparent,
       rgba(129, 140, 248, 0.5),
-      transparent);
+      transparent
+    );
 
   pointer-events: none;
 }
@@ -592,7 +687,11 @@ $success-color: #34d399;
   position: relative;
 
   margin-bottom:
-    clamp(22px, 2.5vw, 30px);
+    clamp(
+      22px,
+      2.5vw,
+      30px
+    );
 }
 
 
@@ -620,14 +719,17 @@ $success-color: #34d399;
    ============================================================ */
 
 .auth-header-modern h2 {
-  margin: 0 0 8px;
+  margin:
+    0 0 8px;
 
   color: #fff;
 
   font-size:
-    clamp(1.45rem,
+    clamp(
+      1.45rem,
       1.7vw,
-      1.75rem);
+      1.75rem
+    );
 
   line-height: 1.2;
 
@@ -649,9 +751,11 @@ $success-color: #34d399;
   color: $text-muted;
 
   font-size:
-    clamp(0.82rem,
+    clamp(
+      0.82rem,
       0.9vw,
-      0.92rem);
+      0.92rem
+    );
 
   line-height: 1.55;
 }
@@ -663,6 +767,8 @@ $success-color: #34d399;
 
 .auth-form {
   width: 100%;
+
+  min-width: 0;
 }
 
 
@@ -674,7 +780,11 @@ $success-color: #34d399;
   width: 100%;
 
   margin-bottom:
-    clamp(16px, 1.7vw, 21px);
+    clamp(
+      16px,
+      1.7vw,
+      21px
+    );
 }
 
 
@@ -724,7 +834,7 @@ $success-color: #34d399;
    INPUT LEADING ICON
    ============================================================ */
 
-.input-box>.input-leading-icon {
+.input-box > .input-leading-icon {
   position: absolute;
 
   left: 15px;
@@ -754,7 +864,11 @@ $success-color: #34d399;
   min-width: 0;
 
   height:
-    clamp(45px, 3.2vw, 50px);
+    clamp(
+      45px,
+      3.2vw,
+      50px
+    );
 
   padding:
     0 46px;
@@ -771,9 +885,11 @@ $success-color: #34d399;
   font-family: inherit;
 
   font-size:
-    clamp(0.86rem,
+    clamp(
+      0.86rem,
       0.95vw,
-      0.93rem);
+      0.93rem
+    );
 
   line-height: normal;
 
@@ -785,6 +901,7 @@ $success-color: #34d399;
     box-shadow 0.25s ease;
 
   -webkit-appearance: none;
+
   appearance: none;
 }
 
@@ -811,7 +928,7 @@ $success-color: #34d399;
 }
 
 
-.input-box:focus-within>.input-leading-icon {
+.input-box:focus-within > .input-leading-icon {
   color: $accent-primary;
 }
 
@@ -829,7 +946,8 @@ $success-color: #34d399;
   width: 38px;
   height: 38px;
 
-  transform: translateY(-50%);
+  transform:
+    translateY(-50%);
 
   display: flex;
 
@@ -863,7 +981,8 @@ $success-color: #34d399;
 
 
 .toggle-pass-button:focus-visible {
-  outline: 2px solid rgba(129, 140, 248, 0.7);
+  outline:
+    2px solid rgba(129, 140, 248, 0.7);
 
   outline-offset: 1px;
 }
@@ -885,7 +1004,11 @@ $success-color: #34d399;
   margin-top: -2px;
 
   margin-bottom:
-    clamp(18px, 2vw, 24px);
+    clamp(
+      18px,
+      2vw,
+      24px
+    );
 
   font-size: 0.83rem;
 }
@@ -918,7 +1041,8 @@ $success-color: #34d399;
 
   margin: 0;
 
-  flex: 0 0 auto;
+  flex:
+    0 0 auto;
 
   accent-color: $accent-primary;
 
@@ -936,7 +1060,8 @@ $success-color: #34d399;
    ============================================================ */
 
 .forgot-link {
-  flex: 0 0 auto;
+  flex:
+    0 0 auto;
 
   color: #818cf8;
 
@@ -946,7 +1071,8 @@ $success-color: #34d399;
 
   white-space: nowrap;
 
-  transition: color 0.2s ease;
+  transition:
+    color 0.2s ease;
 }
 
 
@@ -965,7 +1091,11 @@ $success-color: #34d399;
   width: 100%;
 
   min-height:
-    clamp(46px, 3.3vw, 51px);
+    clamp(
+      46px,
+      3.3vw,
+      51px
+    );
 
   padding:
     10px 18px;
@@ -988,9 +1118,11 @@ $success-color: #34d399;
   font-family: inherit;
 
   font-size:
-    clamp(0.86rem,
+    clamp(
+      0.86rem,
       0.95vw,
-      0.95rem);
+      0.95rem
+    );
 
   font-weight: 600;
 
@@ -1009,7 +1141,8 @@ $success-color: #34d399;
 
 
 .btn-submit-action:hover {
-  transform: translateY(-1px);
+  transform:
+    translateY(-1px);
 
   filter: brightness(1.04);
 
@@ -1019,7 +1152,8 @@ $success-color: #34d399;
 
 
 .btn-submit-action:active {
-  transform: translateY(0);
+  transform:
+    translateY(0);
 
   box-shadow:
     0 8px 16px rgba(99, 102, 241, 0.25);
@@ -1027,7 +1161,8 @@ $success-color: #34d399;
 
 
 .btn-submit-action:focus-visible {
-  outline: 2px solid rgba(165, 180, 252, 0.85);
+  outline:
+    2px solid rgba(165, 180, 252, 0.85);
 
   outline-offset: 3px;
 }
@@ -1040,7 +1175,8 @@ $success-color: #34d399;
 
 
 .btn-submit-action:hover i {
-  transform: translateX(4px);
+  transform:
+    translateX(4px);
 }
 
 
@@ -1052,10 +1188,18 @@ $success-color: #34d399;
   width: 100%;
 
   margin-top:
-    clamp(20px, 2.3vw, 27px);
+    clamp(
+      20px,
+      2.3vw,
+      27px
+    );
 
   padding-top:
-    clamp(18px, 2vw, 22px);
+    clamp(
+      18px,
+      2vw,
+      22px
+    );
 
   border-top:
     1px solid rgba(31, 39, 54, 0.75);
@@ -1070,9 +1214,11 @@ $success-color: #34d399;
   color: $text-muted;
 
   font-size:
-    clamp(0.78rem,
+    clamp(
+      0.78rem,
       0.85vw,
-      0.88rem);
+      0.88rem
+    );
 
   line-height: 1.5;
 }
@@ -1100,6 +1246,498 @@ $success-color: #34d399;
 
 
 /* ============================================================
+   DEVELOPER CREDIT
+   PREMIUM CHAMPAGNE / SILVER DESIGN
+   NO LETTER SPACING BETWEEN CHARACTERS
+   ============================================================ */
+
+.developer-credit {
+  position: relative;
+
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  flex-wrap: wrap;
+
+  gap: 5px;
+
+  margin-top:
+    clamp(
+      14px,
+      1.7vw,
+      20px
+    );
+
+  padding:
+    8px 12px;
+
+  // background:
+  //   linear-gradient(
+  //     135deg,
+  //     rgba(255, 255, 255, 0.018),
+  //     rgba(212, 175, 55, 0.025),
+  //     rgba(255, 255, 255, 0.012)
+  //   );
+
+  // border:
+  //   1px solid rgba(255, 255, 255, 0.055);
+
+  // border-radius: 10px;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.025),
+    0 6px 20px rgba(0, 0, 0, 0.10);
+
+  overflow: hidden;
+
+  isolation: isolate;
+
+  animation:
+    developerCreditEntrance
+    0.7s
+    cubic-bezier(
+      0.16,
+      1,
+      0.3,
+      1
+    )
+    both;
+
+  transition:
+    border-color 0.35s ease,
+    background 0.35s ease,
+    box-shadow 0.35s ease,
+    transform 0.35s ease;
+}
+
+
+/* ============================================================
+   MOVING SHINE
+   ============================================================ */
+
+.developer-credit::before {
+  content: '';
+
+  position: absolute;
+
+  top: -20%;
+
+  left: -35%;
+
+  width: 28%;
+
+  height: 140%;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.12),
+      rgba(212, 175, 55, 0.10),
+      transparent
+    );
+
+  transform:
+    skewX(-20deg);
+
+  pointer-events: none;
+
+  z-index: -1;
+
+  animation:
+    developerShimmer
+    5s
+    ease-in-out
+    infinite;
+}
+
+
+/* ============================================================
+   SOFT PREMIUM BORDER GLOW
+   ============================================================ */
+
+.developer-credit::after {
+  content: '';
+
+  position: absolute;
+
+  inset: -1px;
+
+  border-radius: inherit;
+
+  padding: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0),
+      rgba(212, 175, 55, 0.32),
+      rgba(255, 255, 255, 0.22),
+      rgba(212, 175, 55, 0.28),
+      rgba(255, 255, 255, 0)
+    );
+
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+
+  -webkit-mask-composite: xor;
+
+  mask-composite: exclude;
+
+  opacity: 0.40;
+
+  pointer-events: none;
+
+  z-index: -1;
+
+  animation:
+    developerBorderGlow
+    4s
+    ease-in-out
+    infinite;
+}
+
+
+/* ============================================================
+   DEVELOPER PREFIX
+   ============================================================ */
+
+.developer-credit-prefix {
+  color:
+    rgba(148, 163, 184, 0.82);
+
+  font-size:
+    clamp(
+      0.68rem,
+      0.75vw,
+      0.78rem
+    );
+
+  font-weight: 500;
+
+  line-height: 1.4;
+
+  letter-spacing: normal;
+
+  white-space: nowrap;
+
+  text-rendering: optimizeLegibility;
+}
+
+
+/* ============================================================
+   DEVELOPER NAME
+   PREMIUM CHAMPAGNE / WARM METALLIC
+   ============================================================ */
+
+.developer-credit-name {
+  position: relative;
+
+  display: inline-block;
+
+  color: transparent;
+
+  background:
+    linear-gradient(
+      100deg,
+      #c8a951 0%,
+      #f0d98a 22%,
+      #fff4c2 42%,
+      #d8b85c 62%,
+      #f4dda0 80%,
+      #c39b42 100%
+    );
+
+  background-size:
+    240% auto;
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+
+  font-size:
+    clamp(
+      0.72rem,
+      0.8vw,
+      0.84rem
+    );
+
+  font-weight: 700;
+
+  line-height: 1.4;
+
+  /*
+     IMPORTANT:
+     Prevent unwanted spacing between every letter.
+  */
+  letter-spacing: normal;
+
+  word-spacing: normal;
+
+  white-space: nowrap;
+
+  text-rendering: optimizeLegibility;
+
+  animation:
+    developerNameGradient
+    4.2s
+    ease-in-out
+    infinite;
+
+  transition:
+    transform 0.3s ease,
+    filter 0.3s ease;
+}
+
+
+/* ============================================================
+   DEVELOPER NAME MICRO HIGHLIGHT
+   ============================================================ */
+
+.developer-credit-name::after {
+  content: '';
+
+  position: absolute;
+
+  left: 0;
+  right: 0;
+
+  bottom: -2px;
+
+  height: 1px;
+
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(240, 217, 138, 0.55),
+      transparent
+    );
+
+  opacity: 0.55;
+
+  transform:
+    scaleX(0.55);
+
+  transform-origin: center;
+
+  transition:
+    transform 0.35s ease,
+    opacity 0.35s ease;
+}
+
+
+/* ============================================================
+   DEVELOPER ICON
+   ============================================================ */
+
+.developer-credit-icon {
+  width:
+    clamp(
+      20px,
+      1.7vw,
+      24px
+    );
+
+  height:
+    clamp(
+      20px,
+      1.7vw,
+      24px
+    );
+
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  margin-left: 3px;
+
+  border-radius: 7px;
+
+  color: #d9b85c;
+
+  font-size:
+    clamp(
+      0.55rem,
+      0.6vw,
+      0.64rem
+    );
+
+  box-shadow:
+    0 4px 12px rgba(212, 175, 55, 0.08);
+
+  transition:
+    transform 0.35s ease,
+    background 0.35s ease,
+    box-shadow 0.35s ease,
+    color 0.35s ease;
+}
+
+
+/* ============================================================
+   DEVELOPER CREDIT HOVER
+   ============================================================ */
+
+.developer-credit:hover {
+  transform:
+    translateY(-2px);
+
+  border-color:
+    rgba(212, 175, 55, 0.20);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.025),
+      rgba(212, 175, 55, 0.045),
+      rgba(255, 255, 255, 0.018)
+    );
+
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.18),
+    0 0 20px rgba(212, 175, 55, 0.045),
+    inset 0 1px 0 rgba(255, 255, 255, 0.035);
+}
+
+
+.developer-credit:hover .developer-credit-name {
+  transform:
+    translateY(-1px);
+
+  filter:
+    drop-shadow(
+      0 0 6px rgba(240, 217, 138, 0.28)
+    );
+}
+
+
+.developer-credit:hover .developer-credit-name::after {
+  opacity: 0.9;
+
+  transform:
+    scaleX(0.9);
+}
+
+
+.developer-credit:hover .developer-credit-icon {
+  transform:
+    rotate(-8deg)
+    scale(1.08);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(212, 175, 55, 0.16),
+      rgba(255, 255, 255, 0.045)
+    );
+
+  color: #f0d98a;
+
+  box-shadow:
+    0 5px 16px rgba(212, 175, 55, 0.13);
+}
+
+
+/* ============================================================
+   DEVELOPER CREDIT ANIMATIONS
+   ============================================================ */
+
+@keyframes developerCreditEntrance {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(8px)
+      scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+  }
+
+}
+
+
+@keyframes developerShimmer {
+
+  0% {
+    left: -35%;
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 1;
+  }
+
+  45% {
+    left: 115%;
+    opacity: 0;
+  }
+
+  100% {
+    left: 115%;
+    opacity: 0;
+  }
+
+}
+
+
+@keyframes developerBorderGlow {
+
+  0%,
+  100% {
+    opacity: 0.20;
+
+    transform:
+      scale(1);
+  }
+
+  50% {
+    opacity: 0.60;
+
+    transform:
+      scale(1.005);
+  }
+
+}
+
+
+@keyframes developerNameGradient {
+
+  0% {
+    background-position:
+      100% center;
+  }
+
+  50% {
+    background-position:
+      0% center;
+  }
+
+  100% {
+    background-position:
+      100% center;
+  }
+
+}
+
+
+/* ============================================================
    ERROR STATES
    ============================================================ */
 
@@ -1112,12 +1750,14 @@ $success-color: #34d399;
 
 
 .input-box.error input {
-  border-color: $error-color !important;
+  border-color:
+    $error-color !important;
 }
 
 
-.input-box.error>.input-leading-icon {
-  color: $error-color !important;
+.input-box.error > .input-leading-icon {
+  color:
+    $error-color !important;
 }
 
 
@@ -1158,10 +1798,12 @@ $success-color: #34d399;
 
 .animate-fade {
   animation:
-    fadeIn 0.3s cubic-bezier(0.16,
+    fadeIn 0.3s cubic-bezier(
+      0.16,
       1,
       0.3,
-      1) forwards;
+      1
+    ) forwards;
 }
 
 
@@ -1193,12 +1835,14 @@ $success-color: #34d399;
   0%,
   100% {
     transform:
-      translate3d(0, 0, 0) scale(1);
+      translate3d(0, 0, 0)
+      scale(1);
   }
 
   50% {
     transform:
-      translate3d(10px, -12px, 0) scale(1.04);
+      translate3d(10px, -12px, 0)
+      scale(1.04);
   }
 
 }
@@ -1213,15 +1857,22 @@ $success-color: #34d399;
 
   .auth-brand-side {
     flex-basis: 54%;
+
+    width: 54%;
   }
+
 
   .auth-form-side {
     flex-basis: 46%;
+
+    width: 46%;
   }
+
 
   .brand-content-wrapper {
     max-width: 680px;
   }
+
 
   .auth-card-modern {
     max-width: 480px;
@@ -1238,14 +1889,38 @@ $success-color: #34d399;
 @media (min-width: 1800px) {
 
   .auth-brand-side {
-    padding-left: clamp(70px, 6vw, 120px);
-    padding-right: clamp(70px, 6vw, 120px);
+    padding-left:
+      clamp(
+        70px,
+        6vw,
+        120px
+      );
+
+    padding-right:
+      clamp(
+        70px,
+        6vw,
+        120px
+      );
   }
 
+
   .auth-form-side {
-    padding-left: clamp(50px, 5vw, 100px);
-    padding-right: clamp(50px, 5vw, 100px);
+    padding-left:
+      clamp(
+        50px,
+        5vw,
+        100px
+      );
+
+    padding-right:
+      clamp(
+        50px,
+        5vw,
+        100px
+      );
   }
+
 
   .brand-content-wrapper h1 {
     font-size: 3.7rem;
@@ -1263,20 +1938,33 @@ $success-color: #34d399;
 
   .auth-brand-side {
     padding:
-      clamp(34px, 4vw, 56px);
+      clamp(
+        34px,
+        4vw,
+        56px
+      );
   }
+
 
   .auth-form-side {
     padding:
-      clamp(24px, 3vw, 48px);
+      clamp(
+        24px,
+        3vw,
+        48px
+      );
   }
+
 
   .brand-content-wrapper h1 {
     font-size:
-      clamp(2.25rem,
+      clamp(
+        2.25rem,
         3.2vw,
-        3rem);
+        3rem
+      );
   }
+
 
   .auth-card-modern {
     max-width: 440px;
@@ -1295,37 +1983,60 @@ $success-color: #34d399;
   .auth-brand-side {
     flex-basis: 47%;
 
+    width: 47%;
+
     padding:
-      clamp(28px, 4vw, 44px);
+      clamp(
+        28px,
+        4vw,
+        44px
+      );
   }
+
 
   .auth-form-side {
     flex-basis: 53%;
 
+    width: 53%;
+
     padding:
-      clamp(22px, 3vw, 36px);
+      clamp(
+        22px,
+        3vw,
+        36px
+      );
   }
+
 
   .brand-content-wrapper h1 {
     font-size:
-      clamp(2rem,
+      clamp(
+        2rem,
         3.5vw,
-        2.7rem);
+        2.7rem
+      );
   }
 
-  .brand-content-wrapper>p {
+
+  .brand-content-wrapper > p {
     font-size: 0.92rem;
   }
+
 
   .glass-preview-card {
     max-width: 340px;
   }
 
+
   .auth-card-modern {
     max-width: 420px;
 
     padding:
-      clamp(24px, 3vw, 34px);
+      clamp(
+        24px,
+        3vw,
+        34px
+      );
   }
 
 }
@@ -1335,42 +2046,74 @@ $success-color: #34d399;
    TABLET
    768px - 900px
    SINGLE PANEL MODE
+   NO SCROLL
    ============================================================ */
 
 @media (max-width: 900px) {
 
   :host {
-    overflow: auto;
+    position: fixed;
+
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    width: 100vw;
+
+    height: 100vh;
+    height: 100dvh;
+
+    min-height: 0;
+
+    overflow: hidden;
   }
 
-  .auth-split-container {
-    min-height: 100vh;
-    min-height: 100dvh;
 
-    overflow: visible;
+  .auth-split-container {
+    width: 100vw;
+
+    height: 100vh;
+    height: 100dvh;
+
+    min-height: 0;
+
+    overflow: hidden;
 
     display: block;
 
     background:
-      radial-gradient(circle at 15% 0%,
+      radial-gradient(
+        circle at 15% 0%,
         rgba(99, 102, 241, 0.08),
-        transparent 32%),
+        transparent 32%
+      ),
       $bg-main;
   }
 
 
-  /* Hide desktop branding panel */
+  /* ----------------------------------------------------------
+     Hide desktop branding panel
+     ---------------------------------------------------------- */
+
   .auth-brand-side {
     display: none;
   }
 
 
-  /* Full authentication panel */
+  /* ----------------------------------------------------------
+     Full authentication panel
+     ---------------------------------------------------------- */
+
   .auth-form-side {
+    position: relative;
+
     width: 100%;
 
-    min-height: 100vh;
-    min-height: 100dvh;
+    height: 100vh;
+    height: 100dvh;
+
+    min-height: 0;
 
     display: flex;
 
@@ -1378,29 +2121,62 @@ $success-color: #34d399;
     justify-content: center;
 
     padding:
-      clamp(24px, 5vw, 48px);
+      clamp(
+        20px,
+        5vw,
+        48px
+      );
 
-    overflow:
-      visible;
+    overflow: hidden;
 
     background:
       transparent;
   }
 
 
+  /* ----------------------------------------------------------
+     Authentication card
+     ---------------------------------------------------------- */
+
   .auth-card-modern {
     width: 100%;
 
     max-width:
-      min(520px,
-        100%);
+      min(
+        520px,
+        100%
+      );
+
+    max-height:
+      calc(100% - 10px);
 
     margin: auto;
 
     padding:
-      clamp(28px,
+      clamp(
+        28px,
         5vw,
-        42px);
+        42px
+      );
+
+    overflow: hidden;
+  }
+
+
+  /* ----------------------------------------------------------
+     Developer credit
+     ---------------------------------------------------------- */
+
+  .developer-credit {
+    margin-top:
+      clamp(
+        12px,
+        2vw,
+        18px
+      );
+
+    padding:
+      7px 10px;
   }
 
 }
@@ -1414,17 +2190,40 @@ $success-color: #34d399;
 @media (max-width: 767px) {
 
   .auth-form-side {
-    align-items: flex-start;
+    align-items: center;
+
+    justify-content: center;
 
     padding:
-      clamp(24px, 5vw, 36px);
+      clamp(
+        16px,
+        5vw,
+        32px
+      );
 
-    overflow-y: auto;
+    overflow: hidden;
   }
 
+
   .auth-card-modern {
-    margin:
-      auto 0;
+    max-height:
+      calc(100% - 4px);
+
+    margin: auto;
+
+    padding:
+      clamp(
+        24px,
+        5vw,
+        36px
+      );
+  }
+
+
+  .developer-credit {
+    margin-top: 12px;
+
+    padding: 7px 10px;
   }
 
 }
@@ -1433,36 +2232,56 @@ $success-color: #34d399;
 /* ============================================================
    MOBILE
    481px - 600px
+   NO SCROLL
    ============================================================ */
 
 @media (max-width: 600px) {
 
   :host {
-    overflow-x: hidden;
-    overflow-y: auto;
+    width: 100vw;
+
+    height: 100vh;
+    height: 100dvh;
+
+    overflow: hidden;
   }
 
 
   .auth-split-container {
-    min-height: 100vh;
-    min-height: 100dvh;
+    width: 100vw;
+
+    height: 100vh;
+    height: 100dvh;
+
+    min-height: 0;
 
     display: block;
 
-    overflow: visible;
+    overflow: hidden;
   }
 
 
   .auth-form-side {
-    min-height: 100vh;
-    min-height: 100dvh;
+    width: 100%;
 
-    align-items: flex-start;
+    height: 100vh;
+    height: 100dvh;
+
+    min-height: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
 
     padding:
-      24px clamp(16px, 5vw, 24px);
+      16px clamp(
+        14px,
+        5vw,
+        24px
+      );
 
-    overflow-y: auto;
+    overflow: hidden;
   }
 
 
@@ -1471,18 +2290,26 @@ $success-color: #34d399;
 
     max-width: 520px;
 
-    margin:
-      auto;
+    max-height:
+      calc(100% - 4px);
+
+    margin: auto;
 
     padding:
-      clamp(24px, 6vw, 32px);
+      clamp(
+        20px,
+        6vw,
+        32px
+      );
 
     border-radius: 17px;
+
+    overflow: hidden;
   }
 
 
   .auth-header-modern {
-    margin-bottom: 24px;
+    margin-bottom: 20px;
   }
 
 
@@ -1494,26 +2321,78 @@ $success-color: #34d399;
   .auth-header-modern p {
     font-size: 0.84rem;
 
-    line-height: 1.55;
+    line-height: 1.5;
   }
 
 
   .form-control-group {
-    margin-bottom: 17px;
+    margin-bottom: 14px;
+  }
+
+
+  .form-control-group label {
+    margin-bottom: 6px;
   }
 
 
   .input-box input {
-    height: 47px;
+    height: 46px;
 
     font-size: 16px;
   }
 
 
   .btn-submit-action {
-    min-height: 48px;
+    min-height: 47px;
 
     font-size: 0.9rem;
+  }
+
+
+  .auth-switcher-footer {
+    margin-top: 17px;
+
+    padding-top: 15px;
+  }
+
+
+  /* ----------------------------------------------------------
+     Developer credit - mobile
+     ---------------------------------------------------------- */
+
+  .developer-credit {
+    margin-top: 12px;
+
+    padding:
+      7px 8px;
+
+    border-radius: 9px;
+
+    gap: 4px;
+  }
+
+
+  .developer-credit-prefix {
+    font-size: 0.67rem;
+  }
+
+
+  .developer-credit-name {
+    font-size: 0.72rem;
+
+    letter-spacing: normal;
+
+    word-spacing: normal;
+  }
+
+
+  .developer-credit-icon {
+    width: 21px;
+    height: 21px;
+
+    border-radius: 6px;
+
+    font-size: 0.54rem;
   }
 
 }
@@ -1527,27 +2406,53 @@ $success-color: #34d399;
 @media (max-width: 480px) {
 
   .auth-form-side {
+    width: 100%;
+
+    height: 100vh;
+    height: 100dvh;
+
+    min-height: 0;
+
     padding:
-      16px;
+      10px;
   }
 
 
   .auth-card-modern {
+    width: 100%;
+
     max-width: none;
 
-    margin:
-      auto 0;
+    max-height:
+      calc(100% - 2px);
+
+    margin: auto;
 
     padding:
-      22px 18px;
+      18px 18px;
 
     border:
-      1px solid rgba(31, 39, 54, 0.85);
+      1px solid rgba(
+        31,
+        39,
+        54,
+        0.85
+      );
 
     border-radius: 15px;
 
     box-shadow:
-      0 20px 45px rgba(0, 0, 0, 0.42);
+      0 20px 45px rgba(
+        0,
+        0,
+        0,
+        0.42
+      );
+  }
+
+
+  .auth-header-modern {
+    margin-bottom: 17px;
   }
 
 
@@ -1556,41 +2461,41 @@ $success-color: #34d399;
 
     height: 3px;
 
-    margin-bottom: 13px;
+    margin-bottom: 11px;
   }
 
 
   .auth-header-modern h2 {
     font-size: 1.4rem;
 
-    margin-bottom: 7px;
+    margin-bottom: 6px;
   }
 
 
   .auth-header-modern p {
-    font-size: 0.81rem;
+    font-size: 0.79rem;
 
-    line-height: 1.5;
+    line-height: 1.45;
   }
 
 
   .form-control-group {
-    margin-bottom: 16px;
+    margin-bottom: 13px;
   }
 
 
   .form-control-group label {
-    font-size: 0.81rem;
+    font-size: 0.8rem;
 
-    margin-bottom: 7px;
+    margin-bottom: 5px;
   }
 
 
   .input-box input {
-    height: 46px;
+    height: 44px;
 
-    padding-left: 43px;
-    padding-right: 44px;
+    padding-left: 42px;
+    padding-right: 43px;
 
     border-radius: 10px;
 
@@ -1598,70 +2503,116 @@ $success-color: #34d399;
   }
 
 
-  .input-box>.input-leading-icon {
-    left: 14px;
+  .input-box > .input-leading-icon {
+    left: 13px;
 
-    font-size: 0.9rem;
+    font-size: 0.88rem;
   }
 
 
   .toggle-pass-button {
-    right: 5px;
+    right: 4px;
 
-    width: 36px;
-    height: 36px;
+    width: 35px;
+    height: 35px;
   }
 
 
   .form-options-row {
     flex-wrap: wrap;
 
-    gap: 10px;
+    gap: 8px;
 
-    margin-bottom: 20px;
+    margin-bottom: 17px;
 
-    font-size: 0.79rem;
+    font-size: 0.77rem;
   }
 
 
   .remember-checkbox {
-    flex: 1 1 auto;
+    flex:
+      1 1 auto;
   }
 
 
   .forgot-link {
-    flex: 0 0 auto;
+    flex:
+      0 0 auto;
   }
 
 
   .btn-submit-action {
-    min-height: 47px;
+    min-height: 45px;
 
     border-radius: 10px;
 
-    font-size: 0.87rem;
+    font-size: 0.85rem;
 
     padding:
-      9px 14px;
+      8px 13px;
   }
 
 
   .auth-switcher-footer {
-    margin-top: 19px;
+    margin-top: 16px;
 
-    padding-top: 18px;
+    padding-top: 14px;
   }
 
 
   .auth-switcher-footer p {
-    font-size: 0.78rem;
+    font-size: 0.76rem;
 
-    line-height: 1.6;
+    line-height: 1.5;
+  }
+
+
+  /* ----------------------------------------------------------
+     Developer credit - small mobile
+     ---------------------------------------------------------- */
+
+  .developer-credit {
+    margin-top: 10px;
+
+    padding:
+      6px 7px;
+
+    border-radius: 8px;
+
+    gap: 3px;
+  }
+
+
+  .developer-credit-prefix {
+    font-size: 0.62rem;
+  }
+
+
+  .developer-credit-name {
+    font-size: 0.67rem;
+
+    letter-spacing: normal;
+
+    word-spacing: normal;
+  }
+
+
+  .developer-credit-icon {
+    width: 19px;
+    height: 19px;
+
+    margin-left: 2px;
+
+    border-radius: 5px;
+
+    font-size: 0.48rem;
   }
 
 
   .error-msg {
-    font-size: 0.73rem;
+    margin-top: 4px;
+
+    font-size: 0.71rem;
   }
 
 }
@@ -1670,61 +2621,180 @@ $success-color: #34d399;
 /* ============================================================
    VERY SMALL PHONES
    320px - 359px
+   EXTRA COMPACT TO AVOID SCROLLING
    ============================================================ */
 
 @media (max-width: 359px) {
 
   .auth-form-side {
     padding:
-      10px;
+      6px;
   }
 
 
   .auth-card-modern {
+    max-height:
+      calc(100% - 2px);
+
     padding:
-      20px 14px;
+      14px 13px;
 
     border-radius: 13px;
   }
 
 
+  .auth-header-modern {
+    margin-bottom: 12px;
+  }
+
+
+  .auth-header-accent {
+    width: 27px;
+
+    height: 3px;
+
+    margin-bottom: 8px;
+  }
+
+
   .auth-header-modern h2 {
-    font-size: 1.3rem;
+    font-size: 1.25rem;
+
+    margin-bottom: 5px;
   }
 
 
   .auth-header-modern p {
-    font-size: 0.78rem;
+    font-size: 0.74rem;
+
+    line-height: 1.35;
   }
 
 
   .form-control-group {
-    margin-bottom: 14px;
+    margin-bottom: 10px;
   }
 
 
   .form-control-group label {
-    font-size: 0.78rem;
+    font-size: 0.75rem;
+
+    margin-bottom: 4px;
   }
 
 
   .input-box input {
-    height: 44px;
+    height: 41px;
 
-    padding-left: 40px;
-    padding-right: 42px;
+    padding-left: 38px;
+    padding-right: 40px;
+
+    border-radius: 9px;
   }
 
 
-  .btn-submit-action {
-    min-height: 45px;
+  .input-box > .input-leading-icon {
+    left: 12px;
 
     font-size: 0.82rem;
   }
 
 
+  .toggle-pass-button {
+    width: 33px;
+    height: 33px;
+
+    right: 3px;
+  }
+
+
+  .form-options-row {
+    gap: 6px;
+
+    margin-bottom: 13px;
+
+    font-size: 0.72rem;
+  }
+
+
+  .remember-checkbox input {
+    width: 13px;
+    height: 13px;
+  }
+
+
+  .btn-submit-action {
+    min-height: 42px;
+
+    font-size: 0.79rem;
+
+    padding:
+      7px 11px;
+  }
+
+
+  .auth-switcher-footer {
+    margin-top: 12px;
+
+    padding-top: 11px;
+  }
+
+
   .auth-switcher-footer p {
-    font-size: 0.74rem;
+    font-size: 0.7rem;
+
+    line-height: 1.4;
+  }
+
+
+  /* ----------------------------------------------------------
+     Developer credit - very small phones
+     ---------------------------------------------------------- */
+
+  .developer-credit {
+    margin-top: 8px;
+
+    padding:
+      5px 6px;
+
+    border-radius: 7px;
+
+    gap: 3px;
+  }
+
+
+  .developer-credit-prefix {
+    font-size: 0.57rem;
+  }
+
+
+  .developer-credit-name {
+    font-size: 0.61rem;
+
+    letter-spacing: normal;
+
+    word-spacing: normal;
+  }
+
+
+  .developer-credit-icon {
+    width: 17px;
+    height: 17px;
+
+    margin-left: 1px;
+
+    border-radius: 4px;
+
+    font-size: 0.42rem;
+  }
+
+
+  .error-msg {
+    margin-top: 3px;
+
+    font-size: 0.67rem;
+
+    line-height: 1.25;
   }
 
 }
@@ -1733,44 +2803,151 @@ $success-color: #34d399;
 /* ============================================================
    LANDSCAPE PHONES
    IMPORTANT:
-   Prevents vertical clipping when phone height is small.
+   No vertical scrolling.
+   Compact the authentication card to fit the short viewport.
    ============================================================ */
 
 @media (max-width: 900px) and (orientation: landscape) {
 
   .auth-form-side {
-    align-items: flex-start;
+    width: 100vw;
+
+    height: 100vh;
+    height: 100dvh;
+
+    min-height: 0;
+
+    align-items: center;
+
+    justify-content: center;
 
     padding:
-      18px clamp(20px, 5vw, 48px);
+      8px clamp(
+        16px,
+        5vw,
+        48px
+      );
+
+    overflow: hidden;
   }
 
 
   .auth-card-modern {
+    width: 100%;
+
     max-width: 620px;
 
-    margin:
-      0 auto;
+    max-height:
+      calc(100% - 2px);
+
+    margin: auto;
+
+    padding:
+      14px 22px;
+
+    border-radius: 14px;
   }
 
 
   .auth-header-modern {
-    margin-bottom: 18px;
+    margin-bottom: 11px;
+  }
+
+
+  .auth-header-accent {
+    width: 28px;
+
+    height: 3px;
+
+    margin-bottom: 8px;
+  }
+
+
+  .auth-header-modern h2 {
+    font-size: 1.25rem;
+
+    margin-bottom: 4px;
+  }
+
+
+  .auth-header-modern p {
+    font-size: 0.74rem;
+
+    line-height: 1.35;
   }
 
 
   .form-control-group {
-    margin-bottom: 14px;
+    margin-bottom: 9px;
+  }
+
+
+  .form-control-group label {
+    font-size: 0.74rem;
+
+    margin-bottom: 4px;
   }
 
 
   .input-box input {
-    height: 44px;
+    height: 40px;
   }
 
 
   .btn-submit-action {
-    min-height: 45px;
+    min-height: 41px;
+  }
+
+
+  .auth-switcher-footer {
+    margin-top: 10px;
+
+    padding-top: 9px;
+  }
+
+
+  .auth-switcher-footer p {
+    font-size: 0.72rem;
+  }
+
+
+  /* ----------------------------------------------------------
+     Developer credit - landscape
+     ---------------------------------------------------------- */
+
+  .developer-credit {
+    margin-top: 7px;
+
+    padding:
+      5px 8px;
+
+    border-radius: 7px;
+
+    gap: 3px;
+  }
+
+
+  .developer-credit-prefix {
+    font-size: 0.60rem;
+  }
+
+
+  .developer-credit-name {
+    font-size: 0.64rem;
+
+    letter-spacing: normal;
+
+    word-spacing: normal;
+  }
+
+
+  .developer-credit-icon {
+    width: 18px;
+    height: 18px;
+
+    border-radius: 5px;
+
+    font-size: 0.44rem;
   }
 
 }
@@ -1778,65 +2955,396 @@ $success-color: #34d399;
 
 /* ============================================================
    SHORT DESKTOP / SHORT TABLET
-   Handles low-height laptops and tablets.
+   Handles low-height screens.
+   NO SCROLLING.
    ============================================================ */
 
 @media (min-width: 901px) and (max-height: 760px) {
 
+  :host {
+    position: fixed;
+
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    width: 100vw;
+
+    height: 100vh;
+    height: 100dvh;
+
+    min-height: 0;
+
+    overflow: hidden;
+  }
+
+
+  .auth-split-container {
+    width: 100vw;
+
+    height: 100vh;
+    height: 100dvh;
+
+    min-height: 0;
+
+    overflow: hidden;
+  }
+
+
   .auth-brand-side {
+    height: 100%;
+
+    min-height: 0;
+
     padding-top:
-      clamp(24px, 3vw, 40px);
+      clamp(
+        20px,
+        3vw,
+        40px
+      );
 
     padding-bottom:
-      clamp(24px, 3vw, 40px);
+      clamp(
+        20px,
+        3vw,
+        40px
+      );
+  }
+
+
+  .auth-form-side {
+    height: 100%;
+
+    min-height: 0;
+
+    padding-top:
+      clamp(
+        14px,
+        2.5vw,
+        30px
+      );
+
+    padding-bottom:
+      clamp(
+        14px,
+        2.5vw,
+        30px
+      );
+
+    overflow: hidden;
   }
 
 
   .brand-content-wrapper h1 {
     font-size:
-      clamp(2rem,
+      clamp(
+        1.9rem,
         3vw,
-        2.65rem);
+        2.65rem
+      );
   }
 
 
-  .brand-content-wrapper>p {
-    margin-bottom: 24px;
+  .brand-content-wrapper > p {
+    margin-bottom: 20px;
 
-    line-height: 1.5;
+    line-height: 1.45;
   }
 
 
   .glass-preview-card {
-    min-height: 70px;
+    min-height: 66px;
 
-    padding: 12px 16px;
+    padding:
+      10px 14px;
+  }
+
+
+  .preview-icon {
+    width: 40px;
+    height: 40px;
+
+    flex-basis: 40px;
   }
 
 
   .auth-card-modern {
+    max-height:
+      calc(100% - 4px);
+
     padding:
-      26px 30px;
+      22px 28px;
   }
 
 
   .auth-header-modern {
-    margin-bottom: 20px;
+    margin-bottom: 17px;
+  }
+
+
+  .auth-header-accent {
+    margin-bottom: 11px;
   }
 
 
   .form-control-group {
-    margin-bottom: 14px;
+    margin-bottom: 11px;
+  }
+
+
+  .form-control-group label {
+    margin-bottom: 5px;
   }
 
 
   .input-box input {
-    height: 44px;
+    height: 42px;
   }
 
 
   .btn-submit-action {
-    min-height: 45px;
+    min-height: 43px;
+  }
+
+
+  .auth-switcher-footer {
+    margin-top: 16px;
+
+    padding-top: 14px;
+  }
+
+
+  /* ----------------------------------------------------------
+     Developer credit - short desktop
+     ---------------------------------------------------------- */
+
+  .developer-credit {
+    margin-top: 10px;
+
+    padding:
+      6px 10px;
+  }
+
+}
+
+
+/* ============================================================
+   EXTRA SHORT DESKTOP
+   901px+ AND HEIGHT <= 650px
+   ============================================================ */
+
+@media (min-width: 901px) and (max-height: 650px) {
+
+  .auth-brand-side {
+    padding-top: 16px;
+
+    padding-bottom: 16px;
+  }
+
+
+  .brand-content-wrapper h1 {
+    font-size:
+      clamp(
+        1.7rem,
+        2.8vw,
+        2.35rem
+      );
+
+    margin-bottom: 10px;
+  }
+
+
+  .brand-content-wrapper > p {
+    font-size: 0.82rem;
+
+    line-height: 1.4;
+
+    margin-bottom: 15px;
+  }
+
+
+  .logo-badge-pill {
+    padding:
+      5px 11px;
+
+    margin-bottom: 12px;
+
+    font-size: 0.68rem;
+  }
+
+
+  .glass-preview-card {
+    min-height: 56px;
+
+    padding:
+      8px 12px;
+
+    gap: 10px;
+  }
+
+
+  .preview-icon {
+    width: 36px;
+    height: 36px;
+
+    flex-basis: 36px;
+
+    border-radius: 9px;
+  }
+
+
+  .preview-text .title {
+    font-size: 0.72rem;
+  }
+
+
+  .preview-text .metric {
+    font-size: 0.84rem;
+  }
+
+
+  .preview-trend {
+    font-size: 0.95rem;
+  }
+
+
+  .brand-footer-text {
+    font-size: 0.66rem;
+
+    gap: 7px;
+  }
+
+
+  .auth-form-side {
+    padding:
+      10px 24px;
+  }
+
+
+  .auth-card-modern {
+    max-width: 420px;
+
+    padding:
+      18px 24px;
+
+    border-radius: 15px;
+  }
+
+
+  .auth-header-modern {
+    margin-bottom: 13px;
+  }
+
+
+  .auth-header-accent {
+    width: 27px;
+
+    height: 3px;
+
+    margin-bottom: 8px;
+  }
+
+
+  .auth-header-modern h2 {
+    font-size: 1.25rem;
+
+    margin-bottom: 5px;
+  }
+
+
+  .auth-header-modern p {
+    font-size: 0.75rem;
+
+    line-height: 1.35;
+  }
+
+
+  .form-control-group {
+    margin-bottom: 9px;
+  }
+
+
+  .form-control-group label {
+    font-size: 0.74rem;
+
+    margin-bottom: 4px;
+  }
+
+
+  .input-box input {
+    height: 39px;
+
+    font-size: 0.84rem;
+  }
+
+
+  .input-box > .input-leading-icon {
+    left: 13px;
+
+    font-size: 0.85rem;
+  }
+
+
+  .btn-submit-action {
+    min-height: 40px;
+
+    font-size: 0.84rem;
+  }
+
+
+  .form-options-row {
+    margin-bottom: 13px;
+
+    font-size: 0.74rem;
+  }
+
+
+  .auth-switcher-footer {
+    margin-top: 12px;
+
+    padding-top: 11px;
+  }
+
+
+  .auth-switcher-footer p {
+    font-size: 0.73rem;
+  }
+
+
+  /* ----------------------------------------------------------
+     Developer credit - extra short desktop
+     ---------------------------------------------------------- */
+
+  .developer-credit {
+    margin-top: 7px;
+
+    padding:
+      5px 8px;
+
+    border-radius: 8px;
+  }
+
+
+  .developer-credit-prefix {
+    font-size: 0.62rem;
+  }
+
+
+  .developer-credit-name {
+    font-size: 0.67rem;
+
+    letter-spacing: normal;
+
+    word-spacing: normal;
+  }
+
+
+  .developer-credit-icon {
+    width: 19px;
+    height: 19px;
+
+    font-size: 0.48rem;
   }
 
 }
@@ -1849,58 +3357,307 @@ $success-color: #34d399;
 @media (max-width: 600px) and (max-height: 650px) {
 
   .auth-form-side {
-    align-items: flex-start;
+    align-items: center;
 
-    padding-top: 12px;
-    padding-bottom: 12px;
+    justify-content: center;
+
+    padding:
+      6px 10px;
+
+    overflow: hidden;
   }
 
 
   .auth-card-modern {
-    margin-top: 0;
-    margin-bottom: 0;
+    max-height:
+      calc(100% - 2px);
 
-    padding-top: 18px;
-    padding-bottom: 18px;
+    margin: auto;
+
+    padding:
+      15px 16px;
   }
 
 
   .auth-header-modern {
-    margin-bottom: 16px;
-  }
-
-
-  .auth-header-accent {
-    margin-bottom: 10px;
-  }
-
-
-  .form-control-group {
     margin-bottom: 12px;
   }
 
 
+  .auth-header-accent {
+    margin-bottom: 8px;
+  }
+
+
+  .auth-header-modern h2 {
+    font-size: 1.25rem;
+  }
+
+
+  .auth-header-modern p {
+    font-size: 0.74rem;
+
+    line-height: 1.35;
+  }
+
+
+  .form-control-group {
+    margin-bottom: 9px;
+  }
+
+
   .form-control-group label {
-    margin-bottom: 5px;
+    margin-bottom: 4px;
+
+    font-size: 0.75rem;
   }
 
 
   .input-box input {
-    height: 43px;
+    height: 40px;
   }
 
 
   .btn-submit-action {
-    margin-top: 2px;
+    margin-top: 1px;
 
-    min-height: 44px;
+    min-height: 41px;
   }
 
 
   .auth-switcher-footer {
-    margin-top: 15px;
+    margin-top: 11px;
 
-    padding-top: 14px;
+    padding-top: 10px;
+  }
+
+
+  .auth-switcher-footer p {
+    font-size: 0.71rem;
+  }
+
+
+  /* ----------------------------------------------------------
+     Developer credit - very short mobile
+     ---------------------------------------------------------- */
+
+  .developer-credit {
+    margin-top: 7px;
+
+    padding:
+      5px 7px;
+
+    border-radius: 7px;
+
+    gap: 3px;
+  }
+
+
+  .developer-credit-prefix {
+    font-size: 0.59rem;
+  }
+
+
+  .developer-credit-name {
+    font-size: 0.63rem;
+
+    letter-spacing: normal;
+
+    word-spacing: normal;
+  }
+
+
+  .developer-credit-icon {
+    width: 18px;
+    height: 18px;
+
+    font-size: 0.44rem;
+  }
+
+}
+
+
+/* ============================================================
+   VERY SHORT MOBILE
+   HEIGHT <= 550px
+   EXTRA COMPRESSION
+   ============================================================ */
+
+@media (max-width: 600px) and (max-height: 550px) {
+
+  .auth-form-side {
+    padding:
+      4px 8px;
+  }
+
+
+  .auth-card-modern {
+    padding:
+      11px 14px;
+
+    border-radius: 12px;
+  }
+
+
+  .auth-header-modern {
+    margin-bottom: 8px;
+  }
+
+
+  .auth-header-accent {
+    width: 24px;
+
+    height: 2px;
+
+    margin-bottom: 6px;
+  }
+
+
+  .auth-header-modern h2 {
+    font-size: 1.1rem;
+
+    margin-bottom: 3px;
+  }
+
+
+  .auth-header-modern p {
+    font-size: 0.68rem;
+
+    line-height: 1.25;
+  }
+
+
+  .form-control-group {
+    margin-bottom: 6px;
+  }
+
+
+  .form-control-group label {
+    font-size: 0.69rem;
+
+    margin-bottom: 3px;
+  }
+
+
+  .input-box input {
+    height: 36px;
+
+    padding-left: 36px;
+    padding-right: 38px;
+
+    border-radius: 8px;
+
+    font-size: 15px;
+  }
+
+
+  .input-box > .input-leading-icon {
+    left: 11px;
+
+    font-size: 0.75rem;
+  }
+
+
+  .toggle-pass-button {
+    width: 30px;
+    height: 30px;
+
+    right: 2px;
+  }
+
+
+  .form-options-row {
+    gap: 5px;
+
+    margin-bottom: 8px;
+
+    font-size: 0.67rem;
+  }
+
+
+  .remember-checkbox {
+    gap: 5px;
+  }
+
+
+  .remember-checkbox input {
+    width: 12px;
+    height: 12px;
+  }
+
+
+  .btn-submit-action {
+    min-height: 37px;
+
+    padding:
+      6px 10px;
+
+    border-radius: 8px;
+
+    font-size: 0.73rem;
+
+    gap: 7px;
+  }
+
+
+  .auth-switcher-footer {
+    margin-top: 8px;
+
+    padding-top: 7px;
+  }
+
+
+  .auth-switcher-footer p {
+    font-size: 0.66rem;
+  }
+
+
+  /* ----------------------------------------------------------
+     Developer credit - maximum compact mode
+     ---------------------------------------------------------- */
+
+  .developer-credit {
+    margin-top: 5px;
+
+    padding:
+      4px 6px;
+
+    border-radius: 6px;
+
+    gap: 2px;
+  }
+
+
+  .developer-credit-prefix {
+    font-size: 0.53rem;
+  }
+
+
+  .developer-credit-name {
+    font-size: 0.57rem;
+
+    letter-spacing: normal;
+
+    word-spacing: normal;
+  }
+
+
+  .developer-credit-icon {
+    width: 16px;
+    height: 16px;
+
+    margin-left: 1px;
+
+    border-radius: 4px;
+
+    font-size: 0.38rem;
+  }
+
+
+  .error-msg {
+    margin-top: 2px;
+
+    font-size: 0.62rem;
   }
 
 }
@@ -1908,7 +3665,7 @@ $success-color: #34d399;
 
 /* ============================================================
    TOUCH DEVICES
-   Improve interaction targets.
+   Interaction targets preserved while maintaining no scroll.
    ============================================================ */
 
 @media (hover: none) and (pointer: coarse) {
@@ -1933,12 +3690,67 @@ $success-color: #34d399;
     min-height: 48px;
   }
 
+
+  /* ----------------------------------------------------------
+     Developer credit on touch screens
+     ---------------------------------------------------------- */
+
+  .developer-credit {
+    transform: none;
+
+    transition:
+      border-color 0.35s ease,
+      background 0.35s ease,
+      box-shadow 0.35s ease;
+  }
+
+
+  .developer-credit:active {
+    transform:
+      scale(0.985);
+
+    border-color:
+      rgba(212, 175, 55, 0.25);
+  }
+
+}
+
+
+/* ============================================================
+   TOUCH DEVICES - SMALL SCREENS
+   Prevent oversized controls from causing overflow.
+   ============================================================ */
+
+@media (hover: none) and (pointer: coarse) and (max-width: 600px) {
+
+  .toggle-pass-button {
+    width: 36px;
+    height: 36px;
+  }
+
+
+  .forgot-link,
+  .switch-action-link {
+    min-height: 28px;
+  }
+
+
+  .btn-submit-action {
+    min-height: 45px;
+  }
+
+
+  .developer-credit {
+    padding:
+      6px 8px;
+  }
+
 }
 
 
 /* ============================================================
    REDUCED MOTION
-   Accessibility
+   ACCESSIBILITY
    ============================================================ */
 
 @media (prefers-reduced-motion: reduce) {
@@ -1949,9 +3761,18 @@ $success-color: #34d399;
     scroll-behavior: auto !important;
 
     animation-duration: 0.01ms !important;
+
     animation-iteration-count: 1 !important;
 
     transition-duration: 0.01ms !important;
+  }
+
+
+  .developer-credit,
+  .developer-credit::before,
+  .developer-credit::after,
+  .developer-credit-name {
+    animation: none !important;
   }
 
 }
@@ -1969,16 +3790,21 @@ a:focus-visible {
 
 
 /* ============================================================
-   DARK MOBILE SAFE AREA
-   Useful for iPhone / modern edge-to-edge devices.
+   SAFE AREA
+   IMPORTANT:
+   Do NOT allow safe-area padding to increase page height.
    ============================================================ */
 
 @supports (padding: env(safe-area-inset-bottom)) {
 
   .auth-form-side {
     padding-bottom:
-      max(clamp(24px, 4vw, 48px),
-        env(safe-area-inset-bottom));
+      max(
+        10px,
+        env(safe-area-inset-bottom)
+      );
+
+    overflow: hidden;
   }
 
 }
@@ -1991,13 +3817,23 @@ a:focus-visible {
 @media print {
 
   :host {
-    overflow: visible;
+    position: static;
+
+    width: 100%;
+
+    height: auto;
 
     min-height: auto;
+
+    overflow: visible;
   }
 
 
   .auth-split-container {
+    width: 100%;
+
+    height: auto;
+
     min-height: auto;
 
     overflow: visible;
@@ -2010,22 +3846,80 @@ a:focus-visible {
 
 
   .auth-form-side {
+    width: 100%;
+
+    height: auto;
+
     min-height: auto;
 
     padding: 0;
+
+    overflow: visible;
 
     background: #fff;
   }
 
 
   .auth-card-modern {
-    max-width: 100%;
+    max-height: none;
 
-    color: #000;
+    overflow: visible;
 
+    box-shadow: none;
+
+    border:
+      1px solid #ddd;
+  }
+
+
+  /* ----------------------------------------------------------
+     Developer credit - print friendly
+     ---------------------------------------------------------- */
+
+  .developer-credit {
     background: #fff;
 
-    border: none;
+    border:
+      1px solid #ddd;
+
+    box-shadow: none;
+
+    animation: none !important;
+  }
+
+
+  .developer-credit::before,
+  .developer-credit::after {
+    display: none;
+  }
+
+
+  .developer-credit-prefix {
+    color: #666;
+  }
+
+
+  .developer-credit-name {
+    color: #8a6a18;
+
+    background: none;
+
+    -webkit-text-fill-color: #8a6a18;
+
+    animation: none !important;
+
+    letter-spacing: normal;
+
+    word-spacing: normal;
+  }
+
+
+  .developer-credit-icon {
+    background: #f5f5f5;
+
+    border-color: #ddd;
+
+    color: #8a6a18;
 
     box-shadow: none;
   }

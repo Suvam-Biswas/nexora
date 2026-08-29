@@ -1,26 +1,53 @@
-<div class="dashboard-container">
+<div class="dashboard-container" [class.light-theme]="!(darkMode$ | async)">
 
-  <!-- =========================================================
-       RESPONSIVE TOP NAVBAR
-       ========================================================= -->
+  <!-- Top navigation -->
   <nav *ngIf="showNavbar" class="dashboard-top-navbar" aria-label="Primary navigation">
 
     <!-- Brand -->
     <div class="nav-brand">
-      <span class="brand-indicator"></span>
 
-      <span class="brand-name">
-        Nexora
-      </span>
+      <div class="brand-main">
+        <span class="brand-indicator"></span>
+        <span class="brand-name">Nexora</span>
+      </div>
+
+      <!-- Mobile utilities -->
+      <div class="mobile-nav-utilities">
+
+        <!-- Theme -->
+        <button type="button" class="nav-util-btn" title="Toggle Dark/Light Mode" aria-label="Toggle Dark/Light Mode"
+          (click)="toggleTheme()">
+          <i class="fa-solid" [ngClass]="(darkMode$ | async) ? 'fa-circle-half-stroke' : 'fa-moon'"></i>
+        </button>
+
+        <!-- Notifications -->
+        <button type="button" class="nav-util-btn notification-btn" title="System Notifications"
+          aria-label="System Notifications" (click)="toggleNotifications($event)">
+          <i class="fa-solid fa-bell"></i>
+
+          <span class="notification-badge" *ngIf="hasUnreadNotifications"></span>
+        </button>
+
+        <!-- Profile -->
+        <div class="nav-profile-menu">
+
+          <button type="button" class="profile-avatar-btn" title="Account Menu" aria-label="Account Menu"
+            (click)="openImagePreview()">
+            <img src="/assets/Suvam.jpeg" alt="User Avatar" class="profile-avatar-img" />
+          </button>
+
+        </div>
+
+      </div>
     </div>
 
-    <!-- Navigation Links -->
+
+    <!-- Desktop navigation -->
     <div class="nav-links">
 
       <!-- Dashboard -->
       <a routerLink="/auth/dashboard" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }"
         title="Dashboard Overview" class="nav-link">
-
         <i class="fa-solid fa-house nav-icon"></i>
 
         <span class="nav-label">
@@ -28,9 +55,9 @@
         </span>
       </a>
 
+
       <!-- Users -->
       <a routerLink="/auth/users" routerLinkActive="active-link" title="Manage Users" class="nav-link">
-
         <i class="fa-solid fa-users nav-icon"></i>
 
         <span class="nav-label">
@@ -38,10 +65,10 @@
         </span>
       </a>
 
+
       <!-- Billing -->
       <a routerLink="/auth/billing-subscription" routerLinkActive="active-link" title="Billing & Subscriptions"
         class="nav-link">
-
         <i class="fa-solid fa-credit-card nav-icon"></i>
 
         <span class="nav-label">
@@ -49,9 +76,9 @@
         </span>
       </a>
 
+
       <!-- Analytics -->
       <a routerLink="/auth/analytics" routerLinkActive="active-link" title="Platform Analytics" class="nav-link">
-
         <i class="fa-solid fa-chart-pie nav-icon"></i>
 
         <span class="nav-label">
@@ -59,9 +86,9 @@
         </span>
       </a>
 
+
       <!-- Pricing -->
       <a routerLink="/auth/pricing" routerLinkActive="active-link" title="Subscription Plans" class="nav-link">
-
         <i class="fa-solid fa-tag nav-icon"></i>
 
         <span class="nav-label">
@@ -69,9 +96,19 @@
         </span>
       </a>
 
+
+      <!-- Audit logs -->
+      <a routerLink="/auth/audit-logs" routerLinkActive="active-link" title="Security Audit Logs" class="nav-link">
+        <i class="fa-solid fa-shield-halved nav-icon"></i>
+
+        <span class="nav-label">
+          Audit Logs
+        </span>
+      </a>
+
+
       <!-- Settings -->
       <a routerLink="/auth/account-settings" routerLinkActive="active-link" title="Account Settings" class="nav-link">
-
         <i class="fa-solid fa-gear nav-icon"></i>
 
         <span class="nav-label">
@@ -81,12 +118,223 @@
 
     </div>
 
+
+    <!-- Mobile navigation -->
+    <div class="mobile-navigation">
+
+      <button type="button" class="mobile-nav-select" [class.open]="isMobileMenuOpen" (click)="toggleMobileMenu()"
+        aria-haspopup="true" [attr.aria-expanded]="isMobileMenuOpen">
+
+        <span class="mobile-nav-current">
+
+          <i class="mobile-current-icon" [ngClass]="mobileActiveIcon"></i>
+
+          <span>
+            {{ mobileActiveLabel }}
+          </span>
+
+        </span>
+
+        <i class="fa-solid fa-chevron-down mobile-chevron" [class.rotate]="isMobileMenuOpen"></i>
+
+      </button>
+
+
+      <!-- Mobile dropdown -->
+      <div class="mobile-nav-dropdown" [class.show]="isMobileMenuOpen">
+
+        <!-- Dashboard -->
+        <a routerLink="/auth/dashboard" routerLinkActive="mobile-active" [routerLinkActiveOptions]="{ exact: true }"
+          (click)="closeMobileMenu()" class="mobile-nav-option">
+
+          <span class="mobile-option-icon">
+            <i class="fa-solid fa-house"></i>
+          </span>
+
+          <span class="mobile-option-content">
+            <strong>Dashboard</strong>
+            <small>Overview</small>
+          </span>
+
+          <i class="fa-solid fa-chevron-right mobile-option-arrow"></i>
+
+        </a>
+
+
+        <!-- Users -->
+        <a routerLink="/auth/users" routerLinkActive="mobile-active" (click)="closeMobileMenu()"
+          class="mobile-nav-option">
+
+          <span class="mobile-option-icon">
+            <i class="fa-solid fa-users"></i>
+          </span>
+
+          <span class="mobile-option-content">
+            <strong>Users</strong>
+            <small>Manage users</small>
+          </span>
+
+          <i class="fa-solid fa-chevron-right mobile-option-arrow"></i>
+
+        </a>
+
+
+        <!-- Billing -->
+        <a routerLink="/auth/billing-subscription" routerLinkActive="mobile-active" (click)="closeMobileMenu()"
+          class="mobile-nav-option">
+
+          <span class="mobile-option-icon">
+            <i class="fa-solid fa-credit-card"></i>
+          </span>
+
+          <span class="mobile-option-content">
+            <strong>Billing</strong>
+            <small>Subscriptions & payments</small>
+          </span>
+
+          <i class="fa-solid fa-chevron-right mobile-option-arrow"></i>
+
+        </a>
+
+
+        <!-- Analytics -->
+        <a routerLink="/auth/analytics" routerLinkActive="mobile-active" (click)="closeMobileMenu()"
+          class="mobile-nav-option">
+
+          <span class="mobile-option-icon">
+            <i class="fa-solid fa-chart-pie"></i>
+          </span>
+
+          <span class="mobile-option-content">
+            <strong>Analytics</strong>
+            <small>Platform analytics</small>
+          </span>
+
+          <i class="fa-solid fa-chevron-right mobile-option-arrow"></i>
+
+        </a>
+
+
+        <!-- Pricing -->
+        <a routerLink="/auth/pricing" routerLinkActive="mobile-active" (click)="closeMobileMenu()"
+          class="mobile-nav-option">
+
+          <span class="mobile-option-icon">
+            <i class="fa-solid fa-tag"></i>
+          </span>
+
+          <span class="mobile-option-content">
+            <strong>Pricing</strong>
+            <small>Subscription plans</small>
+          </span>
+
+          <i class="fa-solid fa-chevron-right mobile-option-arrow"></i>
+
+        </a>
+
+
+        <!-- Audit logs -->
+        <a routerLink="/auth/audit-logs" routerLinkActive="mobile-active" (click)="closeMobileMenu()"
+          class="mobile-nav-option">
+
+          <span class="mobile-option-icon">
+            <i class="fa-solid fa-shield-halved"></i>
+          </span>
+
+          <span class="mobile-option-content">
+            <strong>Audit Logs</strong>
+            <small>Security & compliance</small>
+          </span>
+
+          <i class="fa-solid fa-chevron-right mobile-option-arrow"></i>
+
+        </a>
+
+
+        <!-- Settings -->
+        <a routerLink="/auth/account-settings" routerLinkActive="mobile-active" (click)="closeMobileMenu()"
+          class="mobile-nav-option">
+
+          <span class="mobile-option-icon">
+            <i class="fa-solid fa-gear"></i>
+          </span>
+
+          <span class="mobile-option-content">
+            <strong>Settings</strong>
+            <small>Account settings</small>
+          </span>
+
+          <i class="fa-solid fa-chevron-right mobile-option-arrow"></i>
+
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <!-- Desktop utilities -->
+    <div class="nav-utilities desktop-nav-utilities">
+
+      <!-- Theme -->
+      <button type="button" class="nav-util-btn" title="Toggle Dark/Light Mode" aria-label="Toggle Dark/Light Mode"
+        (click)="toggleTheme()">
+        <i class="fa-solid" [ngClass]="(darkMode$ | async) ? 'fa-circle-half-stroke' : 'fa-moon'"></i>
+      </button>
+
+
+      <!-- Notifications -->
+      <div class="notification-wrapper">
+
+        <button type="button" class="nav-util-btn notification-btn" title="System Notifications"
+          aria-label="System Notifications" (click)="toggleNotifications($event)">
+          <i class="fa-solid fa-bell"></i>
+
+          <span class="notification-badge" *ngIf="hasUnreadNotifications"></span>
+        </button>
+
+        <app-notifications *ngIf="isNotificationOpen" (close)="isNotificationOpen = false"></app-notifications>
+
+      </div>
+
+
+      <!-- Profile -->
+      <div class="nav-profile-menu">
+
+        <button type="button" class="profile-avatar-btn" title="Account Menu" aria-label="Account Menu"
+          (click)="openImagePreview()">
+          <img src="/assets/Suvam.jpeg" alt="User Avatar" class="profile-avatar-img" />
+        </button>
+
+      </div>
+
+    </div>
+
   </nav>
 
 
-  <!-- =========================================================
-       PAGE CONTENT
-       ========================================================= -->
+  <!-- Image preview -->
+  <div class="image-preview-overlay" *ngIf="isImagePreviewOpen" (click)="closeImagePreview()">
+
+    <div class="image-preview-content" (click)="$event.stopPropagation()">
+
+      <button type="button" class="close-preview-btn" (click)="closeImagePreview()" aria-label="Close preview">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <img src="/assets/Suvam.jpeg" alt="Suvam Biswas Full Avatar Preview" class="previewed-image" />
+
+      <div class="preview-caption">
+        <strong>Suvam Biswas</strong>
+        <span>Nexora Enterprise Profile Avatar</span>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- Page content -->
   <main class="dashboard-content">
 
     <router-outlet></router-outlet>

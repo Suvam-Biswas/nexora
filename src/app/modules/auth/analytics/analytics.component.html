@@ -1,19 +1,24 @@
-<div class="dashboard-container" [class.light-mode]="!filterForm.get('autoRenew')?.value">
+<div class="dashboard-container" [class.light-mode]="!(darkMode$ | async)">
 
   <!-- Page Header -->
   <header class="dashboard-header">
 
     <div class="header-title-group">
 
-      <!-- Header Identity -->
       <div class="header-identity">
 
-        <button type="button" class="back-icon-btn" (click)="goBack()" title="Go Back" aria-label="Go Back">
+        <button
+          type="button"
+          class="back-icon-btn"
+          (click)="goBack()"
+          title="Go Back"
+          aria-label="Go Back">
           <i class="fa-solid fa-arrow-left"></i>
         </button>
 
         <div class="header-copy">
           <h1>Analytics &amp; Reports</h1>
+
           <p>
             Deep-dive performance metrics, user acquisition trends, and
             conversion funnels.
@@ -22,22 +27,46 @@
 
       </div>
 
-      <!-- Action & Filter Bar -->
       <div class="header-actions">
 
         <form [formGroup]="filterForm" class="filter-form">
-          <select class="form-select gold-input form-select-sm" formControlName="dateRange"
+
+          <select
+            class="form-select gold-input form-select-sm"
+            formControlName="dateRange"
             aria-label="Select date range">
-            <option value="7days">Last 7 Days</option>
-            <option value="30days">Last 30 Days</option>
-            <option value="90days">Last Quarter</option>
-            <option value="year">Year to Date (2026)</option>
+
+            <option value="7days">
+              Last 7 Days
+            </option>
+
+            <option value="30days">
+              Last 30 Days
+            </option>
+
+            <option value="90days">
+              Last Quarter
+            </option>
+
+            <option value="year">
+              Year to Date (2026)
+            </option>
+
           </select>
+
         </form>
 
-        <button type="button" class="btn-action-primary" (click)="onExportReport()">
+        <button
+          type="button"
+          class="btn-action-primary"
+          (click)="onExportReport()">
+
           <i class="fa-solid fa-download"></i>
-          <span>Export Report</span>
+
+          <span>
+            Export Report
+          </span>
+
         </button>
 
       </div>
@@ -47,17 +76,21 @@
   </header>
 
 
-  <!-- Success Alert Notification -->
-  <div *ngIf="successMessage" class="alert-success-custom">
+  <!-- Success message -->
+  <div
+    *ngIf="successMessage"
+    class="alert-success-custom">
+
     <i class="fa-solid fa-circle-check"></i>
-    <span>{{ successMessage }}</span>
+
+    <span>
+      {{ successMessage }}
+    </span>
+
   </div>
 
 
-  <!-- ========================================================= -->
-  <!-- TOP KPI METRIC CARDS -->
-  <!-- ========================================================= -->
-
+  <!-- KPI cards -->
   <div class="row g-4 kpi-grid mb-4">
 
     <!-- Total Revenue -->
@@ -86,13 +119,17 @@
         </div>
 
         <div class="kpi-trend positive">
+
           <i class="fa-solid fa-arrow-trend-up"></i>
 
-          <span>{{ currentData.revenueTrend }}</span>
+          <span>
+            {{ currentData.revenueTrend }}
+          </span>
 
           <span class="text-muted-custom">
             vs prior period
           </span>
+
         </div>
 
       </div>
@@ -126,13 +163,17 @@
         </div>
 
         <div class="kpi-trend positive">
+
           <i class="fa-solid fa-arrow-trend-up"></i>
 
-          <span>{{ currentData.subscribersTrend }}</span>
+          <span>
+            {{ currentData.subscribersTrend }}
+          </span>
 
           <span class="text-muted-custom">
             vs prior period
           </span>
+
         </div>
 
       </div>
@@ -166,13 +207,17 @@
         </div>
 
         <div class="kpi-trend positive">
+
           <i class="fa-solid fa-arrow-trend-up"></i>
 
-          <span>{{ currentData.conversionTrend }}</span>
+          <span>
+            {{ currentData.conversionTrend }}
+          </span>
 
           <span class="text-muted-custom">
             vs prior period
           </span>
+
         </div>
 
       </div>
@@ -206,13 +251,17 @@
         </div>
 
         <div class="kpi-trend negative">
+
           <i class="fa-solid fa-arrow-trend-down"></i>
 
-          <span>{{ currentData.bounceTrend }}</span>
+          <span>
+            {{ currentData.bounceTrend }}
+          </span>
 
           <span class="text-muted-custom">
             optimized
           </span>
+
         </div>
 
       </div>
@@ -222,24 +271,15 @@
   </div>
 
 
-  <!-- ========================================================= -->
-  <!-- MAIN ANALYTICS GRID -->
-  <!-- ========================================================= -->
-
+  <!-- Main analytics -->
   <div class="settings-grid-layout">
 
 
-    <!-- ======================================================= -->
-    <!-- LEFT / MAIN COLUMN -->
-    <!-- ======================================================= -->
-
+    <!-- Main column -->
     <div class="settings-main-column">
 
 
-      <!-- ===================================================== -->
-      <!-- USER ACQUISITION TRENDS -->
-      <!-- ===================================================== -->
-
+      <!-- Acquisition -->
       <div class="settings-card analytics-card">
 
         <div class="card-header-block acquisition-header">
@@ -265,14 +305,17 @@
           </div>
 
           <span class="badge-active">
+
             <span class="badge-dot"></span>
+
             Live Data
+
           </span>
 
         </div>
 
 
-        <!-- Simulated Visual Line Chart -->
+        <!-- Chart -->
         <div class="chart-container-mock">
 
           <div class="chart-grid-lines">
@@ -285,15 +328,26 @@
           </div>
 
           <div class="chart-visual-wave">
+
             <div class="wave-line"></div>
+
             <div class="wave-glow"></div>
+
           </div>
 
           <div class="chart-x-axis">
 
-            <span>Period Start</span>
-            <span>Mid-Term</span>
-            <span>Current</span>
+            <span>
+              Period Start
+            </span>
+
+            <span>
+              Mid-Term
+            </span>
+
+            <span>
+              Current
+            </span>
 
           </div>
 
@@ -302,10 +356,7 @@
       </div>
 
 
-      <!-- ===================================================== -->
-      <!-- CUSTOMER CONVERSION FUNNEL -->
-      <!-- ===================================================== -->
-
+      <!-- Funnel -->
       <div class="settings-card analytics-card">
 
         <div class="card-header-block funnel-header">
@@ -336,7 +387,9 @@
 
         <div class="funnel-stack">
 
-          <div *ngFor="let step of currentData.funnelSteps" class="funnel-step-item">
+          <div
+            *ngFor="let step of currentData.funnelSteps"
+            class="funnel-step-item">
 
             <div class="funnel-step-heading">
 
@@ -358,7 +411,10 @@
 
             <div class="funnel-bar-bg">
 
-              <div class="funnel-bar-fill" [style.width]="step.width"></div>
+              <div
+                class="funnel-bar-fill"
+                [style.width]="step.width">
+              </div>
 
             </div>
 
@@ -368,14 +424,10 @@
 
       </div>
 
-
     </div>
 
 
-    <!-- ======================================================= -->
-    <!-- RIGHT / SIDEBAR COLUMN -->
-    <!-- ======================================================= -->
-
+    <!-- Sidebar -->
     <aside class="settings-sidebar-column">
 
       <div class="settings-card analytics-card traffic-card">
@@ -405,10 +457,12 @@
         </div>
 
 
-        <!-- Traffic Sources -->
+        <!-- Traffic sources -->
         <div class="traffic-sources-stack">
 
-          <div *ngFor="let source of currentData.trafficSources" class="traffic-source-row">
+          <div
+            *ngFor="let source of currentData.trafficSources"
+            class="traffic-source-row">
 
             <div class="traffic-source-heading">
 
@@ -424,7 +478,10 @@
 
             <div class="progress-bar-custom">
 
-              <div class="progress-fill" [style.width.%]="source.percentage" [style.background-color]="source.color">
+              <div
+                class="progress-fill"
+                [style.width.%]="source.percentage"
+                [style.background-color]="source.color">
               </div>
 
             </div>
@@ -438,7 +495,7 @@
         </div>
 
 
-        <!-- Analytics Configuration -->
+        <!-- Analytics configuration -->
         <div class="analytics-config">
 
           <p class="text-muted-custom">
@@ -446,8 +503,13 @@
           </p>
 
           <span class="text-indigo fw-medium analytics-config-link">
+
             Configure Google Analytics ID
-            <span aria-hidden="true">&rarr;</span>
+
+            <span aria-hidden="true">
+              &rarr;
+            </span>
+
           </span>
 
         </div>
@@ -455,7 +517,6 @@
       </div>
 
     </aside>
-
 
   </div>
 

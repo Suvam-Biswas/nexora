@@ -1,18 +1,14 @@
 /* =========================================================
-   RESPONSIVE USER DIALOG
-   Premium Dark / Violet Theme
+   USER DIALOG
+   Premium Dark / Light Theme
    ========================================================= */
-
-
-/* ---------------------------------------------------------
-   Global sizing
-   --------------------------------------------------------- */
 
 :host {
     display: block;
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
+
     font-family:
         'Inter',
         -apple-system,
@@ -28,17 +24,91 @@
 }
 
 
-/* ---------------------------------------------------------
-   Angular Material Dialog Container
-   --------------------------------------------------------- */
+/* =========================================================
+   DARK THEME
+   ========================================================= */
+
+:host {
+    --dialog-bg: #0b0f19;
+    --dialog-surface: #0f172a;
+    --dialog-surface-2: #111827;
+
+    --dialog-border: #1e293b;
+    --dialog-border-strong: #334155;
+
+    --text-primary: #f8fafc;
+    --text-secondary: #cbd5e1;
+    --text-muted: #64748b;
+    --text-placeholder: #475569;
+
+    --accent: #6366f1;
+    --accent-dark: #4f46e5;
+    --accent-light: #818cf8;
+
+    --danger: #ef4444;
+    --danger-light: #f87171;
+
+    --input-bg: #0f172a;
+    --input-focus-bg: #111827;
+
+    --button-secondary-bg: #1e293b;
+    --button-secondary-hover: #273449;
+
+    --shadow:
+        0 25px 50px -12px rgba(0, 0, 0, 0.65),
+        0 12px 24px -8px rgba(0, 0, 0, 0.4);
+}
+
+
+/* =========================================================
+   LIGHT THEME
+   ========================================================= */
+
+:host-context(.light-mode),
+:host-context(.light) {
+
+    --dialog-bg: #f8fafc;
+    --dialog-surface: #ffffff;
+    --dialog-surface-2: #f8fafc;
+
+    --dialog-border: #e2e8f0;
+    --dialog-border-strong: #cbd5e1;
+
+    --text-primary: #0f172a;
+    --text-secondary: #334155;
+    --text-muted: #64748b;
+    --text-placeholder: #94a3b8;
+
+    --accent: #4f46e5;
+    --accent-dark: #4338ca;
+    --accent-light: #6366f1;
+
+    --danger: #dc2626;
+    --danger-light: #dc2626;
+
+    --input-bg: #ffffff;
+    --input-focus-bg: #ffffff;
+
+    --button-secondary-bg: #f1f5f9;
+    --button-secondary-hover: #e2e8f0;
+
+    --shadow:
+        0 24px 60px rgba(15, 23, 42, 0.12),
+        0 8px 24px rgba(15, 23, 42, 0.08);
+}
+
+
+/* =========================================================
+   MATERIAL DIALOG
+   ========================================================= */
 
 ::ng-deep .mat-dialog-container {
 
-    background: #0b0f19 !important;
+    background: var(--dialog-bg) !important;
 
-    color: #e2e8f0 !important;
+    color: var(--text-primary) !important;
 
-    border: 1px solid #1e293b !important;
+    border: 1px solid var(--dialog-border) !important;
 
     border-radius: 18px !important;
 
@@ -60,18 +130,15 @@
 
     flex-direction: column !important;
 
-    box-shadow:
-        0 25px 50px -12px rgba(0, 0, 0, 0.65),
-        0 12px 24px -8px rgba(0, 0, 0, 0.4) !important;
+    box-shadow: var(--shadow) !important;
 
     animation: dialogFadeIn 0.22s ease-out;
-
 }
 
 
-/* ---------------------------------------------------------
-   Dialog Header
-   --------------------------------------------------------- */
+/* =========================================================
+   HEADER
+   ========================================================= */
 
 .dialog-header {
 
@@ -86,15 +153,13 @@
     margin: 0;
 
     background:
-        linear-gradient(
-            180deg,
-            #111827 0%,
-            #0f172a 100%
-        );
+        linear-gradient(180deg,
+            var(--dialog-surface-2) 0%,
+            var(--dialog-surface) 100%);
 
-    border-bottom: 1px solid #1e293b;
+    border-bottom: 1px solid var(--dialog-border);
 
-    color: #f8fafc;
+    color: var(--text-primary);
 
     display: flex;
 
@@ -107,11 +172,12 @@
     position: relative;
 
     z-index: 2;
-
 }
 
 
-/* Header left side */
+/* =========================================================
+   HEADER LEFT
+   ========================================================= */
 
 .header-title-wrapper {
 
@@ -122,11 +188,12 @@
     align-items: center;
 
     gap: 12px;
-
 }
 
 
-/* Header icon */
+/* =========================================================
+   HEADER ICON
+   ========================================================= */
 
 .header-icon {
 
@@ -145,26 +212,44 @@
     justify-content: center;
 
     background:
-        linear-gradient(
-            135deg,
+        linear-gradient(135deg,
             rgba(99, 102, 241, 0.18),
-            rgba(129, 140, 248, 0.08)
-        );
+            rgba(129, 140, 248, 0.08));
 
-    border: 1px solid rgba(129, 140, 248, 0.18);
+    border: 1px solid rgba(99, 102, 241, 0.20);
 
-    color: #818cf8;
+    color: var(--accent-light);
 
     font-size: 0.95rem;
 
     box-shadow:
         inset 0 1px 0 rgba(255, 255, 255, 0.04),
-        0 4px 12px rgba(0, 0, 0, 0.15);
-
+        0 4px 12px rgba(0, 0, 0, 0.10);
 }
 
 
-/* Header text */
+/* Light header icon */
+
+:host-context(.light-mode) .header-icon,
+:host-context(.light) .header-icon {
+
+    background:
+        linear-gradient(135deg,
+            rgba(79, 70, 229, 0.10),
+            rgba(99, 102, 241, 0.04));
+
+    border-color: rgba(79, 70, 229, 0.16);
+
+    color: #4f46e5;
+
+    box-shadow:
+        0 4px 12px rgba(79, 70, 229, 0.08);
+}
+
+
+/* =========================================================
+   HEADER TEXT
+   ========================================================= */
 
 .header-text {
 
@@ -177,7 +262,6 @@
     justify-content: center;
 
     gap: 2px;
-
 }
 
 
@@ -185,7 +269,7 @@
 
     display: block;
 
-    color: #f8fafc;
+    color: var(--text-primary);
 
     font-size: 1rem;
 
@@ -194,7 +278,6 @@
     font-weight: 650;
 
     letter-spacing: -0.01em;
-
 }
 
 
@@ -202,20 +285,19 @@
 
     display: block;
 
-    color: #64748b;
+    color: var(--text-muted);
 
     font-size: 0.72rem;
 
     line-height: 1.35;
 
     font-weight: 400;
-
 }
 
 
-/* ---------------------------------------------------------
-   Close Button
-   --------------------------------------------------------- */
+/* =========================================================
+   CLOSE BUTTON
+   ========================================================= */
 
 .close-btn {
 
@@ -231,7 +313,7 @@
 
     border-radius: 10px !important;
 
-    color: #64748b !important;
+    color: var(--text-muted) !important;
 
     background: transparent !important;
 
@@ -248,20 +330,18 @@
         border-color 0.2s ease,
         color 0.2s ease,
         transform 0.2s ease;
-
 }
 
 
 .close-btn:hover {
 
-    color: #f8fafc !important;
+    color: var(--text-primary) !important;
 
-    background: rgba(255, 255, 255, 0.06) !important;
+    background: rgba(100, 116, 139, 0.08) !important;
 
-    border-color: #334155 !important;
+    border-color: var(--dialog-border-strong) !important;
 
     transform: rotate(2deg);
-
 }
 
 
@@ -269,11 +349,10 @@
 
     outline: none;
 
-    border-color: #6366f1 !important;
+    border-color: var(--accent) !important;
 
     box-shadow:
-        0 0 0 3px rgba(99, 102, 241, 0.15);
-
+        0 0 0 3px rgba(99, 102, 241, 0.14);
 }
 
 
@@ -286,13 +365,12 @@
     font-size: 20px;
 
     line-height: 20px;
-
 }
 
 
-/* ---------------------------------------------------------
-   Dialog Content
-   --------------------------------------------------------- */
+/* =========================================================
+   CONTENT
+   ========================================================= */
 
 .dialog-content {
 
@@ -307,12 +385,10 @@
     padding: 24px !important;
 
     background:
-        radial-gradient(
-            circle at top right,
+        radial-gradient(circle at top right,
             rgba(99, 102, 241, 0.025),
-            transparent 35%
-        ),
-        #0b0f19;
+            transparent 35%),
+        var(--dialog-bg);
 
     overflow-x: hidden !important;
 
@@ -321,62 +397,60 @@
     overscroll-behavior: contain;
 
     -webkit-overflow-scrolling: touch;
-
 }
 
 
-/* ---------------------------------------------------------
-   Scrollbar
-   --------------------------------------------------------- */
+/* Light content */
+
+:host-context(.light-mode) .dialog-content,
+:host-context(.light) .dialog-content {
+
+    background:
+        radial-gradient(circle at top right,
+            rgba(79, 70, 229, 0.035),
+            transparent 40%),
+        #f8fafc;
+}
+
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
 
 .dialog-content::-webkit-scrollbar {
-
     width: 7px;
-
 }
-
 
 .dialog-content::-webkit-scrollbar-track {
-
     background: transparent;
-
 }
-
 
 .dialog-content::-webkit-scrollbar-thumb {
 
-    background: #1e293b;
+    background: var(--dialog-border-strong);
 
     border-radius: 10px;
 
-    border: 2px solid #0b0f19;
-
+    border: 2px solid var(--dialog-bg);
 }
-
 
 .dialog-content::-webkit-scrollbar-thumb:hover {
-
-    background: #475569;
-
+    background: #64748b;
 }
 
-
-/* Firefox */
 
 .dialog-content {
 
     scrollbar-width: thin;
 
     scrollbar-color:
-        #1e293b
-        transparent;
-
+        var(--dialog-border-strong) transparent;
 }
 
 
-/* ---------------------------------------------------------
-   Form Container
-   --------------------------------------------------------- */
+/* =========================================================
+   FORM
+   ========================================================= */
 
 .form-container {
 
@@ -385,18 +459,12 @@
     max-width: 760px;
 
     margin: 0 auto;
-
 }
 
-
-/* ---------------------------------------------------------
-   Bootstrap Row Compatibility
-   --------------------------------------------------------- */
 
 .gold-form {
 
     width: 100%;
-
 }
 
 
@@ -405,24 +473,18 @@
     --bs-gutter-x: 16px;
 
     --bs-gutter-y: 18px;
-
 }
 
-
-/* ---------------------------------------------------------
-   Form Field
-   --------------------------------------------------------- */
 
 .form-field {
 
     width: 100%;
-
 }
 
 
-/* ---------------------------------------------------------
-   Labels
-   --------------------------------------------------------- */
+/* =========================================================
+   LABEL
+   ========================================================= */
 
 .gold-form .form-label {
 
@@ -434,7 +496,7 @@
 
     margin: 0 0 7px 0 !important;
 
-    color: #94a3b8 !important;
+    color: var(--text-secondary) !important;
 
     font-size: 0.78rem;
 
@@ -443,22 +505,20 @@
     font-weight: 600;
 
     letter-spacing: 0.01em;
-
 }
 
 
 .required {
 
-    color: #f87171;
+    color: var(--danger-light);
 
     font-weight: 700;
-
 }
 
 
-/* ---------------------------------------------------------
-   Input Groups
-   --------------------------------------------------------- */
+/* =========================================================
+   INPUT GROUP
+   ========================================================= */
 
 .gold-form .input-group {
 
@@ -471,13 +531,12 @@
     align-items: stretch !important;
 
     flex-wrap: nowrap !important;
-
 }
 
 
-/* ---------------------------------------------------------
-   Input Icon
-   --------------------------------------------------------- */
+/* =========================================================
+   INPUT ICON
+   ========================================================= */
 
 .gold-form .input-group-text {
 
@@ -498,30 +557,41 @@
     justify-content: center !important;
 
     background:
-        linear-gradient(
-            180deg,
-            #111827,
-            #0f172a
-        ) !important;
+        linear-gradient(180deg,
+            var(--dialog-surface-2),
+            var(--dialog-surface)) !important;
 
-    border: 1px solid #1e293b !important;
+    border: 1px solid var(--dialog-border) !important;
 
     border-right: 0 !important;
 
-    color: #818cf8 !important;
+    color: var(--accent-light) !important;
 
     font-size: 0.78rem;
 
     border-radius: 9px 0 0 9px !important;
 
     flex: 0 0 42px;
-
 }
 
 
-/* ---------------------------------------------------------
-   Inputs / Select
-   --------------------------------------------------------- */
+/* Light input icon */
+
+:host-context(.light-mode) .gold-form .input-group-text,
+:host-context(.light) .gold-form .input-group-text {
+
+    color: #4f46e5 !important;
+
+    background:
+        linear-gradient(180deg,
+            #f8fafc,
+            #f1f5f9) !important;
+}
+
+
+/* =========================================================
+   INPUTS
+   ========================================================= */
 
 .gold-form .gold-input {
 
@@ -533,14 +603,13 @@
 
     flex: 1 1 auto !important;
 
-    padding:
-        0 12px !important;
+    padding: 0 12px !important;
 
-    background: #0f172a !important;
+    background: var(--input-bg) !important;
 
-    border: 1px solid #1e293b !important;
+    border: 1px solid var(--dialog-border) !important;
 
-    color: #f8fafc !important;
+    color: var(--text-primary) !important;
 
     border-radius: 0 9px 9px 0 !important;
 
@@ -557,93 +626,106 @@
     transition:
         border-color 0.2s ease,
         background-color 0.2s ease,
-        box-shadow 0.2s ease;
-
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
 }
 
 
-/* Placeholder */
+.gold-form .gold-input:hover {
+
+    border-color: var(--dialog-border-strong) !important;
+}
+
 
 .gold-form .gold-input::placeholder {
 
-    color: #475569 !important;
+    color: var(--text-placeholder) !important;
 
     opacity: 1;
-
 }
 
 
-/* Select */
+/* =========================================================
+   SELECT
+   ========================================================= */
 
 .gold-form select.gold-input {
 
     cursor: pointer;
 
     padding-right: 34px !important;
-
 }
 
 
-/* Focus */
+/* Select options */
+
+.gold-form select.gold-input option {
+
+    background: var(--dialog-surface);
+
+    color: var(--text-primary);
+}
+
+
+/* =========================================================
+   FOCUS
+   ========================================================= */
 
 .gold-form .gold-input:focus {
 
-    background: #111827 !important;
+    background: var(--input-focus-bg) !important;
 
-    border-color: #6366f1 !important;
+    border-color: var(--accent) !important;
 
     box-shadow:
         0 0 0 3px rgba(99, 102, 241, 0.13) !important;
-
 }
 
 
-/* Invalid */
+/* =========================================================
+   INVALID
+   ========================================================= */
 
 .gold-form .gold-input.is-invalid {
 
-    border-color: #ef4444 !important;
-
+    border-color: var(--danger) !important;
 }
 
 
 .gold-form .gold-input.is-invalid:focus {
 
-    border-color: #ef4444 !important;
+    border-color: var(--danger) !important;
 
     box-shadow:
         0 0 0 3px rgba(239, 68, 68, 0.12) !important;
-
 }
 
 
-/* ---------------------------------------------------------
-   Validation Messages
-   --------------------------------------------------------- */
+/* =========================================================
+   VALIDATION
+   ========================================================= */
 
 .invalid-feedback {
 
     margin-top: 6px !important;
 
-    color: #f87171 !important;
+    color: var(--danger-light) !important;
 
     font-size: 0.72rem;
 
     line-height: 1.4;
-
 }
 
 
 .invalid-feedback small {
 
     display: block;
-
 }
 
 
-/* ---------------------------------------------------------
-   Invite Card
-   --------------------------------------------------------- */
+/* =========================================================
+   INVITE CARD
+   ========================================================= */
 
 .invite-card {
 
@@ -656,18 +738,16 @@
     border-radius: 11px;
 
     background:
-        linear-gradient(
-            135deg,
+        linear-gradient(135deg,
             rgba(99, 102, 241, 0.07),
-            rgba(15, 23, 42, 0.85)
-        );
+            var(--dialog-surface));
 
     border: 1px solid rgba(99, 102, 241, 0.16);
 
     transition:
         border-color 0.2s ease,
-        background-color 0.2s ease;
-
+        background-color 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
 
@@ -675,8 +755,38 @@
 
     border-color: rgba(99, 102, 241, 0.28);
 
+    box-shadow:
+        0 6px 18px rgba(15, 23, 42, 0.06);
 }
 
+
+/* Light invite card */
+
+:host-context(.light-mode) .invite-card,
+:host-context(.light) .invite-card {
+
+    background:
+        linear-gradient(135deg,
+            rgba(79, 70, 229, 0.055),
+            #ffffff);
+
+    border-color: rgba(79, 70, 229, 0.14);
+}
+
+
+:host-context(.light-mode) .invite-card:hover,
+:host-context(.light) .invite-card:hover {
+
+    border-color: rgba(79, 70, 229, 0.28);
+
+    box-shadow:
+        0 8px 22px rgba(79, 70, 229, 0.08);
+}
+
+
+/* =========================================================
+   INVITE TOGGLE
+   ========================================================= */
 
 .invite-toggle {
 
@@ -691,11 +801,12 @@
     margin: 0;
 
     cursor: pointer;
-
 }
 
 
-/* Hide native checkbox */
+/* =========================================================
+   NATIVE CHECKBOX
+   ========================================================= */
 
 .invite-toggle .form-check-input {
 
@@ -704,11 +815,12 @@
     opacity: 0;
 
     pointer-events: none;
-
 }
 
 
-/* Custom checkbox */
+/* =========================================================
+   CUSTOM CHECKBOX
+   ========================================================= */
 
 .custom-checkmark {
 
@@ -730,9 +842,9 @@
 
     justify-content: center;
 
-    background: #0b0f19;
+    background: var(--dialog-bg);
 
-    border: 1px solid #334155;
+    border: 1px solid var(--dialog-border-strong);
 
     color: transparent;
 
@@ -743,27 +855,34 @@
         border-color 0.2s ease,
         color 0.2s ease,
         box-shadow 0.2s ease;
-
 }
 
 
-.invite-toggle
-.form-check-input:checked
-+ .custom-checkmark {
+.invite-toggle .form-check-input:checked+.custom-checkmark {
 
-    background: #6366f1;
+    background: var(--accent);
 
-    border-color: #6366f1;
+    border-color: var(--accent);
 
     color: #ffffff;
 
     box-shadow:
         0 3px 8px rgba(99, 102, 241, 0.25);
-
 }
 
 
-/* Invite text */
+/* Keyboard focus */
+
+.invite-toggle .form-check-input:focus-visible+.custom-checkmark {
+
+    box-shadow:
+        0 0 0 3px rgba(99, 102, 241, 0.15);
+}
+
+
+/* =========================================================
+   INVITE TEXT
+   ========================================================= */
 
 .invite-content {
 
@@ -774,37 +893,34 @@
     flex-direction: column;
 
     gap: 3px;
-
 }
 
 
 .invite-title {
 
-    color: #cbd5e1;
+    color: var(--text-secondary);
 
     font-size: 0.8rem;
 
     font-weight: 600;
 
     line-height: 1.35;
-
 }
 
 
 .invite-description {
 
-    color: #64748b;
+    color: var(--text-muted);
 
     font-size: 0.72rem;
 
     line-height: 1.45;
-
 }
 
 
-/* ---------------------------------------------------------
-   Dialog Footer
-   --------------------------------------------------------- */
+/* =========================================================
+   FOOTER
+   ========================================================= */
 
 .dialog-actions {
 
@@ -819,13 +935,11 @@
     padding: 12px 24px !important;
 
     background:
-        linear-gradient(
-            180deg,
-            #0f172a,
-            #111827
-        );
+        linear-gradient(180deg,
+            var(--dialog-surface),
+            var(--dialog-surface-2));
 
-    border-top: 1px solid #1e293b;
+    border-top: 1px solid var(--dialog-border);
 
     display: flex !important;
 
@@ -838,13 +952,12 @@
     position: relative;
 
     z-index: 2;
-
 }
 
 
-/* ---------------------------------------------------------
-   Cancel Button
-   --------------------------------------------------------- */
+/* =========================================================
+   CANCEL
+   ========================================================= */
 
 .btn-cancel {
 
@@ -854,11 +967,11 @@
 
     border-radius: 9px;
 
-    border: 1px solid #334155;
+    border: 1px solid var(--dialog-border-strong);
 
-    background: #1e293b;
+    background: var(--button-secondary-bg);
 
-    color: #cbd5e1;
+    color: var(--text-secondary);
 
     font-size: 0.8rem;
 
@@ -878,19 +991,26 @@
         background-color 0.2s ease,
         border-color 0.2s ease,
         color 0.2s ease,
-        transform 0.2s ease;
-
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
 
 .btn-cancel:hover {
 
-    background: #273449;
+    background: var(--button-secondary-hover);
 
-    border-color: #475569;
+    border-color: #94a3b8;
 
-    color: #ffffff;
+    color: var(--text-primary);
 
+    transform: translateY(-1px);
+}
+
+
+.btn-cancel:active {
+
+    transform: translateY(0);
 }
 
 
@@ -898,17 +1018,16 @@
 
     outline: none;
 
-    border-color: #6366f1;
+    border-color: var(--accent);
 
     box-shadow:
         0 0 0 3px rgba(99, 102, 241, 0.13);
-
 }
 
 
-/* ---------------------------------------------------------
-   Primary Submit Button
-   --------------------------------------------------------- */
+/* =========================================================
+   SUBMIT
+   ========================================================= */
 
 .gold-submit-btn {
 
@@ -921,11 +1040,9 @@
     border-radius: 9px;
 
     background:
-        linear-gradient(
-            135deg,
-            #6366f1 0%,
-            #4f46e5 100%
-        ) !important;
+        linear-gradient(135deg,
+            var(--accent) 0%,
+            var(--accent-dark) 100%) !important;
 
     color: #ffffff !important;
 
@@ -946,13 +1063,12 @@
     cursor: pointer;
 
     box-shadow:
-        0 5px 14px rgba(99, 102, 241, 0.28);
+        0 5px 14px rgba(79, 70, 229, 0.24);
 
     transition:
         transform 0.2s ease,
         box-shadow 0.2s ease,
         filter 0.2s ease;
-
 }
 
 
@@ -963,15 +1079,13 @@
     transform: translateY(-1px);
 
     box-shadow:
-        0 7px 18px rgba(99, 102, 241, 0.38);
-
+        0 7px 18px rgba(79, 70, 229, 0.32);
 }
 
 
 .gold-submit-btn:active {
 
     transform: translateY(0);
-
 }
 
 
@@ -981,14 +1095,13 @@
 
     box-shadow:
         0 0 0 3px rgba(99, 102, 241, 0.18),
-        0 7px 18px rgba(99, 102, 241, 0.3);
-
+        0 7px 18px rgba(79, 70, 229, 0.30);
 }
 
 
-/* ---------------------------------------------------------
-   Material Dialog Backdrop
-   --------------------------------------------------------- */
+/* =========================================================
+   BACKDROP
+   ========================================================= */
 
 ::ng-deep .cdk-overlay-backdrop {
 
@@ -997,13 +1110,25 @@
     backdrop-filter: blur(4px);
 
     -webkit-backdrop-filter: blur(4px);
-
 }
 
 
-/* ---------------------------------------------------------
-   Animation
-   --------------------------------------------------------- */
+/* Light backdrop */
+
+:host-context(.light-mode) ::ng-deep .cdk-overlay-backdrop,
+:host-context(.light) ::ng-deep .cdk-overlay-backdrop {
+
+    background: rgba(15, 23, 42, 0.34) !important;
+
+    backdrop-filter: blur(5px);
+
+    -webkit-backdrop-filter: blur(5px);
+}
+
+
+/* =========================================================
+   ANIMATION
+   ========================================================= */
 
 @keyframes dialogFadeIn {
 
@@ -1012,9 +1137,7 @@
         opacity: 0;
 
         transform:
-            translateY(8px)
-            scale(0.985);
-
+            translateY(8px) scale(0.985);
     }
 
     to {
@@ -1022,16 +1145,13 @@
         opacity: 1;
 
         transform:
-            translateY(0)
-            scale(1);
-
+            translateY(0) scale(1);
     }
-
 }
 
 
 /* =========================================================
-   LARGE DESKTOP — 1400px+
+   LARGE DESKTOP
    ========================================================= */
 
 @media (min-width: 1400px) {
@@ -1041,7 +1161,6 @@
         max-height: 86vh !important;
 
         border-radius: 20px !important;
-
     }
 
     .dialog-header {
@@ -1051,13 +1170,11 @@
         padding-left: 28px;
 
         padding-right: 28px;
-
     }
 
     .dialog-content {
 
         padding: 28px !important;
-
     }
 
     .dialog-actions {
@@ -1067,20 +1184,17 @@
         padding-left: 28px !important;
 
         padding-right: 28px !important;
-
     }
 
     .form-container {
 
         max-width: 800px;
-
     }
-
 }
 
 
 /* =========================================================
-   LAPTOP / DESKTOP — 992px to 1399px
+   LAPTOP
    ========================================================= */
 
 @media (min-width: 992px) and (max-width: 1399px) {
@@ -1088,20 +1202,17 @@
     ::ng-deep .mat-dialog-container {
 
         max-height: 88vh !important;
-
     }
 
     .dialog-content {
 
         padding: 24px !important;
-
     }
-
 }
 
 
 /* =========================================================
-   TABLET — 768px to 991px
+   TABLET
    ========================================================= */
 
 @media (min-width: 768px) and (max-width: 991px) {
@@ -1111,38 +1222,32 @@
         max-height: 90vh !important;
 
         border-radius: 16px !important;
-
     }
 
     .dialog-header {
 
         padding: 11px 20px;
-
     }
 
     .dialog-content {
 
         padding: 20px !important;
-
     }
 
     .dialog-actions {
 
         padding: 11px 20px !important;
-
     }
 
     .form-container {
 
         max-width: 100%;
-
     }
-
 }
 
 
 /* =========================================================
-   SMALL TABLET / LARGE MOBILE — 576px to 767px
+   LARGE MOBILE
    ========================================================= */
 
 @media (min-width: 576px) and (max-width: 767px) {
@@ -1156,7 +1261,6 @@
         max-height: 92vh !important;
 
         border-radius: 15px !important;
-
     }
 
     .dialog-header {
@@ -1166,7 +1270,6 @@
         padding: 10px 18px;
 
         gap: 12px;
-
     }
 
     .header-icon {
@@ -1176,25 +1279,21 @@
         height: 38px;
 
         flex-basis: 38px;
-
     }
 
     .header-title {
 
         font-size: 0.95rem;
-
     }
 
     .header-subtitle {
 
         font-size: 0.68rem;
-
     }
 
     .dialog-content {
 
         padding: 18px !important;
-
     }
 
     .gold-form .row {
@@ -1202,7 +1301,6 @@
         --bs-gutter-x: 12px;
 
         --bs-gutter-y: 16px;
-
     }
 
     .dialog-actions {
@@ -1210,14 +1308,12 @@
         min-height: 64px;
 
         padding: 10px 18px !important;
-
     }
-
 }
 
 
 /* =========================================================
-   MOBILE — 375px to 575px
+   MOBILE
    ========================================================= */
 
 @media (min-width: 375px) and (max-width: 575px) {
@@ -1231,7 +1327,6 @@
         max-height: 94vh !important;
 
         border-radius: 14px !important;
-
     }
 
     .dialog-header {
@@ -1241,13 +1336,11 @@
         padding: 9px 14px;
 
         gap: 10px;
-
     }
 
     .header-title-wrapper {
 
         gap: 9px;
-
     }
 
     .header-icon {
@@ -1261,19 +1354,16 @@
         border-radius: 9px;
 
         font-size: 0.85rem;
-
     }
 
     .header-title {
 
         font-size: 0.88rem;
-
     }
 
     .header-subtitle {
 
         display: none;
-
     }
 
     .close-btn {
@@ -1285,13 +1375,11 @@
         min-width: 36px !important;
 
         flex-basis: 36px;
-
     }
 
     .dialog-content {
 
         padding: 16px !important;
-
     }
 
     .gold-form .row {
@@ -1299,7 +1387,6 @@
         --bs-gutter-x: 0;
 
         --bs-gutter-y: 15px;
-
     }
 
     .gold-form .form-label {
@@ -1307,7 +1394,6 @@
         font-size: 0.76rem;
 
         margin-bottom: 6px !important;
-
     }
 
     .gold-form .input-group-text {
@@ -1319,7 +1405,6 @@
         flex-basis: 40px;
 
         height: 42px;
-
     }
 
     .gold-form .gold-input {
@@ -1327,25 +1412,21 @@
         height: 42px;
 
         font-size: 0.83rem;
-
     }
 
     .invite-card {
 
         padding: 12px;
-
     }
 
     .invite-title {
 
         font-size: 0.78rem;
-
     }
 
     .invite-description {
 
         font-size: 0.69rem;
-
     }
 
     .dialog-actions {
@@ -1355,11 +1436,9 @@
         padding: 10px 14px !important;
 
         gap: 8px;
-
     }
 
     .btn-cancel,
-
     .gold-submit-btn {
 
         min-height: 40px;
@@ -1367,14 +1446,12 @@
         padding: 0 13px;
 
         font-size: 0.76rem;
-
     }
-
 }
 
 
 /* =========================================================
-   VERY SMALL MOBILE — 320px to 374px
+   VERY SMALL MOBILE
    ========================================================= */
 
 @media (max-width: 374px) {
@@ -1388,7 +1465,6 @@
         max-height: 95vh !important;
 
         border-radius: 12px !important;
-
     }
 
     .dialog-header {
@@ -1398,13 +1474,11 @@
         padding: 8px 10px;
 
         gap: 8px;
-
     }
 
     .header-title-wrapper {
 
         gap: 8px;
-
     }
 
     .header-icon {
@@ -1418,19 +1492,16 @@
         border-radius: 8px;
 
         font-size: 0.76rem;
-
     }
 
     .header-title {
 
         font-size: 0.82rem;
-
     }
 
     .header-subtitle {
 
         display: none;
-
     }
 
     .close-btn {
@@ -1442,13 +1513,11 @@
         min-width: 32px !important;
 
         flex-basis: 32px;
-
     }
 
     .dialog-content {
 
         padding: 13px !important;
-
     }
 
     .gold-form .row {
@@ -1456,7 +1525,6 @@
         --bs-gutter-x: 0;
 
         --bs-gutter-y: 13px;
-
     }
 
     .gold-form .form-label {
@@ -1464,7 +1532,6 @@
         font-size: 0.73rem;
 
         margin-bottom: 5px !important;
-
     }
 
     .gold-form .input-group-text {
@@ -1478,7 +1545,6 @@
         height: 40px;
 
         font-size: 0.7rem;
-
     }
 
     .gold-form .gold-input {
@@ -1490,37 +1556,31 @@
         padding-right: 9px !important;
 
         font-size: 0.78rem;
-
     }
 
     .gold-form .gold-input::placeholder {
 
         font-size: 0.74rem;
-
     }
 
     .invite-card {
 
         padding: 10px;
-
     }
 
     .invite-toggle {
 
         gap: 8px;
-
     }
 
     .invite-title {
 
         font-size: 0.74rem;
-
     }
 
     .invite-description {
 
         font-size: 0.66rem;
-
     }
 
     .dialog-actions {
@@ -1528,11 +1588,9 @@
         padding: 9px 10px !important;
 
         gap: 6px;
-
     }
 
     .btn-cancel,
-
     .gold-submit-btn {
 
         min-height: 39px;
@@ -1542,14 +1600,12 @@
         font-size: 0.71rem;
 
         gap: 5px;
-
     }
-
 }
 
 
 /* =========================================================
-   ULTRA SMALL WIDTH SAFETY
+   SMALL WIDTH SAFETY
    ========================================================= */
 
 @media (max-width: 330px) {
@@ -1557,7 +1613,6 @@
     .btn-cancel span {
 
         display: none;
-
     }
 
     .btn-cancel {
@@ -1565,15 +1620,12 @@
         width: 40px;
 
         padding: 0;
-
     }
 
     .gold-submit-btn {
 
         flex: 1;
-
     }
-
 }
 
 
@@ -1588,21 +1640,17 @@
     .gold-submit-btn {
 
         min-height: 42px;
-
     }
 
     .gold-form .gold-input {
 
         min-height: 42px;
-
     }
 
     .gold-form .input-group-text {
 
         min-height: 42px;
-
     }
-
 }
 
 
@@ -1621,14 +1669,12 @@
         animation-iteration-count: 1 !important;
 
         transition-duration: 0.01ms !important;
-
     }
-
 }
 
 
 /* =========================================================
-   SAFE AREA — iPhone / Notched Devices
+   SAFE AREA
    ========================================================= */
 
 @supports (padding: env(safe-area-inset-bottom)) {
@@ -1636,11 +1682,7 @@
     .dialog-actions {
 
         padding-bottom:
-            max(
-                12px,
-                env(safe-area-inset-bottom)
-            ) !important;
-
+            max(12px,
+                env(safe-area-inset-bottom)) !important;
     }
-
 }

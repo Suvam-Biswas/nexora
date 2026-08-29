@@ -9,6 +9,7 @@ import { MatSelectModule } from "@angular/material/select";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { BrowserModule } from "@angular/platform-browser";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { RouterModule } from "@angular/router";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -16,17 +17,17 @@ import { HomeComponent } from "./home/home.component";
 import { AuthModule } from "./modules/auth/auth.module";
 import { LoadingWaitModule } from "./modules/loading-wait/loading-wait.module";
 import { LoadingService } from "./modules/loading-wait/service/loading.service";
-
-
-
+import { NotificationsComponent } from "./modules/auth/notifications/notifications.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
+    NotificationsComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
@@ -35,22 +36,15 @@ import { LoadingService } from "./modules/loading-wait/service/loading.service";
     MatDialogModule,
     MatTooltipModule,
     RouterModule,
-    AuthModule,
     MatToolbarModule,
     MatSelectModule,
     LoadingWaitModule,
-    FormsModule,
-
-
+    FormsModule
   ],
-  exports: [
-
-  ],
+  exports: [],
   providers: [
-
     LoadingService,
     DatePipe
-
   ],
   bootstrap: [AppComponent]
 })

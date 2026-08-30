@@ -48,7 +48,11 @@ export class AppComponent implements OnInit {
     private router: Router,
     private darkModeService: DarkModeService
   ) {
-    this.checkUrl(this.router.url);
+
+    this.checkUrl(
+      this.router.url
+    );
+
   }
 
 
@@ -61,33 +65,50 @@ export class AppComponent implements OnInit {
             event instanceof NavigationEnd
         )
       )
-      .subscribe((event: NavigationEnd) => {
+      .subscribe(
+        (event: NavigationEnd) => {
 
-        this.checkUrl(
-          event.urlAfterRedirects
-        );
+          this.checkUrl(
+            event.urlAfterRedirects
+          );
 
-        this.updateMobileNavigation(
-          event.urlAfterRedirects
-        );
+          this.updateMobileNavigation(
+            event.urlAfterRedirects
+          );
 
-      });
+        }
+      );
+
 
     this.updateMobileNavigation(
       this.router.url
     );
+
   }
 
+
+  /* ============================================================
+     THEME
+     ============================================================ */
 
   toggleTheme(): void {
+
     this.darkModeService.toggle();
+
   }
 
 
-  private checkUrl(url: string): void {
+  /* ============================================================
+     URL / NAVBAR VISIBILITY
+     ============================================================ */
+
+  private checkUrl(
+    url: string
+  ): void {
 
     const lowerUrl =
       url.toLowerCase();
+
 
     this.showNavbar =
       lowerUrl.includes('/auth/') &&
@@ -96,6 +117,10 @@ export class AppComponent implements OnInit {
   }
 
 
+  /* ============================================================
+     MOBILE ACTIVE NAVIGATION
+     ============================================================ */
+
   private updateMobileNavigation(
     url: string
   ): void {
@@ -103,6 +128,10 @@ export class AppComponent implements OnInit {
     const lowerUrl =
       url.toLowerCase();
 
+
+    /* ----------------------------------------------------------
+       Dashboard
+       ---------------------------------------------------------- */
 
     if (
       lowerUrl === '/auth/dashboard' ||
@@ -119,7 +148,13 @@ export class AppComponent implements OnInit {
     }
 
 
-    if (lowerUrl.includes('/auth/users')) {
+    /* ----------------------------------------------------------
+       Users
+       ---------------------------------------------------------- */
+
+    if (
+      lowerUrl.includes('/auth/users')
+    ) {
 
       this.mobileActiveLabel =
         'Users';
@@ -130,6 +165,10 @@ export class AppComponent implements OnInit {
       return;
     }
 
+
+    /* ----------------------------------------------------------
+       Billing
+       ---------------------------------------------------------- */
 
     if (
       lowerUrl.includes(
@@ -147,6 +186,10 @@ export class AppComponent implements OnInit {
     }
 
 
+    /* ----------------------------------------------------------
+       Analytics
+       ---------------------------------------------------------- */
+
     if (
       lowerUrl.includes('/auth/analytics')
     ) {
@@ -160,6 +203,10 @@ export class AppComponent implements OnInit {
       return;
     }
 
+
+    /* ----------------------------------------------------------
+       Pricing
+       ---------------------------------------------------------- */
 
     if (
       lowerUrl.includes('/auth/pricing')
@@ -175,6 +222,10 @@ export class AppComponent implements OnInit {
     }
 
 
+    /* ----------------------------------------------------------
+       Audit Logs
+       ---------------------------------------------------------- */
+
     if (
       lowerUrl.includes('/auth/audit-logs')
     ) {
@@ -188,6 +239,10 @@ export class AppComponent implements OnInit {
       return;
     }
 
+
+    /* ----------------------------------------------------------
+       Settings
+       ---------------------------------------------------------- */
 
     if (
       lowerUrl.includes(
@@ -207,6 +262,10 @@ export class AppComponent implements OnInit {
   }
 
 
+  /* ============================================================
+     MOBILE MENU
+     ============================================================ */
+
   toggleMobileMenu(): void {
 
     this.isMobileMenuOpen =
@@ -222,6 +281,10 @@ export class AppComponent implements OnInit {
 
   }
 
+
+  /* ============================================================
+     IMAGE PREVIEW
+     ============================================================ */
 
   openImagePreview(): void {
 
@@ -239,17 +302,42 @@ export class AppComponent implements OnInit {
   }
 
 
+  /* ============================================================
+     NOTIFICATIONS
+     ============================================================ */
+
   toggleNotifications(
     event: MouseEvent
   ): void {
 
+    /*
+     * Prevent the document click listener from immediately
+     * closing the notification panel after opening it.
+     */
     event.stopPropagation();
+
+
+    /*
+     * Close the mobile navigation menu when notifications
+     * are opened.
+     */
+    if (!this.isNotificationOpen) {
+
+      this.isMobileMenuOpen =
+        false;
+
+    }
+
 
     this.isNotificationOpen =
       !this.isNotificationOpen;
 
   }
 
+
+  /* ============================================================
+     DOCUMENT CLICK
+     ============================================================ */
 
   @HostListener('document:click')
   onDocumentClick(): void {
@@ -259,6 +347,10 @@ export class AppComponent implements OnInit {
 
   }
 
+
+  /* ============================================================
+     ESCAPE KEY
+     ============================================================ */
 
   @HostListener('document:keydown.escape')
   onEscape(): void {

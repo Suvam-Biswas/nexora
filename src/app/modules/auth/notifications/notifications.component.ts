@@ -5,6 +5,10 @@ import {
 } from '@angular/core';
 
 
+/* ============================================================
+   NOTIFICATION MODEL
+   ============================================================ */
+
 interface NotificationItem {
 
   id: number;
@@ -18,27 +22,43 @@ interface NotificationItem {
   read: boolean;
 
   type:
-    | 'security'
-    | 'billing'
-    | 'system'
-    | 'user';
+  | 'security'
+  | 'billing'
+  | 'system'
+  | 'user';
 
   icon: string;
+
 }
 
 
+/* ============================================================
+   COMPONENT
+   ============================================================ */
+
 @Component({
+
   selector: 'app-notifications',
 
   templateUrl: './notifications.component.html',
 
   styleUrls: ['./notifications.component.scss']
+
 })
 export class NotificationsComponent {
+
+
+  /* ==========================================================
+     CLOSE EVENT
+     ========================================================== */
 
   @Output()
   close = new EventEmitter<void>();
 
+
+  /* ==========================================================
+     NOTIFICATIONS
+     ========================================================== */
 
   notifications: NotificationItem[] = [
 
@@ -116,6 +136,10 @@ export class NotificationsComponent {
   ];
 
 
+  /* ==========================================================
+     UNREAD COUNT
+     ========================================================== */
+
   get unreadCount(): number {
 
     return this.notifications.filter(
@@ -124,6 +148,10 @@ export class NotificationsComponent {
 
   }
 
+
+  /* ==========================================================
+     MARK ALL AS READ
+     ========================================================== */
 
   markAllAsRead(): void {
 
@@ -136,6 +164,10 @@ export class NotificationsComponent {
   }
 
 
+  /* ==========================================================
+     MARK SINGLE NOTIFICATION AS READ
+     ========================================================== */
+
   markAsRead(
     notification: NotificationItem,
     event: MouseEvent
@@ -147,6 +179,10 @@ export class NotificationsComponent {
 
   }
 
+
+  /* ==========================================================
+     CLOSE DROPDOWN
+     ========================================================== */
 
   onClose(): void {
 

@@ -1,5 +1,36 @@
 /* ============================================================
-   BASE COLORS
+   MOBILE NOTIFICATION WRAPPER
+   ============================================================ */
+
+.mobile-notification-wrapper {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  /*
+   * Important:
+   * The wrapper itself stays inside the navbar.
+   * The notification panel is moved to fixed positioning
+   * only on small / extra-small screens below.
+   */
+}
+
+
+/*
+ * Keep the notification component attached to the
+ * mobile notification button on normal layouts.
+ *
+ * The notification component switches to a full viewport
+ * panel through the responsive rules below.
+ */
+.mobile-notification-wrapper app-notifications {
+  display: block;
+}
+
+
+/* ============================================================
+   EXISTING BASE COLORS
    ============================================================ */
 
 $bg-main: #0b0f19;
@@ -18,24 +49,18 @@ $text-subtle: #64748b;
 $accent-primary: #6366f1;
 $accent-secondary: #8b5cf6;
 
-$accent-gradient: linear-gradient(
-  135deg,
-  #8b5cf6 0%,
-  #6366f1 100%
-);
+$accent-gradient: linear-gradient(135deg,
+    #8b5cf6 0%,
+    #6366f1 100%);
 
-$active-background: linear-gradient(
-  135deg,
-  rgba(99, 102, 241, 0.22),
-  rgba(139, 92, 246, 0.14)
-);
+$active-background: linear-gradient(135deg,
+    rgba(99, 102, 241, 0.22),
+    rgba(139, 92, 246, 0.14));
 
-$navbar-shadow:
-  0 10px 25px -5px rgba(0, 0, 0, 0.30),
+$navbar-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.30),
   0 8px 12px -6px rgba(0, 0, 0, 0.20);
 
-$navbar-shadow-mobile:
-  0 14px 35px -10px rgba(0, 0, 0, 0.60);
+$navbar-shadow-mobile: 0 14px 35px -10px rgba(0, 0, 0, 0.60);
 
 $transition-fast: 0.18s ease;
 $transition-normal: 0.25s ease;
@@ -51,12 +76,6 @@ $transition-normal: 0.25s ease;
   width: 100%;
   min-width: 0;
 
-  /*
-   * IMPORTANT:
-   * The AppComponent owns the viewport height.
-   * This prevents the browser/page itself from becoming
-   * the primary scroll container.
-   */
   height: 100vh;
   min-height: 100vh;
   max-height: 100vh;
@@ -96,9 +115,6 @@ $transition-normal: 0.25s ease;
   width: 100%;
   min-width: 0;
 
-  /*
-   * Fixed viewport shell.
-   */
   height: 100vh;
   min-height: 100vh;
   max-height: 100vh;
@@ -111,24 +127,16 @@ $transition-normal: 0.25s ease;
   flex-direction: column;
 
   background:
-    radial-gradient(
-      circle at 10% 0%,
+    radial-gradient(circle at 10% 0%,
       rgba(99, 102, 241, 0.035),
-      transparent 30%
-    ),
-    radial-gradient(
-      circle at 90% 100%,
+      transparent 30%),
+    radial-gradient(circle at 90% 100%,
       rgba(139, 92, 246, 0.025),
-      transparent 32%
-    ),
+      transparent 32%),
     $bg-main;
 
   color: $text-primary;
 
-  /*
-   * CRITICAL:
-   * Prevent the entire app from scrolling.
-   */
   overflow: hidden;
 
   transition:
@@ -145,15 +153,6 @@ $transition-normal: 0.25s ease;
   width: 100%;
   min-width: 0;
 
-  /*
-   * CRITICAL FLEX SETTINGS
-   *
-   * flex: 1 allows this section to consume all remaining
-   * viewport height below the navbar.
-   *
-   * min-height: 0 is extremely important in a flex layout.
-   * Without it, the content can force the parent to grow.
-   */
   flex: 1 1 auto;
   min-height: 0;
 
@@ -161,27 +160,17 @@ $transition-normal: 0.25s ease;
 
   max-width: 1680px;
 
-  /*
-   * ONLY THIS AREA SCROLLS.
-   */
   overflow-x: hidden;
   overflow-y: auto;
 
-  /*
-   * Smooth native scrolling.
-   */
   scroll-behavior: smooth;
 
-  /*
-   * Keeps the scrollbar inside the content area.
-   */
   overscroll-behavior: contain;
 
   scrollbar-width: thin;
 
   scrollbar-color:
-    rgba(129, 140, 248, 0.28)
-    transparent;
+    rgba(129, 140, 248, 0.28) transparent;
 }
 
 
@@ -220,10 +209,6 @@ $transition-normal: 0.25s ease;
 
   min-height: 66px;
 
-  /*
-   * CRITICAL:
-   * Navbar must never shrink when content becomes tall.
-   */
   flex: 0 0 auto;
   flex-shrink: 0;
 
@@ -238,11 +223,9 @@ $transition-normal: 0.25s ease;
   gap: 16px;
 
   background:
-    linear-gradient(
-      180deg,
+    linear-gradient(180deg,
       rgba(19, 24, 36, 0.98),
-      rgba(19, 24, 36, 0.94)
-    );
+      rgba(19, 24, 36, 0.94));
 
   border: 1px solid $border-color;
 
@@ -308,11 +291,9 @@ $transition-normal: 0.25s ease;
   border-radius: 50%;
 
   background:
-    linear-gradient(
-      135deg,
+    linear-gradient(135deg,
       $accent-secondary,
-      $accent-primary
-    );
+      $accent-primary );
 
   box-shadow:
     0 0 0 3px rgba(99, 102, 241, 0.08),
@@ -507,11 +488,9 @@ $transition-normal: 0.25s ease;
   border-radius: 10px;
 
   background:
-    linear-gradient(
-      90deg,
+    linear-gradient(90deg,
       $accent-secondary,
-      $accent-primary
-    );
+      $accent-primary );
 
   opacity: 0.95;
 }
@@ -814,11 +793,9 @@ $transition-normal: 0.25s ease;
   padding: 6px;
 
   background:
-    linear-gradient(
-      180deg,
+    linear-gradient(180deg,
       rgba(20, 26, 39, 0.99),
-      rgba(15, 20, 31, 0.99)
-    );
+      rgba(15, 20, 31, 0.99));
 
   border:
     1px solid rgba(255, 255, 255, 0.08);
@@ -990,8 +967,7 @@ $transition-normal: 0.25s ease;
   color: $text-subtle;
 }
 
-.mobile-nav-option.mobile-active
-.mobile-option-content small {
+.mobile-nav-option.mobile-active .mobile-option-content small {
   color:
     #818cf8;
 }
@@ -1204,6 +1180,18 @@ $transition-normal: 0.25s ease;
     gap: 6px;
   }
 
+
+  .mobile-notification-wrapper {
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    flex: 0 0 auto;
+  }
+
+
   .mobile-nav-utilities .nav-util-btn {
     width: 34px;
     height: 34px;
@@ -1255,8 +1243,7 @@ $transition-normal: 0.25s ease;
     scrollbar-width: thin;
 
     scrollbar-color:
-      rgba(129, 140, 248, 0.25)
-      transparent;
+      rgba(129, 140, 248, 0.25) transparent;
   }
 
 
@@ -1378,6 +1365,40 @@ $transition-normal: 0.25s ease;
     font-size:
       0.66rem;
   }
+
+
+  /* ==========================================================
+     FULL-SCREEN MOBILE NOTIFICATION PANEL
+     ========================================================== */
+
+  .mobile-notification-wrapper app-notifications {
+    position: fixed !important;
+
+    top: 10px !important;
+    right: 10px !important;
+    bottom: 10px !important;
+    left: 10px !important;
+
+    width: auto !important;
+    max-width: none !important;
+
+    height: auto !important;
+    max-height: none !important;
+
+    margin: 0 !important;
+
+    z-index: 10000 !important;
+
+    display: block !important;
+
+    overflow: visible !important;
+
+    /*
+     * Prevent the notification dialog from being clipped
+     * by the navbar / dashboard content.
+     */
+    transform: none !important;
+  }
 }
 
 
@@ -1411,6 +1432,36 @@ $transition-normal: 0.25s ease;
     display:
       none;
   }
+
+
+  /* ==========================================================
+     EXTRA-SMALL FULL VIEWPORT NOTIFICATION PANEL
+     ========================================================== */
+
+  .mobile-notification-wrapper app-notifications {
+    position: fixed !important;
+
+    top: 7px !important;
+    right: 7px !important;
+    bottom: 7px !important;
+    left: 7px !important;
+
+    width: auto !important;
+    max-width: none !important;
+
+    height: auto !important;
+    max-height: none !important;
+
+    margin: 0 !important;
+
+    z-index: 10000 !important;
+
+    display: block !important;
+
+    overflow: visible !important;
+
+    transform: none !important;
+  }
 }
 
 
@@ -1422,16 +1473,12 @@ $transition-normal: 0.25s ease;
   color: #172033;
 
   background:
-    radial-gradient(
-      circle at 5% 0%,
+    radial-gradient(circle at 5% 0%,
       rgba(99, 102, 241, 0.08),
-      transparent 30%
-    ),
-    radial-gradient(
-      circle at 95% 100%,
+      transparent 30%),
+    radial-gradient(circle at 95% 100%,
       rgba(139, 92, 246, 0.06),
-      transparent 32%
-    ),
+      transparent 32%),
     #f4f7fb;
 }
 
@@ -1442,11 +1489,9 @@ $transition-normal: 0.25s ease;
 
 .dashboard-container.light-theme .dashboard-top-navbar {
   background:
-    linear-gradient(
-      180deg,
+    linear-gradient(180deg,
       rgba(255, 255, 255, 0.98),
-      rgba(248, 250, 252, 0.98)
-    );
+      rgba(248, 250, 252, 0.98));
 
   border-color:
     rgba(15, 23, 42, 0.08);
@@ -1505,11 +1550,9 @@ $transition-normal: 0.25s ease;
     #3730a3;
 
   background:
-    linear-gradient(
-      135deg,
+    linear-gradient(135deg,
       rgba(99, 102, 241, 0.14),
-      rgba(139, 92, 246, 0.08)
-    );
+      rgba(139, 92, 246, 0.08));
 
   border-color:
     rgba(99, 102, 241, 0.16);
@@ -1633,11 +1676,9 @@ $transition-normal: 0.25s ease;
 
 .dashboard-container.light-theme .mobile-nav-dropdown {
   background:
-    linear-gradient(
-      180deg,
+    linear-gradient(180deg,
       rgba(255, 255, 255, 0.99),
-      rgba(248, 250, 252, 0.99)
-    );
+      rgba(248, 250, 252, 0.99));
 
   border-color:
     rgba(15, 23, 42, 0.09);
@@ -1662,11 +1703,9 @@ $transition-normal: 0.25s ease;
 
 .dashboard-container.light-theme .mobile-nav-option.mobile-active {
   background:
-    linear-gradient(
-      135deg,
+    linear-gradient(135deg,
       rgba(99, 102, 241, 0.12),
-      rgba(139, 92, 246, 0.07)
-    );
+      rgba(139, 92, 246, 0.07));
 
   border-color:
     rgba(99, 102, 241, 0.15);
@@ -1698,15 +1737,12 @@ $transition-normal: 0.25s ease;
     #4f46e5;
 }
 
-.dashboard-container.light-theme
-.mobile-option-content small {
+.dashboard-container.light-theme .mobile-option-content small {
   color:
     #94a3b8;
 }
 
-.dashboard-container.light-theme
-.mobile-nav-option.mobile-active
-.mobile-option-content small {
+.dashboard-container.light-theme .mobile-nav-option.mobile-active .mobile-option-content small {
   color:
     #6366f1;
 }
@@ -1716,9 +1752,7 @@ $transition-normal: 0.25s ease;
     #94a3b8;
 }
 
-.dashboard-container.light-theme
-.mobile-nav-option:hover
-.mobile-option-arrow {
+.dashboard-container.light-theme .mobile-nav-option:hover .mobile-option-arrow {
   color:
     #6366f1;
 }
@@ -1957,6 +1991,7 @@ $transition-normal: 0.25s ease;
    ============================================================ */
 
 @keyframes fadeInOverlay {
+
   from {
     opacity: 0;
   }
@@ -1964,9 +1999,11 @@ $transition-normal: 0.25s ease;
   to {
     opacity: 1;
   }
+
 }
 
 @keyframes scaleUpModal {
+
   from {
     opacity: 0;
 
@@ -1980,6 +2017,7 @@ $transition-normal: 0.25s ease;
     transform:
       scale(1);
   }
+
 }
 
 
@@ -2003,8 +2041,11 @@ $transition-normal: 0.25s ease;
   .mobile-option-icon,
   .mobile-option-arrow,
   .image-preview-overlay,
-  .image-preview-content {
-    scroll-behavior: auto !important;
+  .image-preview-content,
+  .mobile-notification-wrapper app-notifications {
+
+    scroll-behavior:
+      auto !important;
 
     transition:
       none !important;
@@ -2012,4 +2053,5 @@ $transition-normal: 0.25s ease;
     animation:
       none !important;
   }
+
 }

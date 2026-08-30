@@ -1,25 +1,21 @@
 <div class="notification-dropdown-container">
 
-  <!-- Header -->
+  <!-- =========================================================
+       NOTIFICATION HEADER
+       ========================================================= -->
   <div class="notification-header">
 
     <div class="header-title-group">
 
       <h4>Notifications</h4>
 
-      <span
-        class="unread-badge-count"
-        *ngIf="unreadCount > 0">
+      <span class="unread-badge-count" *ngIf="unreadCount > 0">
         {{ unreadCount }} new
       </span>
 
     </div>
 
-    <button
-      type="button"
-      class="mark-read-btn"
-      *ngIf="unreadCount > 0"
-      (click)="markAllAsRead()">
+    <button type="button" class="mark-read-btn" *ngIf="unreadCount > 0" (click)="markAllAsRead()">
 
       <i class="fa-solid fa-check-double"></i>
 
@@ -30,28 +26,23 @@
   </div>
 
 
-  <!-- Notification List -->
+  <!-- =========================================================
+       NOTIFICATION LIST
+       ========================================================= -->
   <div class="notification-list">
 
-    <div
-      *ngFor="let item of notifications"
-      class="notification-item"
-      [class.unread]="!item.read">
+    <div *ngFor="let item of notifications" class="notification-item" [class.unread]="!item.read">
 
-      <!-- Icon -->
-      <div
-        class="notification-icon-wrapper"
-        [ngClass]="item.type">
+      <!-- Notification Icon -->
+      <div class="notification-icon-wrapper" [ngClass]="item.type">
 
-        <i
-          class="fa-solid"
-          [ngClass]="item.icon">
+        <i class="fa-solid" [ngClass]="item.icon">
         </i>
 
       </div>
 
 
-      <!-- Content -->
+      <!-- Notification Content -->
       <div class="notification-content">
 
         <div class="notification-title-row">
@@ -74,13 +65,8 @@
 
 
       <!-- Mark As Read -->
-      <button
-        *ngIf="!item.read"
-        type="button"
-        class="single-read-btn"
-        (click)="markAsRead(item, $event)"
-        title="Mark as read"
-        aria-label="Mark notification as read">
+      <button *ngIf="!item.read" type="button" class="single-read-btn" (click)="markAsRead(item, $event)"
+        title="Mark as read" aria-label="Mark notification as read">
 
         <span class="dot-indicator"></span>
 
@@ -89,10 +75,10 @@
     </div>
 
 
-    <!-- Empty State -->
-    <div
-      *ngIf="notifications.length === 0"
-      class="notification-empty">
+    <!-- =======================================================
+         EMPTY STATE
+         ======================================================= -->
+    <div *ngIf="notifications.length === 0" class="notification-empty">
 
       <div class="empty-icon">
         <i class="fa-regular fa-bell-slash"></i>
@@ -107,13 +93,12 @@
   </div>
 
 
-  <!-- Footer -->
+  <!-- =========================================================
+       NOTIFICATION FOOTER
+       ========================================================= -->
   <div class="notification-footer">
 
-    <a
-      routerLink="/auth/audit-logs"
-      (click)="onClose()"
-      class="view-all-link">
+    <a routerLink="/auth/audit-logs" (click)="onClose()" class="view-all-link">
 
       <span>View all activity logs</span>
 

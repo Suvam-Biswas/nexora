@@ -87,3 +87,18 @@
   }
 }
 
+:root {
+  color-scheme: light dark;
+}
+
+body {
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .dark-theme .card-background {
+    background-color: #181b1f; // Slightly adjusted shade for mobile rendering
+  }
+}

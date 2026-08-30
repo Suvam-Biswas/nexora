@@ -19,11 +19,9 @@ $border-focus: #6366f1;
 $accent-primary: #6366f1;
 $accent-secondary: #a855f7;
 
-$accent-gradient: linear-gradient(
-  135deg,
-  #6366f1 0%,
-  #a855f7 100%
-);
+$accent-gradient: linear-gradient(135deg,
+    #6366f1 0%,
+    #a855f7 100%);
 
 $text-main: #f8fafc;
 $text-muted: #94a3b8;
@@ -118,11 +116,9 @@ $success-color: #34d399;
   overflow: hidden;
 
   background:
-    radial-gradient(
-      circle at 75% 20%,
+    radial-gradient(circle at 75% 20%,
       rgba(99, 102, 241, 0.04),
-      transparent 30%
-    ),
+      transparent 30%),
     $bg-main;
 }
 
@@ -153,21 +149,15 @@ $success-color: #34d399;
   background-color: $panel-left;
 
   background-image:
-    radial-gradient(
-      circle at 10% 20%,
+    radial-gradient(circle at 10% 20%,
       rgba(99, 102, 241, 0.14) 0%,
-      transparent 40%
-    ),
-    radial-gradient(
-      circle at 90% 80%,
+      transparent 40%),
+    radial-gradient(circle at 90% 80%,
       rgba(168, 85, 247, 0.10) 0%,
-      transparent 40%
-    ),
-    linear-gradient(
-      135deg,
+      transparent 40%),
+    linear-gradient(135deg,
       rgba(255, 255, 255, 0.015),
-      transparent 60%
-    );
+      transparent 60%);
 
   border-right:
     1px solid $border-color;
@@ -211,11 +201,9 @@ $success-color: #34d399;
   left: -8%;
 
   background:
-    radial-gradient(
-      circle,
+    radial-gradient(circle,
       rgba(99, 102, 241, 0.18),
-      transparent 68%
-    );
+      transparent 68%);
 }
 
 
@@ -230,11 +218,9 @@ $success-color: #34d399;
   bottom: -18%;
 
   background:
-    radial-gradient(
-      circle,
+    radial-gradient(circle,
       rgba(168, 85, 247, 0.15),
-      transparent 68%
-    );
+      transparent 68%);
 
   animation-delay: -4s;
 }
@@ -251,11 +237,9 @@ $success-color: #34d399;
   right: 15%;
 
   background:
-    radial-gradient(
-      circle,
+    radial-gradient(circle,
       rgba(99, 102, 241, 0.07),
-      transparent 70%
-    );
+      transparent 70%);
 
   animation-delay: -7s;
 }
@@ -351,11 +335,9 @@ $success-color: #34d399;
   color: #ffffff;
 
   font-size:
-    clamp(
-      2rem,
+    clamp(2rem,
       3.2vw,
-      3.45rem
-    );
+      3.45rem);
 
   line-height: 1.08;
 
@@ -371,7 +353,7 @@ $success-color: #34d399;
    BRAND DESCRIPTION
    ============================================================ */
 
-.brand-content-wrapper > p {
+.brand-content-wrapper>p {
   max-width: 580px;
 
   margin:
@@ -380,11 +362,9 @@ $success-color: #34d399;
   color: $text-muted;
 
   font-size:
-    clamp(
-      0.9rem,
+    clamp(0.9rem,
       1vw,
-      1.06rem
-    );
+      1.06rem);
 
   line-height: 1.7;
 
@@ -414,11 +394,9 @@ $success-color: #34d399;
   border-radius: 16px;
 
   background:
-    linear-gradient(
-      135deg,
+    linear-gradient(135deg,
       rgba(255, 255, 255, 0.055),
-      rgba(255, 255, 255, 0.018)
-    );
+      rgba(255, 255, 255, 0.018));
 
   border:
     1px solid rgba(255, 255, 255, 0.08);
@@ -547,11 +525,9 @@ $success-color: #34d399;
   color: #64748b;
 
   font-size:
-    clamp(
-      0.7rem,
+    clamp(0.7rem,
       0.8vw,
-      0.84rem
-    );
+      0.84rem);
 
   line-height: 1.5;
 
@@ -609,39 +585,31 @@ $success-color: #34d399;
   width: 100%;
 
   max-width:
-    clamp(
-      390px,
+    clamp(390px,
       32vw,
-      480px
-    );
+      480px);
 
   max-height: calc(100% - 20px);
 
   margin: auto;
 
   padding:
-    clamp(
-      26px,
+    clamp(26px,
       3vw,
-      42px
-    );
+      42px);
 
   background:
-    linear-gradient(
-      145deg,
+    linear-gradient(145deg,
       rgba(19, 24, 36, 0.98),
-      rgba(15, 19, 29, 0.98)
-    );
+      rgba(15, 19, 29, 0.98));
 
   border:
     1px solid $border-color;
 
   border-radius:
-    clamp(
-      16px,
+    clamp(16px,
       1.5vw,
-      22px
-    );
+      22px);
 
   box-shadow:
     0 30px 70px rgba(0, 0, 0, 0.55),
@@ -668,12 +636,10 @@ $success-color: #34d399;
   height: 1px;
 
   background:
-    linear-gradient(
-      90deg,
+    linear-gradient(90deg,
       transparent,
       rgba(129, 140, 248, 0.5),
-      transparent
-    );
+      transparent);
 
   pointer-events: none;
 }
@@ -687,11 +653,9 @@ $success-color: #34d399;
   position: relative;
 
   margin-bottom:
-    clamp(
-      22px,
+    clamp(22px,
       2.5vw,
-      30px
-    );
+      30px);
 }
 
 
@@ -725,11 +689,9 @@ $success-color: #34d399;
   color: #fff;
 
   font-size:
-    clamp(
-      1.45rem,
+    clamp(1.45rem,
       1.7vw,
-      1.75rem
-    );
+      1.75rem);
 
   line-height: 1.2;
 
@@ -751,11 +713,9 @@ $success-color: #34d399;
   color: $text-muted;
 
   font-size:
-    clamp(
-      0.82rem,
+    clamp(0.82rem,
       0.9vw,
-      0.92rem
-    );
+      0.92rem);
 
   line-height: 1.55;
 }
@@ -780,11 +740,9 @@ $success-color: #34d399;
   width: 100%;
 
   margin-bottom:
-    clamp(
-      16px,
+    clamp(16px,
       1.7vw,
-      21px
-    );
+      21px);
 }
 
 
@@ -834,7 +792,7 @@ $success-color: #34d399;
    INPUT LEADING ICON
    ============================================================ */
 
-.input-box > .input-leading-icon {
+.input-box>.input-leading-icon {
   position: absolute;
 
   left: 15px;
@@ -864,11 +822,9 @@ $success-color: #34d399;
   min-width: 0;
 
   height:
-    clamp(
-      45px,
+    clamp(45px,
       3.2vw,
-      50px
-    );
+      50px);
 
   padding:
     0 46px;
@@ -885,11 +841,9 @@ $success-color: #34d399;
   font-family: inherit;
 
   font-size:
-    clamp(
-      0.86rem,
+    clamp(0.86rem,
       0.95vw,
-      0.93rem
-    );
+      0.93rem);
 
   line-height: normal;
 
@@ -928,7 +882,7 @@ $success-color: #34d399;
 }
 
 
-.input-box:focus-within > .input-leading-icon {
+.input-box:focus-within>.input-leading-icon {
   color: $accent-primary;
 }
 
@@ -1004,11 +958,9 @@ $success-color: #34d399;
   margin-top: -2px;
 
   margin-bottom:
-    clamp(
-      18px,
+    clamp(18px,
       2vw,
-      24px
-    );
+      24px);
 
   font-size: 0.83rem;
 }
@@ -1091,11 +1043,9 @@ $success-color: #34d399;
   width: 100%;
 
   min-height:
-    clamp(
-      46px,
+    clamp(46px,
       3.3vw,
-      51px
-    );
+      51px);
 
   padding:
     10px 18px;
@@ -1118,11 +1068,9 @@ $success-color: #34d399;
   font-family: inherit;
 
   font-size:
-    clamp(
-      0.86rem,
+    clamp(0.86rem,
       0.95vw,
-      0.95rem
-    );
+      0.95rem);
 
   font-weight: 600;
 
@@ -1188,18 +1136,14 @@ $success-color: #34d399;
   width: 100%;
 
   margin-top:
-    clamp(
-      20px,
+    clamp(20px,
       2.3vw,
-      27px
-    );
+      27px);
 
   padding-top:
-    clamp(
-      18px,
+    clamp(18px,
       2vw,
-      22px
-    );
+      22px);
 
   border-top:
     1px solid rgba(31, 39, 54, 0.75);
@@ -1214,11 +1158,9 @@ $success-color: #34d399;
   color: $text-muted;
 
   font-size:
-    clamp(
-      0.78rem,
+    clamp(0.78rem,
       0.85vw,
-      0.88rem
-    );
+      0.88rem);
 
   line-height: 1.5;
 }
@@ -1267,27 +1209,14 @@ $success-color: #34d399;
   gap: 5px;
 
   margin-top:
-    clamp(
-      14px,
+    clamp(14px,
       1.7vw,
-      20px
-    );
+      20px);
 
   padding:
     8px 12px;
 
-  // background:
-  //   linear-gradient(
-  //     135deg,
-  //     rgba(255, 255, 255, 0.018),
-  //     rgba(212, 175, 55, 0.025),
-  //     rgba(255, 255, 255, 0.012)
-  //   );
 
-  // border:
-  //   1px solid rgba(255, 255, 255, 0.055);
-
-  // border-radius: 10px;
 
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.025),
@@ -1298,15 +1227,10 @@ $success-color: #34d399;
   isolation: isolate;
 
   animation:
-    developerCreditEntrance
-    0.7s
-    cubic-bezier(
-      0.16,
+    developerCreditEntrance 0.7s cubic-bezier(0.16,
       1,
       0.3,
-      1
-    )
-    both;
+      1) both;
 
   transition:
     border-color 0.35s ease,
@@ -1334,13 +1258,11 @@ $success-color: #34d399;
   height: 140%;
 
   background:
-    linear-gradient(
-      90deg,
+    linear-gradient(90deg,
       transparent,
       rgba(255, 255, 255, 0.12),
       rgba(212, 175, 55, 0.10),
-      transparent
-    );
+      transparent);
 
   transform:
     skewX(-20deg);
@@ -1350,10 +1272,7 @@ $success-color: #34d399;
   z-index: -1;
 
   animation:
-    developerShimmer
-    5s
-    ease-in-out
-    infinite;
+    developerShimmer 5s ease-in-out infinite;
 }
 
 
@@ -1373,14 +1292,12 @@ $success-color: #34d399;
   padding: 1px;
 
   background:
-    linear-gradient(
-      90deg,
+    linear-gradient(90deg,
       rgba(255, 255, 255, 0),
       rgba(212, 175, 55, 0.32),
       rgba(255, 255, 255, 0.22),
       rgba(212, 175, 55, 0.28),
-      rgba(255, 255, 255, 0)
-    );
+      rgba(255, 255, 255, 0));
 
   -webkit-mask:
     linear-gradient(#fff 0 0) content-box,
@@ -1397,10 +1314,7 @@ $success-color: #34d399;
   z-index: -1;
 
   animation:
-    developerBorderGlow
-    4s
-    ease-in-out
-    infinite;
+    developerBorderGlow 4s ease-in-out infinite;
 }
 
 
@@ -1413,12 +1327,7 @@ $success-color: #34d399;
     rgba(148, 163, 184, 0.82);
 
   font-size:
-    clamp(
-      0.68rem,
-      0.75vw,
-      0.78rem
-    );
-
+   17px;
   font-weight: 500;
 
   line-height: 1.4;
@@ -1444,15 +1353,7 @@ $success-color: #34d399;
   color: transparent;
 
   background:
-    linear-gradient(
-      100deg,
-      #c8a951 0%,
-      #f0d98a 22%,
-      #fff4c2 42%,
-      #d8b85c 62%,
-      #f4dda0 80%,
-      #c39b42 100%
-    );
+    linear-gradient(100deg, #ffc107 0%, #f9c81d 22%, #ffd30d 42%, #ffbd00 62%, #f4dda0 80%, #ffb001 100%);
 
   background-size:
     240% auto;
@@ -1463,11 +1364,7 @@ $success-color: #34d399;
   -webkit-text-fill-color: transparent;
 
   font-size:
-    clamp(
-      0.72rem,
-      0.8vw,
-      0.84rem
-    );
+   17px;
 
   font-weight: 700;
 
@@ -1486,10 +1383,7 @@ $success-color: #34d399;
   text-rendering: optimizeLegibility;
 
   animation:
-    developerNameGradient
-    4.2s
-    ease-in-out
-    infinite;
+    developerNameGradient 4.2s ease-in-out infinite;
 
   transition:
     transform 0.3s ease,
@@ -1516,12 +1410,10 @@ $success-color: #34d399;
   border-radius: 50%;
 
   background:
-    linear-gradient(
-      90deg,
+    linear-gradient(90deg,
       transparent,
       rgba(240, 217, 138, 0.55),
-      transparent
-    );
+      transparent);
 
   opacity: 0.55;
 
@@ -1542,18 +1434,14 @@ $success-color: #34d399;
 
 .developer-credit-icon {
   width:
-    clamp(
-      20px,
+    clamp(20px,
       1.7vw,
-      24px
-    );
+      24px);
 
   height:
-    clamp(
-      20px,
+    clamp(20px,
       1.7vw,
-      24px
-    );
+      24px);
 
   display: inline-flex;
 
@@ -1567,11 +1455,9 @@ $success-color: #34d399;
   color: #d9b85c;
 
   font-size:
-    clamp(
-      0.55rem,
+    clamp(0.55rem,
       0.6vw,
-      0.64rem
-    );
+      0.64rem);
 
   box-shadow:
     0 4px 12px rgba(212, 175, 55, 0.08);
@@ -1596,12 +1482,10 @@ $success-color: #34d399;
     rgba(212, 175, 55, 0.20);
 
   background:
-    linear-gradient(
-      135deg,
+    linear-gradient(135deg,
       rgba(255, 255, 255, 0.025),
       rgba(212, 175, 55, 0.045),
-      rgba(255, 255, 255, 0.018)
-    );
+      rgba(255, 255, 255, 0.018));
 
   box-shadow:
     0 10px 25px rgba(0, 0, 0, 0.18),
@@ -1615,9 +1499,7 @@ $success-color: #34d399;
     translateY(-1px);
 
   filter:
-    drop-shadow(
-      0 0 6px rgba(240, 217, 138, 0.28)
-    );
+    drop-shadow(0 0 6px rgba(240, 217, 138, 0.28));
 }
 
 
@@ -1631,15 +1513,12 @@ $success-color: #34d399;
 
 .developer-credit:hover .developer-credit-icon {
   transform:
-    rotate(-8deg)
-    scale(1.08);
+    rotate(-8deg) scale(1.08);
 
   background:
-    linear-gradient(
-      135deg,
+    linear-gradient(135deg,
       rgba(212, 175, 55, 0.16),
-      rgba(255, 255, 255, 0.045)
-    );
+      rgba(255, 255, 255, 0.045));
 
   color: #f0d98a;
 
@@ -1658,16 +1537,14 @@ $success-color: #34d399;
     opacity: 0;
 
     transform:
-      translateY(8px)
-      scale(0.98);
+      translateY(8px) scale(0.98);
   }
 
   to {
     opacity: 1;
 
     transform:
-      translateY(0)
-      scale(1);
+      translateY(0) scale(1);
   }
 
 }
@@ -1755,7 +1632,7 @@ $success-color: #34d399;
 }
 
 
-.input-box.error > .input-leading-icon {
+.input-box.error>.input-leading-icon {
   color:
     $error-color !important;
 }
@@ -1798,12 +1675,10 @@ $success-color: #34d399;
 
 .animate-fade {
   animation:
-    fadeIn 0.3s cubic-bezier(
-      0.16,
+    fadeIn 0.3s cubic-bezier(0.16,
       1,
       0.3,
-      1
-    ) forwards;
+      1) forwards;
 }
 
 
@@ -1835,14 +1710,12 @@ $success-color: #34d399;
   0%,
   100% {
     transform:
-      translate3d(0, 0, 0)
-      scale(1);
+      translate3d(0, 0, 0) scale(1);
   }
 
   50% {
     transform:
-      translate3d(10px, -12px, 0)
-      scale(1.04);
+      translate3d(10px, -12px, 0) scale(1.04);
   }
 
 }
@@ -1890,35 +1763,27 @@ $success-color: #34d399;
 
   .auth-brand-side {
     padding-left:
-      clamp(
-        70px,
+      clamp(70px,
         6vw,
-        120px
-      );
+        120px);
 
     padding-right:
-      clamp(
-        70px,
+      clamp(70px,
         6vw,
-        120px
-      );
+        120px);
   }
 
 
   .auth-form-side {
     padding-left:
-      clamp(
-        50px,
+      clamp(50px,
         5vw,
-        100px
-      );
+        100px);
 
     padding-right:
-      clamp(
-        50px,
+      clamp(50px,
         5vw,
-        100px
-      );
+        100px);
   }
 
 
@@ -1938,31 +1803,25 @@ $success-color: #34d399;
 
   .auth-brand-side {
     padding:
-      clamp(
-        34px,
+      clamp(34px,
         4vw,
-        56px
-      );
+        56px);
   }
 
 
   .auth-form-side {
     padding:
-      clamp(
-        24px,
+      clamp(24px,
         3vw,
-        48px
-      );
+        48px);
   }
 
 
   .brand-content-wrapper h1 {
     font-size:
-      clamp(
-        2.25rem,
+      clamp(2.25rem,
         3.2vw,
-        3rem
-      );
+        3rem);
   }
 
 
@@ -1986,11 +1845,9 @@ $success-color: #34d399;
     width: 47%;
 
     padding:
-      clamp(
-        28px,
+      clamp(28px,
         4vw,
-        44px
-      );
+        44px);
   }
 
 
@@ -2000,25 +1857,21 @@ $success-color: #34d399;
     width: 53%;
 
     padding:
-      clamp(
-        22px,
+      clamp(22px,
         3vw,
-        36px
-      );
+        36px);
   }
 
 
   .brand-content-wrapper h1 {
     font-size:
-      clamp(
-        2rem,
+      clamp(2rem,
         3.5vw,
-        2.7rem
-      );
+        2.7rem);
   }
 
 
-  .brand-content-wrapper > p {
+  .brand-content-wrapper>p {
     font-size: 0.92rem;
   }
 
@@ -2032,11 +1885,9 @@ $success-color: #34d399;
     max-width: 420px;
 
     padding:
-      clamp(
-        24px,
+      clamp(24px,
         3vw,
-        34px
-      );
+        34px);
   }
 
 }
@@ -2083,11 +1934,9 @@ $success-color: #34d399;
     display: block;
 
     background:
-      radial-gradient(
-        circle at 15% 0%,
+      radial-gradient(circle at 15% 0%,
         rgba(99, 102, 241, 0.08),
-        transparent 32%
-      ),
+        transparent 32%),
       $bg-main;
   }
 
@@ -2121,11 +1970,9 @@ $success-color: #34d399;
     justify-content: center;
 
     padding:
-      clamp(
-        20px,
+      clamp(20px,
         5vw,
-        48px
-      );
+        48px);
 
     overflow: hidden;
 
@@ -2142,10 +1989,8 @@ $success-color: #34d399;
     width: 100%;
 
     max-width:
-      min(
-        520px,
-        100%
-      );
+      min(520px,
+        100%);
 
     max-height:
       calc(100% - 10px);
@@ -2153,11 +1998,9 @@ $success-color: #34d399;
     margin: auto;
 
     padding:
-      clamp(
-        28px,
+      clamp(28px,
         5vw,
-        42px
-      );
+        42px);
 
     overflow: hidden;
   }
@@ -2169,11 +2012,9 @@ $success-color: #34d399;
 
   .developer-credit {
     margin-top:
-      clamp(
-        12px,
+      clamp(12px,
         2vw,
-        18px
-      );
+        18px);
 
     padding:
       7px 10px;
@@ -2195,11 +2036,9 @@ $success-color: #34d399;
     justify-content: center;
 
     padding:
-      clamp(
-        16px,
+      clamp(16px,
         5vw,
-        32px
-      );
+        32px);
 
     overflow: hidden;
   }
@@ -2212,11 +2051,9 @@ $success-color: #34d399;
     margin: auto;
 
     padding:
-      clamp(
-        24px,
+      clamp(24px,
         5vw,
-        36px
-      );
+        36px);
   }
 
 
@@ -2275,11 +2112,9 @@ $success-color: #34d399;
     justify-content: center;
 
     padding:
-      16px clamp(
-        14px,
+      16px clamp(14px,
         5vw,
-        24px
-      );
+        24px);
 
     overflow: hidden;
   }
@@ -2296,11 +2131,9 @@ $success-color: #34d399;
     margin: auto;
 
     padding:
-      clamp(
-        20px,
+      clamp(20px,
         6vw,
-        32px
-      );
+        32px);
 
     border-radius: 17px;
 
@@ -2373,12 +2206,12 @@ $success-color: #34d399;
 
 
   .developer-credit-prefix {
-    font-size: 0.67rem;
+    font-size: 12px;
   }
 
 
   .developer-credit-name {
-    font-size: 0.72rem;
+    font-size: 12px;
 
     letter-spacing: normal;
 
@@ -2392,7 +2225,7 @@ $success-color: #34d399;
 
     border-radius: 6px;
 
-    font-size: 0.54rem;
+    font-size: 12px;
   }
 
 }
@@ -2432,22 +2265,18 @@ $success-color: #34d399;
       18px 18px;
 
     border:
-      1px solid rgba(
-        31,
+      1px solid rgba(31,
         39,
         54,
-        0.85
-      );
+        0.85);
 
     border-radius: 15px;
 
     box-shadow:
-      0 20px 45px rgba(
+      0 20px 45px rgba(0,
         0,
         0,
-        0,
-        0.42
-      );
+        0.42);
   }
 
 
@@ -2503,7 +2332,7 @@ $success-color: #34d399;
   }
 
 
-  .input-box > .input-leading-icon {
+  .input-box>.input-leading-icon {
     left: 13px;
 
     font-size: 0.88rem;
@@ -2584,12 +2413,12 @@ $success-color: #34d399;
 
 
   .developer-credit-prefix {
-    font-size: 0.62rem;
+    font-size: 12px;
   }
 
 
   .developer-credit-name {
-    font-size: 0.67rem;
+    font-size: 12px;
 
     letter-spacing: normal;
 
@@ -2605,7 +2434,7 @@ $success-color: #34d399;
 
     border-radius: 5px;
 
-    font-size: 0.48rem;
+    font-size: 12px;
   }
 
 
@@ -2693,7 +2522,7 @@ $success-color: #34d399;
   }
 
 
-  .input-box > .input-leading-icon {
+  .input-box>.input-leading-icon {
     left: 12px;
 
     font-size: 0.82rem;
@@ -2764,12 +2593,12 @@ $success-color: #34d399;
 
 
   .developer-credit-prefix {
-    font-size: 0.57rem;
+    font-size: 12px;
   }
 
 
   .developer-credit-name {
-    font-size: 0.61rem;
+    font-size: 12px;
 
     letter-spacing: normal;
 
@@ -2785,7 +2614,7 @@ $success-color: #34d399;
 
     border-radius: 4px;
 
-    font-size: 0.42rem;
+    font-size: 12px;
   }
 
 
@@ -2822,11 +2651,9 @@ $success-color: #34d399;
     justify-content: center;
 
     padding:
-      8px clamp(
-        16px,
+      8px clamp(16px,
         5vw,
-        48px
-      );
+        48px);
 
     overflow: hidden;
   }
@@ -2928,12 +2755,12 @@ $success-color: #34d399;
 
 
   .developer-credit-prefix {
-    font-size: 0.60rem;
+    font-size: 12px;
   }
 
 
   .developer-credit-name {
-    font-size: 0.64rem;
+    font-size: 12px;
 
     letter-spacing: normal;
 
@@ -2947,7 +2774,7 @@ $success-color: #34d399;
 
     border-radius: 5px;
 
-    font-size: 0.44rem;
+    font-size:12px;
   }
 
 }
@@ -2998,18 +2825,14 @@ $success-color: #34d399;
     min-height: 0;
 
     padding-top:
-      clamp(
-        20px,
+      clamp(20px,
         3vw,
-        40px
-      );
+        40px);
 
     padding-bottom:
-      clamp(
-        20px,
+      clamp(20px,
         3vw,
-        40px
-      );
+        40px);
   }
 
 
@@ -3019,18 +2842,14 @@ $success-color: #34d399;
     min-height: 0;
 
     padding-top:
-      clamp(
-        14px,
+      clamp(14px,
         2.5vw,
-        30px
-      );
+        30px);
 
     padding-bottom:
-      clamp(
-        14px,
+      clamp(14px,
         2.5vw,
-        30px
-      );
+        30px);
 
     overflow: hidden;
   }
@@ -3038,15 +2857,13 @@ $success-color: #34d399;
 
   .brand-content-wrapper h1 {
     font-size:
-      clamp(
-        1.9rem,
+      clamp(1.9rem,
         3vw,
-        2.65rem
-      );
+        2.65rem);
   }
 
 
-  .brand-content-wrapper > p {
+  .brand-content-wrapper>p {
     margin-bottom: 20px;
 
     line-height: 1.45;
@@ -3145,17 +2962,15 @@ $success-color: #34d399;
 
   .brand-content-wrapper h1 {
     font-size:
-      clamp(
-        1.7rem,
+      clamp(1.7rem,
         2.8vw,
-        2.35rem
-      );
+        2.35rem);
 
     margin-bottom: 10px;
   }
 
 
-  .brand-content-wrapper > p {
+  .brand-content-wrapper>p {
     font-size: 0.82rem;
 
     line-height: 1.4;
@@ -3279,7 +3094,7 @@ $success-color: #34d399;
   }
 
 
-  .input-box > .input-leading-icon {
+  .input-box>.input-leading-icon {
     left: 13px;
 
     font-size: 0.85rem;
@@ -3327,12 +3142,12 @@ $success-color: #34d399;
 
 
   .developer-credit-prefix {
-    font-size: 0.62rem;
+    font-size: 12px;
   }
 
 
   .developer-credit-name {
-    font-size: 0.67rem;
+    font-size: 12px;
 
     letter-spacing: normal;
 
@@ -3344,7 +3159,7 @@ $success-color: #34d399;
     width: 19px;
     height: 19px;
 
-    font-size: 0.48rem;
+    font-size:12px;
   }
 
 }
@@ -3454,12 +3269,12 @@ $success-color: #34d399;
 
 
   .developer-credit-prefix {
-    font-size: 0.59rem;
+    font-size: 12px;
   }
 
 
   .developer-credit-name {
-    font-size: 0.63rem;
+    font-size:12px;
 
     letter-spacing: normal;
 
@@ -3471,7 +3286,7 @@ $success-color: #34d399;
     width: 18px;
     height: 18px;
 
-    font-size: 0.44rem;
+    font-size: 12px;
   }
 
 }
@@ -3551,7 +3366,7 @@ $success-color: #34d399;
   }
 
 
-  .input-box > .input-leading-icon {
+  .input-box>.input-leading-icon {
     left: 11px;
 
     font-size: 0.75rem;
@@ -3629,12 +3444,12 @@ $success-color: #34d399;
 
 
   .developer-credit-prefix {
-    font-size: 0.53rem;
+    font-size: 12px;
   }
 
 
   .developer-credit-name {
-    font-size: 0.57rem;
+    font-size:12px;
 
     letter-spacing: normal;
 
@@ -3650,7 +3465,7 @@ $success-color: #34d399;
 
     border-radius: 4px;
 
-    font-size: 0.38rem;
+    font-size: 12px;
   }
 
 
@@ -3799,10 +3614,8 @@ a:focus-visible {
 
   .auth-form-side {
     padding-bottom:
-      max(
-        10px,
-        env(safe-area-inset-bottom)
-      );
+      max(10px,
+        env(safe-area-inset-bottom));
 
     overflow: hidden;
   }
